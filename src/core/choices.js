@@ -1,15 +1,22 @@
-
-export const filterChoices = (choices) => {
-    if (!choices || choices.length === 0) return [];
-    if (choices.length <= 4) return choices.sort(() => Math.random() - 0.5);
-
-    const orig = choices.find(c => c.is_original);
-    const rest = choices.filter(c => c !== orig).sort((a,b) => (b.play_count||0) - (a.play_count||0));
-    const fav = rest.shift();
-    const learned = rest.filter(c => c.is_learned);
-    const inv = learned.length ? learned[Math.floor(Math.random()*learned.length)] : rest.shift();
-    const others = rest.filter(c => c !== inv);
-    const rand = others[Math.floor(Math.random()*others.length)];
-
-    return [orig, fav, inv, rand].filter(Boolean).sort(() => Math.random() - 0.5);
-};
+export function pickDisplayChoices(node) {
+  const choices = [...(node.choices || [])];
+  if (choices.length <= 4) return shuffle(choices);
+  const selected = [];
+  const original = choices.find(c => c.is_original);
+  const favorite = choices.slice().sort((a,b) => (b.play_count || 0) - (a.play_count || 0)).find(Boolean);
+  const learned = choices.find(c => c.is_learned);
+  [original, favorite, learned].forEach(choice => {
+    if (choice && !selected.includes(choice)) selected.push(choice);
+  });
+  const remaining = choices.filter(c => !selected.includes(c));
+  if (remaining.length) selected.push(remaining[Math.floor(Math.random()*remaining.length)]);
+  return shuffle(selected.slice(0,4));
+}
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}

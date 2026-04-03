@@ -1,58 +1,67 @@
-
-import { getStory } from '../storage/database.js';
+import { speak, stopSpeak } from '../audio/tts.js';
+import { listenOnce } from '../audio/stt.js';
+import { currentNode, state, setView } from './state.js';
 import { renderReader } from '../ui/reader.js';
 import { renderEndScreen } from '../ui/end_screen.js';
-import { weaveNode } from './weaver.js';
-
-let activeStory = null;
-let currentNode = null;
-export let currentSession = [];
-
-export const setView = id => {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-};
-
-export const startStory = async (id) => {
-    activeStory = await getStory(id);
-    currentSession = [];
-    playNode('start');
-    setView('view-reader');
-};
-
-export const playNode = async (nodeId) => {
-    currentNode = activeStory.nodes[nodeId];
-    currentSession.push(currentNode);
-
-    if (currentNode.is_ending || !currentNode.choices || currentNode.choices.length === 0) {
-        renderEndScreen(activeStory, currentSession);
-        setView('view-end');
-    } else {
-        renderReader(currentNode, handleChoice);
-    }
-};
-
-const handleChoice = async (intent, isVoice) => {
-    let nextNodeId = null;
-    const choice = currentNode.choices.find(c => c.intent === intent);
-
-    if (choice && choice.next_node) {
-        choice.play_count = (choice.play_count || 0) + 1;
-        nextNodeId = choice.next_node;
-    } else if (isVoice && navigator.onLine) {
-        try {
-            document.getElementById('current-question').textContent = "L'histoire s'écrit...";
-            nextNodeId = await weaveNode(activeStory, currentNode.id, intent);
-        } catch (e) {
-            alert("Erreur de magie: " + e.message);
-            // On rafraichit la vue pour enlever le "L'histoire s'écrit"
-            renderReader(currentNode, handleChoice);
-            return;
-        }
-    } else if (choice) {
-        alert("Ce chemin n'est pas encore écrit, il faut internet !");
-        return;
-    }
-
-    if (nextNodeId) playNode(nextNodeId);
-};
+import { weaveChoice } from './weaver.js';
+let introTimer = null;
+export async function startStoryFromCarousel(story) {
+  stopSpeak();
+  state.currentStory = story;
+  state.currentNodeId = story.start_node || 'start';
+  state.path = [];
+  renderReader({ introOnly: true });
+  clearTimeout(introTimer);
+  const node = currentNode();
+  await speak(`${story.title}. ${story.intro || 'Installe-toi bien, l\'histoire commence.'}`);
+  renderReader({ introOnly: true });
+  await speak(node.text || '');
+  state.path.push({ id: node.id, text: node.text, question: node.question });
+  showQuestionAndChoices();
+}
+export async function showQuestionAndChoices() {
+  renderReader();
+  const node = currentNode();
+  if (!node) return;
+  if (node.is_ending) return renderEndScreen();
+  if (node.question) await speak(node.question);
+}
+export async function chooseOption(choice) {
+  stopSpeak();
+  const node = currentNode();
+  choice.play_count = (choice.play_count || 0) + 1;
+  state.currentNodeId = choice.next_node;
+  const next = currentNode();
+  if (!next) return;
+  renderReader({ introOnly: true });
+  await speak(`${choice.label}. ${next.text}`);
+  state.path.push({ id: next.id, text: next.text, question: next.question, choice: choice.label });
+  if (next.is_ending) return renderEndScreen();
+  showQuestionAndChoices();
+}
+export async function replayStory() {
+  const node = currentNode();
+  if (!node) return;
+  await speak(node.text || '');
+}
+export async function replayQuestion() {
+  const node = currentNode();
+  if (node?.question) await speak(node.question);
+}
+export const speakQuestionOnly = replayQuestion;
+export async function handleVoiceChoice() {
+  const node = currentNode();
+  if (!node || !navigator.onLine) return;
+  document.getElementById('current-question').textContent = 'Je t’écoute…';
+  const transcript = await listenOnce();
+  if (!transcript) {
+    document.getElementById('current-question').textContent = node.question;
+    await speak('Je n’ai pas bien entendu. Tu peux toucher un bouton.');
+    return;
+  }
+  const result = await weaveChoice({ story: state.currentStory, node, transcript });
+  if (result.matchedChoice) return chooseOption(result.matchedChoice);
+  document.getElementById('current-question').textContent = node.question;
+  await speak('Je n’ai pas trouvé. Tu peux choisir avec les tuiles.');
+}
+window.addEventListener('app:goHome', () => { stopSpeak(); setView('view-home'); });
