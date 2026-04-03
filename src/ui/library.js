@@ -1,16 +1,20 @@
-
 import { getLibrary } from '../storage/database.js';
-import { setView } from '../core/engine.js';
-
-export const renderLibrary = async () => {
-    const list = document.getElementById('library-list');
+import { setView } from '../core/state.js';
+import { renderHome } from './carousel.js';
+export async function renderLibrary() {
+  setView('view-library');
+  const list = document.getElementById('library-list');
+  const items = (await getLibrary()).reverse();
+  if (!items.length) {
+    list.innerHTML = '<div class="library-card"><h3>Aucune aventure gardée</h3><p>Termine une histoire puis appuie sur “Garder cette aventure”.</p></div>';
+  } else {
     list.innerHTML = '';
-    const libs = await getLibrary();
-    libs.forEach(l => {
-        const d = document.createElement('div');
-        d.className = 'list-item';
-        d.innerHTML = `<span>${l.title} (${new Date(l.date).toLocaleDateString()})</span>
-                       <div><button class="btn-primary" onclick="alert('Lecture linéaire: ${l.nodes.length} noeuds')">▶ Lire</button></div>`;
-        list.appendChild(d);
+    items.forEach(item => {
+      const article = document.createElement('article');
+      article.className = 'library-card';
+      article.innerHTML = `<h3>${item.title}</h3><p>${item.summary}</p><p>${new Date(item.savedAt).toLocaleString('fr-FR')}</p>`;
+      list.appendChild(article);
     });
-};
+  }
+  document.getElementById('btn-library-back').onclick = () => { renderHome(); setView('view-home'); };
+}
