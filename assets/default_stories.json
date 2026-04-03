@@ -1,404 +1,95 @@
-{
-  "stories": [
-    {
-      "id": "s1",
-      "meta": {
-        "title": "Les 3 Cochons",
-        "cover_emoji": "\ud83d\udc37",
-        "theme": "Classique",
-        "is_complete_offline": true
+[
+  {
+    "id": "forest",
+    "title": "Léon et la forêt des murmures",
+    "cover_emoji": "🦊",
+    "duration_label": "12 min",
+    "intro": "Léon le petit renard ouvre un sentier secret dans une forêt qui chuchote son nom.",
+    "start_node": "start",
+    "nodes": {
+      "start": {
+        "id": "start",
+        "headline": "Le sentier secret",
+        "cover_emoji": "🦊",
+        "text": "Léon, un jeune renard curieux, se promène près d'un grand chêne doré quand il entend un murmure très doux venir d'entre les fougères. En écartant les feuilles, il découvre un petit chemin de mousse qui n'était jamais là avant. Le vent sent la menthe sauvage, les champignons brillent comme de petites lampes et, tout au fond, une clochette tinte sans que personne ne la touche. Léon respire un grand coup. Il sait qu'une vraie aventure commence quand la forêt parle très bas, comme si elle voulait confier un secret seulement aux enfants courageux.",
+        "question": "Que choisit Léon ?",
+        "choices": [
+          {"label":"Avancer","fallback_emoji":"🌿","next_node":"n1","is_original":true},
+          {"label":"Écouter","fallback_emoji":"👂","next_node":"n2"},
+          {"label":"Appeler","fallback_emoji":"📣","next_node":"n3"}
+        ]
       },
-      "nodes": {
-        "start": {
-          "id": "start",
-          "text": "Trois petits cochons veulent construire une maison pour se prot\u00e9ger du grand m\u00e9chant loup. Le premier cochon h\u00e9site sur le mat\u00e9riel.",
-          "question": "Que choisit-il ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "paille",
-              "label": "Paille",
-              "fallback_emoji": "\ud83c\udf3e",
-              "next_node": "node_A",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "brique",
-              "label": "Brique",
-              "fallback_emoji": "\ud83e\uddf1",
-              "next_node": "node_B",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_A": {
-          "id": "node_A",
-          "text": "Il construit en paille. Le loup arrive et souffle tr\u00e8s fort ! La maison s'envole !",
-          "question": "Que fait le cochon ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "fuir",
-              "label": "Fuir",
-              "fallback_emoji": "\ud83c\udfc3",
-              "next_node": "node_End1",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "pleurer",
-              "label": "Pleurer",
-              "fallback_emoji": "\ud83d\ude2d",
-              "next_node": "node_End2",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_B": {
-          "id": "node_B",
-          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End1": {
-          "id": "node_End1",
-          "text": "Il court tr\u00e8s vite chez son fr\u00e8re en brique et ils sont sauv\u00e9s !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End2": {
-          "id": "node_End2",
-          "text": "Il pleure mais un chasseur arrive et fait fuir le loup.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        }
-      }
-    },
-    {
-      "id": "s2",
-      "meta": {
-        "title": "Le Dragon Bleu",
-        "cover_emoji": "\ud83d\udc09",
-        "theme": "Aventure",
-        "is_complete_offline": true
-      },
-      "nodes": {
-        "start": {
-          "id": "start",
-          "text": "Un petit dragon bleu ne sait pas cracher du feu, il crache de l'eau ! Ses amis se moquent de lui.",
-          "question": "O\u00f9 va-t-il ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "foret",
-              "label": "For\u00eat",
-              "fallback_emoji": "\ud83c\udf32",
-              "next_node": "node_A",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "montagne",
-              "label": "Montagne",
-              "fallback_emoji": "\u26f0\ufe0f",
-              "next_node": "node_B",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_A": {
-          "id": "node_A",
-          "text": "Dans la for\u00eat, il voit un grand incendie qui menace les arbres.",
-          "question": "Que fait-il ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "cracher",
-              "label": "Cracher",
-              "fallback_emoji": "\ud83d\udca6",
-              "next_node": "node_End1",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "appeler",
-              "label": "Appeler",
-              "fallback_emoji": "\ud83d\udde3\ufe0f",
-              "next_node": "node_End2",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_B": {
-          "id": "node_B",
-          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End1": {
-          "id": "node_End1",
-          "text": "Il crache toute son eau et \u00e9teint le feu. Il devient le h\u00e9ros de la for\u00eat !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End2": {
-          "id": "node_End2",
-          "text": "Il appelle \u00e0 l'aide et les pompiers arrivent juste \u00e0 temps.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        }
-      }
-    },
-    {
-      "id": "s3",
-      "meta": {
-        "title": "Mission Mars",
-        "cover_emoji": "\ud83d\ude80",
-        "theme": "Espace",
-        "is_complete_offline": true
-      },
-      "nodes": {
-        "start": {
-          "id": "start",
-          "text": "L'astronaute L\u00e9o est en route vers Mars. Soudain, une alarme rouge clignote dans le vaisseau.",
-          "question": "Que v\u00e9rifier ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "moteur",
-              "label": "Moteur",
-              "fallback_emoji": "\u2699\ufe0f",
-              "next_node": "node_A",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "radar",
-              "label": "Radar",
-              "fallback_emoji": "\ud83d\udce1",
-              "next_node": "node_B",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_A": {
-          "id": "node_A",
-          "text": "Il v\u00e9rifie le moteur. Un petit extraterrestre violet est coinc\u00e9 dedans !",
-          "question": "Que lui donner ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "biscuit",
-              "label": "Biscuits",
-              "fallback_emoji": "\ud83c\udf6a",
-              "next_node": "node_End1",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "outil",
-              "label": "Outils",
-              "fallback_emoji": "\ud83d\udd27",
-              "next_node": "node_End2",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_B": {
-          "id": "node_B",
-          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End1": {
-          "id": "node_End1",
-          "text": "L'extraterrestre mange le biscuit, sourit, et r\u00e9pare le vaisseau avec magie !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End2": {
-          "id": "node_End2",
-          "text": "L'extraterrestre prend la cl\u00e9 \u00e0 molette et r\u00e9pare le moteur en un clin d'oeil.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        }
-      }
-    },
-    {
-      "id": "s4",
-      "meta": {
-        "title": "Le Myst\u00e8re",
-        "cover_emoji": "\ud83d\udd0e",
-        "theme": "Enqu\u00eate",
-        "is_complete_offline": true
-      },
-      "nodes": {
-        "start": {
-          "id": "start",
-          "text": "Le g\u00e2teau au chocolat de la cuisine a disparu ! Il ne reste que des miettes sur le sol.",
-          "question": "Qui chercher ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "chien",
-              "label": "Chien",
-              "fallback_emoji": "\ud83d\udc36",
-              "next_node": "node_A",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "chat",
-              "label": "Chat",
-              "fallback_emoji": "\ud83d\udc31",
-              "next_node": "node_B",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_A": {
-          "id": "node_A",
-          "text": "Tu suis les miettes jusqu'\u00e0 la niche du chien. Il dort avec du chocolat sur le museau.",
-          "question": "Que faire ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "reveiller",
-              "label": "R\u00e9veiller",
-              "fallback_emoji": "\u23f0",
-              "next_node": "node_End1",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "laisser",
-              "label": "Laisser",
-              "fallback_emoji": "\ud83d\udca4",
-              "next_node": "node_End2",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_B": {
-          "id": "node_B",
-          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End1": {
-          "id": "node_End1",
-          "text": "Tu le r\u00e9veilles. Il s'excuse et t'offre un bonbon pour se faire pardonner.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End2": {
-          "id": "node_End2",
-          "text": "Tu le laisses dormir car il est trop mignon, tu feras un autre g\u00e2teau demain.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        }
-      }
-    },
-    {
-      "id": "s5",
-      "meta": {
-        "title": "Robot Perdu",
-        "cover_emoji": "\ud83e\udd16",
-        "theme": "\u00c9motion",
-        "is_complete_offline": true
-      },
-      "nodes": {
-        "start": {
-          "id": "start",
-          "text": "Z-9 est un petit robot de nettoyage qui a perdu son chemin dans la grande ville la nuit.",
-          "question": "O\u00f9 aller ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "parc",
-              "label": "Parc",
-              "fallback_emoji": "\ud83c\udfde\ufe0f",
-              "next_node": "node_A",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "route",
-              "label": "Route",
-              "fallback_emoji": "\ud83d\udee3\ufe0f",
-              "next_node": "node_B",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_A": {
-          "id": "node_A",
-          "text": "Dans le parc, il rencontre un hibou qui cherche ses noisettes.",
-          "question": "L'aider ?",
-          "is_ending": false,
-          "choices": [
-            {
-              "intent": "oui",
-              "label": "Oui",
-              "fallback_emoji": "\ud83d\udc4d",
-              "next_node": "node_End1",
-              "is_original": true,
-              "play_count": 0
-            },
-            {
-              "intent": "non",
-              "label": "Non",
-              "fallback_emoji": "\ud83d\udc4e",
-              "next_node": "node_End2",
-              "is_original": true,
-              "play_count": 0
-            }
-          ]
-        },
-        "node_B": {
-          "id": "node_B",
-          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End1": {
-          "id": "node_End1",
-          "text": "Z-9 utilise sa lampe torche, trouve les noisettes et le hibou lui montre le chemin de sa maison !",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        },
-        "node_End2": {
-          "id": "node_End2",
-          "text": "Z-9 continue seul, mais trouve une carte par terre qui le ram\u00e8ne chez lui.",
-          "question": "",
-          "is_ending": true,
-          "choices": []
-        }
-      }
+      "n1": {"id":"n1","headline":"Le pont de liane","cover_emoji":"🌉","text":"Léon suit le chemin jusqu'à un ruisseau argenté. Un pont de liane oscille au-dessus de l'eau claire, où nagent des poissons si brillants qu'on dirait des étoiles tombées du ciel. Au milieu du pont se balance une plume bleue accrochée à une branche. De l'autre côté, un arbre immense garde une porte ronde sculptée de feuilles et de lunes. Léon pose une patte sur la liane. Le pont chante un petit son de guitare. Plus il avance, plus il comprend que chaque pas réveille une autre partie de la forêt. Il faudra choisir avec soin pour atteindre le cœur des murmures.","question":"Que fait-il ?","choices":[{"label":"Traverser","fallback_emoji":"🌉","next_node":"n4","is_original":true},{"label":"Observer","fallback_emoji":"🐟","next_node":"n5"},{"label":"Prendre","fallback_emoji":"🪶","next_node":"n6"}]},
+      "n2": {"id":"n2","headline":"La chanson des feuilles","cover_emoji":"🍃","text":"Au lieu d'avancer tout de suite, Léon ferme les yeux et écoute. Les feuilles se mettent à bruisser comme des voix très anciennes. Elles racontent qu'une lanterne en verre de rosée a disparu et que, sans elle, la clairière du soir restera sombre. Chaque branche donne un morceau d'indice : suivre la lumière, aider sans se vanter, et ne jamais oublier de remercier la forêt. Quand Léon ouvre les yeux, trois chemins scintillent à travers les buissons. L'un sent les mûres, l'autre le bois mouillé, et le dernier la pluie d'été. Le renard comprend qu'on lui fait confiance pour retrouver la lanterne perdue.","question":"Quel chemin suit-il ?","choices":[{"label":"Mûres","fallback_emoji":"🫐","next_node":"n5","is_original":true},{"label":"Pluie","fallback_emoji":"🌦️","next_node":"n6"},{"label":"Bois","fallback_emoji":"🪵","next_node":"n4"}]},
+      "n3": {"id":"n3","headline":"Une amie répond","cover_emoji":"🦉","text":"Léon appelle d'une voix claire, et presque aussitôt une petite chouette descend en tournant autour de lui. Elle s'appelle Oria et porte une minuscule besace pleine de cailloux polis. Oria explique qu'au fond de la forêt se trouve la Clairière aux Murmures, un lieu où les arbres répondent seulement à ceux qui savent aider les autres. Elle tend à Léon trois cailloux : un caillou chaud pour le courage, un froid pour la patience et un brillant pour la gentillesse. Elle dit qu'il ne faut pas tout utiliser à la fois. Léon remercie la chouette, puis regarde autour de lui les passages que la mousse commence déjà à dessiner.","question":"Que choisit-il ?","choices":[{"label":"Courage","fallback_emoji":"🔥","next_node":"n4","is_original":true},{"label":"Patience","fallback_emoji":"🧊","next_node":"n5"},{"label":"Gentillesse","fallback_emoji":"✨","next_node":"n6"}]},
+      "n4": {"id":"n4","headline":"La porte ronde","cover_emoji":"🚪","text":"Derrière l'arbre géant, Léon découvre la fameuse porte ronde. Elle s'ouvre toute seule sur un tunnel de racines luisantes, assez grand pour qu'un renardeau y marche la tête haute. Au bout du passage, une salle cachée abrite une lanterne suspendue, mais la flamme qui devrait danser dedans est presque éteinte. Trois objets reposent sur un coussin de mousse : une goutte de rosée dans une coupe de feuille, une graine lumineuse et un minuscule grelot d'argent. Une phrase gravée sur le mur dit : “La lumière revient à celui qui donne le bon élan.” Léon sait qu'il n'aura droit qu'à un seul essai.","question":"Que prend-il ?","choices":[{"label":"Rosée","fallback_emoji":"💧","next_node":"end_good","is_original":true},{"label":"Graine","fallback_emoji":"🌱","next_node":"end_kind"},{"label":"Grelot","fallback_emoji":"🔔","next_node":"end_music"}]},
+      "n5": {"id":"n5","headline":"Le ruisseau patient","cover_emoji":"💦","text":"En prenant le temps d'observer, Léon remarque que le ruisseau dessine des cercles réguliers autour d'une pierre plate. Sous cette pierre se cache une clé faite de bois clair, légère comme un pétale. Dès qu'il la soulève, l'eau se calme et reflète le ciel du soir. Sur la berge, une famille de hérissons transporte des baies trop lourdes pour eux. Léon hésite : utiliser la clé pour ouvrir vite la porte ronde, aider les hérissons d'abord, ou suivre une luciole géante qui l'appelle plus loin. Même dans les aventures pressées, les bons choix sont souvent ceux qui montrent un cœur attentif.","question":"Que fait Léon ?","choices":[{"label":"Aider","fallback_emoji":"🦔","next_node":"end_kind","is_original":true},{"label":"Ouvrir","fallback_emoji":"🗝️","next_node":"end_good"},{"label":"Suivre","fallback_emoji":"✨","next_node":"end_music"}]},
+      "n6": {"id":"n6","headline":"La luciole géante","cover_emoji":"✨","text":"La piste la plus lumineuse mène Léon jusqu'à une luciole géante, douce comme une veilleuse. Elle vole lentement pour qu'il puisse la suivre jusqu'à une clairière où pendent des carillons de coquilles et de glands. Au centre se trouve un grand cercle de pierre. Quand Léon s'en approche, les carillons commencent une mélodie très tendre. Une voix sort de la nuit : “La forêt écoute ce que tu offres.” Il peut offrir un mot gentil, un objet trouvé sur le chemin, ou bien battre doucement la mesure avec ses pattes. Chacune de ces idées pourrait réveiller la lanterne disparue d'une façon différente.","question":"Quelle offrande choisit-il ?","choices":[{"label":"Chanter","fallback_emoji":"🎵","next_node":"end_music","is_original":true},{"label":"Offrir","fallback_emoji":"🎁","next_node":"end_kind"},{"label":"Souffler","fallback_emoji":"💨","next_node":"end_good"}]},
+      "end_good": {"id":"end_good","headline":"La lumière revient","cover_emoji":"🏮","text":"Léon choisit juste, et la lanterne se rallume d'un éclat doux qui n'éblouit personne. La clairière entière reprend vie. Les fleurs ferment puis rouvrent leurs pétales comme si elles applaudissaient, les poissons du ruisseau dessinent des rubans d'argent et la petite chouette Oria revient avec un sourire fier. La forêt remercie Léon en lui offrant une feuille d'or très légère qui brillera chaque fois qu'il aura besoin de retrouver son chemin. Sur le chemin du retour, les murmures ont changé : maintenant, ils racontent déjà l'histoire du renard qui a su écouter, choisir et aider. Léon rentre chez lui le cœur chaud, persuadé que les secrets les plus beaux vont toujours vers les enfants bienveillants.","question":"","is_ending":true,"choices":[]},
+      "end_kind": {"id":"end_kind","headline":"Le cœur de la forêt","cover_emoji":"💚","text":"Parce qu'il a choisi la gentillesse avant la vitesse, Léon voit quelque chose que peu d'animaux remarquent : la forêt elle-même sourit. Les arbres se penchent légèrement, comme pour remercier. Les hérissons, la chouette et même la luciole géante viennent se ranger autour de lui pendant que la lanterne retrouve sa clarté. Au sol apparaît alors un cercle de mousse douce, un endroit réservé aux amis de la forêt. Léon y dépose sa patte et promet de revenir partager d'autres aventures. Quand il s'éloigne enfin, chaque branche fredonne un petit air de fête. Ce soir, dans la maison du renardeau, on racontera longtemps comment un cœur généreux peut rallumer bien plus qu'une simple lumière.","question":"","is_ending":true,"choices":[]},
+      "end_music": {"id":"end_music","headline":"La chanson des murmures","cover_emoji":"🎶","text":"La musique choisie par Léon traverse les feuilles comme une vague tiède. Les carillons, les pierres et le ruisseau se mettent à jouer ensemble un air si beau que même la lune semble écouter plus fort. La lanterne perdue flotte doucement jusqu'au milieu de la clairière et se remplit d'une lumière bleutée. Oria explique que la forêt adore ceux qui savent faire naître la joie au lieu de la chercher seulement pour eux-mêmes. Léon repart avec une petite clochette d'argent qui tinte dès qu'une nouvelle aventure approche. Sur le chemin, les fougères s'écartent avec élégance, comme si elles saluaient un grand musicien. Le renardeau sourit : désormais, il connaît la chanson secrète des bois.","question":"","is_ending":true,"choices":[]}
     }
-  ]
-}
+  },
+  {
+    "id": "sea",
+    "title": "Mila sous la mer brillante",
+    "cover_emoji": "🧜‍♀️",
+    "duration_label": "11 min",
+    "intro": "Mila plonge près d'une arche de corail qui ouvre les portes d'une mer lumineuse.",
+    "start_node": "start",
+    "nodes": {
+      "start": {"id":"start","headline":"L'arche de corail","cover_emoji":"🧜‍♀️","text":"Mila nage près des rochers quand elle aperçoit une arche de corail rose qu'elle n'avait jamais remarquée. En passant dessous, l'eau devient plus tiède, plus claire, presque chantante. Des bancs de poissons transparents dessinent des flèches lumineuses et un hippocampe coiffé d'algues l'attend comme s'il connaissait son prénom. Il lui raconte qu'une perle de marée manque à la cité sous-marine et que, sans elle, les jardins d'algues vont se faner. Mila ajuste son masque, regarde les bulles monter au-dessus de sa tête et sent cette excitation délicieuse qui annonce une mission importante.","question":"Quel chemin choisit Mila ?","choices":[{"label":"Suivre","fallback_emoji":"🐠","next_node":"n1","is_original":true},{"label":"Questionner","fallback_emoji":"❓","next_node":"n2"},{"label":"Explorer","fallback_emoji":"🪸","next_node":"n3"}]},
+      "n1": {"id":"n1","headline":"Le jardin d'algues","cover_emoji":"🌿","text":"Guidée par les poissons, Mila atteint un jardin d'algues hautes comme des arbres. Elles ondulent si lentement qu'on dirait de grands rideaux verts. Au centre, une tortue peint des cartes avec du sable coloré. Elle explique que la perle de marée réagit aux gestes calmes et qu'elle se cache rarement loin des lieux où l'on prend le temps d'observer. Près d'elle, trois indices attendent : une conque entrouverte, une traînée de bulles argentées et une pierre plate couverte de mousse marine. Mila sait que chacun mène vers une piste différente, mais une seule l'aidera à retrouver vite la perle précieuse.","question":"Que regarde-t-elle d'abord ?","choices":[{"label":"Conque","fallback_emoji":"🐚","next_node":"end_pearl","is_original":true},{"label":"Bulles","fallback_emoji":"🫧","next_node":"end_song"},{"label":"Pierre","fallback_emoji":"🪨","next_node":"end_help"}]},
+      "n2": {"id":"n2","headline":"L'hippocampe savant","cover_emoji":"🦄","text":"Mila préfère poser des questions à l'hippocampe. Il adore expliquer les secrets de l'océan. Il lui apprend que la perle de marée change de couleur selon les émotions : bleu quand elle a peur, doré quand elle se sent utile, rose quand une chanson lui plaît. Pendant qu'il parle, des crabes déménagent une étoile de mer blessée vers un lit d'algues souples. Un remous plus loin fait aussi briller quelque chose sous une dalle. Mila pourrait aider les crabes, aller voir la lumière mystérieuse, ou chanter doucement pour tester l'histoire de la perle sensible à la musique.","question":"Que fait Mila ?","choices":[{"label":"Aider","fallback_emoji":"🦀","next_node":"end_help","is_original":true},{"label":"Chercher","fallback_emoji":"🔎","next_node":"end_pearl"},{"label":"Chanter","fallback_emoji":"🎶","next_node":"end_song"}]},
+      "n3": {"id":"n3","headline":"La grotte bleue","cover_emoji":"💎","text":"En explorant par elle-même, Mila entre dans une grotte bleue où les parois ressemblent à du verre. Chaque mouvement y fait naître des reflets en forme d'étoiles. Au fond repose un coffre de nacre fermé par trois symboles : une vague, un cœur et une note de musique. L'eau y porte un parfum de sel doux et de fleurs marines. Sur un rocher voisin, un poulpe minuscule essaie d'ouvrir un filet dans lequel il a trouvé une petite cloche d'argent. Mila comprend que le coffre et la cloche sont liés à la perle de marée, mais elle doit décider comment approcher ce secret sans tout déranger.","question":"Quel symbole suit-elle ?","choices":[{"label":"Vague","fallback_emoji":"🌊","next_node":"end_pearl","is_original":true},{"label":"Cœur","fallback_emoji":"💗","next_node":"end_help"},{"label":"Note","fallback_emoji":"🎵","next_node":"end_song"}]},
+      "end_pearl": {"id":"end_pearl","headline":"La perle retrouvée","cover_emoji":"🫧","text":"Mila trouve enfin la perle de marée cachée dans une grande conque irisée. Dès qu'elle la prend avec délicatesse, toute la mer autour d'elle s'éclaire de reflets bleus et argentés. L'hippocampe savant fait une pirouette de joie, la tortue lève sa carte au-dessus de sa tête et les poissons transparents dessinent un immense cercle de fête autour de la jeune plongeuse. Mila rapporte la perle à la cité sous-marine, où les jardins d'algues reprennent leur danse lente et majestueuse. En remerciement, les habitants lui offrent un bracelet de coquillages qui chante doucement à chaque plongeon heureux. Mila remonte vers la surface en se promettant de revenir bientôt dans ce royaume de lumière.","question":"","is_ending":true,"choices":[]},
+      "end_help": {"id":"end_help","headline":"Le trésor du cœur","cover_emoji":"💖","text":"En aidant d'abord les autres, Mila découvre que la perle de marée se cache là où circule la bonté. L'étoile de mer blessée, une fois installée au calme, ouvre les yeux et révèle qu'elle protégeait la perle sous son bras tout le temps. Elle la confie à Mila avec gratitude. La mer devient dorée, comme traversée de rayons de soleil même tout au fond de l'eau. Les crabes applaudissent avec leurs pinces, le petit poulpe agite sa clochette d'argent et les coraux s'ouvrent comme des fleurs. Dans la cité, on raconte ce soir-là qu'une grande aventure ne se gagne pas seulement avec du courage, mais aussi avec beaucoup d'attention pour les autres.","question":"","is_ending":true,"choices":[]},
+      "end_song": {"id":"end_song","headline":"La mer en musique","cover_emoji":"🎼","text":"Quand Mila chante, l'eau autour d'elle vibre comme une harpe immense. Les notes filent entre les coraux, réveillent les anémones endormies et font briller le coffre de nacre. À l'intérieur se trouve la perle de marée, mais elle n'accepte de sortir qu'au rythme de la chanson. Mila continue doucement, sans se presser, jusqu'à ce que la perle vienne flotter au creux de ses mains. Toute la grotte bleue répond par un concert de gouttes, de coquillages et de clochettes marines. En ramenant la perle à la cité, Mila comprend que l'océan garde parfois ses plus beaux trésors pour ceux qui savent écouter autant que chanter. Sa voix restera longtemps dans la mémoire de la mer brillante.","question":"","is_ending":true,"choices":[]}
+    }
+  },
+  {
+    "id": "space",
+    "title": "Noa et la gare des étoiles",
+    "cover_emoji": "🚀",
+    "duration_label": "13 min",
+    "intro": "Noa découvre une petite gare spatiale où les trains voyagent entre les constellations.",
+    "start_node": "start",
+    "nodes": {
+      "start": {"id":"start","headline":"Le billet lumineux","cover_emoji":"🚀","text":"Dans le grenier de sa grand-mère, Noa trouve une boîte en fer contenant un billet lumineux marqué “Voie lactée, départ ce soir”. À peine l'a-t-il touché que le plafond du grenier s'ouvre sur un ciel immense et une petite gare apparaît entre les étoiles. Les bancs flottent doucement, les lampes ressemblent à des lunes miniatures et un contrôleur robot ajuste sa casquette en saluant Noa. Il manque un wagon à la grande locomotive céleste. Sans lui, plusieurs constellations n'auront pas leur tournée de rêves. Noa serre son billet dans sa main. Il n'a jamais pris un train d'étoiles, mais il sent qu'il est exactement à la bonne place.","question":"Par quoi commence-t-il ?","choices":[{"label":"Monter","fallback_emoji":"🚂","next_node":"n1","is_original":true},{"label":"Demander","fallback_emoji":"🤖","next_node":"n2"},{"label":"Observer","fallback_emoji":"🔭","next_node":"n3"}]},
+      "n1": {"id":"n1","headline":"Le quai des planètes","cover_emoji":"🪐","text":"Noa monte sur le quai principal. Devant lui passent des mini-planètes rangées comme des valises, chacune avec une étiquette brillante. Le contrôleur robot explique que le wagon perdu peut se cacher dans l'atelier des mécaniciens, dans le tunnel des météores lents, ou bien près de l'horloge cosmique qui règle les départs. Une petite fille astronome lui fait signe depuis une passerelle de verre. Elle dit qu'un vrai voyageur choisit toujours une piste, mais garde les yeux ouverts pour aider ceux qu'il rencontre. Tout, ici, fonctionne avec précision et imagination. Noa adore déjà cet endroit.","question":"Quelle piste suit-il ?","choices":[{"label":"Atelier","fallback_emoji":"🛠️","next_node":"end_build","is_original":true},{"label":"Tunnel","fallback_emoji":"☄️","next_node":"end_courage"},{"label":"Horloge","fallback_emoji":"⏰","next_node":"end_time"}]},
+      "n2": {"id":"n2","headline":"Le robot raconte","cover_emoji":"🤖","text":"Noa préfère poser des questions. Le robot contrôleur adore raconter les traditions de la gare. Il explique que chaque nuit, les trains transportent des rêves calmes, des idées joyeuses et des chansons pour les enfants qui s'endorment. Le wagon perdu ne disparaît jamais par hasard : il se déplace vers l'endroit où l'on a le plus besoin de lui. Pendant qu'il parle, une petite étoile stagiaire trébuche avec une pile de billets et une alarme très douce retentit près de l'horloge cosmique. Plus loin, on voit aussi des étincelles sortir de l'atelier. Noa doit choisir où être utile en premier.","question":"Où va-t-il ?","choices":[{"label":"Aider","fallback_emoji":"⭐","next_node":"end_time","is_original":true},{"label":"Atelier","fallback_emoji":"🛠️","next_node":"end_build"},{"label":"Alarme","fallback_emoji":"🚨","next_node":"end_courage"}]},
+      "n3": {"id":"n3","headline":"Le ciel en mouvement","cover_emoji":"🌌","text":"En observant sans se précipiter, Noa voit quelque chose d'important : le wagon perdu reflète la lumière d'une manière un peu différente des autres, comme un miroir rempli d'aurore. Il repère ce reflet tantôt près du tunnel, tantôt derrière l'horloge. Une astronome lui prête alors une longue-vue en cristal. Grâce à elle, Noa aperçoit des inscriptions sur le wagon : des signes de réparation, une note de musique et un petit sablier. Le wagon semble attendre qu'on le retrouve par la bonne qualité : le courage, l'ingéniosité ou la patience. Noa sourit. Cette quête ressemble beaucoup à une énigme de grand voyageur.","question":"Quelle qualité choisit-il ?","choices":[{"label":"Ingéniosité","fallback_emoji":"💡","next_node":"end_build","is_original":true},{"label":"Courage","fallback_emoji":"🦁","next_node":"end_courage"},{"label":"Patience","fallback_emoji":"⌛","next_node":"end_time"}]},
+      "end_build": {"id":"end_build","headline":"Le wagon réparé","cover_emoji":"🛠️","text":"En entrant dans l'atelier, Noa découvre le wagon perdu suspendu au-dessus d'un établi d'étoiles. Une roue céleste s'est simplement déboîtée. Avec les mécaniciens, il trie des boulons lumineux, choisit le bon outil et remet la pièce en place sans jamais se décourager. Dès que la roue s'enclenche, le wagon se met à rayonner d'une belle lumière blanche. Le train peut enfin repartir pour sa tournée de rêves. Le robot contrôleur offre à Noa une casquette de voyageur d'honneur, et la petite astronome promet de l'attendre pour un prochain départ. Quand le train s'éloigne dans la nuit, Noa sent son cœur battre très fort : il a aidé le ciel à rester à l'heure.","question":"","is_ending":true,"choices":[]},
+      "end_courage": {"id":"end_courage","headline":"Le tunnel des météores","cover_emoji":"☄️","text":"Noa fonce vers le tunnel des météores lents. Ils ne sont pas dangereux, mais ils traversent le passage comme des lucioles géantes un peu désordonnées. Au bout du tunnel, le wagon perdu s'est accroché à une passerelle. Il faut avancer avec calme, attraper la corde brillante et éviter les petits tourbillons de poussière d'étoiles. Noa inspire profondément, avance pas à pas, puis ramène le wagon sous les applaudissements du personnel de la gare. On lui remet une médaille en forme de comète, symbole des voyageurs courageux qui n'agissent pas n'importe comment. La locomotive céleste repart alors dans un grand souffle argenté, et Noa sait qu'il se souviendra longtemps de cette traversée magnifique.","question":"","is_ending":true,"choices":[]},
+      "end_time": {"id":"end_time","headline":"L'heure des rêves","cover_emoji":"⏰","text":"Auprès de l'horloge cosmique, Noa comprend que le wagon perdu n'était pas seulement égaré : il attendait qu'on remette l'heure juste pour tout le trajet. Avec l'aide de la petite étoile stagiaire, il replace des aiguilles de lumière, trie les billets selon les constellations et synchronise les départs avec une précision étonnante. Quand l'horloge sonne enfin, le wagon apparaît tout seul derrière une grande porte de verre étoilé. Le train peut repartir, et chaque constellation recevra bien ses rêves cette nuit. En cadeau, Noa reçoit un minuscule sablier de lumière qui brille doucement avant l'endormissement. De retour dans le grenier, le billet n'a pas disparu : il attend déjà la prochaine aventure spatiale.","question":"","is_ending":true,"choices":[]}
+    }
+  },
+  {
+    "id": "castle",
+    "title": "Inès et le château des nuages",
+    "cover_emoji": "🏰",
+    "duration_label": "10 min",
+    "intro": "Inès grimpe un escalier de brume vers un château suspendu au-dessus des collines.",
+    "start_node": "start",
+    "nodes": {
+      "start": {"id":"start","headline":"L'escalier de brume","cover_emoji":"🏰","text":"Après une pluie de printemps, Inès aperçoit un escalier de brume qui monte entre les collines. Tout en haut flotte un château blanc entouré de nuages ronds comme des coussins. Quand elle pose le pied sur la première marche, chaque goutte autour d'elle se transforme en petite clochette transparente. Devant la grande porte, un chat majordome lui apprend que le château a perdu son vent léger, celui qui fait avancer les nuages et chanter les drapeaux. Sans lui, les salles deviennent silencieuses et les jardins suspendus s'endorment. Inès lisse sa cape, lève les yeux vers les tours et sait qu'elle va devoir mériter la confiance du ciel.","question":"Où entre-t-elle ?","choices":[{"label":"Tour","fallback_emoji":"🗼","next_node":"end_wind","is_original":true},{"label":"Cuisine","fallback_emoji":"🫖","next_node":"end_kind"},{"label":"Jardin","fallback_emoji":"🌤️","next_node":"end_song"}]},
+      "end_wind": {"id":"end_wind","headline":"Le vent léger","cover_emoji":"🌬️","text":"Dans la tour la plus haute, Inès découvre une chambre ronde pleine de rubans suspendus. Au centre dort le vent léger, coincé dans un moulin de verre qui ne tourne plus. Inès observe d'abord le mécanisme, puis replace doucement une pale de nuage qui s'était détachée. Aussitôt, le moulin recommence à tourner avec un doux chuintement. Le vent s'éveille, passe autour d'elle comme un chat content, puis file réveiller tout le château. Les drapeaux claquent, les rideaux dansent et les jardins suspendus se remettent à flotter avec grâce. Le chat majordome lui offre une broche en forme de nuage, signe des invités qui ont aidé le ciel sans le brusquer.","question":"","is_ending":true,"choices":[]},
+      "end_kind": {"id":"end_kind","headline":"Le goûter des nuages","cover_emoji":"☁️","text":"Dans la cuisine, Inès trouve les cuisiniers en panique : sans vent léger, les nuages-crème ne montent plus et le grand goûter du château risque d'être annulé. Elle retrousse ses manches, mélange les bols de pluie sucrée, aide à ranger les plateaux et console un petit nuage qui s'était affaissé de tristesse. En voyant toute cette gentillesse, une brise discrète sort d'elle-même du four tiède et commence à circuler entre les casseroles. Ce n'était pas une panne, mais un vent timide qui attendait un endroit plein d'attention pour revenir. Tout le château applaudit quand les gâteaux flottants sortent enfin du four, et Inès devient l'héroïne du goûter des nuages.","question":"","is_ending":true,"choices":[]},
+      "end_song": {"id":"end_song","headline":"Le jardin suspendu","cover_emoji":"🎐","text":"Dans le jardin suspendu, Inès découvre des fleurs de pluie, des balançoires accrochées aux arcs-en-ciel et des carillons de verre immobiles. Le vent léger se cache peut-être ici. Elle essaie alors quelque chose de simple : elle pousse doucement une balançoire, puis une autre, jusqu'à ce que le mouvement fasse naître une petite mélodie. Les carillons répondent, les fleurs s'ouvrent, et une grande vague d'air parfumé traverse le jardin. Le vent léger revient en riant presque, heureux qu'on l'ait appelé avec douceur plutôt qu'avec force. Les nuages reprennent leur ronde autour du château, et Inès repart avec un petit carillon qui tinte quand le beau temps arrive.","question":"","is_ending":true,"choices":[]}
+    }
+  },
+  {
+    "id": "train",
+    "title": "Sami et le train du soir",
+    "cover_emoji": "🚞",
+    "duration_label": "10 min",
+    "intro": "Sami monte dans un train ancien qui traverse la campagne pour apporter des lumières aux villages.",
+    "start_node": "start",
+    "nodes": {
+      "start": {"id":"start","headline":"Le quai violet","cover_emoji":"🚞","text":"Au coucher du soleil, Sami accompagne son grand-père jusqu'à une petite gare presque vide. Pourtant, ce soir-là, un train ancien arrive en silence avec des fenêtres déjà allumées d'une lumière violette. Le chef de gare leur explique que ce train spécial distribue chaque nuit des lanternes aux villages qui en ont besoin. Problème : une caisse de lanternes s'est perdue entre deux wagons, et sans elle une colline entière restera sombre. Sami adore les trains, les cartes et les missions utiles. Quand son grand-père lui fait un clin d'œil encourageant, il monte à bord avec l'impression d'entrer dans une histoire qu'on ne raconte qu'à la tombée du jour.","question":"Par où commence-t-il ?","choices":[{"label":"Wagon","fallback_emoji":"🧳","next_node":"end_find","is_original":true},{"label":"Locomotive","fallback_emoji":"🚂","next_node":"end_courage"},{"label":"Billetterie","fallback_emoji":"🎫","next_node":"end_help"}]},
+      "end_find": {"id":"end_find","headline":"Les lanternes retrouvées","cover_emoji":"🏮","text":"En inspectant les wagons, Sami remarque qu'un plancher sonne creux sous ses pieds. Avec l'aide d'une contrôleuse très gentille, il soulève une trappe et découvre la caisse de lanternes coincée dans un compartiment secret. Les lanternes ne sont pas abîmées ; elles attendaient juste qu'on les cherche avec attention. Le train ralentit, la caisse est remontée à temps, et bientôt les petites maisons de la colline s'illuminent une à une. Les voyageurs applaudissent en voyant la lumière revenir derrière les arbres. Avant de descendre, le chef de gare donne à Sami un billet doré valable pour un prochain trajet au train du soir, celui que seuls les enfants très observateurs peuvent prendre.","question":"","is_ending":true,"choices":[]},
+      "end_courage": {"id":"end_courage","headline":"Le passage entre les wagons","cover_emoji":"🌉","text":"Dans la locomotive, Sami apprend que la caisse a peut-être glissé pendant un virage et qu'il faut vérifier le passage extérieur entre deux wagons. Cela impressionne un peu, car le vent souffle plus fort dehors et les rails brillent très loin sous la passerelle. Sami s'attache, avance prudemment avec le mécanicien et repère finalement la caisse retenue par une sangle. Ensemble, ils la sécurisent puis la ramènent à l'intérieur. Le train peut repartir sans danger. Les villages reçoivent leurs lanternes, et le mécanicien dit à Sami que le courage, ce n'est pas foncer, c'est avancer prudemment quand quelque chose d'important dépend de toi. Cette phrase restera longtemps dans la tête du jeune voyageur.","question":"","is_ending":true,"choices":[]},
+      "end_help": {"id":"end_help","headline":"Le village éclairé","cover_emoji":"💛","text":"À la billetterie, Sami rencontre une petite fille inquiète : son village est justement celui qui risque de rester dans le noir. Au lieu de partir chercher seul, il lui demande ce qu'elle sait. Ensemble, ils reconstituent le trajet de la caisse, regardent les tampons des billets et trouvent sur une carte le dernier arrêt où un wagon a été réorganisé. L'indice les conduit tout droit au bon compartiment. Grâce à leur coopération, la caisse est retrouvée plus vite que prévu. Quand le train arrive sur la colline, tout le village attend. Les lanternes s'allument, les fenêtres brillent et la petite fille serre Sami dans ses bras en lui disant qu'une lumière partagée éclaire toujours plus loin.","question":"","is_ending":true,"choices":[]}
+    }
+  }
+]
