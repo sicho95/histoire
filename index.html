@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#0f172a">
   <title>Conteur Interactif</title>
   <link rel="manifest" href="manifest.json">
@@ -19,33 +19,36 @@
     </header>
 
     <main>
-      <section id="view-home" class="view view--active">
+      <section id="view-home" class="view">
         <div class="hero-copy">
           <p class="eyebrow">Conteur interactif</p>
-          <h1>Choisis une grande aventure</h1>
+          <h1>Choisis une aventure</h1>
+          <p class="home-sub">Fais glisser les pochettes du doigt. Appuie sur une histoire pour lancer directement l'écoute.</p>
         </div>
-        <div id="story-stage" class="story-stage">
-          <button class="nav-3d nav-3d--left" id="carousel-prev" aria-label="Histoire précédente">‹</button>
-          <div id="story-carousel" class="carousel-3d" aria-live="polite"></div>
-          <button class="nav-3d nav-3d--right" id="carousel-next" aria-label="Histoire suivante">›</button>
+        <div class="carousel-shell">
+          <button id="carousel-prev" class="nav-btn" aria-label="Histoire précédente">‹</button>
+          <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
+          <button id="carousel-next" class="nav-btn" aria-label="Histoire suivante">›</button>
         </div>
-        <p id="home-hint" class="home-hint">Touchez une pochette pour écouter le titre puis démarrer l'histoire.</p>
       </section>
 
       <section id="view-reader" class="view hidden">
         <div class="reader-screen" id="reader-screen">
-          <div class="reader-cover" id="reader-cover">
-            <div class="reader-cover__emoji" id="reader-cover-emoji">📚</div>
-            <div class="reader-cover__meta">
+          <div class="cover-stage" id="cover-stage">
+            <div class="cover-stage__art">
+              <div id="reader-cover-emoji" class="cover-stage__emoji">📖</div>
+              <div class="cover-stage__halo"></div>
+            </div>
+            <div class="cover-stage__meta">
               <p id="reader-story-title" class="reader-story-title"></p>
-              <h2 id="reader-headline">Prêt ?</h2>
-              <p id="reader-body">L'histoire va commencer…</p>
+              <h2 id="reader-node-title" class="reader-node-title">Installe-toi bien…</h2>
             </div>
           </div>
 
-          <div class="question-panel hidden" id="question-panel">
+          <div id="question-panel" class="question-panel hidden">
+            <button id="btn-pause" class="btn-icon" aria-label="Stopper la lecture">⏸️</button>
             <h3 id="current-question">Que choisis-tu ?</h3>
-            <button id="btn-repeat-question" class="btn-icon" aria-label="Relire la question">👂</button>
+            <button id="btn-repeat-question" class="btn-icon" aria-label="Réécouter la question">👂</button>
           </div>
 
           <div id="choices-grid" class="choices-grid hidden"></div>
@@ -61,7 +64,10 @@
         <div class="panel">
           <div class="panel-head">
             <h2>📚 Ma Bibliothèque</h2>
-            <button id="btn-library-back" class="btn-secondary">← Retour</button>
+            <div class="row-actions">
+              <label class="btn-secondary upload-btn">📥 Importer une aventure<input id="library-import-file" type="file" accept="application/json"></label>
+              <button id="btn-library-back" class="btn-secondary">← Retour</button>
+            </div>
           </div>
           <div id="library-list" class="list-container"></div>
         </div>
@@ -101,6 +107,23 @@
         </div>
       </section>
 
+      <section id="view-wizard" class="view hidden">
+        <div class="panel panel--narrow">
+          <div class="panel-head">
+            <h2>➕ Nouvelle histoire</h2>
+            <button id="btn-wizard-back" class="btn-secondary">← Retour</button>
+          </div>
+          <div class="settings-stack">
+            <label class="field"><span>Héros</span><input id="wizard-hero" type="text" value="Milo"></label>
+            <label class="field"><span>Univers</span><input id="wizard-world" type="text" value="forêt magique"></label>
+            <label class="field"><span>But</span><input id="wizard-goal" type="text" value="retrouver une lumière perdue"></label>
+            <div class="row-actions">
+              <button id="btn-create-story" class="btn-primary">Créer l'histoire</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="view-end" class="view hidden">
         <div class="panel panel--celebration">
           <div class="celebration">👏 ✨ 🎉</div>
@@ -116,8 +139,5 @@
   </div>
 
   <script type="module" src="src/app.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(console.error);
-  </script>
 </body>
 </html>
