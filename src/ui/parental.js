@@ -2,6 +2,7 @@ import { exportAllData, importAllData } from '../storage/database.js';
 import { getSettings, saveSettings } from '../storage/settings.js';
 import { setView } from '../core/state.js';
 import { renderHome } from './carousel.js';
+
 function buildPinPad(target, onSuccess) {
   const settings = getSettings();
   let typed = '';
@@ -36,9 +37,10 @@ function buildPinPad(target, onSuccess) {
     };
     pad.appendChild(btn);
   });
-  target.querySelector('#pin-cancel').onclick = () => { renderHome(); setView('view-home'); };
+  target.querySelector('#pin-cancel').onclick = () => renderHome();
   redraw();
 }
+
 export function renderParental() {
   setView('view-parental');
   const settings = getSettings();
@@ -52,7 +54,7 @@ export function renderParental() {
     document.getElementById('input-api-key').value = settings.apiKey || '';
     document.getElementById('input-model').value = settings.model || 'llama-3.3-70b-versatile';
   });
-  document.getElementById('btn-parental-back').onclick = () => { renderHome(); setView('view-home'); };
+  document.getElementById('btn-parental-back').onclick = () => renderHome();
   document.getElementById('btn-save-settings').onclick = () => {
     saveSettings({ ...settings, provider: document.getElementById('input-provider').value, apiKey: document.getElementById('input-api-key').value.trim(), model: document.getElementById('input-model').value.trim() || 'llama-3.3-70b-versatile' });
     alert('Paramètres enregistrés');
@@ -60,7 +62,9 @@ export function renderParental() {
   document.getElementById('btn-export').onclick = async () => {
     const blob = new Blob([JSON.stringify(await exportAllData(), null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'conteur-backup.json'; a.click();
+    a.href = URL.createObjectURL(blob);
+    a.download = 'conteur-backup.json';
+    a.click();
   };
   document.getElementById('import-file').onchange = async e => {
     const file = e.target.files?.[0];
