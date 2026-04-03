@@ -13,19 +13,16 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <button id="btn-library" class="header-btn header-btn--library" aria-label="Ma bibliothèque">📚 Ma Bibliothèque</button>
-      <div class="brand-mark" aria-hidden="true">📖</div>
-      <button id="btn-parental" class="header-btn header-btn--settings" aria-label="Paramètres parents">⚙️</button>
+      <button id="btn-library" class="header-btn header-btn--icon" aria-label="Ma bibliothèque">📚</button>
+      <div id="top-title" class="top-title" aria-hidden="true">📖</div>
+      <button id="btn-parental" class="header-btn header-btn--icon" aria-label="Paramètres parents">⚙️</button>
     </header>
+
     <main>
       <section id="view-home" class="view">
-        <div class="hero-copy">
-          <p class="eyebrow">Conteur interactif</p>
-          <h1>Choisis une aventure</h1>
-          <p class="home-sub">Fais glisser les pochettes du doigt.</p>
-        </div>
         <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
       </section>
+
       <section id="view-reader" class="view hidden">
         <div class="reader-screen">
           <div class="cover-stage">
@@ -38,18 +35,22 @@
               <h2 id="reader-node-title" class="reader-node-title">Installe-toi bien…</h2>
             </div>
           </div>
+
           <div id="question-panel" class="question-panel hidden">
             <button id="btn-pause" class="btn-icon" aria-label="Arrêter la lecture">⏸️</button>
             <h3 id="current-question">Que choisis-tu ?</h3>
             <button id="btn-repeat-question" class="btn-icon" aria-label="Réécouter la question">👂</button>
           </div>
+
           <div id="choices-grid" class="choices-grid hidden"></div>
+
           <div class="reader-actions">
-            <button id="btn-back-home" class="btn-secondary">← Accueil</button>
-            <button id="btn-speak" class="btn-voice"><span class="icon">🎤</span><span class="label">Parler !</span></button>
+            <button id="btn-back-home" class="btn-secondary btn-control" aria-label="Accueil">🏠</button>
+            <button id="btn-speak" class="btn-voice btn-control" aria-label="Parler">🎤</button>
           </div>
         </div>
       </section>
+
       <section id="view-library" class="view hidden">
         <div class="panel panel-scroll">
           <div class="panel-head">
@@ -62,6 +63,7 @@
           <div id="library-list" class="list-container"></div>
         </div>
       </section>
+
       <section id="view-parental" class="view hidden">
         <div class="panel panel--narrow panel-scroll">
           <div id="pin-gate" class="pin-gate"></div>
@@ -79,6 +81,7 @@
           </div>
         </div>
       </section>
+
       <section id="view-wizard" class="view hidden">
         <div class="panel panel--narrow panel-scroll">
           <div class="panel-head"><h2>➕ Nouvelle histoire</h2><button id="btn-wizard-back" class="btn-secondary">← Retour</button></div>
@@ -90,6 +93,7 @@
           </div>
         </div>
       </section>
+
       <section id="view-end" class="view hidden">
         <div class="panel panel--celebration">
           <div class="celebration">👏 ✨ 🎉</div>
