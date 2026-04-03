@@ -1,1 +1,9 @@
-{"name": "Conteur Magique", "short_name": "Conteur", "start_url": "./index.html", "display": "standalone", "background_color": "#f5f7fa", "theme_color": "#4a90e2", "icons": [{"src": "assets/icon.png", "sizes": "192x192", "type": "image/png"}]}
+{
+  "name": "Conteur Interactif",
+  "short_name": "Conteur",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#0f172a",
+  "icons": []
+}
