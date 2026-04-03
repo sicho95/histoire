@@ -13,15 +13,15 @@ export async function generateNextNode(history, current, input) {
     } else {
         if (!s.apiKey) throw new Error("Clé API manquante.");
         
-        // C'est ici la magie : on utilise un Proxy CORS gratuit pour contourner le blocage du navigateur
+        // On utilise TON proxy Cloudflare personnel
         const targetUrl = encodeURIComponent('https://models.inference.ai.azure.com/chat/completions');
-        const proxyUrl = `https://corsproxy.io/?url=${targetUrl}`;
+        const proxyUrl = `https://proxy.sicho95.workers.dev/?url=${targetUrl}`;
 
         const res = await fetch(proxyUrl, {
             method: 'POST', 
             headers: { 
                 'Content-Type': 'application/json', 
-                'Authorization': `Bearer ${s.apiKey}` 
+                'Authorization': `Bearer ${s.apiKey}` // Ton proxy va relayer cette ligne
             },
             body: JSON.stringify({ 
                 model: s.modelName || 'gpt-4o-mini', 
