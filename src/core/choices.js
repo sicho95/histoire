@@ -1,14 +1,19 @@
-function shuffle(arr) { const copy = [...arr]; for (let i = copy.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [copy[i], copy[j]] = [copy[j], copy[i]]; } return copy; }
+function uniquePush(list, item) { if (item && !list.includes(item)) list.push(item); }
 export function pickDisplayChoices(node) {
-  const base = [...(node.choices || [])];
-  if (base.length === 3) base.push({ label: 'Surprise', fallback_emoji: '🎲', __random: true, is_random: true });
-  if (base.length <= 4) return shuffle(base);
-  const selected = [];
-  const original = base.find(c => c.is_original);
-  const favorite = base.slice().sort((a,b) => (b.play_count || 0) - (a.play_count || 0))[0];
-  const learned = base.find(c => c.is_learned);
-  [original, favorite, learned].forEach(c => { if (c && !selected.includes(c)) selected.push(c); });
-  const remaining = base.filter(c => !selected.includes(c));
-  if (remaining.length) selected.push(remaining[Math.floor(Math.random()*remaining.length)]);
-  return shuffle(selected.slice(0, 4));
+  const choices = [...(node.choices || [])].filter(choice => !choice.__random);
+  if (!choices.length) return [];
+  const ordered = [];
+  const original = choices.find(choice => choice.is_original) || choices[0];
+  const preferred = choices.filter(choice => choice !== original).sort((a, b) => (b.play_count || 0) - (a.play_count || 0))[0];
+  const learned = choices.find(choice => choice.is_learned && choice !== original && choice !== preferred);
+  uniquePush(ordered, original);
+  uniquePush(ordered, preferred);
+  uniquePush(ordered, learned);
+  for (const choice of choices) {
+    if (ordered.length >= 3) break;
+    uniquePush(ordered, choice);
+  }
+  const randomPool = choices.filter(choice => !ordered.includes(choice));
+  ordered.push({ label: 'Surprise', fallback_emoji: '🎲', __random: true, pool: randomPool.length ? randomPool : choices });
+  return ordered.slice(0, 4);
 }

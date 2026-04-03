@@ -2,56 +2,149 @@ import { getSettings } from '../storage/settings.js';
 import { queryLlm } from '../api/router.js';
 import { buildStoryPrompt } from '../api/prompts.js';
 import { saveStory } from '../storage/database.js';
+
 const EMOJIS = ['✨','🌈','🗺️','🦊','🌟','🧭','🏰','🚀'];
-function wordFrom(text) { return (String(text || 'Idée').trim().split(/\s+/)[0] || 'Idée').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 12) || 'Idée'; }
-async function persist(story) { await saveStory(story); }
-function localFallback(story, node, transcript) {
-  const seed = String(transcript || 'surprise').trim();
-  const label = wordFrom(seed);
-  const emoji = EMOJIS[seed.length % EMOJIS.length];
-  const id = `dyn_${Date.now()}`;
-  const endId = `${id}_end`;
-  story.nodes[id] = {
-    id,
-    headline: `${label} magique`,
-    cover_emoji: emoji,
-    text: `Cette fois, le héros essaie vraiment l'idée “${seed}”. Le décor change autour de lui : un passage apparaît, des détails nouveaux prennent vie, et l'histoire avance différemment. Cette réponse inventée ouvre une scène unique, avec un indice, un petit danger sans peur, puis une solution douce qui permet de continuer l'aventure sans casser sa logique. L'idée de l'enfant n'est donc pas répétée mécaniquement : elle devient une vraie suite, adaptée à ce moment précis de l'histoire.`,
-    question: 'Et maintenant ?',
-    choices: [
-      { label: 'Suivre', fallback_emoji: '🗺️', next_node: endId, is_original: true },
-      { label: 'Aider', fallback_emoji: '🤝', next_node: endId },
-      { label: 'Rire', fallback_emoji: '😄', next_node: endId }
-    ]
-  };
-  story.nodes[endId] = { id: endId, headline: 'Fin douce', cover_emoji: '🌙', text: `La nouvelle piste se referme calmement et enrichit désormais l'histoire pour les prochaines lectures.`, question: '', is_ending: true, choices: [] };
-  const choice = { label, fallback_emoji: emoji, next_node: id, is_learned: true };
-  node.choices = node.choices || [];
-  node.choices.push(choice);
-  return { matchedChoice: choice, createdChoice: choice };
+const cleanWord = value => (String(value || 'Idée').trim().split(/\s+/)[0] || 'Idée').replace(/[^\p{L}\p{N}-]/gu, '').slice(0, 12) || 'Idée';
+
+function getDescendants(story, node) {
+  return (node.choices || [])
+    .map(choice => story.nodes?.[choice.next_node])
+    .filter(Boolean)
+    .map(child => ({ id: child.id, headline: child.headline || child.id, is_ending: !!child.is_ending }));
 }
-export async function weaveChoice({ story, node, transcript, endingCount = 0 }) {
+
+function chooseRejoin(story, descendants) {
+  return descendants.find(node => !node.is_ending) || descendants[0] || Object.values(story.nodes || {}).find(node => node.is_ending) || null;
+}
+
+function buildLocalNarrative(seed, title) {
+  return `Sous la lumière douce du lieu, ${title} suit la piste de ${seed}. Un détail jusque-là invisible apparaît près du chemin : une trace brillante, une porte cachée ou un petit bruit rassurant qui invite à avancer. En le suivant, le héros découvre une scène nouvelle, pleine d'images concrètes et de petits gestes utiles. Il essaie vraiment cette idée, observe ce qui change, puis comprend comment s'en servir pour continuer l'aventure. Rien n'est expliqué de l'extérieur : tout se passe dans l'histoire elle-même, comme si ce détour avait toujours pu exister à cet instant précis.`;
+}
+
+function createBranch({ story, node, label, emoji, headline, text, question, rejoinNodeId, choices }) {
+  const branchId = `dyn_${Date.now()}`;
+  const bridgeId = `${branchId}_bridge`;
+  const altEndId = `${branchId}_end`;
+  const rejoinTarget = rejoinNodeId && story.nodes?.[rejoinNodeId] ? rejoinNodeId : null;
+
+  story.nodes[branchId] = {
+    id: branchId,
+    headline: headline || label,
+    cover_emoji: emoji || '✨',
+    text,
+    question: question || 'Que faire ensuite ?',
+    choices: []
+  };
+
+  if (rejoinTarget) {
+    const branchChoices = (choices || []).slice(0, 3).map((choice, index) => ({
+      label: cleanWord(choice.label || `Choix${index + 1}`),
+      fallback_emoji: choice.fallback_emoji || EMOJIS[index % EMOJIS.length],
+      next_node: index === 0 ? rejoinTarget : bridgeId,
+      is_original: index === 0
+    }));
+    if (branchChoices.length < 3) {
+      branchChoices.push({ label: 'Suivre', fallback_emoji: '🌟', next_node: rejoinTarget, is_original: branchChoices.length === 0 });
+      branchChoices.push({ label: 'Chercher', fallback_emoji: '🗺️', next_node: bridgeId });
+      branchChoices.push({ label: 'Aider', fallback_emoji: '🤝', next_node: bridgeId });
+    }
+    story.nodes[branchId].choices = branchChoices.slice(0, 3);
+    story.nodes[bridgeId] = {
+      id: bridgeId,
+      headline: 'Le retour au chemin',
+      cover_emoji: '🧭',
+      text: `Après ce détour, le héros retrouve un signe familier qui le guide naturellement vers la suite prévue de l'aventure. Tout s'emboîte avec douceur et le chemin principal réapparaît devant lui.`,
+      question: '',
+      is_ending: false,
+      choices: [{ label: 'Continuer', fallback_emoji: '🌟', next_node: rejoinTarget, is_original: true }]
+    };
+  } else {
+    story.nodes[branchId].choices = [
+      { label: 'Suivre', fallback_emoji: '🌟', next_node: altEndId, is_original: true },
+      { label: 'Aider', fallback_emoji: '🤝', next_node: altEndId },
+      { label: 'Rire', fallback_emoji: '😄', next_node: altEndId }
+    ];
+  }
+
+  story.nodes[altEndId] = {
+    id: altEndId,
+    headline: 'Fin douce',
+    cover_emoji: '🌙',
+    text: `Cette nouvelle piste trouve sa propre conclusion calme et heureuse, puis se range comme un joli détour dans la mémoire de l'histoire.`,
+    question: '',
+    is_ending: true,
+    choices: []
+  };
+
+  const learnedChoice = { label: cleanWord(label), fallback_emoji: emoji || '✨', next_node: branchId, is_learned: true };
+  node.choices = node.choices || [];
+  node.choices.push(learnedChoice);
+  return learnedChoice;
+}
+
+export async function weaveChoice({ story, node, transcript }) {
   const normalized = String(transcript || '').trim().toLowerCase();
-  const direct = (node.choices || []).find(c => normalized.includes(String(c.label || '').toLowerCase()));
+  const direct = (node.choices || []).find(choice => normalized.includes(String(choice.label || '').toLowerCase()));
   if (direct) return { matchedChoice: direct };
+
+  const descendants = getDescendants(story, node);
+  const endings = Object.values(story.nodes || {}).filter(item => item.is_ending).map(item => ({ id: item.id, headline: item.headline || item.id }));
   const settings = getSettings();
-  let result = null;
+  let matchedChoice;
+
   if (navigator.onLine && settings.apiKey) {
     try {
-      const payload = await queryLlm({ provider: settings.provider, apiKey: settings.apiKey, model: settings.model, prompt: buildStoryPrompt({ storyTitle: story.title, nodeTitle: node.headline || story.title, transcript, choices: node.choices || [], endingCount }) });
-      const matched = (node.choices || []).find(c => String(c.label || '').toLowerCase() === String(payload?.matchLabel || '').toLowerCase());
-      if (matched) result = { matchedChoice: matched };
-      else if (payload?.new_choice?.label && payload?.new_choice?.node?.text) {
-        const id = `dyn_${Date.now()}`;
-        const endId = `${id}_end`;
-        story.nodes[id] = { id, headline: payload.new_choice.node.headline || payload.new_choice.label, cover_emoji: payload.new_choice.fallback_emoji || '✨', text: payload.new_choice.node.text, question: payload.new_choice.node.question || 'Que choisis-tu ?', choices: (payload.new_choice.node.choices || []).slice(0,3).map((c, i) => ({ label: wordFrom(c.label || `Choix${i+1}`), fallback_emoji: c.fallback_emoji || '✨', next_node: endId, is_original: i === 0 })) };
-        story.nodes[endId] = { id: endId, headline: 'Fin', cover_emoji: '🌙', text: 'Cette branche nouvelle devient une vraie partie de l aventure.', question: '', is_ending: true, choices: [] };
-        const choice = { label: wordFrom(payload.new_choice.label), fallback_emoji: payload.new_choice.fallback_emoji || '✨', next_node: id, is_learned: true };
-        node.choices = node.choices || []; node.choices.push(choice);
-        result = { matchedChoice: choice, createdChoice: choice };
+      const payload = await queryLlm({
+        provider: settings.provider,
+        apiKey: settings.apiKey,
+        model: settings.model,
+        prompt: buildStoryPrompt({
+          storyTitle: story.title,
+          nodeTitle: node.headline || story.title,
+          transcript,
+          choices: node.choices || [],
+          descendants,
+          endings
+        })
+      });
+      const found = (node.choices || []).find(choice => String(choice.label || '').toLowerCase() === String(payload?.matchLabel || '').toLowerCase());
+      if (found) {
+        matchedChoice = found;
+      } else if (payload?.generated?.text) {
+        matchedChoice = createBranch({
+          story,
+          node,
+          label: payload.generated.label || cleanWord(transcript),
+          emoji: payload.generated.cover_emoji || '✨',
+          headline: payload.generated.headline || cleanWord(transcript),
+          text: payload.generated.text,
+          question: payload.generated.question || 'Que choisis-tu ?',
+          rejoinNodeId: payload.generated.rejoin_node_id || chooseRejoin(story, descendants)?.id,
+          choices: payload.generated.choices || []
+        });
       }
     } catch {}
   }
-  if (!result) result = localFallback(story, node, transcript);
-  await persist(story);
-  return result;
+
+  if (!matchedChoice) {
+    const rejoin = chooseRejoin(story, descendants);
+    matchedChoice = createBranch({
+      story,
+      node,
+      label: cleanWord(transcript),
+      emoji: EMOJIS[String(transcript || '').length % EMOJIS.length],
+      headline: `${cleanWord(transcript)} magique`,
+      text: buildLocalNarrative(transcript, story.title),
+      question: 'Que faire ensuite ?',
+      rejoinNodeId: rejoin?.id || '',
+      choices: [
+        { label: 'Suivre', fallback_emoji: '🌟' },
+        { label: 'Chercher', fallback_emoji: '🗺️' },
+        { label: 'Aider', fallback_emoji: '🤝' }
+      ]
+    });
+  }
+
+  await saveStory(story);
+  return { matchedChoice, createdChoice: matchedChoice };
 }
