@@ -17,24 +17,18 @@
       <div class="brand-mark" aria-hidden="true">📖</div>
       <button id="btn-parental" class="header-btn header-btn--settings" aria-label="Paramètres parents">⚙️</button>
     </header>
-
     <main>
       <section id="view-home" class="view">
         <div class="hero-copy">
           <p class="eyebrow">Conteur interactif</p>
           <h1>Choisis une aventure</h1>
-          <p class="home-sub">Fais glisser les pochettes du doigt. Appuie sur une histoire pour lancer directement l'écoute.</p>
+          <p class="home-sub">Fais glisser les pochettes du doigt.</p>
         </div>
-        <div class="carousel-shell">
-          <button id="carousel-prev" class="nav-btn" aria-label="Histoire précédente">‹</button>
-          <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
-          <button id="carousel-next" class="nav-btn" aria-label="Histoire suivante">›</button>
-        </div>
+        <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
       </section>
-
       <section id="view-reader" class="view hidden">
-        <div class="reader-screen" id="reader-screen">
-          <div class="cover-stage" id="cover-stage">
+        <div class="reader-screen">
+          <div class="cover-stage">
             <div class="cover-stage__art">
               <div id="reader-cover-emoji" class="cover-stage__emoji">📖</div>
               <div class="cover-stage__halo"></div>
@@ -44,24 +38,20 @@
               <h2 id="reader-node-title" class="reader-node-title">Installe-toi bien…</h2>
             </div>
           </div>
-
           <div id="question-panel" class="question-panel hidden">
-            <button id="btn-pause" class="btn-icon" aria-label="Stopper la lecture">⏸️</button>
+            <button id="btn-pause" class="btn-icon" aria-label="Arrêter la lecture">⏸️</button>
             <h3 id="current-question">Que choisis-tu ?</h3>
             <button id="btn-repeat-question" class="btn-icon" aria-label="Réécouter la question">👂</button>
           </div>
-
           <div id="choices-grid" class="choices-grid hidden"></div>
-
           <div class="reader-actions">
             <button id="btn-back-home" class="btn-secondary">← Accueil</button>
             <button id="btn-speak" class="btn-voice"><span class="icon">🎤</span><span class="label">Parler !</span></button>
           </div>
         </div>
       </section>
-
       <section id="view-library" class="view hidden">
-        <div class="panel">
+        <div class="panel panel-scroll">
           <div class="panel-head">
             <h2>📚 Ma Bibliothèque</h2>
             <div class="row-actions">
@@ -72,9 +62,8 @@
           <div id="library-list" class="list-container"></div>
         </div>
       </section>
-
       <section id="view-parental" class="view hidden">
-        <div class="panel panel--narrow">
+        <div class="panel panel--narrow panel-scroll">
           <div id="pin-gate" class="pin-gate"></div>
           <div id="parental-content" class="hidden">
             <div class="panel-head">
@@ -82,62 +71,35 @@
               <button id="btn-parental-back" class="btn-secondary">← Retour</button>
             </div>
             <div class="settings-stack">
-              <label class="field">
-                <span>Fournisseur API</span>
-                <select id="input-provider">
-                  <option value="groq">Groq</option>
-                  <option value="github">GitHub Models</option>
-                </select>
-              </label>
-              <label class="field">
-                <span>Clé API</span>
-                <input id="input-api-key" type="password" placeholder="sk-...">
-              </label>
-              <label class="field">
-                <span>Modèle</span>
-                <input id="input-model" type="text" placeholder="llama-3.3-70b-versatile">
-              </label>
-              <div class="row-actions">
-                <button id="btn-save-settings" class="btn-primary">Enregistrer</button>
-                <button id="btn-export" class="btn-secondary">Exporter</button>
-                <label class="btn-secondary upload-btn">Importer<input id="import-file" type="file" accept="application/json"></label>
-              </div>
+              <label class="field"><span>Fournisseur API</span><select id="input-provider"><option value="groq">Groq</option><option value="github">GitHub Models</option></select></label>
+              <label class="field"><span>Clé API</span><input id="input-api-key" type="password" placeholder="sk-..."></label>
+              <label class="field"><span>Modèle</span><input id="input-model" type="text" placeholder="llama-3.3-70b-versatile"></label>
+              <div class="row-actions"><button id="btn-save-settings" class="btn-primary">Enregistrer</button><button id="btn-export" class="btn-secondary">Exporter</button><label class="btn-secondary upload-btn">Importer<input id="import-file" type="file" accept="application/json"></label></div>
             </div>
           </div>
         </div>
       </section>
-
       <section id="view-wizard" class="view hidden">
-        <div class="panel panel--narrow">
-          <div class="panel-head">
-            <h2>➕ Nouvelle histoire</h2>
-            <button id="btn-wizard-back" class="btn-secondary">← Retour</button>
-          </div>
+        <div class="panel panel--narrow panel-scroll">
+          <div class="panel-head"><h2>➕ Nouvelle histoire</h2><button id="btn-wizard-back" class="btn-secondary">← Retour</button></div>
           <div class="settings-stack">
             <label class="field"><span>Héros</span><input id="wizard-hero" type="text" value="Milo"></label>
             <label class="field"><span>Univers</span><input id="wizard-world" type="text" value="forêt magique"></label>
             <label class="field"><span>But</span><input id="wizard-goal" type="text" value="retrouver une lumière perdue"></label>
-            <div class="row-actions">
-              <button id="btn-create-story" class="btn-primary">Créer l'histoire</button>
-            </div>
+            <div class="row-actions"><button id="btn-create-story" class="btn-primary">Créer l'histoire</button></div>
           </div>
         </div>
       </section>
-
       <section id="view-end" class="view hidden">
         <div class="panel panel--celebration">
           <div class="celebration">👏 ✨ 🎉</div>
           <h2>Bravo !</h2>
           <p>Cette aventure est terminée.</p>
-          <div class="row-actions row-actions--center">
-            <button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button>
-            <button id="btn-end-home" class="btn-secondary">← Accueil</button>
-          </div>
+          <div class="row-actions row-actions--center"><button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button><button id="btn-end-home" class="btn-secondary">← Accueil</button></div>
         </div>
       </section>
     </main>
   </div>
-
   <script type="module" src="src/app.js"></script>
 </body>
 </html>
