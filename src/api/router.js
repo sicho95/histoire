@@ -1,37 +1,14 @@
-import { getSettings } from '../storage/settings.js';
-import { buildPrompt } from './prompts.js';
-
-export async function generateNextNode(history, current, input) {
-    const s = getSettings();
-    const prompt = buildPrompt(history, current, input, s.childAge);
-    
-    if (s.provider === 'puter') {
-        if (!window.puter) throw new Error("Puter.js non chargé");
-        const res = await window.puter.ai.chat(prompt, { model: 'claude-3-5-haiku' });
-        const text = res.message.content;
-        return JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-    } else {
-        if (!s.apiKey) throw new Error("Clé API manquante.");
-        
-        // On utilise TON proxy Cloudflare personnel
-        const targetUrl = encodeURIComponent('https://models.inference.ai.azure.com/chat/completions');
-        const proxyUrl = `https://proxy.sicho95.workers.dev/?url=${targetUrl}`;
-
-        const res = await fetch(proxyUrl, {
-            method: 'POST', 
-            headers: { 
-                'Content-Type': 'application/json', 
-                'Authorization': `Bearer ${s.apiKey}` // Ton proxy va relayer cette ligne
-            },
-            body: JSON.stringify({ 
-                model: s.modelName || 'gpt-4o-mini', 
-                messages: [{role: "system", content: prompt}], 
-                response_format: { type: "json_object" } 
-            })
-        });
-        
-        if (!res.ok) throw new Error(`Erreur réseau (Proxy/API): ${res.status}`);
-        const data = await res.json(); 
-        return JSON.parse(data.choices[0].message.content);
-    }
+export async function queryLlm({ provider, apiKey, model, prompt }) {
+  if (!apiKey) return null;
+  if (provider === 'groq') {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({ model: model || 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], temperature: 0.7, response_format: { type: 'json_object' } })
+    });
+    if (!res.ok) throw new Error(`Erreur API ${res.status}`);
+    const data = await res.json();
+    return JSON.parse(data.choices?.[0]?.message?.content || '{}');
+  }
+  return null;
 }
