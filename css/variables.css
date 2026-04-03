@@ -1,1 +1,27 @@
-:root { --c-primary: #4a90e2; --c-bg: #f5f7fa; --c-text: #333; --c-card: #fff; --f-main: 'Comic Sans MS', sans-serif; --s-sm: 8px; --s-md: 16px; --s-lg: 24px; --r-md: 12px; --r-lg: 20px; }
+:root {
+  --bg: #07111f;
+  --bg-2: #0f172a;
+  --panel: rgba(15, 23, 42, 0.78);
+  --panel-strong: rgba(15, 23, 42, 0.95);
+  --card: rgba(30, 41, 59, 0.92);
+  --card-soft: rgba(51, 65, 85, 0.72);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #38bdf8;
+  --accent-2: #a78bfa;
+  --success: #4ade80;
+  --danger: #fb7185;
+  --shadow: 0 22px 60px rgba(0,0,0,.35);
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --transition: 220ms cubic-bezier(.2,.8,.2,1);
+  --maxw: 1200px;
+}
