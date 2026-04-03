@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Conteur Magique</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a90e2">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <!-- Librairie Puter.js pour l'IA gratuite sans clé -->
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+    <header class="app-header">
+        <button id="btn-library" class="header-btn" aria-label="Bibliothèque">📚 Ma Bibliothèque</button>
+        <h1 class="app-title">Conteur Magique</h1>
+        <button id="btn-settings" class="header-btn" aria-label="Paramètres">⚙️</button>
+    </header>
+    <main id="app-container">
+        <section id="view-home" class="view active">
+            <div class="carousel" id="story-carousel"></div>
+            <button id="btn-new-story" class="btn-primary">[ + ] Nouvelle Histoire</button>
+        </section>
+        <section id="view-reader" class="view hidden">
+            <div class="reader-top">
+                <button id="btn-home" class="btn-icon">🏠</button>
+                <div class="question-container">
+                    <h2 id="current-question">...</h2>
+                    <button id="btn-repeat-question" class="btn-icon">👂</button>
+                </div>
+            </div>
+            <div class="reader-center" id="choices-grid"></div>
+            <div class="reader-bottom">
+                <button id="btn-speak" class="btn-voice"><span class="icon">🎤</span><span class="label">Parler !</span></button>
+            </div>
+        </section>
+        <section id="view-library" class="view hidden">
+            <h2>📚 Ma Bibliothèque</h2>
+            <div id="library-list" class="list-container"></div>
+            <button class="btn-primary btn-close-view">Retour</button>
+        </section>
+        <section id="view-settings" class="view hidden modal">
+            <h2>⚙️ Paramètres Parents</h2>
+            <div class="settings-form">
+                <label>Age de l'enfant: <input type="number" id="input-age" value="5"></label>
+
+                <label>Fournisseur IA:
+                    <select id="input-provider">
+                        <option value="github">GitHub Models (Clé requise)</option>
+                        <option value="puter">Puter.js (Gratuit, sans clé)</option>
+                    </select>
+                </label>
+
+                <div id="github-settings-group">
+                    <label>Clé API GitHub: <input type="password" id="input-api-key" placeholder="ghp_..."></label>
+                    <label>Modèle (ex: gpt-4o-mini, meta-llama-3.1-8b-instruct): <input type="text" id="input-model" value="gpt-4o-mini"></label>
+                </div>
+
+                <div class="settings-actions" style="margin-top: 20px;">
+                    <button id="btn-export" class="btn-secondary">📤 Exporter Sauvegarde</button>
+                </div>
+            </div>
+            <button class="btn-primary btn-close-view" style="margin-top: 20px;">Enregistrer et Fermer</button>
+        </section>
+        <section id="view-wizard" class="view hidden modal">
+            <h2 id="wizard-question">Qui sera le héros ?</h2>
+            <div id="wizard-grid" class="reader-center"></div>
+            <button class="btn-primary btn-close-view">Annuler</button>
+        </section>
+        <section id="view-end" class="view hidden modal">
+            <div class="end-celebration">
+                <div class="confetti">👏</div>
+                <h2>Aventure terminée !</h2>
+                <button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button>
+                <button class="btn-secondary btn-close-view">Retour à l'accueil</button>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="src/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').catch(console.error);
+        }
+    </script>
+</body>
+</html>

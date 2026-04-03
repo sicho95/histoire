@@ -1,0 +1,24 @@
+
+.btn-primary, .btn-secondary { padding: var(--s-md) var(--s-lg); border-radius: var(--r-lg); font-size: 1.2rem; cursor: pointer; border: none; font-weight: bold; text-align: center; }
+.btn-primary { background: var(--c-primary); color: #fff; }
+.btn-secondary { background: #e0e0e0; color: var(--c-text); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.header-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
+.btn-icon { background: var(--c-primary); color: white; border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.5rem; cursor: pointer; }
+.story-card { min-width: 200px; background: var(--c-card); border-radius: var(--r-lg); padding: var(--s-lg); text-align: center; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.story-card .emoji-cover { font-size: 5rem; margin-bottom: var(--s-sm); }
+.choice-tile { background: var(--c-card); border-radius: var(--r-lg); padding: var(--s-lg); text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 2px solid transparent; cursor: pointer; transition: transform 0.2s; display: flex; flex-direction: column; align-items: center; gap: var(--s-sm); }
+.choice-tile:active { transform: scale(0.95); border-color: var(--c-primary); }
+.choice-emoji { font-size: 4rem; }
+.choice-label { font-size: 1.5rem; font-weight: bold; text-transform: uppercase; }
+.btn-voice { background: #ff6b6b; color: white; border: none; border-radius: 50px; padding: var(--s-md) var(--s-lg); display: flex; align-items: center; gap: 10px; font-size: 1.5rem; cursor: pointer; transition: all 0.3s; }
+.btn-voice.listening { animation: pulse 1.5s infinite; background: #e74c3c; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.7); } 70% { box-shadow: 0 0 0 20px rgba(255,107,107,0); } 100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); } }
+.end-celebration { text-align: center; display: flex; flex-direction: column; gap: var(--s-lg); align-items: center; justify-content: center; height: 100%; }
+.confetti { font-size: 6rem; animation: bounce 1s infinite alternate; }
+@keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+.list-container { display: flex; flex-direction: column; gap: var(--s-md); overflow-y: auto; flex: 1; }
+.list-item { background: var(--c-card); padding: var(--s-md); border-radius: var(--r-md); display: flex; justify-content: space-between; align-items: center; }
+.settings-form { display: flex; flex-direction: column; gap: var(--s-md); }
+.settings-form label { display: flex; flex-direction: column; font-size: 1.2rem; gap: 5px; }
+.settings-form input, .settings-form select { padding: var(--s-sm); font-size: 1.1rem; border-radius: var(--s-sm); border: 1px solid #ccc; }

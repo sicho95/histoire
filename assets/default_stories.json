@@ -1,0 +1,404 @@
+{
+  "stories": [
+    {
+      "id": "s1",
+      "meta": {
+        "title": "Les 3 Cochons",
+        "cover_emoji": "\ud83d\udc37",
+        "theme": "Classique",
+        "is_complete_offline": true
+      },
+      "nodes": {
+        "start": {
+          "id": "start",
+          "text": "Trois petits cochons veulent construire une maison pour se prot\u00e9ger du grand m\u00e9chant loup. Le premier cochon h\u00e9site sur le mat\u00e9riel.",
+          "question": "Que choisit-il ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "paille",
+              "label": "Paille",
+              "fallback_emoji": "\ud83c\udf3e",
+              "next_node": "node_A",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "brique",
+              "label": "Brique",
+              "fallback_emoji": "\ud83e\uddf1",
+              "next_node": "node_B",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_A": {
+          "id": "node_A",
+          "text": "Il construit en paille. Le loup arrive et souffle tr\u00e8s fort ! La maison s'envole !",
+          "question": "Que fait le cochon ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "fuir",
+              "label": "Fuir",
+              "fallback_emoji": "\ud83c\udfc3",
+              "next_node": "node_End1",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "pleurer",
+              "label": "Pleurer",
+              "fallback_emoji": "\ud83d\ude2d",
+              "next_node": "node_End2",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_B": {
+          "id": "node_B",
+          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End1": {
+          "id": "node_End1",
+          "text": "Il court tr\u00e8s vite chez son fr\u00e8re en brique et ils sont sauv\u00e9s !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End2": {
+          "id": "node_End2",
+          "text": "Il pleure mais un chasseur arrive et fait fuir le loup.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "s2",
+      "meta": {
+        "title": "Le Dragon Bleu",
+        "cover_emoji": "\ud83d\udc09",
+        "theme": "Aventure",
+        "is_complete_offline": true
+      },
+      "nodes": {
+        "start": {
+          "id": "start",
+          "text": "Un petit dragon bleu ne sait pas cracher du feu, il crache de l'eau ! Ses amis se moquent de lui.",
+          "question": "O\u00f9 va-t-il ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "foret",
+              "label": "For\u00eat",
+              "fallback_emoji": "\ud83c\udf32",
+              "next_node": "node_A",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "montagne",
+              "label": "Montagne",
+              "fallback_emoji": "\u26f0\ufe0f",
+              "next_node": "node_B",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_A": {
+          "id": "node_A",
+          "text": "Dans la for\u00eat, il voit un grand incendie qui menace les arbres.",
+          "question": "Que fait-il ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "cracher",
+              "label": "Cracher",
+              "fallback_emoji": "\ud83d\udca6",
+              "next_node": "node_End1",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "appeler",
+              "label": "Appeler",
+              "fallback_emoji": "\ud83d\udde3\ufe0f",
+              "next_node": "node_End2",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_B": {
+          "id": "node_B",
+          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End1": {
+          "id": "node_End1",
+          "text": "Il crache toute son eau et \u00e9teint le feu. Il devient le h\u00e9ros de la for\u00eat !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End2": {
+          "id": "node_End2",
+          "text": "Il appelle \u00e0 l'aide et les pompiers arrivent juste \u00e0 temps.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "meta": {
+        "title": "Mission Mars",
+        "cover_emoji": "\ud83d\ude80",
+        "theme": "Espace",
+        "is_complete_offline": true
+      },
+      "nodes": {
+        "start": {
+          "id": "start",
+          "text": "L'astronaute L\u00e9o est en route vers Mars. Soudain, une alarme rouge clignote dans le vaisseau.",
+          "question": "Que v\u00e9rifier ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "moteur",
+              "label": "Moteur",
+              "fallback_emoji": "\u2699\ufe0f",
+              "next_node": "node_A",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "radar",
+              "label": "Radar",
+              "fallback_emoji": "\ud83d\udce1",
+              "next_node": "node_B",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_A": {
+          "id": "node_A",
+          "text": "Il v\u00e9rifie le moteur. Un petit extraterrestre violet est coinc\u00e9 dedans !",
+          "question": "Que lui donner ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "biscuit",
+              "label": "Biscuits",
+              "fallback_emoji": "\ud83c\udf6a",
+              "next_node": "node_End1",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "outil",
+              "label": "Outils",
+              "fallback_emoji": "\ud83d\udd27",
+              "next_node": "node_End2",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_B": {
+          "id": "node_B",
+          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End1": {
+          "id": "node_End1",
+          "text": "L'extraterrestre mange le biscuit, sourit, et r\u00e9pare le vaisseau avec magie !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End2": {
+          "id": "node_End2",
+          "text": "L'extraterrestre prend la cl\u00e9 \u00e0 molette et r\u00e9pare le moteur en un clin d'oeil.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "meta": {
+        "title": "Le Myst\u00e8re",
+        "cover_emoji": "\ud83d\udd0e",
+        "theme": "Enqu\u00eate",
+        "is_complete_offline": true
+      },
+      "nodes": {
+        "start": {
+          "id": "start",
+          "text": "Le g\u00e2teau au chocolat de la cuisine a disparu ! Il ne reste que des miettes sur le sol.",
+          "question": "Qui chercher ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "chien",
+              "label": "Chien",
+              "fallback_emoji": "\ud83d\udc36",
+              "next_node": "node_A",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "chat",
+              "label": "Chat",
+              "fallback_emoji": "\ud83d\udc31",
+              "next_node": "node_B",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_A": {
+          "id": "node_A",
+          "text": "Tu suis les miettes jusqu'\u00e0 la niche du chien. Il dort avec du chocolat sur le museau.",
+          "question": "Que faire ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "reveiller",
+              "label": "R\u00e9veiller",
+              "fallback_emoji": "\u23f0",
+              "next_node": "node_End1",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "laisser",
+              "label": "Laisser",
+              "fallback_emoji": "\ud83d\udca4",
+              "next_node": "node_End2",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_B": {
+          "id": "node_B",
+          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End1": {
+          "id": "node_End1",
+          "text": "Tu le r\u00e9veilles. Il s'excuse et t'offre un bonbon pour se faire pardonner.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End2": {
+          "id": "node_End2",
+          "text": "Tu le laisses dormir car il est trop mignon, tu feras un autre g\u00e2teau demain.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "meta": {
+        "title": "Robot Perdu",
+        "cover_emoji": "\ud83e\udd16",
+        "theme": "\u00c9motion",
+        "is_complete_offline": true
+      },
+      "nodes": {
+        "start": {
+          "id": "start",
+          "text": "Z-9 est un petit robot de nettoyage qui a perdu son chemin dans la grande ville la nuit.",
+          "question": "O\u00f9 aller ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "parc",
+              "label": "Parc",
+              "fallback_emoji": "\ud83c\udfde\ufe0f",
+              "next_node": "node_A",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "route",
+              "label": "Route",
+              "fallback_emoji": "\ud83d\udee3\ufe0f",
+              "next_node": "node_B",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_A": {
+          "id": "node_A",
+          "text": "Dans le parc, il rencontre un hibou qui cherche ses noisettes.",
+          "question": "L'aider ?",
+          "is_ending": false,
+          "choices": [
+            {
+              "intent": "oui",
+              "label": "Oui",
+              "fallback_emoji": "\ud83d\udc4d",
+              "next_node": "node_End1",
+              "is_original": true,
+              "play_count": 0
+            },
+            {
+              "intent": "non",
+              "label": "Non",
+              "fallback_emoji": "\ud83d\udc4e",
+              "next_node": "node_End2",
+              "is_original": true,
+              "play_count": 0
+            }
+          ]
+        },
+        "node_B": {
+          "id": "node_B",
+          "text": "Un choix diff\u00e9rent m\u00e8ne \u00e0 un raccourci inattendu !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End1": {
+          "id": "node_End1",
+          "text": "Z-9 utilise sa lampe torche, trouve les noisettes et le hibou lui montre le chemin de sa maison !",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        },
+        "node_End2": {
+          "id": "node_End2",
+          "text": "Z-9 continue seul, mais trouve une carte par terre qui le ram\u00e8ne chez lui.",
+          "question": "",
+          "is_ending": true,
+          "choices": []
+        }
+      }
+    }
+  ]
+}
