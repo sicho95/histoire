@@ -1,19 +1,9 @@
-
-const KEY = 'conteur_settings';
-const DEFAULT = {
-    apiKey: "",
-    childAge: 5,
-    parentPin: null, // Null signifie "non configuré au premier lancement"
-    provider: "github",
-    modelName: "gpt-4o-mini"
-};
-
-export const getSettings = () => {
-    try {
-        return { ...DEFAULT, ...JSON.parse(localStorage.getItem(KEY) || '{}') };
-    } catch(e) {
-        return DEFAULT;
-    }
-};
-
-export const saveSettings = (s) => localStorage.setItem(KEY, JSON.stringify(s));
+const KEY = 'conteur_settings_v2';
+export function getSettings() {
+  try {
+    return JSON.parse(localStorage.getItem(KEY)) || { provider: 'groq', model: 'llama-3.3-70b-versatile', apiKey: '', pin: '2580' };
+  } catch {
+    return { provider: 'groq', model: 'llama-3.3-70b-versatile', apiKey: '', pin: '2580' };
+  }
+}
+export function saveSettings(settings) { localStorage.setItem(KEY, JSON.stringify(settings)); }

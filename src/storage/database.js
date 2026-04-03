@@ -1,39 +1,54 @@
-
-const DB_NAME = 'ConteurDB';
+const DB_NAME = 'conteur-db-v2';
 const DB_VERSION = 1;
-let dbInstance = null;
-
-export const initDB = () => new Promise((resolve, reject) => {
+let dbPromise;
+function openDb() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onupgradeneeded = e => {
-        const db = e.target.result;
-        if (!db.objectStoreNames.contains('stories')) db.createObjectStore('stories', { keyPath: 'id' });
-        if (!db.objectStoreNames.contains('library')) db.createObjectStore('library', { keyPath: 'id', autoIncrement: true });
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains('stories')) db.createObjectStore('stories', { keyPath: 'id' });
+      if (!db.objectStoreNames.contains('library')) db.createObjectStore('library', { keyPath: 'id', autoIncrement: true });
     };
-    req.onsuccess = e => { dbInstance = e.target.result; resolve(dbInstance); };
-    req.onerror = () => reject(req.error);
-});
-
-const executeTx = (storeName, mode, callback) => new Promise((resolve, reject) => {
-    const tx = dbInstance.transaction(storeName, mode);
-    const store = tx.objectStore(storeName);
-    const req = callback(store);
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
-});
-
-export const getStory = id => executeTx('stories', 'readonly', s => s.get(id));
-export const getAllStories = () => executeTx('stories', 'readonly', s => s.getAll());
-export const saveStory = story => executeTx('stories', 'readwrite', s => s.put(story));
-
-export const getLibrary = () => executeTx('library', 'readonly', s => s.getAll());
-export const saveToLibrary = session => executeTx('library', 'readwrite', s => s.put(session));
-export const exportAllData = async () => {
-    return { stories: await getAllStories(), library: await getLibrary() };
-};
-export const importAllData = async (data) => {
-    const tx = dbInstance.transaction(['stories', 'library'], 'readwrite');
-    data.stories?.forEach(st => tx.objectStore('stories').put(st));
-    data.library?.forEach(lib => tx.objectStore('library').put(lib));
-    return new Promise(r => tx.oncomplete = r);
-};
+  });
+  return dbPromise;
+}
+async function tx(store, mode, fn) {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tr = db.transaction(store, mode);
+    const st = tr.objectStore(store);
+    const req = fn(st);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+export const getAllStories = () => tx('stories', 'readonly', s => s.getAll());
+export const saveStory = story => tx('stories', 'readwrite', s => s.put(story));
+export const getLibrary = () => tx('library', 'readonly', s => s.getAll());
+export const saveToLibrary = session => tx('library', 'readwrite', s => s.add(session));
+export async function bootstrapStories() {
+  const existing = await getAllStories();
+  if (existing.length) return existing;
+  const data = await fetch('./assets/default_stories.json').then(r => r.json());
+  await Promise.all(data.map(saveStory));
+  return getAllStories();
+}
+export async function exportAllData() {
+  return { stories: await getAllStories(), library: await getLibrary() };
+}
+export async function importAllData(payload) {
+  const db = await openDb();
+  await new Promise((resolve, reject) => {
+    const tr = db.transaction(['stories', 'library'], 'readwrite');
+    const stories = tr.objectStore('stories');
+    const library = tr.objectStore('library');
+    stories.clear(); library.clear();
+    (payload.stories || []).forEach(s => stories.put(s));
+    (payload.library || []).forEach(s => library.add(s));
+    tr.oncomplete = resolve;
+    tr.onerror = () => reject(tr.error);
+  });
+}
