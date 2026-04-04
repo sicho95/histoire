@@ -2,6 +2,7 @@ import { exportAllData, importAllData } from '../storage/database.js';
 import { getSettings, saveSettings } from '../storage/settings.js';
 import { setView } from '../core/state.js';
 import { renderHome } from './carousel.js';
+import { clearDebugEntries, downloadDebugTxt, logDebug } from '../core/debug.js';
 function buildPinPad(target, onSuccess) {
   const settings = getSettings();
   let typed = '';
@@ -41,7 +42,6 @@ function buildPinPad(target, onSuccess) {
 }
 export function renderParental() {
   setView('view-parental');
-  const settings = getSettings();
   const gate = document.getElementById('pin-gate');
   const content = document.getElementById('parental-content');
   content.classList.add('hidden');
@@ -52,9 +52,40 @@ export function renderParental() {
     document.getElementById('input-provider').value = fresh.provider || 'groq';
     document.getElementById('input-api-key').value = fresh.apiKey || '';
     document.getElementById('input-model').value = fresh.model || 'llama-3.3-70b-versatile';
+    document.getElementById('input-tts-provider').value = fresh.ttsProvider || 'browser';
+    document.getElementById('input-tts-api-key').value = fresh.ttsApiKey || '';
+    document.getElementById('input-tts-voice').value = fresh.ttsVoice || 'nova';
+    document.getElementById('input-debug-enabled').checked = !!fresh.debugEnabled;
   });
   document.getElementById('btn-parental-back').onclick = () => renderHome();
-  document.getElementById('btn-save-settings').onclick = () => { saveSettings({ ...getSettings(), provider: document.getElementById('input-provider').value, apiKey: document.getElementById('input-api-key').value.trim(), model: document.getElementById('input-model').value.trim() || 'llama-3.3-70b-versatile' }); alert('Paramètres enregistrés'); };
-  document.getElementById('btn-export').onclick = async () => { const blob = new Blob([JSON.stringify(await exportAllData(), null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'conteur-backup.json'; a.click(); };
-  document.getElementById('import-file').onchange = async e => { const file = e.target.files?.[0]; if (!file) return; await importAllData(JSON.parse(await file.text())); alert('Import terminé'); };
+  document.getElementById('btn-save-settings').onclick = () => {
+    const next = {
+      ...getSettings(),
+      provider: document.getElementById('input-provider').value,
+      apiKey: document.getElementById('input-api-key').value.trim(),
+      model: document.getElementById('input-model').value.trim() || 'llama-3.3-70b-versatile',
+      ttsProvider: document.getElementById('input-tts-provider').value,
+      ttsApiKey: document.getElementById('input-tts-api-key').value.trim(),
+      ttsVoice: document.getElementById('input-tts-voice').value.trim() || 'nova',
+      debugEnabled: document.getElementById('input-debug-enabled').checked
+    };
+    saveSettings(next);
+    logDebug('settings.saved', { provider: next.provider, model: next.model, ttsProvider: next.ttsProvider, ttsVoice: next.ttsVoice, debugEnabled: next.debugEnabled });
+    alert('Paramètres enregistrés');
+  };
+  document.getElementById('btn-export').onclick = async () => {
+    const blob = new Blob([JSON.stringify(await exportAllData(), null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'conteur-backup.json';
+    a.click();
+  };
+  document.getElementById('import-file').onchange = async e => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    await importAllData(JSON.parse(await file.text()));
+    alert('Import terminé');
+  };
+  document.getElementById('btn-download-debug').onclick = () => downloadDebugTxt();
+  document.getElementById('btn-clear-debug').onclick = () => { clearDebugEntries(); alert('Debug vidé'); };
 }
