@@ -1,29 +1,39 @@
-const KEY = 'conteur_settings_v9';
+
+const KEY = 'conteur_settings_v11';
 const defaults = {
+  // LLM
   provider: 'groq',
   model: 'llama-3.3-70b-versatile',
   apiKey: '',
-  pin: '',
+  // TTS provider: browser | gcp | openai | elevenlabs
   ttsProvider: 'browser',
-  ttsApiKey: '',
-  ttsVoice: '',
-  ttsModel: 'eleven_multilingual_v2',
-  ttsFormat: 'mp3_44100_128',
-  ttsForceFrench: true,
+  // GCP
+  gcpApiKey: '',
+  gcpVoiceName: 'fr-FR-Wavenet-A',
+  gcpVoiceType: 'Wavenet',
+  gcpLanguage: 'fr-FR',
+  gcpCharsThisMonth: 0,
+  gcpMonthKey: '',
+  // OpenAI TTS
+  openaiApiKey: '',
+  openaiVoice: 'nova',
+  // ElevenLabs
+  elevenApiKey: '',
+  elevenVoiceId: '21m00Tcm4TlvDq8ikWAM',
+  elevenModel: 'eleven_multilingual_v2',
+  elevenFormat: 'mp3_44100_128',
+  elevenForceFrench: true,
+  elevenQuota: null,
+  // General
+  pin: '',
   offlineCacheMode: 'selected',
   offlineSelectedStoryId: '',
   debugEnabled: false,
-  elevenQuota: null
 };
-
 export function getSettings() {
-  try {
-    return { ...defaults, ...(JSON.parse(localStorage.getItem(KEY)) || {}) };
-  } catch {
-    return { ...defaults };
-  }
+  try { return { ...defaults, ...(JSON.parse(localStorage.getItem(KEY)) || {}) }; }
+  catch { return { ...defaults }; }
 }
-
-export function saveSettings(settings) {
-  localStorage.setItem(KEY, JSON.stringify({ ...defaults, ...settings }));
+export function saveSettings(s) {
+  localStorage.setItem(KEY, JSON.stringify({ ...defaults, ...s }));
 }

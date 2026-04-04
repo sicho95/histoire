@@ -45,3 +45,58 @@ button:active { transform: scale(.98); }
   .quota-box { flex-direction:column; align-items:flex-start; }
   .tabs { gap:8px; }
 }
+
+/* ── WIZARD ─────────────────────────────────────────── */
+.wizard-wrap { max-width:640px;margin:0 auto;padding:20px 16px 40px;min-height:100dvh;display:flex;flex-direction:column;gap:16px; }
+.wz-back { align-self:flex-start; }
+.wz-step { display:flex;flex-direction:column;gap:20px;flex:1; }
+.wz-center { display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;flex:1;justify-content:center; }
+.wz-big-emoji { font-size:clamp(4rem,15vw,7rem);line-height:1;animation:wz-bounce 1s ease-in-out infinite alternate; }
+@keyframes wz-bounce { from{transform:translateY(0)} to{transform:translateY(-10px)} }
+.wz-spinner { font-size:4rem;animation:wz-spin 1.5s linear infinite; }
+@keyframes wz-spin { to{transform:rotate(360deg)} }
+.wz-title { font-size:clamp(1.4rem,5vw,2rem);font-weight:700;text-align:center; }
+.wz-subtitle { opacity:.8;text-align:center;max-width:34ch; }
+.wz-cta { font-size:1.2rem;padding:16px 40px;border-radius:999px; }
+.wz-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px; }
+.wz-tile { display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border-radius:16px;border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);transition:transform .15s,background .15s;cursor:pointer;min-height:100px; }
+.wz-tile:hover { transform:scale(1.06);background:rgba(255,255,255,.14); }
+.wz-tile:active { transform:scale(.96); }
+.wz-tile--random { border-style:dashed;background:rgba(99,180,255,.08); }
+.wz-tile--autre { border-style:dashed;background:rgba(200,150,255,.08); }
+.wz-emoji { font-size:2.5rem;line-height:1; }
+.wz-word { font-size:.9rem;font-weight:600;text-align:center; }
+.wz-input { width:100%;max-width:300px;padding:14px 18px;border-radius:12px;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:inherit;font-size:1.1rem;text-align:center; }
+.wz-row { display:flex;gap:12px;flex-wrap:wrap;justify-content:center; }
+
+/* ── PARENTAL (extended) ─────────────────────────────── */
+.panel--wide { max-width:980px; }
+.tabs { display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px; }
+.tab-btn { padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:inherit;font-size:.85rem; }
+.tab-btn.active { background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.35); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.settings-stack { display:flex;flex-direction:column;gap:16px;padding-top:8px; }
+.field { display:flex;flex-direction:column;gap:6px; }
+.field > span { font-size:.85rem;opacity:.8;font-weight:500; }
+.field input,.field select { padding:10px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:inherit;font-size:.95rem; }
+.field--inline { flex-direction:row;align-items:center;justify-content:space-between; }
+.field-help { font-size:.82rem;opacity:.7;line-height:1.5; }
+.info-box { padding:14px;border-radius:12px;background:rgba(100,160,255,.12);border:1px solid rgba(100,160,255,.25);font-size:.88rem;line-height:1.6; }
+.info-box a { color:#7ec8ff; }
+.quota-box { display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12); }
+.quota-bar-track { margin-top:8px;height:6px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden; }
+.quota-bar-fill { height:100%;border-radius:999px;background:linear-gradient(90deg,#4CAF50,#FFEB3B,#F44336);transition:width .5s; }
+.col-actions { display:flex;flex-direction:column;gap:8px; }
+.row-actions { display:flex;flex-wrap:wrap;gap:10px; }
+.row-actions--center { justify-content:center; }
+.upload-btn { position:relative;overflow:hidden;cursor:pointer; }
+.upload-btn input[type=file] { position:absolute;inset:0;opacity:0;cursor:pointer; }
+.hidden { display:none !important; }
+
+@media(max-width:600px){
+  .tabs { gap:6px; }
+  .tab-btn { font-size:.78rem;padding:7px 10px; }
+  .quota-box { flex-direction:column; }
+  .wz-grid { grid-template-columns:repeat(3,1fr); }
+}
