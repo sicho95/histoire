@@ -25,5 +25,6 @@
 .pin-help { color: var(--muted); margin: 0; }
 .pin-title { text-align: center; margin: 0; }
 .pin-error { color: #fecaca; min-height: 1.2em; margin: 0; }
+.field--inline { grid-template-columns: 1fr auto; align-items: center; }
 button:active { transform: scale(.98); }
 @media (orientation: landscape) and (max-height: 560px) { .btn-control { width: 46px; height: 46px; } .choice-card { min-height: 82px; } .choice-card__emoji { font-size: 1.5rem; } .choice-card__label { font-size: .82rem; } .choice-card__sub { display: none; } }
