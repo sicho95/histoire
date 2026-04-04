@@ -5,6 +5,7 @@ import { renderReader } from '../ui/reader.js';
 import { renderEndScreen } from '../ui/end_screen.js';
 import { weaveChoice } from './weaver.js';
 import { logDebug } from './debug.js';
+import { checkInternet, shouldAllowFreeChoice } from './network.js';
 function resolveRandom(choice) {
   if (!choice?.__random) return choice;
   const pool = (choice.pool || []).filter(Boolean);
@@ -12,15 +13,26 @@ function resolveRandom(choice) {
   logDebug('choice.random', { pool: pool.map(item => item.label), picked: picked?.label || null });
   return picked;
 }
+function syncVoiceButton() {
+  const btn = document.getElementById('btn-speak');
+  if (!btn) return;
+  btn.style.display = shouldAllowFreeChoice() ? 'inline-flex' : 'none';
+}
+async function showQuestionStage(node) {
+  await checkInternet(true);
+  renderReader({ mode: 'question' });
+  syncVoiceButton();
+  if (node.question) await speak(node.question);
+}
 async function speakNodeSequence(node) {
   if (!node) return;
   renderReader({ mode: 'cover' });
   logDebug('reader.node.start', { nodeId: node.id, headline: node.headline });
   await speak(node.text || '');
   if (node.is_ending) return renderEndScreen();
-  renderReader({ mode: 'question' });
-  if (node.question) await speak(node.question);
+  await showQuestionStage(node);
 }
+export function refreshFreeChoiceAvailability() { syncVoiceButton(); }
 export function startStoryFromCarousel(story) {
   primeTts();
   stopSpeak();
@@ -49,19 +61,22 @@ export async function replayQuestion() { const node = currentNode(); if (node?.q
 export function pauseAudio() { stopSpeak(); }
 export async function handleVoiceChoice() {
   const node = currentNode();
-  if (!node || !navigator.onLine) return;
+  if (!node) return;
+  const ok = await checkInternet(true);
+  syncVoiceButton();
+  if (!ok) return;
   document.getElementById('current-question').textContent = 'Je t’écoute…';
   const transcript = await listenOnce();
   logDebug('voice.transcript', { transcript });
   if (!transcript) {
     document.getElementById('current-question').textContent = node.question || 'Que choisis-tu ?';
-    await speak('Je n ai pas bien entendu. Tu peux choisir avec les tuiles.');
+    await speak(node.question || 'Que choisis-tu ?');
     return;
   }
   const result = await weaveChoice({ story: state.currentStory, node, transcript });
   document.getElementById('current-question').textContent = node.question || 'Que choisis-tu ?';
+  syncVoiceButton();
   if (result?.matchedChoice) return chooseOption(result.matchedChoice);
-  await speak('Je n ai pas trouvé. Tu peux choisir avec les tuiles.');
 }
 export async function playLibraryAdventure(adventure) {
   stopSpeak();
