@@ -17,7 +17,6 @@
       <div id="top-title" class="top-title" aria-hidden="true">📖</div>
       <button id="btn-parental" class="header-btn header-btn--icon" aria-label="Paramètres parents">⚙️</button>
     </header>
-
     <main>
       <section id="view-home" class="view">
         <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
@@ -35,15 +34,12 @@
               <h2 id="reader-node-title" class="reader-node-title">Installe-toi bien…</h2>
             </div>
           </div>
-
           <div id="question-panel" class="question-panel hidden">
             <button id="btn-pause" class="btn-icon" aria-label="Arrêter la lecture">⏸️</button>
             <h3 id="current-question">Que choisis-tu ?</h3>
             <button id="btn-repeat-question" class="btn-icon" aria-label="Réécouter la question">👂</button>
           </div>
-
           <div id="choices-grid" class="choices-grid hidden"></div>
-
           <div class="reader-actions">
             <button id="btn-back-home" class="btn-secondary btn-control" aria-label="Accueil">🏠</button>
             <button id="btn-speak" class="btn-voice btn-control" aria-label="Parler">🎤</button>
@@ -73,13 +69,67 @@
               <button id="btn-parental-back" class="btn-secondary">← Retour</button>
             </div>
             <div class="settings-stack">
-              <label class="field"><span>Fournisseur histoire</span><select id="input-provider"><option value="groq">Groq</option><option value="github">GitHub Models</option></select></label>
-              <label class="field"><span>Clé API histoire</span><input id="input-api-key" type="password" placeholder="sk-..."></label>
-              <label class="field"><span>Modèle histoire</span><input id="input-model" type="text" placeholder="llama-3.3-70b-versatile"></label>
-              <label class="field"><span>Voix</span><select id="input-tts-provider"><option value="browser">Voix navigateur</option><option value="openai">OpenAI TTS</option><option value="elevenlabs">ElevenLabs</option></select></label>
-              <label class="field"><span>Clé API voix</span><input id="input-tts-api-key" type="password" placeholder="sk-... ou Eleven..."></label>
-              <label class="field"><span>Voix / Voice ID</span><input id="input-tts-voice" type="text" placeholder="nova ou voice_id"></label>
-              <label class="field field--inline"><span>Mode debug</span><input id="input-debug-enabled" type="checkbox"></label>
+              <label class="field">
+                <span>Clé API histoire</span>
+                <input id="input-api-key" type="password" placeholder="sk-...">
+              </label>
+              <label class="field">
+                <span>Clé API voix</span>
+                <input id="input-tts-api-key" type="password" placeholder="Clé ElevenLabs ou OpenAI">
+              </label>
+              <label class="field">
+                <span>Modèle histoire</span>
+                <input id="input-model" type="text" placeholder="llama-3.3-70b-versatile">
+              </label>
+              <label class="field">
+                <span>Fournisseur voix</span>
+                <select id="input-tts-provider">
+                  <option value="browser">Voix navigateur (gratuit, hors-ligne)</option>
+                  <option value="openai">OpenAI TTS</option>
+                  <option value="elevenlabs">ElevenLabs</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Voix</span>
+                <select id="input-tts-voice">
+                  <option value="">— Sélectionner —</option>
+                  <option value="tKaoyJLW05zqV0tIH9FD" data-provider="elevenlabs">Gaëlle (ElevenLabs)</option>
+                  <option value="ohItIVrXTBI80RrUECOD" data-provider="elevenlabs">Guillaume (ElevenLabs)</option>
+                  <option value="aQROLel5sQbj1vuIVi6B" data-provider="elevenlabs">Nicolas (ElevenLabs)</option>
+                  <option value="a5n9pJUnAhX4fn7lx3uo" data-provider="elevenlabs">Martin (ElevenLabs)</option>
+                  <option value="nova" data-provider="openai">nova (OpenAI)</option>
+                  <option value="alloy" data-provider="openai">alloy (OpenAI)</option>
+                  <option value="echo" data-provider="openai">echo (OpenAI)</option>
+                  <option value="fable" data-provider="openai">fable (OpenAI)</option>
+                  <option value="onyx" data-provider="openai">onyx (OpenAI)</option>
+                  <option value="shimmer" data-provider="openai">shimmer (OpenAI)</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Modèle ElevenLabs</span>
+                <select id="input-tts-model">
+                  <option value="eleven_multilingual_v2">eleven_multilingual_v2 — ⭐ Meilleure qualité narration FR, 29 langues</option>
+                  <option value="eleven_v3">eleven_v3 — ✨ Ultra expressif, émotions riches, 70+ langues (plus lent)</option>
+                  <option value="eleven_turbo_v2_5">eleven_turbo_v2_5 — ⚡ Compromis qualité/vitesse, 32 langues</option>
+                  <option value="eleven_flash_v2_5">eleven_flash_v2_5 — 🚀 Ultra rapide, faible latence, 32 langues</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Qualité audio</span>
+                <select id="input-tts-format">
+                  <option value="mp3_44100_128">mp3_44100_128 — Haute qualité (recommandé)</option>
+                  <option value="mp3_44100_64">mp3_44100_64 — Qualité standard</option>
+                  <option value="mp3_22050_32">mp3_22050_32 — Légère (économie de cache)</option>
+                </select>
+              </label>
+              <label class="field field--inline">
+                <span>Forcer la langue française (ElevenLabs)</span>
+                <input id="input-tts-force-french" type="checkbox">
+              </label>
+              <label class="field field--inline">
+                <span>Mode debug</span>
+                <input id="input-debug-enabled" type="checkbox">
+              </label>
               <div class="offline-box">
                 <div>
                   <h3>Préparer le hors-ligne</h3>
@@ -121,7 +171,10 @@
           <div class="celebration">👏 ✨ 🎉</div>
           <h2>Bravo !</h2>
           <p>Cette aventure est terminée.</p>
-          <div class="row-actions row-actions--center"><button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button><button id="btn-end-home" class="btn-secondary">← Accueil</button></div>
+          <div class="row-actions row-actions--center">
+            <button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button>
+            <button id="btn-end-home" class="btn-secondary">← Accueil</button>
+          </div>
         </div>
       </section>
     </main>
