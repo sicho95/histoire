@@ -30,3 +30,18 @@
 .offline-box h3, .offline-box p { margin: 0; }
 button:active { transform: scale(.98); }
 @media (orientation: landscape) and (max-height: 560px) { .btn-control { width: 46px; height: 46px; } .choice-card { min-height: 82px; } .choice-card__emoji { font-size: 1.5rem; } .choice-card__label { font-size: .82rem; } .choice-card__sub { display: none; } }
+
+
+.panel--wide { max-width: 980px; }
+.tabs { display:flex; flex-wrap:wrap; gap:12px; margin: 12px 0 20px; }
+.tab-btn { padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); color: inherit; }
+.tab-btn.active { background: rgba(255,255,255,.18); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.field-help { opacity:.78; line-height:1.5; }
+.quota-box { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px; border-radius:16px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); }
+.hidden { display:none !important; }
+@media (max-width: 700px) {
+  .quota-box { flex-direction:column; align-items:flex-start; }
+  .tabs { gap:8px; }
+}

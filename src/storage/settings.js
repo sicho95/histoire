@@ -1,4 +1,4 @@
-const KEY = 'conteur_settings_v8';
+const KEY = 'conteur_settings_v9';
 const defaults = {
   provider: 'groq',
   model: 'llama-3.3-70b-versatile',
@@ -10,7 +10,10 @@ const defaults = {
   ttsModel: 'eleven_multilingual_v2',
   ttsFormat: 'mp3_44100_128',
   ttsForceFrench: true,
-  debugEnabled: false
+  offlineCacheMode: 'selected',
+  offlineSelectedStoryId: '',
+  debugEnabled: false,
+  elevenQuota: null
 };
 
 export function getSettings() {
