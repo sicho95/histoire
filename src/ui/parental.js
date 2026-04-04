@@ -1,5 +1,6 @@
 
-import { exportAllData, importAllData, getAllStories, getLibrary } from '../storage/database.js';
+import { exportAllData, importAllData, getAllStories, getLibrary, importStory, exportStory } from '../storage/database.js';
+import { listAudioCacheEntries, importCacheEntries } from '../storage/audio_cache.js';
 import { getSettings, saveSettings } from '../storage/settings.js';
 import { setView } from '../core/state.js';
 import { renderHome } from './carousel.js';
@@ -117,7 +118,96 @@ async function refreshStorySelect() {
 }
 
 // ── EXPORT MP3 ZIP ────────────────────────────────────────────────────────────
+
+// ── Template histoire (pour IA / contributeurs) ──────────────────────────────
+const STORY_TEMPLATE = {
+  id:"mon-histoire",title:"Titre de l'histoire",cover_emoji:"🌟",
+  intro:"Une courte phrase d'accroche.",start_node:"start",is_user_created:true,
+  nodes:{
+    start:{id:"start",headline:"Chapitre 1",cover_emoji:"🌟",
+      text:"Paragraphe narratif (~200 mots). Décris la scène et introduis le personnage.",
+      question:"Que choisis-tu ?",is_ending:false,choices:[
+        {label:"Avancer",fallback_emoji:"🌟",next_node:"n1",is_original:true,is_learned:false,play_count:0},
+        {label:"Attendre",fallback_emoji:"⏳",next_node:"n2",is_original:false,is_learned:false,play_count:0},
+        {label:"Partir",fallback_emoji:"🏃",next_node:"end_a",is_original:false,is_learned:false,play_count:0}
+      ]},
+    n1:{id:"n1",headline:"Chapitre 2a",cover_emoji:"🌟",text:"Suite...",question:"Que fais-tu ?",is_ending:false,choices:[
+      {label:"Continuer",fallback_emoji:"▶️",next_node:"end_a",is_original:true,is_learned:false,play_count:0},
+      {label:"Revenir",fallback_emoji:"↩️",next_node:"start",is_original:false,is_learned:false,play_count:0}
+    ]},
+    n2:{id:"n2",headline:"Chapitre 2b",cover_emoji:"🌟",text:"Autre chemin...",question:"Et maintenant ?",is_ending:false,choices:[
+      {label:"Rester",fallback_emoji:"🏠",next_node:"end_b",is_original:true,is_learned:false,play_count:0}
+    ]},
+    end_a:{id:"end_a",headline:"Fin heureuse",cover_emoji:"🎉",text:"Belle conclusion.",question:"",is_ending:true,choices:[]},
+    end_b:{id:"end_b",headline:"Autre fin",cover_emoji:"😊",text:"Une autre conclusion.",question:"",is_ending:true,choices:[]},
+  }
+};
+
+// ── Export ZIP COMPLET (données + cache audio) ────────────────────────────────
+async function exportFullZip() {
+  if(typeof JSZip==='undefined'){alert('JSZip non chargé. Vérifiez la connexion.');return;}
+  const zip=new JSZip();
+  // 1. Données (histoires + bibliothèque)
+  const data=await exportAllData();
+  zip.file('data.json',JSON.stringify(data,null,2));
+  // 2. Cache audio complet (IDs + dataUrls)
+  const audioEntries=await listAudioCacheEntries();
+  if(audioEntries.length){
+    zip.file('audio_cache.json',JSON.stringify(audioEntries,null,2));
+    // Aussi exporter les MP3 séparément pour lisibilité
+    const mp3folder=zip.folder('mp3');
+    audioEntries.forEach((e,i)=>{
+      if(!e.dataUrl)return;
+      const b64=e.dataUrl.split(',')[1];
+      const name=`${String(i).padStart(4,'0')}_${(e.id||'').replace(/[^a-z0-9_]/gi,'_').slice(0,60)}.mp3`;
+      mp3folder.file(name,b64,{base64:true});
+    });
+  }
+  zip.file('_meta.json',JSON.stringify({exportedAt:new Date().toISOString(),stories:data.stories?.length||0,library:data.library?.length||0,audioEntries:audioEntries.length},null,2));
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`conteur-backup-${new Date().toISOString().slice(0,10)}.zip`;a.click();
+  logDebug('export.full.zip',{stories:data.stories?.length,audio:audioEntries.length});
+}
+
+// ── Import ZIP COMPLET ────────────────────────────────────────────────────────
+async function importFullZip(file) {
+  if(typeof JSZip==='undefined'){alert('JSZip non chargé.');return;}
+  const zip=await JSZip.loadAsync(file);
+  let storiesOk=0,audioOk=0;
+  // 1. Données
+  if(zip.files['data.json']){
+    const text=await zip.files['data.json'].async('text');
+    await importAllData(JSON.parse(text));
+    storiesOk=1;
+  }
+  // 2. Cache audio
+  if(zip.files['audio_cache.json']){
+    const text=await zip.files['audio_cache.json'].async('text');
+    const entries=JSON.parse(text);
+    audioOk=await importCacheEntries(entries);
+  }
+  await refreshStorySelect();await refreshCacheStatus();
+  alert(`✅ Import terminé :\n• ${storiesOk?'Données importées':'Pas de données'}\n• ${audioOk} audio(s) importé(s) en cache`);
+  logDebug('import.full.zip',{storiesOk,audioOk});
+}
+
+// ── Export une histoire seule ────────────────────────────────────────────────
+async function exportSingleStory(storyId) {
+  const story=await exportStory(storyId);
+  if(!story){alert('Histoire introuvable.');return;}
+  const blob=new Blob([JSON.stringify(story,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`histoire-${story.id}.json`;a.click();
+}
+
+// ── Export template vierge ───────────────────────────────────────────────────
+function exportStoryTemplate() {
+  const blob=new Blob([JSON.stringify(STORY_TEMPLATE,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='histoire-template.json';a.click();
+}
+
 async function exportMp3Zip() {
+  if(typeof JSZip==='undefined'){alert('JSZip non chargé.');return;}
+
   const entries=await listAudioCacheEntries();
   if(!entries.length){alert('Aucun audio en cache à exporter.');return;}
   // Use JSZip if available
@@ -218,9 +308,19 @@ export function renderParental() {
     alert('Paramètres enregistrés ✓');
   };
 
+  document.getElementById('btn-export-full-zip').onclick=()=>exportFullZip();
+  document.getElementById('import-full-zip').onchange=async e=>{const f=e.target.files?.[0];if(f)await importFullZip(f);e.target.value='';};
   document.getElementById('btn-export').onclick=async()=>{
     const blob=new Blob([JSON.stringify(await exportAllData(),null,2)],{type:'application/json'});
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='conteur-backup.json';a.click();
+  };
+  document.getElementById('btn-export-story-template').onclick=()=>exportStoryTemplate();
+  document.getElementById('import-story-file').onchange=async e=>{
+    const f=e.target.files?.[0];if(!f)return;
+    const story=JSON.parse(await f.text());
+    if(!story?.id||!story?.nodes){alert('JSON invalide : champs id et nodes requis.');return;}
+    await importStory(story);await refreshStorySelect();alert(`Histoire "${story.title||story.id}" importée ✓`);
+    e.target.value='';
   };
   document.getElementById('import-file').onchange=async e=>{
     const f=e.target.files?.[0];if(!f)return;

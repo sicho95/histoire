@@ -1,4 +1,4 @@
-import { bootstrapStories } from './storage/database.js';
+import { bootstrapStories, loadExternalStories } from './storage/database.js';
 import { state } from './core/state.js';
 import { renderHome } from './ui/carousel.js';
 import { renderLibrary } from './ui/library.js';
@@ -18,6 +18,7 @@ async function init() {
   window.addEventListener('error', event => logDebug('window.error', { message: event.message, source: event.filename, lineno: event.lineno, colno: event.colno }));
   window.addEventListener('unhandledrejection', event => logDebug('window.unhandledrejection', { reason: String(event.reason) }));
   await registerSW();
+  await loadExternalStories();
   state.stories = await bootstrapStories();
   startNetworkWatcher();
   onNetworkStateChange(({ internetReachable }) => {
@@ -29,7 +30,8 @@ async function init() {
   document.getElementById('btn-library').onclick = () => renderLibrary();
   document.getElementById('btn-parental').onclick = () => renderParental();
   document.getElementById('btn-speak').onclick = () => { primeTts(); handleVoiceChoice(); };
-  window.addEventListener('app:goHome', async () => { pauseAudio(); state.stories = await bootstrapStories(); renderHome(); logDebug('app.home', { stories: state.stories.length }); });
+  window.addEventListener('app:goHome', async () => { pauseAudio(); await loadExternalStories();
+  state.stories = await bootstrapStories(); renderHome(); logDebug('app.home', { stories: state.stories.length }); });
   document.body.addEventListener('pointerdown', () => primeTts(), { once: true });
 }
 init();

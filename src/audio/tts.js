@@ -1,7 +1,7 @@
 
 import { getSettings, saveSettings } from '../storage/settings.js';
 import { logDebug } from '../core/debug.js';
-import { getAudioCacheEntry, putAudioCacheEntry } from '../storage/audio_cache.js';
+import { getAudioCacheEntry, putAudioCacheEntry, getStaticAudio } from '../storage/audio_cache.js';
 
 let activeResolve = null;
 let currentAudio = null;
@@ -32,6 +32,15 @@ function dataUrlToBlob(d) {
 async function getCached(s, text) {
   const id=cacheId(s,text);const e=await getAudioCacheEntry(id);
   if(e?.dataUrl){logDebug('tts.cache.hit',{id});return dataUrlToBlob(e.dataUrl);}
+  // Fallback : audio statique pré-généré dans /audio/
+  const staticBlob=await getStaticAudio(id);
+  if(staticBlob){
+    logDebug('tts.static.hit',{id});
+    // Stocker dans IndexedDB pour les prochaines fois
+    const dataUrl=await blobToDataUrl(staticBlob);
+    await putAudioCacheEntry({id,dataUrl,provider:s.ttsProvider,voiceKey:id.split('::').slice(0,3).join('::'),createdAt:Date.now()});
+    return staticBlob;
+  }
   return null;
 }
 async function putCache(s, text, blob) {

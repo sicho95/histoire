@@ -133,7 +133,8 @@
           </div>
           <div class="tabs" role="tablist">
             <button class="tab-btn active" data-tab="tab-access" role="tab">Accès</button>
-            <button class="tab-btn" data-tab="tab-llm" role="tab">Histoire</button>
+            <button class="tab-btn" data-tab="tab-stories" role="tab">Histoires</button>
+            <button class="tab-btn" data-tab="tab-llm" role="tab">Génération</button>
             <button class="tab-btn" data-tab="tab-voice" role="tab">Voix</button>
             <button class="tab-btn" data-tab="tab-gcp" role="tab">Google TTS</button>
             <button class="tab-btn" data-tab="tab-openai" role="tab">OpenAI</button>
@@ -148,13 +149,46 @@
               <label class="field"><span>Code PIN</span><input id="input-pin-edit" type="password" placeholder="4 chiffres"></label>
               <div class="row-actions">
                 <button id="btn-save-settings" class="btn-primary">💾 Enregistrer tout</button>
-                <button id="btn-export" class="btn-secondary">📤 Exporter données</button>
-                <label class="btn-secondary upload-btn">📥 Importer<input id="import-file" type="file" accept="application/json"></label>
+              </div>
+              <hr class="settings-hr">
+              <p class="field-help"><strong>💾 Sauvegarde complète (données + cache audio)</strong> — Recommandé pour changer d'appareil ou redéployer.</p>
+              <div class="row-actions">
+                <button id="btn-export-full-zip" class="btn-primary">📦 Exporter ZIP complet</button>
+                <label class="btn-secondary upload-btn">📂 Importer ZIP complet<input id="import-full-zip" type="file" accept=".zip,application/zip"></label>
+              </div>
+              <hr class="settings-hr">
+              <p class="field-help"><strong>📋 Données seules</strong> (histoires + bibliothèque, sans cache audio)</p>
+              <div class="row-actions">
+                <button id="btn-export" class="btn-secondary">📤 Exporter JSON données</button>
+                <label class="btn-secondary upload-btn">📥 Importer JSON données<input id="import-file" type="file" accept="application/json"></label>
               </div>
             </div>
           </div>
 
-          <!-- HISTOIRE (LLM) -->
+          <!-- HISTOIRES (import/export) -->
+          <div id="tab-stories" class="tab-panel">
+            <div class="settings-stack">
+              <div class="info-box">
+                📖 <strong>Ajouter une histoire</strong><br>
+                Dépose tes fichiers JSON dans le dossier <code>stories/</code> du site (avec un <code>stories/index.json</code>) — elles seront chargées automatiquement au démarrage sans consommer de token TTS.<br>
+                Tu peux aussi importer un JSON directement ici.
+              </div>
+              <div class="row-actions">
+                <label class="btn-primary upload-btn">📥 Importer une histoire JSON<input id="import-story-file" type="file" accept="application/json"></label>
+                <button id="btn-export-story-template" class="btn-secondary">📄 Télécharger template vierge</button>
+              </div>
+              <hr class="settings-hr">
+              <p class="field-help"><strong>🔊 Cache audio statique (/audio/)</strong><br>
+              Pour pré-générer les MP3 des histoires de base (zéro token au démarrage) :<br>
+              1. Exporte le ZIP complet après avoir tout préchargé<br>
+              2. Place les <code>mp3/*.mp3</code> dans ton dossier <code>/audio/</code> sur GitHub<br>
+              3. Génère un <code>audio/manifest.json</code> <code>{ "cacheKey": "filename.mp3" }</code><br>
+              L'app vérifiera d'abord IndexedDB, puis <code>/audio/</code>, puis appellera l'API seulement si nécessaire.
+              </p>
+            </div>
+          </div>
+
+          <!-- GÉNÉRATION (LLM) -->
           <div id="tab-llm" class="tab-panel">
             <div class="settings-stack">
               <div class="info-box">ℹ️ La génération d'histoire nécessite une connexion internet et une clé API <strong>Groq</strong> gratuite (inscription sur <a href="https://console.groq.com" target="_blank">console.groq.com</a>).</div>

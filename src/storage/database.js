@@ -61,3 +61,39 @@ export async function importAllData(payload) {
 }
 
 export const importLibraryAdventure = item => saveToLibrary(item);
+
+/** Importer / mettre à jour une histoire depuis un JSON externe */
+export const importStory = story => tx('stories', 'readwrite', s => s.put(story));
+
+/** Exporter une histoire par id (retourne l'objet complet) */
+export const exportStory = id => tx('stories', 'readonly', s => s.get(id));
+
+/**
+ * Charger les histoires déclarées dans /stories/index.json
+ * Format : ["castle.json","forest.json",…]
+ * Chaque fichier est un story JSON standard.
+ * Les histoires déjà présentes en IndexedDB ne sont pas écrasées.
+ */
+export async function loadExternalStories() {
+  let index;
+  try {
+    const r = await fetch('./stories/index.json');
+    if (!r.ok) return;
+    index = await r.json();
+  } catch { return; }
+  const existing = await getAllStories();
+  const existingIds = new Set(existing.map(s => s.id));
+  const results = { loaded: 0, skipped: 0, errors: 0 };
+  for (const filename of index) {
+    try {
+      const r = await fetch(`./stories/${filename}`);
+      if (!r.ok) { results.errors++; continue; }
+      const story = await r.json();
+      if (!story?.id) { results.errors++; continue; }
+      if (existingIds.has(story.id)) { results.skipped++; continue; }
+      await importStory(story);
+      results.loaded++;
+    } catch { results.errors++; }
+  }
+  return results;
+}
