@@ -26,5 +26,7 @@
 .pin-title { text-align: center; margin: 0; }
 .pin-error { color: #fecaca; min-height: 1.2em; margin: 0; }
 .field--inline { grid-template-columns: 1fr auto; align-items: center; }
+.offline-box { display: grid; gap: 14px; padding: 16px; border-radius: 22px; background: rgba(255,255,255,.06); }
+.offline-box h3, .offline-box p { margin: 0; }
 button:active { transform: scale(.98); }
 @media (orientation: landscape) and (max-height: 560px) { .btn-control { width: 46px; height: 46px; } .choice-card { min-height: 82px; } .choice-card__emoji { font-size: 1.5rem; } .choice-card__label { font-size: .82rem; } .choice-card__sub { display: none; } }
