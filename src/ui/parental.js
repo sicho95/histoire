@@ -1,8 +1,10 @@
-import { exportAllData, importAllData } from '../storage/database.js';
+import { exportAllData, importAllData, getStories } from '../storage/database.js';
 import { getSettings, saveSettings } from '../storage/settings.js';
 import { setView } from '../core/state.js';
 import { renderHome } from './carousel.js';
 import { clearDebugEntries, downloadDebugTxt, logDebug } from '../core/debug.js';
+import { clearAudioCache, listAudioCacheEntries } from '../storage/audio_cache.js';
+import { warmTtsCache } from '../audio/tts.js';
 function buildPinPad(target, onSuccess) {
   const settings = getSettings();
   let typed = '';
@@ -40,12 +42,33 @@ function buildPinPad(target, onSuccess) {
   target.querySelector('#pin-cancel').onclick = () => renderHome();
   redraw();
 }
+async function refreshCacheStatus() {
+  const entries = await listAudioCacheEntries();
+  const el = document.getElementById('offline-cache-status');
+  if (!el) return;
+  el.textContent = `${entries.length} audio(s) en cache.`;
+}
+async function preCacheBaseStories() {
+  const stories = await getStories();
+  const baseStories = stories.filter(story => !story.is_user_created);
+  const texts = [];
+  for (const story of baseStories) {
+    texts.push(story.title, story.intro || '');
+    for (const node of Object.values(story.nodes || {})) {
+      texts.push(node.text || '', node.question || '');
+    }
+  }
+  const result = await warmTtsCache(texts.filter(Boolean));
+  logDebug('offline.precache.baseStories', { stories: baseStories.length, texts: texts.length, result });
+  await refreshCacheStatus();
+  alert(`Préchargement terminé: ${result.stored} nouveau(x), ${result.skipped} déjà présent(s).`);
+}
 export function renderParental() {
   setView('view-parental');
   const gate = document.getElementById('pin-gate');
   const content = document.getElementById('parental-content');
   content.classList.add('hidden');
-  buildPinPad(gate, () => {
+  buildPinPad(gate, async () => {
     gate.innerHTML = '';
     content.classList.remove('hidden');
     const fresh = getSettings();
@@ -56,6 +79,7 @@ export function renderParental() {
     document.getElementById('input-tts-api-key').value = fresh.ttsApiKey || '';
     document.getElementById('input-tts-voice').value = fresh.ttsVoice || 'nova';
     document.getElementById('input-debug-enabled').checked = !!fresh.debugEnabled;
+    await refreshCacheStatus();
   });
   document.getElementById('btn-parental-back').onclick = () => renderHome();
   document.getElementById('btn-save-settings').onclick = () => {
@@ -88,4 +112,6 @@ export function renderParental() {
   };
   document.getElementById('btn-download-debug').onclick = () => downloadDebugTxt();
   document.getElementById('btn-clear-debug').onclick = () => { clearDebugEntries(); alert('Debug vidé'); };
+  document.getElementById('btn-precache-base-audio').onclick = () => preCacheBaseStories();
+  document.getElementById('btn-clear-audio-cache').onclick = async () => { await clearAudioCache(); await refreshCacheStatus(); };
 }
