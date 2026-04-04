@@ -80,6 +80,16 @@
               <label class="field"><span>Clé API voix</span><input id="input-tts-api-key" type="password" placeholder="sk-... ou Eleven..."></label>
               <label class="field"><span>Voix / Voice ID</span><input id="input-tts-voice" type="text" placeholder="nova ou voice_id"></label>
               <label class="field field--inline"><span>Mode debug</span><input id="input-debug-enabled" type="checkbox"></label>
+              <div class="offline-box">
+                <div>
+                  <h3>Préparer le hors-ligne</h3>
+                  <p id="offline-cache-status">Aucun cache audio.</p>
+                </div>
+                <div class="row-actions">
+                  <button id="btn-precache-base-audio" class="btn-primary">Précharger les histoires de base</button>
+                  <button id="btn-clear-audio-cache" class="btn-secondary">Vider le cache audio</button>
+                </div>
+              </div>
               <div class="row-actions">
                 <button id="btn-save-settings" class="btn-primary">Enregistrer</button>
                 <button id="btn-export" class="btn-secondary">Exporter</button>
