@@ -100,3 +100,11 @@ button:active { transform: scale(.98); }
   .quota-box { flex-direction:column; }
   .wz-grid { grid-template-columns:repeat(3,1fr); }
 }
+
+/* ── SPEED SLIDER ───────────────────────────────────────── */
+.slider-row{display:flex;align-items:center;gap:10px;}
+.slider-label{font-size:1.2rem;}
+.speed-slider{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--color-accent,#4f98a3) 0%,rgba(255,255,255,.18) 0%);outline:none;cursor:pointer;}
+.speed-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--color-accent,#4f98a3);border:2px solid rgba(255,255,255,.5);box-shadow:0 2px 6px rgba(0,0,0,.3);}
+.speed-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--color-accent,#4f98a3);border:2px solid rgba(255,255,255,.5);}
+.slider-ticks{display:flex;justify-content:space-between;font-size:.72rem;opacity:.5;margin-top:2px;padding:0 2px;}

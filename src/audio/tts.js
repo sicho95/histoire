@@ -48,7 +48,7 @@ async function badRes(res,prefix) {
 // ── GCP ──
 async function fetchGcp(text, s) {
   if(!s.gcpApiKey) throw new Error('gcp_missing_api_key');
-  const body={input:{text},voice:{languageCode:s.gcpLanguage||'fr-FR',name:s.gcpVoiceName||'fr-FR-Wavenet-A'},audioConfig:{ audioEncoding: 'MP3', speakingRate: s.gcpSpeakingRate ?? 0.83 }};
+  const body={input:{text},voice:{languageCode:s.gcpLanguage||'fr-FR',name:s.gcpVoiceName||'fr-FR-Wavenet-A'},audioConfig:{audioEncoding:'MP3',speakingRate:s.gcpSpeakingRate??0.87}};
   const res=await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${s.gcpApiKey}`,
     {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!res.ok) throw await badRes(res,'gcp_tts');

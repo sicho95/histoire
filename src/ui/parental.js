@@ -158,6 +158,18 @@ export function renderParental() {
     document.getElementById('input-gcp-voice-name').value=s.gcpVoiceName||'fr-FR-Wavenet-A';
     document.getElementById('input-gcp-voice-type').value=s.gcpVoiceType||'Wavenet';
     document.getElementById('input-gcp-language').value=s.gcpLanguage||'fr-FR';
+    const rateSlider=document.getElementById('input-gcp-speaking-rate');
+    const rateDisplay=document.getElementById('gcp-rate-display');
+    if(rateSlider){rateSlider.value=s.gcpSpeakingRate??0.87;rateDisplay.textContent=Number(rateSlider.value).toFixed(2)+'×';
+      rateSlider.oninput=()=>{
+        const v=rateSlider.value,min=0.5,max=1.3;
+        const pct=Math.round((v-min)/(max-min)*100);
+        rateSlider.style.background=`linear-gradient(90deg,var(--color-accent,#4f98a3) ${pct}%,rgba(255,255,255,.18) ${pct}%)`;
+        rateDisplay.textContent=Number(v).toFixed(2)+'×';};
+      // init track color
+      const v0=rateSlider.value,pct0=Math.round((v0-0.5)/(1.3-0.5)*100);
+      rateSlider.style.background=`linear-gradient(90deg,var(--color-accent,#4f98a3) ${pct0}%,rgba(255,255,255,.18) ${pct0}%)`;
+    }
     refreshGcpQuota(s);
     // OpenAI
     document.getElementById('input-openai-api-key').value=s.openaiApiKey||'';
@@ -188,6 +200,7 @@ export function renderParental() {
       gcpVoiceName:document.getElementById('input-gcp-voice-name').value.trim()||'fr-FR-Wavenet-A',
       gcpVoiceType:document.getElementById('input-gcp-voice-type').value,
       gcpLanguage:document.getElementById('input-gcp-language').value||'fr-FR',
+      gcpSpeakingRate:parseFloat(document.getElementById('input-gcp-speaking-rate')?.value??0.87),
       openaiApiKey:document.getElementById('input-openai-api-key').value.trim(),
       openaiVoice:document.getElementById('input-openai-voice').value,
       elevenApiKey:document.getElementById('input-eleven-api-key').value.trim(),
