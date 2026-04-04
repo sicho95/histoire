@@ -73,10 +73,22 @@
               <button id="btn-parental-back" class="btn-secondary">← Retour</button>
             </div>
             <div class="settings-stack">
-              <label class="field"><span>Fournisseur API</span><select id="input-provider"><option value="groq">Groq</option><option value="github">GitHub Models</option></select></label>
-              <label class="field"><span>Clé API</span><input id="input-api-key" type="password" placeholder="sk-..."></label>
-              <label class="field"><span>Modèle</span><input id="input-model" type="text" placeholder="llama-3.3-70b-versatile"></label>
-              <div class="row-actions"><button id="btn-save-settings" class="btn-primary">Enregistrer</button><button id="btn-export" class="btn-secondary">Exporter</button><label class="btn-secondary upload-btn">Importer<input id="import-file" type="file" accept="application/json"></label></div>
+              <label class="field"><span>Fournisseur histoire</span><select id="input-provider"><option value="groq">Groq</option><option value="github">GitHub Models</option></select></label>
+              <label class="field"><span>Clé API histoire</span><input id="input-api-key" type="password" placeholder="sk-..."></label>
+              <label class="field"><span>Modèle histoire</span><input id="input-model" type="text" placeholder="llama-3.3-70b-versatile"></label>
+              <label class="field"><span>Voix</span><select id="input-tts-provider"><option value="browser">Voix navigateur</option><option value="openai">OpenAI TTS</option><option value="elevenlabs">ElevenLabs</option></select></label>
+              <label class="field"><span>Clé API voix</span><input id="input-tts-api-key" type="password" placeholder="sk-... ou Eleven..."></label>
+              <label class="field"><span>Voix / Voice ID</span><input id="input-tts-voice" type="text" placeholder="nova ou voice_id"></label>
+              <label class="field field--inline"><span>Mode debug</span><input id="input-debug-enabled" type="checkbox"></label>
+              <div class="row-actions">
+                <button id="btn-save-settings" class="btn-primary">Enregistrer</button>
+                <button id="btn-export" class="btn-secondary">Exporter</button>
+                <label class="btn-secondary upload-btn">Importer<input id="import-file" type="file" accept="application/json"></label>
+              </div>
+              <div class="row-actions">
+                <button id="btn-download-debug" class="btn-secondary">⬇️ Debug TXT</button>
+                <button id="btn-clear-debug" class="btn-secondary">🧹 Vider debug</button>
+              </div>
             </div>
           </div>
         </div>
