@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer les sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Préparer Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -48,7 +48,7 @@ jobs:
           else
             git switch --orphan WebApp
           fi
-          git rm -rf .
+          git rm -rf . || true
           cp -R /tmp/histoire-build/. .
           git add -A
           git commit -m "Publish build ${{ github.sha }}" || exit 0
