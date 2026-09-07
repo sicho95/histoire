@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "stories": [
+    {
+      "id": "ines-chateau-nuages",
+      "title": "Inès et le Château des Nuages",
+      "file": "ines-chateau-nuages.json",
+      "revision": 1,
+      "ageRange": "5–9 ans",
+      "durationMinutes": 5,
+      "audioReady": false
+    },
+    {
+      "id": "noa-gare-etoiles",
+      "title": "Noa et la Gare des Étoiles",
+      "file": "noa-gare-etoiles.json",
+      "revision": 1,
+      "ageRange": "5–9 ans",
+      "durationMinutes": 5,
+      "audioReady": false
+    }
+  ]
+}
