@@ -18,7 +18,7 @@ const buildId = process.env.BUILD_ID || `${Date.now().toString(36)}-${commitSha.
 const updatedAt = new Date().toISOString();
 const copyEntries = [
   'index.html', 'manifest.json', 'service-worker.js',
-  'css', 'src', 'assets/icons', 'audio', 'stories'
+  'css', 'src', 'assets/icons', 'assets/stories', 'assets/choices', 'audio', 'stories'
 ];
 
 await rm(out, { recursive: true, force: true });
@@ -43,7 +43,8 @@ await writeFile(updatePath, updateSource);
 const catalog = JSON.parse(await readFile(join(root, 'stories/catalog.json'), 'utf8'));
 const audioManifest = JSON.parse(await readFile(join(root, 'audio/manifest.json'), 'utf8'));
 const storyAssets = (catalog.stories || []).map(entry => `./stories/${entry.file}`);
-const audioAssets = Object.values(audioManifest.tracks || {}).map(track => `./audio/${track.file}`);
+const coverAssets = (catalog.stories || []).map(entry => entry.coverImage).filter(Boolean);
+const choiceAssets = [...new Set((catalog.stories || []).flatMap(entry => entry.choiceAssets || []))];
 const assets = [
   './', './index.html', './manifest.json', './version.json',
   './css/variables.css', './css/layout.css', './css/components.css',
@@ -57,7 +58,7 @@ const assets = [
   './src/ui/parental.js', './src/ui/reader.js', './src/ui/wizard.js', './src/ui/toast.js',
   './assets/icons/icon.svg', './assets/icons/maskable.svg',
   './stories/catalog.json', './audio/manifest.json',
-  ...storyAssets, ...audioAssets
+  ...storyAssets, ...coverAssets, ...choiceAssets
 ];
 const swPath = join(out, 'service-worker.js');
 const sw = (await readFile(swPath, 'utf8'))

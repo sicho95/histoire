@@ -33,3 +33,16 @@ test('le paquet de révision est privé par défaut', () => {
   assert.equal(pack.privacy.publicationAllowed, false);
   assert.equal(pack.story.schemaVersion, 2);
 });
+
+test('une continuation narrative rejoint le prochain embranchement', () => {
+  const raw = structuredClone(legacy);
+  raw.nodes.start.choices[0].next_node = 'consequence';
+  raw.nodes.consequence = {
+    id: 'consequence', headline: 'La conséquence', text: 'Un choix produit une conséquence visible avant que le récit ne continue vers une nouvelle décision importante pour la suite de cette aventure.',
+    nextNode: 'end-a', choices: [], narration: { mood: 'wonder', pace: 'normal', intensity: 2 }
+  };
+  const story = normalizeStory(raw);
+  assert.equal(story.nodes.consequence.question, '');
+  assert.equal(story.nodes.consequence.nextNode, 'end-a');
+  assert.ok(reachableNodeIds(story).has('consequence'));
+});

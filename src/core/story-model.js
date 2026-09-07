@@ -15,6 +15,7 @@ function normalizeChoice(raw, index) {
     id: raw.id || `choice-${index + 1}`,
     label: String(raw.label || `Choix ${index + 1}`).trim(),
     emoji: raw.emoji || raw.fallback_emoji || '✨',
+    illustration: raw.illustration || '',
     nextNode: raw.nextNode || raw.next_node || '',
     consequenceHint: raw.consequenceHint || raw.consequence_hint || '',
     learned: Boolean(raw.learned ?? raw.is_learned),
@@ -24,15 +25,17 @@ function normalizeChoice(raw, index) {
 
 function normalizeNode(raw, id) {
   const choices = (raw.choices || []).map(normalizeChoice);
-  const terminal = raw.isEnding ?? raw.is_ending ?? choices.length === 0;
+  const nextNode = raw.nextNode || raw.next_node || '';
+  const terminal = raw.isEnding ?? raw.is_ending ?? (choices.length === 0 && !nextNode);
   const narration = raw.narration || {};
   return {
     id: raw.id || id,
     headline: String(raw.headline || id || 'Une nouvelle scène').trim(),
     coverEmoji: raw.coverEmoji || raw.cover_emoji || '📖',
     text: String(raw.text || '').trim(),
-    question: terminal ? '' : String(raw.question || 'Que choisis-tu ?').trim(),
+    question: terminal || nextNode ? '' : String(raw.question || 'Que choisis-tu ?').trim(),
     isEnding: Boolean(terminal),
+    nextNode,
     narration: {
       mood: MOODS.has(narration.mood) ? narration.mood : 'wonder',
       pace: ['slow', 'normal', 'lively'].includes(narration.pace) ? narration.pace : 'normal',
@@ -54,8 +57,12 @@ export function normalizeStory(raw, meta = {}) {
     id,
     title: String(raw.title || 'Histoire sans titre').trim(),
     coverEmoji: raw.coverEmoji || raw.cover_emoji || raw.cover || '📖',
+    coverImage: raw.coverImage || raw.cover_image || '',
     intro: String(raw.intro || '').trim(),
     ageRange: raw.ageRange || raw.age_range || '4–8 ans',
+    ageBand: raw.ageBand || raw.age_band || '5-9',
+    heroVoice: raw.heroVoice || raw.hero_voice || 'female',
+    featuredOrder: Number(raw.featuredOrder ?? raw.featured_order ?? 999),
     durationMinutes: Math.max(5, Number(raw.durationMinutes || raw.duration_minutes || 15)),
     startNode: raw.startNode || raw.start_node || 'start',
     storyBible: raw.storyBible || raw.story_bible || {
@@ -77,8 +84,12 @@ export function storyToPortable(story) {
     id: normalized.id,
     title: normalized.title,
     coverEmoji: normalized.coverEmoji,
+    coverImage: normalized.coverImage,
     intro: normalized.intro,
     ageRange: normalized.ageRange,
+    ageBand: normalized.ageBand,
+    heroVoice: normalized.heroVoice,
+    featuredOrder: normalized.featuredOrder,
     durationMinutes: normalized.durationMinutes,
     startNode: normalized.startNode,
     storyBible: normalized.storyBible,
@@ -89,11 +100,13 @@ export function storyToPortable(story) {
       text: node.text,
       question: node.question,
       isEnding: node.isEnding,
+      nextNode: node.nextNode,
       narration: node.narration,
       choices: node.choices.map(choice => ({
         id: choice.id,
         label: choice.label,
         emoji: choice.emoji,
+        illustration: choice.illustration,
         nextNode: choice.nextNode,
         consequenceHint: choice.consequenceHint
       }))
@@ -112,6 +125,7 @@ export function reachableNodeIds(story) {
     const id = stack.pop();
     if (!id || seen.has(id) || !story.nodes[id]) continue;
     seen.add(id);
+    if (story.nodes[id].nextNode) stack.push(story.nodes[id].nextNode);
     for (const choice of story.nodes[id].choices) stack.push(choice.nextNode);
   }
   return seen;
@@ -128,11 +142,13 @@ export function validateStory(input, { editorial = false } = {}) {
   if (nodes.length < 6) errors.push('Une histoire doit contenir au moins 6 scènes.');
 
   for (const node of nodes) {
-    if (wordCount(node.text) < (node.isEnding ? 45 : editorial ? 100 : 80)) {
+    const editorialMinimum = node.nextNode ? 45 : story.ageBand === '2-5' ? 55 : 75;
+    if (wordCount(node.text) < (node.isEnding ? 45 : editorial ? editorialMinimum : 80)) {
       warnings.push(`${node.id} est courte (${wordCount(node.text)} mots).`);
     }
     if (node.isEnding && node.choices.length) errors.push(`${node.id} est une fin mais propose encore des choix.`);
-    if (!node.isEnding && node.choices.length < 2) errors.push(`${node.id} doit proposer au moins 2 choix.`);
+    if (!node.isEnding && !node.nextNode && node.choices.length < 2) errors.push(`${node.id} doit proposer au moins 2 choix ou une continuation narrative.`);
+    if (node.nextNode && !story.nodes[node.nextNode]) errors.push(`${node.id} pointe vers une continuation absente : ${node.nextNode}.`);
     const labels = new Set();
     for (const choice of node.choices) {
       if (!choice.nextNode || !story.nodes[choice.nextNode]) errors.push(`${node.id} pointe vers une scène absente : ${choice.nextNode || 'vide'}.`);

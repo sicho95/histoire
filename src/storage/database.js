@@ -89,6 +89,19 @@ export async function syncPublishedStories({ force = false } = {}) {
   const catalog = await catalogResponse.json();
   const current = new Map((await getAllStories()).map(story => [story.id, story]));
   const synced = [];
+  const publishedIds = new Set((catalog.stories || []).map(entry => entry.id));
+  const obsoleteIds = [...current.keys()].filter(id => !publishedIds.has(id));
+
+  if (obsoleteIds.length) {
+    const db = await openDb();
+    await new Promise((resolve, reject) => {
+      const transaction = db.transaction('stories', 'readwrite');
+      const store = transaction.objectStore('stories');
+      obsoleteIds.forEach(id => store.delete(id));
+      transaction.oncomplete = resolve;
+      transaction.onerror = () => reject(transaction.error);
+    });
+  }
 
   for (const entry of catalog.stories || []) {
     const existing = current.get(entry.id);
@@ -103,7 +116,7 @@ export async function syncPublishedStories({ force = false } = {}) {
     revision: catalog.revision || 1,
     syncedAt: new Date().toISOString()
   }));
-  return { catalog, synced };
+  return { catalog, synced, removed: obsoleteIds.length };
 }
 
 export async function bootstrapStories() {

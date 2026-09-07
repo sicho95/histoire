@@ -2,8 +2,10 @@
 
 PWA mobile de contes interactifs pour enfants. Elle distingue deux circuits :
 
-- **Bibliothèque éditoriale** : histoires relues dans `stories/`, publiées par GitHub et éventuellement accompagnées de MP3 dans `audio/`.
+- **Bibliothèque éditoriale** : histoires relues dans `stories/`, publiées par GitHub et accompagnées de narrations préparées dans `audio/`.
 - **Atelier enfant** : histoires inventées gratuitement avec Groq, conservées comme brouillons privés sur l'appareil, puis exportables pour révision.
+
+La version 2.1 comprend six histoires signature originales : deux aventures de 8 minutes et deux de 20 minutes pour les 5–9 ans, puis deux histoires de 10 minutes pour les 2–5 ans. Elles proposent de 5 à 10 décisions, trois fins, des couvertures illustrées, des pictogrammes de choix et 198 pistes vocales françaises incluses.
 
 ## Développement
 
@@ -31,7 +33,17 @@ GitHub Pages doit servir la racine de la branche `WebApp`. L'application compare
 1. Ajouter `stories/mon-histoire.json` au format v2.
 2. L'ajouter dans `stories/catalog.json` avec une `revision` supérieure.
 3. Lancer `npm run validate:stories`.
-4. Ajouter les MP3 facultatifs et leurs entrées dans `audio/manifest.json`.
+4. Ajouter les pistes audio facultatives et leurs entrées dans `audio/manifest.json`.
+
+Les histoires signature sont écrites dans `content/signature-stories.mjs`, puis produites avec :
+
+```bash
+npm run generate:stories
+npm run generate:audio
+npm run check
+```
+
+La génération audio gratuite utilise les voix françaises installées sur macOS : Flo pour les héroïnes et Thomas pour les héros. Le rythme et les silences varient selon l’âge et l’émotion. Les fichiers M4A ne sont pas tous préchargés lors de l’installation : ils sont mis en cache à la première écoute pour garder une PWA légère, puis restent disponibles hors connexion.
 
 Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md).
 

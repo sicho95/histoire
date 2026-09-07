@@ -9,6 +9,10 @@ export function renderReader({ phase = 'narration' } = {}) {
   document.getElementById('reader-story-title').textContent = state.currentStory.title;
   document.getElementById('reader-headline').textContent = node.headline;
   document.getElementById('reader-emoji').textContent = node.coverEmoji;
+  const art = document.getElementById('reader-cover-art');
+  art.src = state.currentStory.coverImage || '';
+  art.classList.toggle('hidden', !state.currentStory.coverImage);
+  document.getElementById('reader-emoji').classList.toggle('hidden', Boolean(state.currentStory.coverImage));
   document.getElementById('reader-text').textContent = node.text;
   const total = Math.max(5, Object.keys(state.currentStory.nodes).length * .55);
   document.getElementById('reader-progress-bar').style.width = `${Math.min(100, (state.path.length / total) * 100)}%`;
@@ -24,8 +28,9 @@ export function renderReader({ phase = 'narration' } = {}) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'choice-button';
-    button.innerHTML = '<span></span><strong></strong>';
-    button.querySelector('span').textContent = choice.emoji;
+    button.innerHTML = choice.illustration ? '<img alt=""><strong></strong>' : '<span></span><strong></strong>';
+    if (choice.illustration) button.querySelector('img').src = choice.illustration;
+    else button.querySelector('span').textContent = choice.emoji;
     button.querySelector('strong').textContent = choice.label;
     button.onclick = () => chooseOption(choice);
     choices.append(button);

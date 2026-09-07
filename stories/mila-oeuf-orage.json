@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 2,
+  "id": "mila-oeuf-orage",
+  "title": "Mila et l’Œuf de l’Orage",
+  "coverEmoji": "🥚",
+  "coverImage": "./assets/stories/mila-oeuf-orage/cover.jpg",
+  "intro": "Un œuf de dinosaure vient de tomber du ciel. Mila n’a que huit minutes avant que l’orage ne retrouve sa trace.",
+  "ageRange": "5–9 ans",
+  "ageBand": "5-9",
+  "heroVoice": "female",
+  "featuredOrder": 0,
+  "durationMinutes": 8,
+  "startNode": "decision-1",
+  "storyBible": {
+    "premise": "Mila protège un œuf de dinosaure tombé d’un nuage préhistorique.",
+    "theme": "Le courage attentif",
+    "values": [
+      "entraide",
+      "curiosité",
+      "respect du vivant"
+    ],
+    "heroGoal": "Ramener l’œuf à sa famille avant le grand éclair.",
+    "stakes": "L’œuf éclora loin des siens si le passage du ciel se referme.",
+    "recurringObjects": [
+      "l’œuf turquoise",
+      "la boussole-plume",
+      "le tonnerre qui fait boum-boum"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-1",
+      "headline": "L’œuf qui tombe du ciel",
+      "coverEmoji": "⛈️",
+      "text": "Mila collectionne les bruits de pluie. Ploc sur les feuilles, flic-flac dans les flaques, frou-frou sous son capuchon jaune. Mais ce soir-là, un bruit nouveau traverse le jardin : fiiiiou… POUF ! Dans les capucines repose un œuf gros comme un ballon, turquoise, couvert de petites étoiles lumineuses. Une voix de tonnerre gronde au-dessus des nuages : « Objet perdu ! Retour avant le grand éclair ! » L’œuf tremble. Mila pose une main dessus et sent un cœur minuscule battre très vite. Près du trou dans les fleurs, elle découvre une plume aimantée qui tourne comme une boussole. Un chemin de traces rondes file vers le bois, tandis qu’un courant d’air doré monte droit vers le vieux moulin.",
+      "question": "Pour trouver d’où vient l’œuf, que fait Mila ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-1-a",
+          "label": "Suivre les traces du bois",
+          "emoji": "👣",
+          "illustration": "./assets/choices/suivre.svg",
+          "nextNode": "decision-1-suite-a",
+          "consequenceHint": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un bébé tricératops transparent comme une b"
+        },
+        {
+          "id": "decision-1-b",
+          "label": "Monter vers le moulin",
+          "emoji": "🧭",
+          "illustration": "./assets/choices/explorer.svg",
+          "nextNode": "decision-1-suite-b",
+          "consequenceHint": "Mila suit le souffle doré jusqu’au moulin. Dans ses ailes immobiles est coincé un ruban de nuage couvert d’empreintes de"
+        }
+      ]
+    },
+    {
+      "id": "decision-1-suite-a",
+      "headline": "Suivre les traces du bois",
+      "coverEmoji": "👣",
+      "text": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un bébé tricératops transparent comme une bulle. Il s’était échappé du nuage pour chercher l’œuf. Rassuré par la douceur de Mila, il lui confie que les dinosaures du ciel rejoignent leur vallée par le vieux moulin. Au loin, le tonnerre répond : boum… boum. Pas méchant, mais pressé. Sur la coquille, une ligne de lumière dessine une flèche. Mila remet la boussole-plume dans sa poche et avance : le prochain indice les attend déjà.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-1-suite-b",
+      "headline": "Monter vers le moulin",
+      "coverEmoji": "🧭",
+      "text": "Mila suit le souffle doré jusqu’au moulin. Dans ses ailes immobiles est coincé un ruban de nuage couvert d’empreintes de tricératops. Quand elle approche l’œuf, les ailes grincent et désignent le bois : le gardien du passage s’y cache depuis le coup de tonnerre. Au loin, le tonnerre répond : boum… boum. Pas méchant, mais pressé. Sur la coquille, une ligne de lumière dessine une flèche. Mila remet la boussole-plume dans sa poche et avance : le prochain indice les attend déjà.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2",
+      "headline": "Le gardien aux trois cornes",
+      "coverEmoji": "🦕",
+      "text": "Sous les fougères, deux yeux brillent. Le bébé tricératops surgit et gonfle ses joues pour paraître terrible. Il n’est pas plus haut qu’un tabouret. « Je suis Toupik, gardien remplaçant du passage ! » annonce-t-il d’une voix qui couine. Il reconnaît l’œuf de sa petite sœur, puis baisse la tête : pendant l’orage, il a eu peur et la boussole-plume s’est cassée en deux. Une moitié est dans la poche de Mila ; l’autre pend au collier d’un grand corbeau sur une branche. Le corbeau ne vole rien : il adore seulement les objets qui chantent. Mila pourrait lui proposer un échange ou chercher à reproduire le chant de la plume.",
+      "question": "Comment récupérer l’autre moitié de la boussole ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-2-a",
+          "label": "Lui offrir un grelot",
+          "emoji": "🔔",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-2-suite-a",
+          "consequenceHint": "Mila détache le petit grelot de sa fermeture éclair et le fait tinter. Le corbeau incline la tête, ravi, puis dépose la "
+        },
+        {
+          "id": "decision-2-b",
+          "label": "Imiter le chant de la plume",
+          "emoji": "🎶",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-2-suite-b",
+          "consequenceHint": "Mila souffle entre ses mains : « fi-ou, fi-ou ». Toupik ajoute un « prout-prout » involontaire avec ses naseaux. Le corb"
+        }
+      ]
+    },
+    {
+      "id": "decision-2-suite-a",
+      "headline": "Lui offrir un grelot",
+      "coverEmoji": "🔔",
+      "text": "Mila détache le petit grelot de sa fermeture éclair et le fait tinter. Le corbeau incline la tête, ravi, puis dépose la demi-plume dans sa paume. Toupik comprend qu’un échange respectueux vaut mieux qu’un ordre crié. Il promet de rendre un service à son tour. L’œuf devient tiède contre son manteau. À l’intérieur, quelque chose gratte trois fois : cric, cric, cric. Mila comprend qu’elle n’est plus seule à décider. Elle chuchote ce qu’elle va faire, et le petit être répond par un minuscule toc.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2-suite-b",
+      "headline": "Imiter le chant de la plume",
+      "coverEmoji": "🎶",
+      "text": "Mila souffle entre ses mains : « fi-ou, fi-ou ». Toupik ajoute un « prout-prout » involontaire avec ses naseaux. Le corbeau éclate d’un croassement joyeux et accompagne leur drôle de musique ; son collier s’ouvre tout seul, libérant la demi-plume. L’œuf devient tiède contre son manteau. À l’intérieur, quelque chose gratte trois fois : cric, cric, cric. Mila comprend qu’elle n’est plus seule à décider. Elle chuchote ce qu’elle va faire, et le petit être répond par un minuscule toc.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3",
+      "headline": "La rivière qui monte",
+      "coverEmoji": "🌊",
+      "text": "Les deux morceaux réunis, la boussole-plume pointe vers le moulin. Mais le ruisseau est devenu une large rivière brune. Sur une pierre, une famille de musaraignes attend, entourée d’eau. Toupik veut foncer : sa sœur est de l’autre côté. L’œuf, lui, pulse d’une lumière orange chaque fois que les petites bêtes appellent. Mila voit un tronc solide retenu par des lianes. Plus loin, de grandes feuilles creuses pourraient devenir des barques. Le tonnerre se rapproche : boum-BOUM. Il faut traverser, mais l’œuf semble refuser qu’on laisse les musaraignes derrière.",
+      "question": "Quelle traversée Mila prépare-t-elle ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 3
+      },
+      "choices": [
+        {
+          "id": "decision-3-a",
+          "label": "Construire un pont de tronc",
+          "emoji": "🌉",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-3-suite-a",
+          "consequenceHint": "Mila et Toupik tirent ensemble sur les lianes. Le tronc se pose d’une rive à l’autre. Toupik traverse d’abord, pattes éc"
+        },
+        {
+          "id": "decision-3-b",
+          "label": "Faire des barques-feuilles",
+          "emoji": "🍃",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-3-suite-b",
+          "consequenceHint": "Mila replie les bords des grandes feuilles et Toupik les pousse du museau. Les musaraignes embarquent avec l’œuf au cent"
+        }
+      ]
+    },
+    {
+      "id": "decision-3-suite-a",
+      "headline": "Construire un pont de tronc",
+      "coverEmoji": "🌉",
+      "text": "Mila et Toupik tirent ensemble sur les lianes. Le tronc se pose d’une rive à l’autre. Toupik traverse d’abord, pattes écartées, puis revient chercher les musaraignes une par une. Cette prudence prend un peu de temps, mais tous arrivent secs et fiers. Une rafale soulève les feuilles sans emporter Mila. La boussole-plume tourne puis s’immobilise vers les hauteurs. Il reste peu de temps avant le grand éclair, mais chaque bon choix a rendu leur chemin un peu plus clair.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3-suite-b",
+      "headline": "Faire des barques-feuilles",
+      "coverEmoji": "🍃",
+      "text": "Mila replie les bords des grandes feuilles et Toupik les pousse du museau. Les musaraignes embarquent avec l’œuf au centre, bien calé dans de la mousse. Le courant les fait tournoyer, puis les dépose juste devant le moulin dans un éclat de rire. Une rafale soulève les feuilles sans emporter Mila. La boussole-plume tourne puis s’immobilise vers les hauteurs. Il reste peu de temps avant le grand éclair, mais chaque bon choix a rendu leur chemin un peu plus clair.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4",
+      "headline": "Le moulin aux ailes endormies",
+      "coverEmoji": "🌬️",
+      "text": "Le moulin est noir et silencieux. Sa porte s’ouvre avec un long iiiiiik. À l’intérieur, un escalier monte entre des engrenages énormes. Le passage vers le ciel ne s’ouvrira que si les ailes recommencent à tourner. Toupik repère deux solutions : grimper pour décoincer le ruban de nuage, ou appeler toutes les petites bêtes sauvées afin qu’elles soufflent ensemble dans les pales du bas. Une lueur blanche fend une fenêtre. Mila a le ventre serré, mais elle se rappelle qu’avoir peur n’interdit pas d’agir. Elle serre l’œuf, qui répond toc-toc, comme pour l’encourager.",
+      "question": "Comment réveiller le moulin ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-4-a",
+          "label": "Grimper jusqu’au ruban",
+          "emoji": "🪢",
+          "illustration": "./assets/choices/courage.svg",
+          "nextNode": "decision-4-suite-a",
+          "consequenceHint": "Mila monte lentement, trois marches à la fois, puis s’arrête pour respirer. Toupik guide ses pieds depuis le sol. Elle a"
+        },
+        {
+          "id": "decision-4-b",
+          "label": "Souffler tous ensemble",
+          "emoji": "💨",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-4-suite-b",
+          "consequenceHint": "Mila appelle les musaraignes et le corbeau. Chacun inspire. « Un, deux, trois… FROUUU ! » Toupik souffle si fort qu’il r"
+        }
+      ]
+    },
+    {
+      "id": "decision-4-suite-a",
+      "headline": "Grimper jusqu’au ruban",
+      "coverEmoji": "🪢",
+      "text": "Mila monte lentement, trois marches à la fois, puis s’arrête pour respirer. Toupik guide ses pieds depuis le sol. Elle atteint le ruban et défait le nœud sans tirer brusquement. Une rafale libérée emplit le moulin ; ses grandes ailes commencent à tourner. La vallée entière semble retenir son souffle. Mila aperçoit enfin le pont d’arc-en-ciel qui mène au nuage des dinosaures. Il clignote comme une veilleuse presque déchargée. Pour l’atteindre, il faudra encore comprendre ce que demande l’œuf.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4-suite-b",
+      "headline": "Souffler tous ensemble",
+      "coverEmoji": "💨",
+      "text": "Mila appelle les musaraignes et le corbeau. Chacun inspire. « Un, deux, trois… FROUUU ! » Toupik souffle si fort qu’il recule sur les fesses. Le premier tour est minuscule, le deuxième plus grand, et bientôt les ailes brassent un vent couleur de miel. La vallée entière semble retenir son souffle. Mila aperçoit enfin le pont d’arc-en-ciel qui mène au nuage des dinosaures. Il clignote comme une veilleuse presque déchargée. Pour l’atteindre, il faudra encore comprendre ce que demande l’œuf.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5",
+      "headline": "Le pont du grand éclair",
+      "coverEmoji": "🌈",
+      "text": "Un escalier de lumière jaillit du moulin jusqu’au pont d’arc-en-ciel. De l’autre côté, la maman tricératops appelle son petit dans un grondement tendre. Mais le grand éclair gonfle le nuage au-dessus de Mila. La coquille craque : une petite corne apparaît. Toupik panique, le pont vacille et la boussole-plume indique trois signes : une note de musique, un cœur, et une étoile immobile. Mila comprend qu’il n’existe pas une seule bonne manière de rassurer le bébé. Il faut choisir celle que toute leur aventure lui a apprise, puis franchir ensemble les dernières couleurs du pont.",
+      "question": "Quel courage Mila partage-t-elle avec le bébé ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-5-a",
+          "label": "Chanter leur drôle de chanson",
+          "emoji": "🎵",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-5-suite-a",
+          "consequenceHint": "Mila reprend « fi-ou, fi-ou » et Toupik ajoute son fameux « prout-prout ». Le bébé cesse de pousser la coquille et écout"
+        },
+        {
+          "id": "decision-5-b",
+          "label": "Lui raconter tous les gestes d’entraide",
+          "emoji": "💗",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-5-suite-b",
+          "consequenceHint": "Mila raconte le corbeau, les musaraignes et tous ceux qui ont aidé. À chaque merci, une couleur du pont devient plus sol"
+        },
+        {
+          "id": "decision-5-c",
+          "label": "Respirer et avancer tout doucement",
+          "emoji": "⭐",
+          "illustration": "./assets/choices/attendre.svg",
+          "nextNode": "decision-5-suite-c",
+          "consequenceHint": "Mila pose la main sur la coquille. Ensemble, ils inspirent pendant trois couleurs et expirent pendant trois autres. Le v"
+        }
+      ]
+    },
+    {
+      "id": "decision-5-suite-a",
+      "headline": "Chanter leur drôle de chanson",
+      "coverEmoji": "🎵",
+      "text": "Mila reprend « fi-ou, fi-ou » et Toupik ajoute son fameux « prout-prout ». Le bébé cesse de pousser la coquille et écoute. Le pont vibre au même rythme ; ils traversent en chantant, juste avant que l’éclair illumine le ciel comme un feu d’artifice. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-b",
+      "headline": "Lui raconter tous les gestes d’entraide",
+      "coverEmoji": "💗",
+      "text": "Mila raconte le corbeau, les musaraignes et tous ceux qui ont aidé. À chaque merci, une couleur du pont devient plus solide. Le bébé donne un petit coup confiant. Toute la troupe avance serrée, portée par les liens qu’elle a créés. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-b",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-c",
+      "headline": "Respirer et avancer tout doucement",
+      "coverEmoji": "⭐",
+      "text": "Mila pose la main sur la coquille. Ensemble, ils inspirent pendant trois couleurs et expirent pendant trois autres. Le vacarme paraît moins grand. Pas après pas, sans courir, ils atteignent la maman tricératops au moment où le ciel redevient bleu. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-c",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-a",
+      "headline": "La chanson du ciel",
+      "coverEmoji": "🎶",
+      "text": "La coquille s’ouvre dans les bras de sa maman. Une petite tricératops turquoise éternue une étincelle, puis réclame encore la chanson. Les dinosaures du nuage la reprennent tous, même les plus grands. Mila reçoit une plume neuve qui fredonne quand quelqu’un a besoin de courage. Depuis ce soir, les orages du jardin font parfois « boum, boum… prout-prout ». Et Mila sourit, car elle sait exactement qui chante là-haut.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-b",
+      "headline": "Le pont des mercis",
+      "coverEmoji": "💞",
+      "text": "Le bébé naît entouré de tous ceux que Mila a réunis. Sa maman le nomme Merci, parce que ce mot a réparé le passage. Le pont d’arc-en-ciel reste visible une minute de plus, juste assez pour que les musaraignes et le corbeau saluent les dinosaures. Mila rentre avec le grelot rendu et une certitude nouvelle : les plus grands voyages se construisent parfois avec de tout petits gestes.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-c",
+      "headline": "La gardienne calme",
+      "coverEmoji": "🌤️",
+      "text": "Le bébé sort de sa coquille au moment précis où Mila pose le pied dans la vallée des nuages. Il ne pleure pas : il respire avec elle. La maman tricératops confie à Mila le titre de Gardienne calme des passages pressés. Quand elle redescend, le grand éclair n’est plus qu’une fine étoile blanche. Dans sa poche, la boussole-plume pointe désormais vers les êtres qui ont besoin d’être rassurés.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    }
+  ],
+  "revision": 2,
+  "status": "published",
+  "createdAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T00:00:00.000Z"
+}

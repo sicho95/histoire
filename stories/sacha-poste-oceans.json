@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 2,
+  "id": "sacha-poste-oceans",
+  "title": "Sacha et la Poste des Océans",
+  "coverEmoji": "💌",
+  "coverImage": "./assets/stories/sacha-poste-oceans/cover.jpg",
+  "intro": "Une lettre lumineuse cherche son destinataire sous la mer. Sacha devient facteur des océans pour empêcher une ville de perdre ses couleurs.",
+  "ageRange": "5–9 ans",
+  "ageBand": "5-9",
+  "heroVoice": "male",
+  "featuredOrder": 1,
+  "durationMinutes": 8,
+  "startNode": "decision-1",
+  "storyBible": {
+    "premise": "Sacha livre une lettre capable de rendre les couleurs à Coralline.",
+    "theme": "Écouter avant de conclure",
+    "values": [
+      "écoute",
+      "entraide",
+      "ingéniosité"
+    ],
+    "heroGoal": "Identifier le vrai destinataire avant le coucher de la lune.",
+    "stakes": "La cité sous-marine deviendra grise et silencieuse.",
+    "recurringObjects": [
+      "la lettre lumineuse",
+      "le tampon-coquillage",
+      "la pieuvre Octavia"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-1",
+      "headline": "La bouteille qui appelle",
+      "coverEmoji": "🌊",
+      "text": "Sur la plage, Sacha construit un port pour coquillages lorsqu’une bouteille remonte le sable à contre-vague. À l’intérieur brille une enveloppe marquée : « À celle ou celui qui garde toutes les couleurs. Cité de Coralline. Urgent avant le coucher de la lune. » Dès qu’il la touche, une bulle géante l’enveloppe. Plouf ! Sacha descend sous la mer sans être mouillé. Une pieuvre lavande, Octavia, l’attend avec une casquette de postière. Elle explique que trois habitants prétendent garder les couleurs : le peintre hippocampe, la baleine chanteuse et le vieux jardinier corail. La lettre ne s’ouvrira que devant le bon destinataire.",
+      "question": "Par quelle piste commencer ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-1-a",
+          "label": "Observer le timbre de près",
+          "emoji": "🔎",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-1-suite-a",
+          "consequenceHint": "Sous sa loupe, Sacha découvre que le timbre n’est pas une fleur mais une minuscule partition en forme d’algue. Octavia p"
+        },
+        {
+          "id": "decision-1-b",
+          "label": "Demander aux poissons facteurs",
+          "emoji": "🐟",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-1-suite-b",
+          "consequenceHint": "Les poissons facteurs ont vu l’enveloppe traverser un jardin rouge avant de suivre une mélodie. Ils ne sont pas d’accord"
+        }
+      ]
+    },
+    {
+      "id": "decision-1-suite-a",
+      "headline": "Observer le timbre de près",
+      "coverEmoji": "🔎",
+      "text": "Sous sa loupe, Sacha découvre que le timbre n’est pas une fleur mais une minuscule partition en forme d’algue. Octavia pense aussitôt à la baleine chanteuse. Pourtant, au dos, un grain de pollen rouge rappelle aussi le jardin du vieux corail. Le tampon-coquillage fait « plop » et imprime un nouvel indice sur l’enveloppe. Sacha le lit à la lumière des poissons-lanternes. La lettre frémit, impatiente, tandis qu’au loin une couleur disparaît d’une maison de Coralline.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-1-suite-b",
+      "headline": "Demander aux poissons facteurs",
+      "coverEmoji": "🐟",
+      "text": "Les poissons facteurs ont vu l’enveloppe traverser un jardin rouge avant de suivre une mélodie. Ils ne sont pas d’accord sur l’ordre. Sacha dessine leurs témoignages plutôt que de choisir trop vite : deux pistes peuvent être vraies à la fois. Le tampon-coquillage fait « plop » et imprime un nouvel indice sur l’enveloppe. Sacha le lit à la lumière des poissons-lanternes. La lettre frémit, impatiente, tandis qu’au loin une couleur disparaît d’une maison de Coralline.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2",
+      "headline": "Le marché aux mille bruits",
+      "coverEmoji": "🐚",
+      "text": "Pour rejoindre les suspects, Sacha et Octavia traversent le marché. Mais toutes les enseignes parlent en même temps : les moules vendent des chapeaux, les crevettes annoncent la météo et un crabe répète « par ici » dans huit directions. Au milieu du vacarme, la lettre émet un petit tintement régulier. Sacha distingue aussi un vendeur de cartes qui a aperçu une lueur dorée, et un banc de sardines qui connaît une chanson parlant de la gardienne des couleurs. Ils n’ont le temps d’interroger qu’un seul groupe avant que le courant emporte le marché.",
+      "question": "Qui Sacha écoute-t-il ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-2-a",
+          "label": "Le vendeur de cartes",
+          "emoji": "🗺️",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-2-suite-a",
+          "consequenceHint": "Le vendeur déroule un plan transparent. La lueur venait de l’ancienne serre, reliée à la scène de concert par un tunnel "
+        },
+        {
+          "id": "decision-2-b",
+          "label": "Les sardines chanteuses",
+          "emoji": "🎼",
+          "illustration": "./assets/choices/ecouter.svg",
+          "nextNode": "decision-2-suite-b",
+          "consequenceHint": "Les sardines chantent doucement, une seule à la fois. Leur refrain dit : « Elle garde le rouge avec ses branches, le ble"
+        }
+      ]
+    },
+    {
+      "id": "decision-2-suite-a",
+      "headline": "Le vendeur de cartes",
+      "coverEmoji": "🗺️",
+      "text": "Le vendeur déroule un plan transparent. La lueur venait de l’ancienne serre, reliée à la scène de concert par un tunnel oublié. Il prête à Sacha une craie d’eau qui peut tracer un chemin même au milieu d’un courant. Octavia range l’indice dans l’une de ses huit poches. « Une poche par idée, c’est pratique ! » dit-elle. La lettre laisse échapper trois bulles dorées qui filent vers le quartier suivant. Sacha s’élance derrière elles.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2-suite-b",
+      "headline": "Les sardines chanteuses",
+      "coverEmoji": "🎼",
+      "text": "Les sardines chantent doucement, une seule à la fois. Leur refrain dit : « Elle garde le rouge avec ses branches, le bleu avec sa voix. » Sacha comprend que le destinataire pourrait ne pas être une personne, mais une équipe. Octavia range l’indice dans l’une de ses huit poches. « Une poche par idée, c’est pratique ! » dit-elle. La lettre laisse échapper trois bulles dorées qui filent vers le quartier suivant. Sacha s’élance derrière elles.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3",
+      "headline": "La serre sans rouge",
+      "coverEmoji": "🪸",
+      "text": "Dans l’ancienne serre, le vieux jardinier corail protège une dernière anémone rouge sous une cloche de verre. Il jure ne pas attendre de lettre. « Les couleurs ne m’appartiennent pas, je les fais pousser », précise-t-il. Soudain, des oursins roulent dans l’allée et menacent la fragile anémone. Sacha peut sécuriser la plante avec un cercle de coquilles, ou utiliser la craie d’eau pour guider les oursins vers une pente douce. Le jardinier promet ensuite de révéler ce qu’il sait sur l’enveloppe.",
+      "question": "Comment protéger l’anémone ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-3-a",
+          "label": "Former un rempart de coquilles",
+          "emoji": "🐚",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-3-suite-a",
+          "consequenceHint": "Sacha empile les coquilles en demi-lune. Octavia utilise quatre bras pour construire et quatre autres pour ralentir les "
+        },
+        {
+          "id": "decision-3-b",
+          "label": "Tracer une piste sûre",
+          "emoji": "〰️",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-3-suite-b",
+          "consequenceHint": "La craie dessine une route phosphorescente. Les oursins la suivent comme un petit train et terminent leur course dans un"
+        }
+      ]
+    },
+    {
+      "id": "decision-3-suite-a",
+      "headline": "Former un rempart de coquilles",
+      "coverEmoji": "🐚",
+      "text": "Sacha empile les coquilles en demi-lune. Octavia utilise quatre bras pour construire et quatre autres pour ralentir les oursins. Le rempart tient. Reconnaissant, le jardinier donne un pétale rouge : posé sur la lettre, il fait apparaître le dessin d’une grande oreille. Le courant change et la cité perd encore un peu de bleu. Sacha se rappelle la règle des facteurs : une adresse ne se devine pas, elle s’observe. Il retourne l’enveloppe ; un dessin caché apparaît dans le papier mouillé.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3-suite-b",
+      "headline": "Tracer une piste sûre",
+      "coverEmoji": "〰️",
+      "text": "La craie dessine une route phosphorescente. Les oursins la suivent comme un petit train et terminent leur course dans un coussin d’algues. Le jardinier rit de soulagement puis révèle qu’une grande chanteuse venait autrefois écouter pousser les coraux. Le courant change et la cité perd encore un peu de bleu. Sacha se rappelle la règle des facteurs : une adresse ne se devine pas, elle s’observe. Il retourne l’enveloppe ; un dessin caché apparaît dans le papier mouillé.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4",
+      "headline": "La baleine qui ne chante plus",
+      "coverEmoji": "🐋",
+      "text": "La baleine Alba flotte derrière la scène de concert, silencieuse. Depuis que la ville perd ses couleurs, elle n’entend plus la note bleue qui guidait son chant. La lettre brille très fort près d’elle, mais reste fermée. Sacha remarque une corde d’algues coincée dans les tuyaux de l’orgue marin. Il pourrait la dégager tout de suite, ou demander d’abord à Alba d’écouter le battement de la lettre. Octavia murmure qu’une réparation soigne le problème, tandis qu’une écoute peut révéler sa cause. Les deux seront utiles ; il faut choisir par où commencer.",
+      "question": "Que fait Sacha en premier ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-4-a",
+          "label": "Libérer l’orgue marin",
+          "emoji": "🎹",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-4-suite-a",
+          "consequenceHint": "Sacha plonge dans les tuyaux pendant qu’Octavia tient la corde. Un banc de petites crevettes pousse avec eux. L’orgue ex"
+        },
+        {
+          "id": "decision-4-b",
+          "label": "Écouter le battement de la lettre",
+          "emoji": "💓",
+          "illustration": "./assets/choices/ecouter.svg",
+          "nextNode": "decision-4-suite-b",
+          "consequenceHint": "Alba pose l’enveloppe contre sa grande oreille. Entre deux battements, elle entend des voix mêlées : corail, poissons, v"
+        }
+      ]
+    },
+    {
+      "id": "decision-4-suite-a",
+      "headline": "Libérer l’orgue marin",
+      "coverEmoji": "🎹",
+      "text": "Sacha plonge dans les tuyaux pendant qu’Octavia tient la corde. Un banc de petites crevettes pousse avec eux. L’orgue expire enfin une note grave et bleue. Alba retrouve sa voix, mais chante : « La lettre n’est pas seulement pour moi. » Toutes les pistes convergent vers la grande place. Le silence y est si épais qu’on entend les crabes marcher sur la pointe des pinces. Au centre attend une boîte aux lettres fermée par trois symboles.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4-suite-b",
+      "headline": "Écouter le battement de la lettre",
+      "coverEmoji": "💓",
+      "text": "Alba pose l’enveloppe contre sa grande oreille. Entre deux battements, elle entend des voix mêlées : corail, poissons, vagues et enfants. « Ce message est pour la ville entière », souffle-t-elle. Sa certitude fait revenir une fine bande bleue sur la place. Toutes les pistes convergent vers la grande place. Le silence y est si épais qu’on entend les crabes marcher sur la pointe des pinces. Au centre attend une boîte aux lettres fermée par trois symboles.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5",
+      "headline": "La boîte aux trois symboles",
+      "coverEmoji": "📬",
+      "text": "Sur la grande place, Sacha place le pétale rouge, la note bleue et le tampon-coquillage sur la boîte. Elle s’ouvre : le destinataire était « Tous les habitants qui prennent soin les uns des autres ». La lettre contient une phrase, mais le courant la transforme aussitôt en centaines de bulles-mots. Certaines montent trop haut, d’autres se cachent sous les pavés. Les habitants se rassemblent, inquiets. Sacha sait désormais que le message ne doit pas appartenir à une seule voix. Il peut organiser une chanson, dessiner une fresque ou inviter chacun à récupérer puis offrir un mot à son voisin.",
+      "question": "Comment livrer la lettre à toute la ville ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-5-a",
+          "label": "Faire chanter les mots",
+          "emoji": "🎶",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-5-suite-a",
+          "consequenceHint": "Alba donne la note bleue, les sardines portent le refrain et même les crabes trouvent le rythme. Chaque bulle-mot éclate"
+        },
+        {
+          "id": "decision-5-b",
+          "label": "Peindre une grande fresque",
+          "emoji": "🎨",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-5-suite-b",
+          "consequenceHint": "Sacha mélange le rouge du jardin, le bleu de la chanson et l’or de la lettre. Octavia peint avec huit pinceaux. La fresq"
+        },
+        {
+          "id": "decision-5-c",
+          "label": "Partager les mots un par un",
+          "emoji": "🤝",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-5-suite-c",
+          "consequenceHint": "Chaque habitant attrape une bulle, lit son mot et l’offre à quelqu’un : « écouter », « réparer », « rire », « attendre »"
+        }
+      ]
+    },
+    {
+      "id": "decision-5-suite-a",
+      "headline": "Faire chanter les mots",
+      "coverEmoji": "🎶",
+      "text": "Alba donne la note bleue, les sardines portent le refrain et même les crabes trouvent le rythme. Chaque bulle-mot éclate au bon moment pour former le message. Les façades se recolorent comme une vague de confettis. La lettre s’ouvre enfin, mais ses mots s’envolent en bulles avant qu’on puisse les lire. Sacha peut encore choisir comment partager le message : par la musique, par les images ou en réunissant toute la ville autour de lui.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-b",
+      "headline": "Peindre une grande fresque",
+      "coverEmoji": "🎨",
+      "text": "Sacha mélange le rouge du jardin, le bleu de la chanson et l’or de la lettre. Octavia peint avec huit pinceaux. La fresque montre chaque habitant en train d’aider un autre ; les couleurs jaillissent du mur et retournent dans toute la cité. La lettre s’ouvre enfin, mais ses mots s’envolent en bulles avant qu’on puisse les lire. Sacha peut encore choisir comment partager le message : par la musique, par les images ou en réunissant toute la ville autour de lui.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-b",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-c",
+      "headline": "Partager les mots un par un",
+      "coverEmoji": "🤝",
+      "text": "Chaque habitant attrape une bulle, lit son mot et l’offre à quelqu’un : « écouter », « réparer », « rire », « attendre ». De nageoire en tentacule, la phrase entière circule. Les couleurs reviennent lentement, mais elles ne disparaîtront plus. La lettre s’ouvre enfin, mais ses mots s’envolent en bulles avant qu’on puisse les lire. Sacha peut encore choisir comment partager le message : par la musique, par les images ou en réunissant toute la ville autour de lui.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-c",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-a",
+      "headline": "Le grand concert des couleurs",
+      "coverEmoji": "🎵",
+      "text": "Le message disait : « Une ville garde ses couleurs quand toutes ses voix trouvent leur place. » Coralline nomme Sacha facteur-chef des refrains impossibles. Octavia lui tamponne la main d’une marque qui ne s’efface qu’à marée basse. De retour sur la plage, Sacha colle son oreille à un coquillage. Il entend Alba chanter, les sardines répondre et, tout au fond, un crabe annoncer fièrement : « Par ici… pour la prochaine aventure ! »",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-b",
+      "headline": "La fresque vivante",
+      "coverEmoji": "🖼️",
+      "text": "La fresque reste sur la grande place et change chaque fois qu’un habitant accomplit un geste généreux. Sacha y apparaît avec son écharpe rouge, tenant la lettre devenue blanche. Avant son départ, le vieux jardinier lui offre une graine de corail qui peut pousser hors de l’eau. Dans son port de coquillages, elle devient une petite boîte aux lettres : désormais, Coralline saura où envoyer ses mystères.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-c",
+      "headline": "Les mots voyageurs",
+      "coverEmoji": "💌",
+      "text": "À force d’être partagés, les mots deviennent des poissons minuscules qui illuminent les rues. Chacun porte une couleur et une promesse. Sacha refuse une médaille : il préfère recevoir le premier sac officiel de la Poste des Océans, juste à sa taille. Le soir, une nouvelle enveloppe y apparaît. Elle n’est pas urgente. Elle dit simplement : « Merci d’avoir écouté jusqu’au bout. »",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    }
+  ],
+  "revision": 2,
+  "status": "published",
+  "createdAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T00:00:00.000Z"
+}

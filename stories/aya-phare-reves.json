@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 2,
+  "id": "aya-phare-reves",
+  "title": "Aya et le Phare des Rêves",
+  "coverEmoji": "🔦",
+  "coverImage": "./assets/stories/aya-phare-reves/cover.jpg",
+  "intro": "Cette nuit, le phare qui guide les rêves s’est éteint. Aya doit rallumer ses sept couleurs avant que les cauchemars ne perdent le chemin de la sortie.",
+  "ageRange": "5–9 ans",
+  "ageBand": "5-9",
+  "heroVoice": "female",
+  "featuredOrder": 2,
+  "durationMinutes": 20,
+  "startNode": "decision-1",
+  "storyBible": {
+    "premise": "Aya répare un phare dont chaque couleur est liée à une émotion.",
+    "theme": "Toutes les émotions peuvent guider",
+    "values": [
+      "écoute de soi",
+      "empathie",
+      "courage"
+    ],
+    "heroGoal": "Rallumer les sept couleurs du phare avant minuit.",
+    "stakes": "Les rêves resteront bloqués et les cauchemars envahiront le village.",
+    "recurringObjects": [
+      "le chat Ombre",
+      "la lanterne aux sept vitres",
+      "la clé en forme de lune",
+      "le refrain je peux écouter"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-1",
+      "headline": "La fenêtre qui respire",
+      "coverEmoji": "🌙",
+      "text": "Aya ne dort pas. Sa fenêtre inspire et expire comme si la maison rêvait. Sur le rebord, un chat noir aux moustaches argentées dépose une clé en forme de lune. « Je m’appelle Ombre. Le Phare des Rêves s’est éteint, et les cauchemars ne trouvent plus la sortie. » Au loin, sur une île, la tour sombre penche sous un ciel rempli de lits volants. Aya enfile sa cape indigo. Une barque de papier l’attend, mais deux courants partent vers l’île : l’un brille de lucioles joyeuses ; l’autre est silencieux, marqué par des bouées qui semblent inquiètes. Ombre affirme que les deux connaissent un passage.",
+      "question": "Quel courant Aya choisit-elle ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-1-a",
+          "label": "Suivre les lucioles joyeuses",
+          "emoji": "✨",
+          "illustration": "./assets/choices/suivre.svg",
+          "nextNode": "decision-1-suite-a",
+          "consequenceHint": "Les lucioles filent vite et entraînent la barque dans une ronde étincelante. Aya rit, puis remarque qu’elles tournent po"
+        },
+        {
+          "id": "decision-1-b",
+          "label": "Écouter les bouées inquiètes",
+          "emoji": "🔔",
+          "illustration": "./assets/choices/ecouter.svg",
+          "nextNode": "decision-1-suite-b",
+          "consequenceHint": "Chaque bouée sonne avant une vague cachée. Aya compte les tintements et guide la barque entre les rochers. Son inquiétud"
+        }
+      ]
+    },
+    {
+      "id": "decision-1-suite-a",
+      "headline": "Suivre les lucioles joyeuses",
+      "coverEmoji": "✨",
+      "text": "Les lucioles filent vite et entraînent la barque dans une ronde étincelante. Aya rit, puis remarque qu’elles tournent pour éviter un rocher triste. Elle ralentit et leur demande d’éclairer aussi ce qui fait moins envie. Ensemble, elles découvrent l’entrée sûre du port. Une vitre de la lanterne se rallume. Sa couleur dessine un chemin sur le sol, et Ombre le suit avec sa queue en point d’interrogation. Plus ils avancent, plus Aya comprend que le phare ne réclame pas des émotions parfaites : il veut qu’on les écoute vraiment. La barque s’attache seule au quai avec un nœud de lumière. Aya regarde le village minuscule derrière elle. Elle pourrait encore rentrer, pourtant elle pense aux enfants qui tournent dans leurs draps sans trouver la porte du matin. Elle nomme ce qu’elle ressent : un peu de peur, beaucoup de curiosité, et l’envie d’aider. Les trois peuvent voyager ensemble.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-1-suite-b",
+      "headline": "Écouter les bouées inquiètes",
+      "coverEmoji": "🔔",
+      "text": "Chaque bouée sonne avant une vague cachée. Aya compte les tintements et guide la barque entre les rochers. Son inquiétude ne disparaît pas, mais elle devient une carte précise. Ombre admet que la prudence peut être courageuse. Une vitre de la lanterne se rallume. Sa couleur dessine un chemin sur le sol, et Ombre le suit avec sa queue en point d’interrogation. Plus ils avancent, plus Aya comprend que le phare ne réclame pas des émotions parfaites : il veut qu’on les écoute vraiment. La barque s’attache seule au quai avec un nœud de lumière. Aya regarde le village minuscule derrière elle. Elle pourrait encore rentrer, pourtant elle pense aux enfants qui tournent dans leurs draps sans trouver la porte du matin. Elle nomme ce qu’elle ressent : un peu de peur, beaucoup de curiosité, et l’envie d’aider. Les trois peuvent voyager ensemble.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2",
+      "headline": "La salle de la joie débordante",
+      "coverEmoji": "🟡",
+      "text": "Dans le phare, des ballons jaunes bondissent contre le plafond. Ils rient si fort qu’ils empêchent une petite joie tranquille de parler. La première vitre de la lanterne est vide. Sur un pupitre, une énigme dit : « La joie éclaire quand elle peut circuler. » Aya pourrait ouvrir les fenêtres pour laisser les ballons danser dehors, ou inviter chacun à raconter une seule chose heureuse, à tour de rôle. Ombre pourchasse sa propre queue au milieu des rebonds et finit coincé dans un ballon. « Très drôle », marmonne-t-il, ce qui fait rire Aya encore plus.",
+      "question": "Comment rendre la joie lumineuse sans qu’elle écrase tout ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-2-a",
+          "label": "Ouvrir un espace pour danser",
+          "emoji": "🪟",
+          "illustration": "./assets/choices/explorer.svg",
+          "nextNode": "decision-2-suite-a",
+          "consequenceHint": "Aya ouvre les grandes fenêtres. Les ballons s’élancent autour du phare au lieu de se cogner entre eux. La petite joie tr"
+        },
+        {
+          "id": "decision-2-b",
+          "label": "Partager les joies à tour de rôle",
+          "emoji": "🗣️",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-2-suite-b",
+          "consequenceHint": "Aya donne la parole avec la clé-lune comme bâton de parole. Chaque ballon raconte une joie, puis écoute celle du suivant"
+        }
+      ]
+    },
+    {
+      "id": "decision-2-suite-a",
+      "headline": "Ouvrir un espace pour danser",
+      "coverEmoji": "🪟",
+      "text": "Aya ouvre les grandes fenêtres. Les ballons s’élancent autour du phare au lieu de se cogner entre eux. La petite joie tranquille peut enfin se poser dans la lanterne. Elle explique qu’une joie partagée a besoin d’espace, pas forcément de bruit. La clé-lune devient plus chaude dans la main d’Aya. Au-dessus d’eux, le faisceau du phare tente un tour puis s’éteint de nouveau. Dans le village endormi, une fenêtre s’agite sous un mauvais rêve. Il faut retrouver la couleur suivante. Avant de quitter la salle, Aya garde un ballon minuscule dans sa poche. Il ne crie pas ; il pulse simplement comme un soleil tranquille. Elle se rappelle une joie qu’elle n’avait racontée à personne : le jour où elle avait appris à faire du vélo. La garder avait été agréable, mais la partager maintenant réchauffe aussi Ombre.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2-suite-b",
+      "headline": "Partager les joies à tour de rôle",
+      "coverEmoji": "🗣️",
+      "text": "Aya donne la parole avec la clé-lune comme bâton de parole. Chaque ballon raconte une joie, puis écoute celle du suivant. Ombre avoue qu’il aime les couvertures encore chaudes. Leur rire devient doux, et une lumière jaune remplit la première vitre. La clé-lune devient plus chaude dans la main d’Aya. Au-dessus d’eux, le faisceau du phare tente un tour puis s’éteint de nouveau. Dans le village endormi, une fenêtre s’agite sous un mauvais rêve. Il faut retrouver la couleur suivante. Avant de quitter la salle, Aya garde un ballon minuscule dans sa poche. Il ne crie pas ; il pulse simplement comme un soleil tranquille. Elle se rappelle une joie qu’elle n’avait racontée à personne : le jour où elle avait appris à faire du vélo. La garder avait été agréable, mais la partager maintenant réchauffe aussi Ombre.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3",
+      "headline": "Le couloir des colères rouges",
+      "coverEmoji": "🔴",
+      "text": "Le couloir suivant est barré par des flammes rouges qui crient : « Ce n’est pas juste ! » Elles ne brûlent pas la peau, mais poussent les meubles et claquent les portes. Au centre, un petit rêve en armure serre les poings parce qu’on lui a pris son tour. Aya sent sa propre colère arriver : elle aussi déteste être bousculée. Pour retrouver la vitre rouge, elle peut aider le rêve à dire clairement ce qui s’est passé, ou lui proposer de décharger l’énergie en poussant un énorme coussin contre le mur. Il faudra ensuite chercher une réparation juste.",
+      "question": "Que fait Aya avec cette colère ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 3
+      },
+      "choices": [
+        {
+          "id": "decision-3-a",
+          "label": "Mettre des mots précis",
+          "emoji": "💬",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-3-suite-a",
+          "consequenceHint": "Aya demande : « Qu’est-ce qui s’est passé ? De quoi as-tu besoin maintenant ? » Le rêve desserre ses poings et raconte. "
+        },
+        {
+          "id": "decision-3-b",
+          "label": "Pousser le coussin-tempête",
+          "emoji": "💪",
+          "illustration": "./assets/choices/courage.svg",
+          "nextNode": "decision-3-suite-b",
+          "consequenceHint": "Aya et le rêve poussent le coussin de toutes leurs forces. Ombre compte jusqu’à dix. L’énergie rouge cesse de renverser "
+        }
+      ]
+    },
+    {
+      "id": "decision-3-suite-a",
+      "headline": "Mettre des mots précis",
+      "coverEmoji": "💬",
+      "text": "Aya demande : « Qu’est-ce qui s’est passé ? De quoi as-tu besoin maintenant ? » Le rêve desserre ses poings et raconte. Les flammes deviennent des rubans rouges. Ensemble, ils écrivent une demande ferme mais sans insulte : récupérer son tour et recevoir des excuses. Ombre souffle : « Une émotion chassée revient souvent frapper plus fort. » Aya répète leur refrain : « Je peux écouter, je peux respirer, je peux choisir mon prochain pas. » Les murs du phare s’écartent et découvrent un escalier secret. Le rêve en armure essaie sa nouvelle phrase. Sa voix tremble d’abord, puis devient claire. La porte qu’il avait claquée se rouvre et un autre rêve vient l’écouter. Ils ne sont pas encore d’accord, mais ils peuvent parler sans se faire mal. Aya découvre qu’une colère bien comprise peut protéger une limite sans brûler tout le jardin.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3-suite-b",
+      "headline": "Pousser le coussin-tempête",
+      "coverEmoji": "💪",
+      "text": "Aya et le rêve poussent le coussin de toutes leurs forces. Ombre compte jusqu’à dix. L’énergie rouge cesse de renverser les meubles ; elle devient assez calme pour parler. Le rêve peut alors proposer une règle de tours que chacun comprendra. Ombre souffle : « Une émotion chassée revient souvent frapper plus fort. » Aya répète leur refrain : « Je peux écouter, je peux respirer, je peux choisir mon prochain pas. » Les murs du phare s’écartent et découvrent un escalier secret. Le rêve en armure essaie sa nouvelle phrase. Sa voix tremble d’abord, puis devient claire. La porte qu’il avait claquée se rouvre et un autre rêve vient l’écouter. Ils ne sont pas encore d’accord, mais ils peuvent parler sans se faire mal. Aya découvre qu’une colère bien comprise peut protéger une limite sans brûler tout le jardin.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4",
+      "headline": "Le jardin de la tristesse bleue",
+      "coverEmoji": "🔵",
+      "text": "Derrière une porte humide s’étend un jardin sous la pluie. Une fillette de brume tient un cerf-volant déchiré. Elle voudrait que tout le monde parte pour pouvoir pleurer sans être vue. Chaque larme fait pousser une fleur bleue, mais elle les arrache aussitôt, honteuse. Aya pense à une chose qu’elle a perdue un jour et sent sa gorge se serrer. Elle peut s’asseoir sans parler, juste assez près pour que la fillette ne soit pas seule, ou l’aider à fabriquer un petit bateau où déposer le souvenir du cerf-volant.",
+      "question": "Comment Aya accompagne-t-elle la tristesse ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-4-a",
+          "label": "Rester près d’elle en silence",
+          "emoji": "🫶",
+          "illustration": "./assets/choices/attendre.svg",
+          "nextNode": "decision-4-suite-a",
+          "consequenceHint": "Aya s’assoit sous la pluie. Elle ne dit ni « ce n’est rien » ni « souris ». Ombre se roule contre les bottes de la fille"
+        },
+        {
+          "id": "decision-4-b",
+          "label": "Construire un bateau-souvenir",
+          "emoji": "⛵",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-4-suite-b",
+          "consequenceHint": "Aya plie une page de son carnet et la fillette y dessine le cerf-volant. Elles posent le bateau sur une flaque ; il empo"
+        }
+      ]
+    },
+    {
+      "id": "decision-4-suite-a",
+      "headline": "Rester près d’elle en silence",
+      "coverEmoji": "🫶",
+      "text": "Aya s’assoit sous la pluie. Elle ne dit ni « ce n’est rien » ni « souris ». Ombre se roule contre les bottes de la fillette. Peu à peu, celle-ci laisse les fleurs pousser. Une larme devient la vitre bleue, claire comme une goutte après l’orage. La lanterne projette maintenant plusieurs couleurs à la fois. Elles ne se mélangent pas en gris : elles forment une aurore. Aya reprend courage. Minuit approche, mais le phare commence enfin à reconnaître sa gardienne. La fillette de brume offre à Aya une fleur bleue qui ne fane pas quand on pleure. Elles parlent des souvenirs qui font sourire et piquer les yeux en même temps. Ombre recueille l’eau de pluie dans une tasse et la verse au pied d’un arbre. Ici, même les larmes ont un travail : elles aident quelque chose à pousser.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4-suite-b",
+      "headline": "Construire un bateau-souvenir",
+      "coverEmoji": "⛵",
+      "text": "Aya plie une page de son carnet et la fillette y dessine le cerf-volant. Elles posent le bateau sur une flaque ; il emporte le dessin sans effacer le souvenir. Les fleurs bleues s’ouvrent et offrent à la lanterne une lumière tendre. La lanterne projette maintenant plusieurs couleurs à la fois. Elles ne se mélangent pas en gris : elles forment une aurore. Aya reprend courage. Minuit approche, mais le phare commence enfin à reconnaître sa gardienne. La fillette de brume offre à Aya une fleur bleue qui ne fane pas quand on pleure. Elles parlent des souvenirs qui font sourire et piquer les yeux en même temps. Ombre recueille l’eau de pluie dans une tasse et la verse au pied d’un arbre. Ici, même les larmes ont un travail : elles aident quelque chose à pousser.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5",
+      "headline": "La bibliothèque des peurs violettes",
+      "coverEmoji": "🟣",
+      "text": "Des livres chuchotent dans le noir : peur de se perdre, peur du bruit, peur de décevoir. Chaque couverture grandit dès qu’on lui tourne le dos. Aya cherche la peur utile, celle qui montre un danger réel, mais les histoires parlent toutes ensemble. Elle peut allumer une petite veilleuse et lire les titres un par un, ou demander à Ombre de raconter sa propre peur pour montrer que personne n’est seul. Le chat hérisse ses moustaches : il préférerait combattre un dragon. Pourtant, une ombre immense rampe déjà entre les rayons.",
+      "question": "Comment réduire le noir sans nier la peur ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-5-a",
+          "label": "Examiner les peurs une par une",
+          "emoji": "🔍",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-5-suite-a",
+          "consequenceHint": "À la veilleuse, Aya trie les livres : danger réel, imagination, souvenir. Quand une peur est nommée, sa couverture repre"
+        },
+        {
+          "id": "decision-5-b",
+          "label": "Inviter Ombre à parler",
+          "emoji": "🐈",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-5-suite-b",
+          "consequenceHint": "Ombre avoue qu’il a peur de ne pas être un guide assez courageux. Dire la vérité ne le rapetisse pas ; au contraire, sa "
+        }
+      ]
+    },
+    {
+      "id": "decision-5-suite-a",
+      "headline": "Examiner les peurs une par une",
+      "coverEmoji": "🔍",
+      "text": "À la veilleuse, Aya trie les livres : danger réel, imagination, souvenir. Quand une peur est nommée, sa couverture reprend une taille normale. L’ombre n’était qu’un manteau suspendu. La vitre violette apparaît dans un ouvrage intitulé « Prudence ». Un gong lointain annonce encore un peu de temps. Dans la salle suivante, les rêves perdus attendent sous forme de papillons. Certains tremblent, d’autres rient trop fort. Aya doit trouver ce que leur émotion essaie de protéger. Dans un coin de la bibliothèque, Aya découvre un livre encore fermé. Son titre est « Peurs que je rencontrerai peut-être ». Elle décide de ne pas l’ouvrir ce soir. Se préparer ne veut pas dire tout imaginer à l’avance. Elle peut garder la veilleuse, connaître la sortie et demander une patte amie si une nouvelle histoire devient trop grande.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-b",
+      "headline": "Inviter Ombre à parler",
+      "coverEmoji": "🐈",
+      "text": "Ombre avoue qu’il a peur de ne pas être un guide assez courageux. Dire la vérité ne le rapetisse pas ; au contraire, sa silhouette redevient normale. Les livres se taisent pour écouter. Une lueur violette se pose sur sa moustache puis rejoint la lanterne. Un gong lointain annonce encore un peu de temps. Dans la salle suivante, les rêves perdus attendent sous forme de papillons. Certains tremblent, d’autres rient trop fort. Aya doit trouver ce que leur émotion essaie de protéger. Dans un coin de la bibliothèque, Aya découvre un livre encore fermé. Son titre est « Peurs que je rencontrerai peut-être ». Elle décide de ne pas l’ouvrir ce soir. Se préparer ne veut pas dire tout imaginer à l’avance. Elle peut garder la veilleuse, connaître la sortie et demander une patte amie si une nouvelle histoire devient trop grande.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6",
+      "headline": "Le balcon de l’envie verte",
+      "coverEmoji": "🟢",
+      "text": "Sur un balcon poussent des plantes qui copient tout. L’une veut les pétales de sa voisine, l’autre sa hauteur, une troisième jalouse même les épines du rosier. À force d’imiter, elles oublient leurs propres graines. Une petite fougère rêve d’éclairer comme la lanterne d’Aya. Aya peut lui montrer ce qu’elle sait déjà faire — offrir de l’ombre fraîche — ou organiser un échange où chaque plante prête une qualité sans perdre la sienne. Le vent des rêves se lève ; les tiges vertes s’emmêlent autour de l’escalier.",
+      "question": "Comment transformer l’envie en inspiration ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-6-a",
+          "label": "Chercher la force unique de chacune",
+          "emoji": "🌿",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-6-suite-a",
+          "consequenceHint": "Aya demande à chaque plante ce qu’elle offre déjà. La fougère protège les jeunes pousses, le rosier abrite les oiseaux, "
+        },
+        {
+          "id": "decision-6-b",
+          "label": "Créer un jardin d’échanges",
+          "emoji": "🌱",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-6-suite-b",
+          "consequenceHint": "Les plantes partagent graines, conseils et lumière, sans arracher leurs racines. La fougère reçoit un cristal qui reflèt"
+        }
+      ]
+    },
+    {
+      "id": "decision-6-suite-a",
+      "headline": "Chercher la force unique de chacune",
+      "coverEmoji": "🌿",
+      "text": "Aya demande à chaque plante ce qu’elle offre déjà. La fougère protège les jeunes pousses, le rosier abrite les oiseaux, la mousse garde l’eau. En reconnaissant leurs forces, les tiges cessent de copier. Une pousse verte dessine la cinquième vitre. Chaque papillon libéré rejoint le sommet. Ombre cesse de faire le malin et marche tout près d’Aya. La clé-lune porte désormais une minuscule empreinte de patte : même les guides ont parfois besoin d’être accompagnés. La fougère tend à Aya une graine toute simple. Elle ne ressemble ni à une étoile ni à un bijou, mais elle contient sa propre forme à venir. Aya la glisse dans la terre du phare. Peut-être deviendra-t-elle haute, peut-être large. Elle n’a pas besoin de ressembler à sa voisine pour mériter la lumière.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-7",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6-suite-b",
+      "headline": "Créer un jardin d’échanges",
+      "coverEmoji": "🌱",
+      "text": "Les plantes partagent graines, conseils et lumière, sans arracher leurs racines. La fougère reçoit un cristal qui reflète la lanterne et offre en retour son ombre fraîche. L’envie devient une idée : apprendre de l’autre sans vouloir devenir l’autre. Chaque papillon libéré rejoint le sommet. Ombre cesse de faire le malin et marche tout près d’Aya. La clé-lune porte désormais une minuscule empreinte de patte : même les guides ont parfois besoin d’être accompagnés. La fougère tend à Aya une graine toute simple. Elle ne ressemble ni à une étoile ni à un bijou, mais elle contient sa propre forme à venir. Aya la glisse dans la terre du phare. Peut-être deviendra-t-elle haute, peut-être large. Elle n’a pas besoin de ressembler à sa voisine pour mériter la lumière.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-7",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-7",
+      "headline": "La tache sans couleur",
+      "coverEmoji": "⬛",
+      "text": "La grande tache bloque maintenant tout le palier. Elle murmure avec la voix d’Aya : « Et si tu te trompais ? Et si tout le monde riait ? » C’est la honte, cachée si longtemps qu’elle a perdu sa couleur. Aya se souvient du jour où elle a donné une mauvaise réponse devant la classe et voulu disparaître. Elle peut dessiner cette scène sur le mur puis y ajouter ce qu’elle aurait aimé entendre, ou la raconter à Ombre, qui promet d’écouter sans plaisanter. La tache attend ; elle ne veut plus effrayer, seulement être reconnue.",
+      "question": "Comment Aya rend-elle une forme à ce souvenir ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-7-a",
+          "label": "Redessiner la scène avec douceur",
+          "emoji": "🖍️",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-7-suite-a",
+          "consequenceHint": "Aya dessine son erreur, puis ajoute une bulle : « Se tromper n’enlève rien à ta valeur. » Elle dessine aussi une porte d"
+        },
+        {
+          "id": "decision-7-b",
+          "label": "Raconter la vérité à Ombre",
+          "emoji": "🤫",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-7-suite-b",
+          "consequenceHint": "Aya raconte tout, même la chaleur dans ses joues. Ombre ne plaisante pas. Il dit seulement : « J’aurais aimé être là pou"
+        }
+      ]
+    },
+    {
+      "id": "decision-7-suite-a",
+      "headline": "Redessiner la scène avec douceur",
+      "coverEmoji": "🖍️",
+      "text": "Aya dessine son erreur, puis ajoute une bulle : « Se tromper n’enlève rien à ta valeur. » Elle dessine aussi une porte de sortie et une amie qui sourit gentiment. La tache devient rose, couleur de la compassion que l’on peut s’offrir à soi-même. Les sept vitres sont presque complètes. Pourtant, une grande tache sans couleur bloque l’escalier. Elle porte la forme exacte de ce qu’Aya n’a jamais osé dire à voix haute. Le phare attend qu’elle choisisse une manière sûre de l’approcher. Ombre montre alors sous son pelage une petite tache rose semblable. Lui aussi s’était trompé autrefois en guidant un rêve vers la mauvaise porte. Il avait caché ce souvenir derrière des plaisanteries. Aya ne le juge pas. Ensemble, ils ajoutent à la lanterne une règle : ici, on peut réparer sans devoir disparaître.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-8",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-7-suite-b",
+      "headline": "Raconter la vérité à Ombre",
+      "coverEmoji": "🤫",
+      "text": "Aya raconte tout, même la chaleur dans ses joues. Ombre ne plaisante pas. Il dit seulement : « J’aurais aimé être là pour m’asseoir près de toi. » La honte rétrécit quand elle n’est plus secrète et devient une vitre rose très douce. Les sept vitres sont presque complètes. Pourtant, une grande tache sans couleur bloque l’escalier. Elle porte la forme exacte de ce qu’Aya n’a jamais osé dire à voix haute. Le phare attend qu’elle choisisse une manière sûre de l’approcher. Ombre montre alors sous son pelage une petite tache rose semblable. Lui aussi s’était trompé autrefois en guidant un rêve vers la mauvaise porte. Il avait caché ce souvenir derrière des plaisanteries. Aya ne le juge pas. Ensemble, ils ajoutent à la lanterne une règle : ici, on peut réparer sans devoir disparaître.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-8",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-8",
+      "headline": "L’escalier des surprises orange",
+      "coverEmoji": "🟠",
+      "text": "Les marches se changent sans prévenir : plume, trampoline, flaque, nuage. C’est la surprise orange, parfois délicieuse, parfois désagréable. Aya veut atteindre le sommet sans contrôler chaque marche. Elle peut avancer en testant du bout du pied et en adaptant son équilibre, ou inventer avec Ombre un signal drôle à crier chaque fois que le sol change. Un groupe de rêves-papillons les suit ; s’ils paniquent, le vent les dispersera. S’ils apprennent à se réorienter, ils pourront tous monter.",
+      "question": "Comment apprivoiser l’imprévu ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-8-a",
+          "label": "Tester, observer, puis avancer",
+          "emoji": "🦶",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-8-suite-a",
+          "consequenceHint": "Aya touche chaque marche avant d’y poser son poids. Elle ne sait pas ce qui vient, mais elle sait quoi faire ensuite : r"
+        },
+        {
+          "id": "decision-8-b",
+          "label": "Inventer le cri « Hop, changement ! »",
+          "emoji": "📣",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-8-suite-b",
+          "consequenceHint": "À chaque transformation, toute la troupe crie : « Hop, changement ! » Même quand Aya tombe dans un coussin de mousse, el"
+        }
+      ]
+    },
+    {
+      "id": "decision-8-suite-a",
+      "headline": "Tester, observer, puis avancer",
+      "coverEmoji": "🦶",
+      "text": "Aya touche chaque marche avant d’y poser son poids. Elle ne sait pas ce qui vient, mais elle sait quoi faire ensuite : regarder, respirer, choisir. Les papillons imitent sa méthode. Une marche orange se détache et devient la sixième vitre. La tache se transforme en porte. Derrière, le vent des rêves souffle si fort que les marches deviennent des vagues. Aya distingue la salle de la lentille, tout en haut. Une dernière énigme sépare encore les émotions de leur lumière. Les papillons testent les marches à leur façon. L’un s’arrête, l’autre revient en arrière, un troisième demande à être porté. Aucun rythme n’est puni. Aya comprend qu’être souple ne signifie pas aimer tous les changements ; cela signifie garder assez d’attention pour trouver un appui quand le sol devient nouveau.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-9",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-8-suite-b",
+      "headline": "Inventer le cri « Hop, changement ! »",
+      "coverEmoji": "📣",
+      "text": "À chaque transformation, toute la troupe crie : « Hop, changement ! » Même quand Aya tombe dans un coussin de mousse, elle peut rire puis se relever. Le signal n’empêche pas l’imprévu ; il rappelle qu’ils peuvent y répondre ensemble. La tache se transforme en porte. Derrière, le vent des rêves souffle si fort que les marches deviennent des vagues. Aya distingue la salle de la lentille, tout en haut. Une dernière énigme sépare encore les émotions de leur lumière. Les papillons testent les marches à leur façon. L’un s’arrête, l’autre revient en arrière, un troisième demande à être porté. Aucun rythme n’est puni. Aya comprend qu’être souple ne signifie pas aimer tous les changements ; cela signifie garder assez d’attention pour trouver un appui quand le sol devient nouveau.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-9",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-9",
+      "headline": "La salle de la fierté dorée",
+      "coverEmoji": "🟨",
+      "text": "Au sommet, des miroirs montrent Aya couronnée, applaudie, plus brillante que tout le monde. Une voix promet d’allumer la dernière vitre si elle affirme avoir réussi seule. Ombre baisse les oreilles : sans lui, elle ne serait pas arrivée, mais sans ses choix à elle, lui non plus. Aya distingue derrière les miroirs tous les rêves aidés en chemin. Elle peut briser l’illusion en nommant la contribution de chacun, ou retourner les miroirs afin qu’ils montrent les efforts plutôt que les récompenses. La fierté n’a pas besoin de mentir pour être belle.",
+      "question": "Quelle fierté Aya veut-elle garder ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-9-a",
+          "label": "Remercier chaque compagnon",
+          "emoji": "🙏",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-9-suite-a",
+          "consequenceHint": "Aya cite Ombre, les bouées, les ballons, la fillette de brume et même sa peur prudente. Les couronnes s’effacent ; une l"
+        },
+        {
+          "id": "decision-9-b",
+          "label": "Montrer les efforts dans les miroirs",
+          "emoji": "🪞",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-9-suite-b",
+          "consequenceHint": "Aya retourne les miroirs. Ils montrent ses hésitations, ses respirations, ses erreurs corrigées et les pattes tremblante"
+        }
+      ]
+    },
+    {
+      "id": "decision-9-suite-a",
+      "headline": "Remercier chaque compagnon",
+      "coverEmoji": "🙏",
+      "text": "Aya cite Ombre, les bouées, les ballons, la fillette de brume et même sa peur prudente. Les couronnes s’effacent ; une lumière dorée reste pourtant autour d’elle. Elle est fière d’avoir choisi, et reconnaissante d’avoir été aidée. Dans la lentille, toutes les couleurs tournent mais refusent de s’unir. Une voix demande : « Qui commande aux émotions ? » Aya sourit : personne ne commande tout à fait. On peut les accueillir, comprendre leur message, puis décider de ses gestes. La lumière dorée descend jusque dans le carnet d’Aya et souligne les moments invisibles : celui où elle a attendu, celui où elle a changé d’avis, celui où elle a demandé à Ombre ce qu’il pensait. Le phare ne compte pas seulement les exploits. Il reconnaît les efforts silencieux qui ont permis aux autres couleurs d’apparaître.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-10",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-9-suite-b",
+      "headline": "Montrer les efforts dans les miroirs",
+      "coverEmoji": "🪞",
+      "text": "Aya retourne les miroirs. Ils montrent ses hésitations, ses respirations, ses erreurs corrigées et les pattes tremblantes d’Ombre. Ce chemin réel brille bien plus que la couronne. La septième vitre, dorée, rejoint la lanterne. Dans la lentille, toutes les couleurs tournent mais refusent de s’unir. Une voix demande : « Qui commande aux émotions ? » Aya sourit : personne ne commande tout à fait. On peut les accueillir, comprendre leur message, puis décider de ses gestes. La lumière dorée descend jusque dans le carnet d’Aya et souligne les moments invisibles : celui où elle a attendu, celui où elle a changé d’avis, celui où elle a demandé à Ombre ce qu’il pensait. Le phare ne compte pas seulement les exploits. Il reconnaît les efforts silencieux qui ont permis aux autres couleurs d’apparaître.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-10",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10",
+      "headline": "Le choix de la gardienne",
+      "coverEmoji": "🌈",
+      "text": "Les sept couleurs tournent dans la grande lentille : jaune, rouge, bleu, violet, vert, rose, orange et l’éclat doré qui les relie. Le phare reconnaît qu’aucune émotion ne doit régner seule. Pourtant, les rêves sont toujours dispersés au-dessus de la mer. Aya doit choisir une façon de les guider. Un faisceau direct atteindra vite toutes les maisons. Une constellation laissera à chacun une carte pour les nuits futures. Une ronde de lanternes demandera aux habitants de s’aider, mais elle créera de nouveaux gardiens. Ombre pose la clé-lune dans la paume d’Aya. « La bonne lumière sera celle que tu prends le temps de porter. »",
+      "question": "Comment Aya rallume-t-elle le Phare des Rêves ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-10-a",
+          "label": "Envoyer un grand faisceau arc-en-ciel",
+          "emoji": "🌈",
+          "illustration": "./assets/choices/courage.svg",
+          "nextNode": "decision-10-suite-a",
+          "consequenceHint": "Aya place toute la lanterne dans la lentille. Un faisceau traverse la mer, touche chaque fenêtre et ouvre une sortie lum"
+        },
+        {
+          "id": "decision-10-b",
+          "label": "Dessiner une constellation des émotions",
+          "emoji": "🌌",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-10-suite-b",
+          "consequenceHint": "Aya projette chaque couleur dans le ciel et les relie avec la clé-lune. La constellation forme une carte : écouter, resp"
+        },
+        {
+          "id": "decision-10-c",
+          "label": "Partager des lanternes dans le village",
+          "emoji": "🏮",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-10-suite-c",
+          "consequenceHint": "Aya divise la lumière sans la diminuer. Chaque habitant reçoit une petite lanterne et apprend le refrain. De maison en m"
+        }
+      ]
+    },
+    {
+      "id": "decision-10-suite-a",
+      "headline": "Envoyer un grand faisceau arc-en-ciel",
+      "coverEmoji": "🌈",
+      "text": "Aya place toute la lanterne dans la lentille. Un faisceau traverse la mer, touche chaque fenêtre et ouvre une sortie lumineuse à chaque cauchemar. Les rêves retrouvent aussitôt leurs dormeurs. Minuit sonne. Le phare s’allume une seconde puis révèle trois chemins pour guider les rêves : un faisceau vers le village, une constellation au-dessus de la mer, ou une ronde de lanternes portée par tous les rêveurs réveillés. Avant le geste final, Aya fait le tour de la lentille et vérifie chaque vitre. Le rouge n’écrase pas le bleu. Le jaune laisse une place au violet. Le vert et le rose se reflètent sans se confondre. Elle ne cherche plus la couleur parfaite. Elle cherche un ensemble assez souple pour accompagner chaque rêve jusqu’à sa propre maison.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10-suite-b",
+      "headline": "Dessiner une constellation des émotions",
+      "coverEmoji": "🌌",
+      "text": "Aya projette chaque couleur dans le ciel et les relie avec la clé-lune. La constellation forme une carte : écouter, respirer, demander de l’aide, choisir. Les rêves apprennent à s’orienter même loin du phare. Minuit sonne. Le phare s’allume une seconde puis révèle trois chemins pour guider les rêves : un faisceau vers le village, une constellation au-dessus de la mer, ou une ronde de lanternes portée par tous les rêveurs réveillés. Avant le geste final, Aya fait le tour de la lentille et vérifie chaque vitre. Le rouge n’écrase pas le bleu. Le jaune laisse une place au violet. Le vert et le rose se reflètent sans se confondre. Elle ne cherche plus la couleur parfaite. Elle cherche un ensemble assez souple pour accompagner chaque rêve jusqu’à sa propre maison.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-b",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10-suite-c",
+      "headline": "Partager des lanternes dans le village",
+      "coverEmoji": "🏮",
+      "text": "Aya divise la lumière sans la diminuer. Chaque habitant reçoit une petite lanterne et apprend le refrain. De maison en maison, les couleurs forment une ronde qui ramène doucement les rêves. Minuit sonne. Le phare s’allume une seconde puis révèle trois chemins pour guider les rêves : un faisceau vers le village, une constellation au-dessus de la mer, ou une ronde de lanternes portée par tous les rêveurs réveillés. Avant le geste final, Aya fait le tour de la lentille et vérifie chaque vitre. Le rouge n’écrase pas le bleu. Le jaune laisse une place au violet. Le vert et le rose se reflètent sans se confondre. Elle ne cherche plus la couleur parfaite. Elle cherche un ensemble assez souple pour accompagner chaque rêve jusqu’à sa propre maison.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-c",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-a",
+      "headline": "La grande lumière",
+      "coverEmoji": "🌈",
+      "text": "Le faisceau fait un tour complet du monde des rêves. Les cauchemars trouvent une porte de sortie et deviennent de simples nuages qui se dissolvent au matin. Aya rentre juste avant que sa fenêtre cesse de respirer. Sur son oreiller dort Ombre, roulé autour de la clé-lune. Désormais, quand une émotion devient trop grande, Aya imagine les sept vitres. Elle n’a pas besoin d’éteindre ce qu’elle ressent pour retrouver son chemin.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-b",
+      "headline": "La carte du ciel intérieur",
+      "coverEmoji": "🌌",
+      "text": "La constellation reste visible aux enfants qui ferment les yeux et respirent lentement. Chaque étoile porte une question bienveillante : « Que ressens-tu ? Que veut protéger cette émotion ? Quel geste choisis-tu ? » Ombre devient gardien officiel de la carte, même s’il s’endort souvent pendant son service. Aya garde une petite étoile rose dans sa poche. Elle brille chaque fois qu’elle se parle avec douceur.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-c",
+      "headline": "Le village aux mille gardiens",
+      "coverEmoji": "🏮",
+      "text": "Toute la nuit, les habitants se passent les lanternes. Personne n’est obligé de garder seul le phare. La fillette de brume cultive le bleu, le rêve en armure veille sur le rouge, et Ombre enseigne la peur courageuse avec beaucoup de gestes théâtraux. Aya devient la première Gardienne qui sait demander du relais. Au matin, chaque fenêtre du village reflète une couleur différente, et ensemble elles éclairent plus loin que l’ancien faisceau.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    }
+  ],
+  "revision": 2,
+  "status": "published",
+  "createdAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T00:00:00.000Z"
+}

@@ -11,3 +11,7 @@ Pour publier une histoire :
 5. pousser sur `main` : le workflow produit la branche statique `WebApp`.
 
 Les brouillons inventés par les enfants ne sont jamais publiés automatiquement. Ils sont exportés depuis l'application dans un dossier de révision parentale, puis relus avant d'entrer dans ce catalogue.
+
+## Histoires signature
+
+Les six récits de lancement sont maintenus dans `content/signature-stories.mjs`. `npm run generate:stories` reconstruit leurs JSON et le catalogue. Le validateur parcourt toutes les routes possibles et vérifie la durée, le nombre de décisions, les trois fins accessibles et l’intervalle maximal de 2 min 30 entre deux embranchements. Pour les histoires de 8 à 10 minutes, il impose aussi au moins 45 secondes entre deux choix.

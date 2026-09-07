@@ -11,7 +11,7 @@ import { showToast } from '../ui/toast.js';
 let playbackToken = 0;
 
 function narrationContext(node) {
-  return { storyId: state.currentStory?.id, nodeId: node?.id, narration: node?.narration };
+  return { storyId: state.currentStory?.id, nodeId: node?.id, narration: node?.narration, heroVoice: state.currentStory?.heroVoice };
 }
 
 async function playCurrentNode(token = ++playbackToken) {
@@ -23,6 +23,14 @@ async function playCurrentNode(token = ++playbackToken) {
   if (token !== playbackToken) return;
   state.isNarrating = false;
   if (node.isEnding) return renderEndScreen();
+  if (node.nextNode) {
+    await new Promise(resolve => setTimeout(resolve, 650));
+    if (token !== playbackToken) return;
+    state.currentNodeId = node.nextNode;
+    const next = currentNode();
+    state.path.push({ nodeId: next.id, headline: next.headline, automatic: true });
+    return playCurrentNode(token);
+  }
   renderReader({ phase: 'choice' });
   await speak(node.question, { ...narrationContext(node), nodeId: `${node.id}-question`, narration: { ...node.narration, pace: 'slow' } });
 }
@@ -38,7 +46,7 @@ export async function startStory(story) {
   state.path.push({ nodeId: node.id, headline: node.headline });
   state.isNarrating = true;
   renderReader({ phase: 'narration' });
-  await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
+  await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', heroVoice: story.heroVoice, narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
   if (token === playbackToken) await playCurrentNode(token);
 }
 

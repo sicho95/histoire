@@ -31,7 +31,7 @@
           <div><p class="eyebrow">La bibliothèque</p><h2>Choisis une aventure</h2></div>
           <button id="sync-stories" class="text-button" type="button">Actualiser</button>
         </div>
-        <div id="story-carousel" class="story-grid" aria-live="polite"></div>
+        <div id="story-carousel" class="story-sections" aria-live="polite"></div>
         <article class="studio-callout">
           <div class="callout-emoji">✨</div>
           <div><p class="eyebrow">Atelier enfant</p><h2>Inventer une nouvelle histoire</h2><p>Une histoire privée sur cet appareil, à relire en famille avant toute publication.</p></div>
@@ -46,6 +46,7 @@
           <button id="reader-audio" class="icon-button" type="button" aria-label="Mettre la lecture en pause">⏸</button>
         </div>
         <article class="reader-card">
+          <img id="reader-cover-art" class="reader-cover-art hidden" alt="">
           <div id="reader-emoji" class="reader-emoji">📖</div>
           <p id="reader-story-title" class="eyebrow"></p>
           <h1 id="reader-headline"></h1>
@@ -62,10 +63,12 @@
       <section id="view-studio" class="view hidden compact-view">
         <div class="view-heading"><button class="icon-button back-home" type="button">←</button><div><p class="eyebrow">Atelier enfant</p><h1>Fabrique ton aventure</h1></div></div>
         <form id="studio-form" class="card form-stack">
-          <label><span>Le héros ou l’héroïne</span><select id="studio-hero"><option>une exploratrice courageuse</option><option>un petit dragon curieux</option><option>un animal rigolo</option><option>un robot au grand cœur</option></select></label>
+          <label><span>Le héros ou l’héroïne</span><select id="studio-hero"><option>une exploratrice intrépide</option><option>un petit dragon curieux</option><option>une vétérinaire des animaux magiques</option><option>un astronaute inventeur</option><option>une apprentie sorcière bienveillante</option><option>un dinosaure au grand cœur</option><option>une détective malicieuse</option><option>un chevalier qui préfère réfléchir</option><option>une sirène exploratrice</option><option>un robot qui découvre les émotions</option><option>un animal rigolo</option></select></label>
           <label><span>Son prénom d’histoire</span><input id="studio-name" maxlength="20" placeholder="Ex. Lila" autocomplete="off"></label>
-          <label><span>Le monde à explorer</span><select id="studio-place"><option>un château dans les nuages</option><option>une forêt enchantée</option><option>une planète inconnue</option><option>un royaume sous-marin</option></select></label>
-          <label><span>L’ambiance</span><select id="studio-theme"><option>une quête merveilleuse</option><option>un mystère rassurant</option><option>une aventure très drôle</option><option>un voyage avec un peu de frisson</option></select></label>
+          <label><span>Le monde à explorer</span><select id="studio-place"><option>un château dans les nuages</option><option>une jungle peuplée de dinosaures</option><option>une cité secrète sous l’océan</option><option>une station au bord des étoiles</option><option>une forêt où vivent les rêves</option><option>une école de magie bienveillante</option><option>une île de pirates farceurs</option><option>un village-refuge pour animaux</option><option>un atelier où les jouets se réveillent</option><option>un musée qui prend vie la nuit</option><option>un royaume de glace et d’aurores</option></select></label>
+          <label><span>L’ambiance</span><select id="studio-theme"><option>une quête merveilleuse</option><option>un mystère rassurant</option><option>une aventure très drôle</option><option>un doux frisson vite rassuré</option><option>un sauvetage d’animaux</option><option>une mission dans l’espace</option><option>une histoire d’amitié et d’émotions</option><option>un apprentissage de magie</option><option>une chasse au trésor pleine d’énigmes</option><option>une aventure musicale où il faut participer</option><option>un voyage calme avant de dormir</option></select></label>
+          <label><span>Âge de l’enfant</span><select id="studio-age"><option value="3">2–5 ans</option><option value="7" selected>5–9 ans</option></select></label>
+          <label><span>Durée souhaitée</span><select id="studio-duration"><option value="8">Environ 8 minutes</option><option value="10" selected>Environ 10 minutes</option><option value="20">Grande aventure — environ 20 minutes</option></select></label>
           <label><span>Une idée à ajouter <small>(facultatif)</small></span><textarea id="studio-wish" maxlength="160" placeholder="Ex. une baleine qui sait voler"></textarea></label>
           <div class="privacy-note"><span>🛡️</span><p>N’écris ni nom complet, ni école, ni adresse. Le brouillon restera privé sur cet appareil.</p></div>
           <button id="generate-story" class="primary-button full-button" type="submit">✨ Créer mon histoire</button>
@@ -94,7 +97,7 @@
             <label><span>Mode</span><select id="tts-provider"><option value="browser">Voix gratuite de l’appareil</option><option value="openai">OpenAI — voix naturelle à la demande</option></select></label>
             <label><span>Clé OpenAI <small>(facultatif)</small></span><input id="openai-key" type="password" placeholder="sk-…" autocomplete="off"></label>
             <label><span>Voix</span><select id="openai-voice"><option value="marin">Marin</option><option value="cedar">Cedar</option><option value="coral">Coral</option><option value="nova">Nova</option></select></label>
-            <p class="supporting">Les MP3 éditoriaux sont toujours prioritaires. Sans MP3 ni clé OpenAI, la voix gratuite de l’appareil prend le relais avec le rythme et l’émotion prévus pour la scène.</p>
+            <p class="supporting">Les voix éditoriales incluses sont toujours prioritaires. Sans piste préparée ni clé OpenAI, la voix gratuite de l’appareil prend le relais avec le rythme et l’émotion prévus pour la scène.</p>
           </section>
           <section class="card form-stack">
             <h2>Sauvegarde</h2>
