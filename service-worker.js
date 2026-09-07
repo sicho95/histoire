@@ -1,4 +1,4 @@
-const BUILD_ID = 'd613437ff6b1e9a7e08e372f8ea62aad3bd00e6f-3';
+const BUILD_ID = 'd613437ff6b1e9a7e08e372f8ea62aad3bd00e6f-4';
 const APP_CACHE = `histoires-app-${BUILD_ID}`;
 const AUDIO_CACHE = 'histoires-audio-v2';
 const PRECACHE = ["./","./index.html","./manifest.json","./version.json","./css/variables.css","./css/layout.css","./css/components.css","./src/app.js","./src/pwa/update.js","./src/api/router.js","./src/api/prompts.js","./src/audio/stt.js","./src/audio/tts.js","./src/core/choices.js","./src/core/debug.js","./src/core/engine.js","./src/core/network.js","./src/core/state.js","./src/core/story-model.js","./src/core/weaver.js","./src/storage/audio_cache.js","./src/storage/database.js","./src/storage/settings.js","./src/ui/carousel.js","./src/ui/end_screen.js","./src/ui/library.js","./src/ui/parental.js","./src/ui/reader.js","./src/ui/wizard.js","./src/ui/toast.js","./assets/icons/icon.svg","./assets/icons/maskable.svg","./stories/catalog.json","./audio/manifest.json","./stories/ines-chateau-nuages.json","./stories/noa-gare-etoiles.json"];
