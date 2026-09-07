@@ -1,29 +1,23 @@
-# Dossier audio statique pré-généré
+# Narrations éditoriales
 
-Ce dossier permet de livrer les MP3 des histoires de base directement avec le site,
-**sans appeler l'API TTS au premier lancement**.
+Les MP3 préparés sont placés dans ce dossier, idéalement sous `audio/mp3/<story-id>/`.
 
-## Format du manifest.json
+`manifest.json` associe chaque scène à son fichier et à l'empreinte du texte. L'empreinte empêche l'application de lire une ancienne voix après la correction d'une scène.
 
 ```json
 {
-  "gcp::fr-FR-Wavenet-A::Wavenet::a1b2c3d4": "0001_intro.mp3",
-  "gcp::fr-FR-Wavenet-A::Wavenet::e5f6g7h8": "0002_node1.mp3"
+  "schemaVersion": 2,
+  "styleVersion": "warm-storyteller-v2",
+  "generatedAt": "2026-09-07T12:00:00Z",
+  "tracks": {
+    "ines-chateau-nuages:start": {
+      "file": "mp3/ines-chateau-nuages/start.mp3",
+      "textHash": "a1b2c3d4",
+      "voice": "marin",
+      "model": "gpt-4o-mini-tts"
+    }
+  }
 }
 ```
 
-La **clé** est l'ID de cache (visible dans les logs debug).
-La **valeur** est le nom du fichier MP3 dans ce même dossier.
-
-## Comment générer ce manifest
-
-1. Lance l'app avec ta clé GCP configurée
-2. Va dans ⚙️ > Hors-ligne > Précharger histoires de base
-3. Exporte le ZIP complet (⚙️ > Accès > 📦 Exporter ZIP complet)
-4. Dans le ZIP, récupère `audio_cache.json` et les fichiers `mp3/*.mp3`
-5. Place les MP3 dans ce dossier
-6. Génère le manifest à partir de `audio_cache.json` :
-   ```
-   { entry.id: "NNNN_xxx.mp3" } pour chaque entry
-   ```
-7. Commit + push → zéro token TTS pour les nouveaux utilisateurs
+En l'absence de piste correspondante, la PWA utilise gratuitement une voix installée sur l'appareil. Une clé OpenAI parentale peut aussi produire une narration à la demande, mais elle n'est jamais nécessaire pour lire les histoires publiées.

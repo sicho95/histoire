@@ -1,65 +1,63 @@
-
-const DB_NAME = 'conteur_audio_cache_v1';
-const STORE   = 'audio';
+const DB_NAME = 'histoires-audio-v2';
+const STORE = 'audio';
+let dbPromise;
+let manifestPromise;
 
 function openDb() {
-  return new Promise((resolve, reject) => {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, 1);
     req.onupgradeneeded = () => req.result.createObjectStore(STORE, { keyPath: 'id' });
-    req.onsuccess  = () => resolve(req.result);
-    req.onerror    = () => reject(req.error);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
   });
+  return dbPromise;
 }
-async function withStore(mode, fn) {
+
+async function operation(mode, run) {
   const db = await openDb();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE, mode);
-    fn(tx.objectStore(STORE), resolve, reject);
-    tx.onerror = () => reject(tx.error);
+    const request = run(tx.objectStore(STORE));
+    request.onsuccess = () => resolve(request.result ?? null);
+    request.onerror = () => reject(request.error);
   });
 }
 
-export const getAudioCacheEntry   = id      => withStore('readonly',  (s, res) => { const r=s.get(id);     r.onsuccess=()=>res(r.result||null); });
-export const putAudioCacheEntry   = entry   => withStore('readwrite', (s, res) => { s.put(entry);           res(true); });
-export const clearAudioCache      = ()      => withStore('readwrite', (s, res) => { s.clear();              res(true); });
-export const listAudioCacheEntries= ()      => withStore('readonly',  (s, res) => { const r=s.getAll();     r.onsuccess=()=>res(r.result||[]); });
+export const getAudioCacheEntry = id => operation('readonly', store => store.get(id));
+export const putAudioCacheEntry = entry => operation('readwrite', store => store.put(entry));
+export const clearAudioCache = () => operation('readwrite', store => store.clear());
+export const listAudioCacheEntries = () => operation('readonly', store => store.getAll());
 
-/** Importer un tableau d'entrées (depuis un backup ZIP) — écrase si même id */
 export async function importCacheEntries(entries) {
-  if (!Array.isArray(entries) || !entries.length) return 0;
-  const db = await openDb();
-  return new Promise((resolve, reject) => {
-    const tx    = db.transaction(STORE, 'readwrite');
-    const store = tx.objectStore(STORE);
-    let count   = 0;
-    entries.forEach(e => { if (e?.id && e?.dataUrl) { store.put(e); count++; } });
-    tx.oncomplete = () => resolve(count);
-    tx.onerror    = () => reject(tx.error);
-  });
+  if (!Array.isArray(entries)) return 0;
+  let count = 0;
+  for (const entry of entries) {
+    if (!entry?.id || !entry?.dataUrl) continue;
+    await putAudioCacheEntry(entry);
+    count += 1;
+  }
+  return count;
 }
 
-/**
- * Cherche un audio dans le dossier statique /audio/
- * → /audio/manifest.json  { "cacheKey": "filename.mp3", … }
- * → /audio/{filename}.mp3
- * Retourne un Blob ou null.
- */
-let _manifest = null;
-let _manifestLoaded = false;
-export async function getStaticAudio(cacheId) {
-  if (!_manifestLoaded) {
-    _manifestLoaded = true;
-    try {
-      const r = await fetch('./audio/manifest.json');
-      if (r.ok) _manifest = await r.json();
-    } catch {}
+async function getManifest() {
+  if (!manifestPromise) {
+    manifestPromise = fetch('./audio/manifest.json', { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : null)
+      .catch(() => null);
   }
-  if (!_manifest) return null;
-  const filename = _manifest[cacheId];
-  if (!filename) return null;
+  return manifestPromise;
+}
+
+export async function getStaticAudio({ storyId, nodeId, textHash }) {
+  if (!storyId || !nodeId) return null;
+  const manifest = await getManifest();
+  const track = manifest?.tracks?.[`${storyId}:${nodeId}`];
+  if (!track?.file || track.textHash !== textHash) return null;
   try {
-    const r = await fetch(`./audio/${filename}`);
-    if (!r.ok) return null;
-    return r.blob();
-  } catch { return null; }
+    const response = await fetch(`./audio/${track.file}`);
+    return response.ok ? response.blob() : null;
+  } catch {
+    return null;
+  }
 }

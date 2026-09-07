@@ -1,14 +1,64 @@
-const CACHE = 'conteur-v7';
-const ASSETS = ['./','./index.html','./manifest.json','./service-worker.js','./css/variables.css','./css/layout.css','./css/components.css','./src/app.js','./src/ui/carousel.js','./src/ui/reader.js','./src/ui/library.js','./src/ui/parental.js','./src/ui/end_screen.js','./src/ui/wizard.js','./src/core/engine.js','./src/core/weaver.js','./src/core/state.js','./src/core/choices.js','./src/core/debug.js','./src/core/network.js','./src/storage/database.js','./src/storage/settings.js','./src/storage/audio_cache.js','./src/audio/tts.js','./src/audio/stt.js','./src/api/router.js','./src/api/prompts.js','./assets/default_stories.json'];
-self.addEventListener('install', e => e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())));
-self.addEventListener('activate', e => e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
-self.addEventListener('fetch', e => {
-  if (e.request.method !== 'GET') return;
-  const url = new URL(e.request.url);
-  const appFile = url.origin === location.origin && (/\.(html|js|css|json)$/i.test(url.pathname) || url.pathname === '/' || url.pathname.endsWith('/histoire/'));
-  if (appFile) {
-    e.respondWith(fetch(e.request).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return r; }).catch(() => caches.match(e.request).then(r => r || caches.match('./index.html'))));
+const BUILD_ID = '__BUILD_ID__';
+const APP_CACHE = `histoires-app-${BUILD_ID}`;
+const AUDIO_CACHE = 'histoires-audio-v2';
+const PRECACHE = __PRECACHE_MANIFEST__;
+
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(APP_CACHE).then(cache => cache.addAll(PRECACHE)));
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('histoires-app-') && key !== APP_CACHE).map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
+});
+
+async function networkFirst(request, fallback = './index.html') {
+  try {
+    const fresh = await fetch(request, { cache: 'no-store' });
+    if (fresh.ok) (await caches.open(APP_CACHE)).put(request, fresh.clone());
+    return fresh;
+  } catch {
+    return (await caches.match(request, { ignoreSearch: true })) || (await caches.match(fallback));
+  }
+}
+
+async function staleWhileRevalidate(request) {
+  const cached = await caches.match(request);
+  const refresh = fetch(request).then(async response => {
+    if (response.ok) (await caches.open(APP_CACHE)).put(request, response.clone());
+    return response;
+  }).catch(() => null);
+  return cached || refresh || Response.error();
+}
+
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+  if (url.pathname.includes('/audio/') && /\.(mp3|m4a|ogg|wav)$/i.test(url.pathname)) {
+    event.respondWith(caches.open(AUDIO_CACHE).then(async cache => {
+      const cached = await cache.match(event.request);
+      if (cached) return cached;
+      const response = await fetch(event.request);
+      if (response.ok) cache.put(event.request, response.clone());
+      return response;
+    }));
     return;
   }
-  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+  if (event.request.mode === 'navigate') {
+    event.respondWith(networkFirst(event.request));
+    return;
+  }
+  if (/\/(version\.json|stories\/.*\.json)$/i.test(url.pathname)) {
+    event.respondWith(networkFirst(event.request, './stories/catalog.json'));
+    return;
+  }
+  event.respondWith(staleWhileRevalidate(event.request));
 });

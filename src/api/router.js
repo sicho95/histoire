@@ -1,60 +1,50 @@
+import { getSecrets, getSettings } from '../storage/settings.js';
 import { logDebug } from '../core/debug.js';
-import { getSettings } from '../storage/settings.js';
 
-function parseMaybeJson(rawText) {
-  if (!rawText) return null;
-  const trimmed = rawText.trim();
-  const candidates = [trimmed];
-  const fence = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i);
-  if (fence?.[1]) candidates.push(fence[1].trim());
-  const firstBrace = trimmed.indexOf('{');
-  const lastBrace = trimmed.lastIndexOf('}');
-  if (firstBrace >= 0 && lastBrace > firstBrace) candidates.push(trimmed.slice(firstBrace, lastBrace + 1));
-  for (const candidate of candidates) {
-    try { return JSON.parse(candidate); } catch {}
-  }
-  return null;
+function parseContent(payload) {
+  const content = payload?.choices?.[0]?.message?.content;
+  if (typeof content !== 'string') throw new Error('Réponse IA vide.');
+  return JSON.parse(content);
 }
 
-export async function queryLlm({ provider, apiKey, model, prompt }) {
-  if (!apiKey) {
-    logDebug('llm.skip', { reason: 'missing_api_key', provider, model });
-    return { rawText: '', data: null, provider, ok: false };
-  }
-  const groqUrl = 'https://api.groq.com/openai/v1/chat/completions';
-  const ghUrl   = 'https://models.inference.ai.azure.com/chat/completions';
-  const isGH = provider === 'github';
-  const url = isGH ? ghUrl : groqUrl;
+async function readError(response) {
+  try {
+    const payload = await response.json();
+    return payload?.error?.message || JSON.stringify(payload).slice(0, 400);
+  } catch { return `HTTP ${response.status}`; }
+}
+
+export async function queryStructured({ name, schema, instructions, userInput, maxOutputTokens = 7000 }) {
+  const settings = getSettings();
+  const apiKey = getSecrets().groqApiKey;
+  if (!apiKey) throw new Error('Ajoute une clé Groq gratuite dans l’espace parents.');
   const body = {
-    model: model || (isGH ? 'gpt-4o-mini' : 'llama-3.3-70b-versatile'),
-    messages: [{ role: 'user', content: prompt }],
-    temperature: 0.8,
-    response_format: { type: 'json_object' },
+    model: settings.generationModel || 'openai/gpt-oss-120b',
+    messages: [
+      { role: 'system', content: instructions },
+      { role: 'user', content: userInput }
+    ],
+    reasoning_effort: 'medium',
+    max_completion_tokens: maxOutputTokens,
+    response_format: {
+      type: 'json_schema',
+      json_schema: { name, strict: true, schema }
+    }
   };
-  const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` };
-  logDebug('llm.request', { provider, model, prompt: prompt.slice(0, 200) });
-  const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
-  const text = await res.text();
-  logDebug('llm.http', { provider, status: res.status, ok: res.ok, bodyPreview: text.slice(0, 4000) });
-  if (!res.ok) return { rawText: text, data: null, provider, ok: false, status: res.status };
-  let outer = null;
-  try { outer = JSON.parse(text); } catch {}
-  const rawText = outer?.choices?.[0]?.message?.content || text;
-  const data = parseMaybeJson(rawText);
-  logDebug('llm.parsed', { provider, parsed: !!data });
-  return { rawText, data, provider, ok: !!data, status: res.status };
-}
-
-/**
- * callLLM(prompt) — alias simplifié (wizard.js, weaver.js)
- * Lit la clé et le modèle depuis les settings courants.
- */
-export async function callLLM(prompt) {
-  const s = getSettings();
-  return queryLlm({
-    provider: 'groq',
-    apiKey: s.apiKey,
-    model: s.model || 'llama-3.3-70b-versatile',
-    prompt,
+  logDebug('ai.request', { name, model: body.model, inputLength: userInput.length });
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+    body: JSON.stringify(body)
   });
+  if (!response.ok) {
+    const detail = await readError(response);
+    logDebug('ai.error', { status: response.status, detail });
+    if (response.status === 429) throw new Error('La limite gratuite est atteinte pour le moment. Réessaie dans quelques instants.');
+    throw new Error(`La génération a échoué : ${detail}`);
+  }
+  const payload = await response.json();
+  const data = parseContent(payload);
+  logDebug('ai.success', { name, model: body.model });
+  return { data, usage: payload.usage || null };
 }

@@ -1,0 +1,16 @@
+{
+  "name": "histoires-pwa",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Conteur interactif pour enfants, installable et utilisable hors ligne.",
+  "scripts": {
+    "build": "node scripts/build-static.mjs",
+    "test": "node --test",
+    "validate:stories": "node scripts/validate-stories.mjs",
+    "check": "npm run validate:stories && npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

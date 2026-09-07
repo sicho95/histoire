@@ -1,0 +1,56 @@
+name: Publier la PWA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: histoire-webapp
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer les sources
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Préparer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer
+        run: npm ci
+
+      - name: Vérifier et construire
+        env:
+          BUILD_ID: ${{ github.sha }}-${{ github.run_number }}
+        run: |
+          npm run check
+          mkdir -p /tmp/histoire-build
+          cp -R .webapp-build/. /tmp/histoire-build/
+
+      - name: Publier la branche WebApp
+        run: |
+          git config user.name "sicho95"
+          git config user.email "10479931+sicho95@users.noreply.github.com"
+          git fetch origin WebApp || true
+          if git show-ref --verify --quiet refs/remotes/origin/WebApp; then
+            git switch --force-create WebApp origin/WebApp
+          else
+            git switch --orphan WebApp
+          fi
+          git rm -rf .
+          cp -R /tmp/histoire-build/. .
+          git add -A
+          git commit -m "Publish build ${{ github.sha }}" || exit 0
+          git push origin WebApp
+        shell: bash

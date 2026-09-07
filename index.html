@@ -1,417 +1,128 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-  <meta name="theme-color" content="#0f172a">
-  <title>Conteur Interactif</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff8eb">
+  <meta name="description" content="Des histoires à embranchements pour enfants, disponibles hors connexion.">
+  <title>Histoires à choisir</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
 </head>
 <body>
-<div class="app-shell">
-  <header class="topbar">
-    <button id="btn-library" class="header-btn header-btn--icon" aria-label="Ma bibliothèque">📚</button>
-    <div id="top-title" class="top-title" aria-hidden="true">📖</div>
-    <button id="btn-parental" class="header-btn header-btn--icon" aria-label="Paramètres parents">⚙️</button>
-  </header>
-  <main>
+  <div class="app-shell">
+    <header class="topbar">
+      <button id="home-logo" class="brand" type="button" aria-label="Revenir à l'accueil"><span>📚</span><strong>Histoires à choisir</strong></button>
+      <span id="offline-pill" class="status-pill hidden">Hors connexion</span>
+      <button id="open-parents" class="icon-button" type="button" aria-label="Espace parents">⚙️</button>
+    </header>
 
-    <!-- HOME -->
-    <section id="view-home" class="view">
-      <div id="story-carousel" class="story-carousel" aria-live="polite"></div>
-    </section>
-
-    <!-- READER -->
-    <section id="view-reader" class="view hidden">
-      <div class="reader-screen">
-        <div class="cover-stage">
-          <div class="cover-stage__art">
-            <div id="reader-cover-emoji" class="cover-stage__emoji">📖</div>
-            <div class="cover-stage__halo"></div>
-          </div>
-          <div class="cover-stage__meta">
-            <p id="reader-story-title" class="reader-story-title"></p>
-            <h2 id="reader-node-title" class="reader-node-title">Installe-toi bien…</h2>
-          </div>
+    <main id="app-main">
+      <section id="view-home" class="view home-view">
+        <div class="hero-copy">
+          <p class="eyebrow">À toi de décider</p>
+          <h1>Chaque choix change l’histoire.</h1>
+          <p>Écoute, choisis et découvre une fin différente. Les histoires publiées restent disponibles hors connexion.</p>
         </div>
-        <div id="question-panel" class="question-panel hidden">
-          <button id="btn-pause" class="btn-icon" aria-label="Arrêter la lecture">⏸️</button>
-          <h3 id="current-question">Que choisis-tu ?</h3>
-          <button id="btn-repeat-question" class="btn-icon" aria-label="Réécouter la question">👂</button>
+        <div class="section-heading">
+          <div><p class="eyebrow">La bibliothèque</p><h2>Choisis une aventure</h2></div>
+          <button id="sync-stories" class="text-button" type="button">Actualiser</button>
         </div>
-        <div id="choices-grid" class="choices-grid hidden"></div>
-        <div class="reader-actions">
-          <button id="btn-back-home" class="btn-secondary btn-control" aria-label="Accueil">🏠</button>
-          <button id="btn-speak" class="btn-voice btn-control" aria-label="Parler">🎤 Parler !</button>
+        <div id="story-carousel" class="story-grid" aria-live="polite"></div>
+        <article class="studio-callout">
+          <div class="callout-emoji">✨</div>
+          <div><p class="eyebrow">Atelier enfant</p><h2>Inventer une nouvelle histoire</h2><p>Une histoire privée sur cet appareil, à relire en famille avant toute publication.</p></div>
+          <button id="start-studio" class="primary-button" type="button">Créer</button>
+        </article>
+      </section>
+
+      <section id="view-reader" class="view hidden reader-view" aria-live="polite">
+        <div class="reader-topline">
+          <button id="reader-close" class="icon-button" type="button" aria-label="Fermer l'histoire">✕</button>
+          <div class="reader-progress"><span id="reader-progress-bar"></span></div>
+          <button id="reader-audio" class="icon-button" type="button" aria-label="Mettre la lecture en pause">⏸</button>
         </div>
-      </div>
-    </section>
-
-    <!-- LIBRARY -->
-    <section id="view-library" class="view hidden">
-      <div class="panel panel-scroll">
-        <div class="panel-head">
-          <h2>📚 Ma Bibliothèque</h2>
-          <div class="row-actions">
-            <label class="btn-secondary upload-btn">📥 Importer<input id="library-import-file" type="file" accept="application/json"></label>
-            <button id="btn-library-back" class="btn-secondary">← Retour</button>
-          </div>
+        <article class="reader-card">
+          <div id="reader-emoji" class="reader-emoji">📖</div>
+          <p id="reader-story-title" class="eyebrow"></p>
+          <h1 id="reader-headline"></h1>
+          <p id="reader-text" class="reader-text"></p>
+        </article>
+        <div id="reader-question" class="reader-question hidden">
+          <h2 id="question-text">Que choisis-tu ?</h2>
+          <div id="choices-grid" class="choice-grid"></div>
+          <button id="speak-choice" class="voice-button" type="button"><span>🎤</span> Dire une autre idée</button>
+          <p id="voice-help" class="microcopy">Nécessite Internet et la clé gratuite configurée par un parent.</p>
         </div>
-        <div id="library-list" class="list-container"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- WIZARD (création histoire) -->
-    <section id="view-wizard" class="view hidden">
-      <div class="wizard-wrap">
-        <button id="btn-wizard-back" class="btn-secondary wz-back">← Retour</button>
+      <section id="view-studio" class="view hidden compact-view">
+        <div class="view-heading"><button class="icon-button back-home" type="button">←</button><div><p class="eyebrow">Atelier enfant</p><h1>Fabrique ton aventure</h1></div></div>
+        <form id="studio-form" class="card form-stack">
+          <label><span>Le héros ou l’héroïne</span><select id="studio-hero"><option>une exploratrice courageuse</option><option>un petit dragon curieux</option><option>un animal rigolo</option><option>un robot au grand cœur</option></select></label>
+          <label><span>Son prénom d’histoire</span><input id="studio-name" maxlength="20" placeholder="Ex. Lila" autocomplete="off"></label>
+          <label><span>Le monde à explorer</span><select id="studio-place"><option>un château dans les nuages</option><option>une forêt enchantée</option><option>une planète inconnue</option><option>un royaume sous-marin</option></select></label>
+          <label><span>L’ambiance</span><select id="studio-theme"><option>une quête merveilleuse</option><option>un mystère rassurant</option><option>une aventure très drôle</option><option>un voyage avec un peu de frisson</option></select></label>
+          <label><span>Une idée à ajouter <small>(facultatif)</small></span><textarea id="studio-wish" maxlength="160" placeholder="Ex. une baleine qui sait voler"></textarea></label>
+          <div class="privacy-note"><span>🛡️</span><p>N’écris ni nom complet, ni école, ni adresse. Le brouillon restera privé sur cet appareil.</p></div>
+          <button id="generate-story" class="primary-button full-button" type="submit">✨ Créer mon histoire</button>
+          <p id="studio-status" class="form-status" role="status"></p>
+        </form>
+      </section>
 
-        <!-- Step 0: Welcome -->
-        <div class="wz-step" data-step="0">
-          <div class="wz-center">
-            <div class="wz-big-emoji">✨</div>
-            <h2 class="wz-title">Créer mon histoire</h2>
-            <p class="wz-subtitle">Je vais t'aider à créer une aventure rien que pour toi !</p>
-            <button id="btn-wz-start" class="btn-primary wz-cta">C'est parti ! 🚀</button>
-          </div>
+      <section id="view-library" class="view hidden compact-view">
+        <div class="view-heading"><button class="icon-button back-home" type="button">←</button><div><p class="eyebrow">Sur cet appareil</p><h1>Mes créations</h1></div></div>
+        <div class="info-card"><span>🔒</span><p>Les brouillons ne sont jamais envoyés automatiquement sur GitHub. Exporte un dossier pour que le parent le relise puis me le confie ici.</p></div>
+        <div id="draft-list" class="stack-list"></div>
+      </section>
+
+      <section id="view-parents" class="view hidden compact-view">
+        <div class="view-heading"><button class="icon-button back-home" type="button">←</button><div><p class="eyebrow">Configuration</p><h1>Espace parents</h1></div></div>
+        <div class="settings-grid">
+          <section class="card form-stack">
+            <h2>Création gratuite en ligne</h2>
+            <p class="supporting">Une clé Groq gratuite permet de créer des histoires. Elle reste dans la session, sauf si vous choisissez de la garder sur cet appareil.</p>
+            <label><span>Clé Groq</span><input id="groq-key" type="password" placeholder="gsk_…" autocomplete="off"></label>
+            <label><span>Modèle</span><select id="generation-model"><option value="openai/gpt-oss-120b">GPT-OSS 120B — meilleure qualité</option><option value="openai/gpt-oss-20b">GPT-OSS 20B — plus rapide</option></select></label>
+            <label class="check-row"><input id="remember-keys" type="checkbox"><span>Conserver les clés sur cet appareil</span></label>
+          </section>
+          <section class="card form-stack">
+            <h2>Voix de narration</h2>
+            <label><span>Mode</span><select id="tts-provider"><option value="browser">Voix gratuite de l’appareil</option><option value="openai">OpenAI — voix naturelle à la demande</option></select></label>
+            <label><span>Clé OpenAI <small>(facultatif)</small></span><input id="openai-key" type="password" placeholder="sk-…" autocomplete="off"></label>
+            <label><span>Voix</span><select id="openai-voice"><option value="marin">Marin</option><option value="cedar">Cedar</option><option value="coral">Coral</option><option value="nova">Nova</option></select></label>
+            <p class="supporting">Les MP3 éditoriaux sont toujours prioritaires. Sans MP3 ni clé OpenAI, la voix gratuite de l’appareil prend le relais avec le rythme et l’émotion prévus pour la scène.</p>
+          </section>
+          <section class="card form-stack">
+            <h2>Sauvegarde</h2>
+            <div class="button-row"><button id="export-data" class="secondary-button" type="button">Exporter mes données</button><label class="secondary-button file-button">Importer<input id="import-data" type="file" accept="application/json"></label></div>
+            <button id="save-settings" class="primary-button full-button" type="button">Enregistrer</button>
+            <p id="settings-status" class="form-status" role="status"></p>
+          </section>
         </div>
+        <p class="version-line">Version __APP_VERSION__ · build <span id="build-id">__BUILD_ID__</span></p>
+      </section>
 
-        <!-- Step 1: Personnage -->
-        <div class="wz-step hidden" data-step="1">
-          <h2 class="wz-title">Qui est le héros ?</h2>
-          <div id="wz-char-grid" class="wz-grid"></div>
-        </div>
+      <section id="view-end" class="view hidden end-view">
+        <div id="end-emoji" class="end-emoji">🌟</div><p class="eyebrow">Fin de cette aventure</p><h1 id="end-title">Bravo !</h1>
+        <p id="end-summary"></p>
+        <div class="button-row centered"><button id="restart-story" class="secondary-button" type="button">Rejouer</button><button id="save-adventure" class="primary-button" type="button">Garder ce parcours</button></div>
+        <button id="end-home" class="text-button" type="button">Choisir une autre histoire</button>
+      </section>
+    </main>
 
-        <!-- Step 1b: Prénom -->
-        <div class="wz-step hidden" data-step="1b">
-          <div class="wz-center">
-            <div id="wz-char-chosen" class="wz-big-emoji">🧒</div>
-            <h2 class="wz-title">Quel est son prénom ?</h2>
-            <input id="wz-char-name" class="wz-input" type="text" placeholder="Écris un prénom…" maxlength="20">
-            <div class="wz-row">
-              <button id="btn-wz-name-rand" class="btn-secondary">🎲 Au hasard</button>
-              <button id="btn-wz-name-confirm" class="btn-primary">Suivant →</button>
-            </div>
-          </div>
-        </div>
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <button data-view="view-home" class="active"><span>🏠</span>Accueil</button>
+      <button data-view="view-library"><span>🗂️</span>Créations</button>
+      <button data-view="view-parents"><span>⚙️</span>Parents</button>
+    </nav>
+  </div>
 
-        <!-- Step 2: Lieu -->
-        <div class="wz-step hidden" data-step="2">
-          <h2 class="wz-title">Où se passe l'aventure ?</h2>
-          <div id="wz-place-grid" class="wz-grid"></div>
-        </div>
-
-        <!-- Step 3: Thème -->
-        <div class="wz-step hidden" data-step="3">
-          <h2 class="wz-title">Quel genre d'histoire ?</h2>
-          <div id="wz-theme-grid" class="wz-grid"></div>
-        </div>
-
-        <!-- Step 4: Génération -->
-        <div class="wz-step hidden" data-step="4">
-          <div class="wz-center">
-            <div class="wz-spinner">✨</div>
-            <h2 class="wz-title">Je crée ton histoire…</h2>
-            <p id="wz-gen-status" class="wz-subtitle">Un instant magique…</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PARENTAL -->
-    <section id="view-parental" class="view hidden">
-      <div class="panel panel--wide panel-scroll">
-        <div id="pin-gate" class="pin-gate"></div>
-        <div id="parental-content" class="hidden">
-          <div class="panel-head">
-            <h2>⚙️ Paramètres parents</h2>
-            <button id="btn-parental-back" class="btn-secondary">← Retour</button>
-          </div>
-          <div class="tabs" role="tablist">
-            <button class="tab-btn active" data-tab="tab-access" role="tab">Accès</button>
-            <button class="tab-btn" data-tab="tab-stories" role="tab">Histoires</button>
-            <button class="tab-btn" data-tab="tab-llm" role="tab">Génération</button>
-            <button class="tab-btn" data-tab="tab-voice" role="tab">Voix</button>
-            <button class="tab-btn" data-tab="tab-gcp" role="tab">Google TTS</button>
-            <button class="tab-btn" data-tab="tab-openai" role="tab">OpenAI</button>
-            <button class="tab-btn" data-tab="tab-eleven" role="tab">ElevenLabs</button>
-            <button class="tab-btn" data-tab="tab-offline" role="tab">Hors-ligne</button>
-            <button class="tab-btn" data-tab="tab-debug" role="tab">Debug</button>
-          </div>
-
-          <!-- ACCÈS -->
-          <div id="tab-access" class="tab-panel active">
-            <div class="settings-stack">
-              <label class="field"><span>Code PIN</span><input id="input-pin-edit" type="password" placeholder="4 chiffres"></label>
-              <div class="row-actions">
-                <button id="btn-save-settings" class="btn-primary">💾 Enregistrer tout</button>
-              </div>
-              <hr class="settings-hr">
-              <p class="field-help"><strong>💾 Sauvegarde complète (données + cache audio)</strong> — Recommandé pour changer d'appareil ou redéployer.</p>
-              <div class="row-actions">
-                <button id="btn-export-full-zip" class="btn-primary">📦 Exporter ZIP complet</button>
-                <label class="btn-secondary upload-btn">📂 Importer ZIP complet<input id="import-full-zip" type="file" accept=".zip,application/zip"></label>
-              </div>
-              <hr class="settings-hr">
-              <p class="field-help"><strong>📋 Données seules</strong> (histoires + bibliothèque, sans cache audio)</p>
-              <div class="row-actions">
-                <button id="btn-export" class="btn-secondary">📤 Exporter JSON données</button>
-                <label class="btn-secondary upload-btn">📥 Importer JSON données<input id="import-file" type="file" accept="application/json"></label>
-              </div>
-            </div>
-          </div>
-
-          <!-- HISTOIRES (import/export) -->
-          <div id="tab-stories" class="tab-panel">
-            <div class="settings-stack">
-              <div class="info-box">
-                📖 <strong>Ajouter une histoire</strong><br>
-                Dépose tes fichiers JSON dans le dossier <code>stories/</code> du site (avec un <code>stories/index.json</code>) — elles seront chargées automatiquement au démarrage sans consommer de token TTS.<br>
-                Tu peux aussi importer un JSON directement ici.
-              </div>
-              <div class="row-actions">
-                <label class="btn-primary upload-btn">📥 Importer une histoire JSON<input id="import-story-file" type="file" accept="application/json"></label>
-                <button id="btn-export-story-template" class="btn-secondary">📄 Télécharger template vierge</button>
-              </div>
-              <hr class="settings-hr">
-              <p class="field-help"><strong>🔊 Cache audio statique (/audio/)</strong><br>
-              Pour pré-générer les MP3 des histoires de base (zéro token au démarrage) :<br>
-              1. Exporte le ZIP complet après avoir tout préchargé<br>
-              2. Place les <code>mp3/*.mp3</code> dans ton dossier <code>/audio/</code> sur GitHub<br>
-              3. Génère un <code>audio/manifest.json</code> <code>{ "cacheKey": "filename.mp3" }</code><br>
-              L'app vérifiera d'abord IndexedDB, puis <code>/audio/</code>, puis appellera l'API seulement si nécessaire.
-              </p>
-            </div>
-          </div>
-
-          <!-- GÉNÉRATION (LLM) -->
-          <div id="tab-llm" class="tab-panel">
-            <div class="settings-stack">
-              <div class="info-box">ℹ️ La génération d'histoire nécessite une connexion internet et une clé API <strong>Groq</strong> gratuite (inscription sur <a href="https://console.groq.com" target="_blank">console.groq.com</a>).</div>
-              <label class="field"><span>Clé API Groq (LLM — gratuit)</span><input id="input-api-key" type="password" placeholder="gsk_..."></label>
-              <label class="field">
-                <span>Modèle de génération</span>
-                <select id="input-model">
-                  <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile — ⭐ Meilleure qualité narrative</option>
-                  <option value="llama-3.1-8b-instant">llama-3.1-8b-instant — 🚀 Très rapide (moins riche)</option>
-                  <option value="qwen-qwq-32b">qwen-qwq-32b — 🧠 Excellent raisonnement / énigmes</option>
-                  <option value="mixtral-8x7b-32768">mixtral-8x7b-32768 — ⚖️ Bon compromis vitesse/qualité</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <!-- VOIX (choix fournisseur) -->
-          <div id="tab-voice" class="tab-panel">
-            <div class="settings-stack">
-              <p class="field-help">Choisis le moteur vocal à utiliser. Configure ensuite le fournisseur dans son onglet dédié.</p>
-              <label class="field">
-                <span>Fournisseur TTS actif</span>
-                <select id="input-tts-provider">
-                  <option value="browser">🖥️ Voix navigateur — Gratuit, hors-ligne, qualité basique</option>
-                  <option value="gcp">☁️ Google Cloud TTS — 1M-4M car./mois gratuits, excellente qualité FR</option>
-                  <option value="openai">🤖 OpenAI TTS — Payant, très naturel</option>
-                  <option value="elevenlabs">🎙️ ElevenLabs — Très expressif, quota limité</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <!-- GOOGLE CLOUD TTS -->
-          <div id="tab-gcp" class="tab-panel">
-            <div class="settings-stack">
-              <div class="info-box">
-                ☁️ <strong>Google Cloud TTS</strong> — Quota gratuit mensuel permanent :<br>
-                • <strong>Standard</strong> : 4 millions de caractères/mois gratuits<br>
-                • <strong>WaveNet</strong> : 1 million de caractères/mois gratuits<br>
-                • <strong>Journey</strong> : 1 million de caractères/mois gratuits<br><br>
-                ⚠️ <strong>Clé API</strong> (pas compte de service) : Google Cloud Console → APIs &amp; Services → Identifiants → Créer une clé API → Restreindre à Cloud Text-to-Speech API.
-              </div>
-              <label class="field"><span>Clé API Google Cloud</span><input id="input-gcp-api-key" type="password" placeholder="AIza..."></label>
-              <label class="field">
-                <span>Type de voix</span>
-                <select id="input-gcp-voice-type">
-                  <option value="Standard">Standard — 4M car./mois gratuits, qualité basique</option>
-                  <option value="Wavenet" selected>WaveNet — 1M car./mois gratuits, ⭐ meilleure qualité FR</option>
-                  <option value="Journey">Journey — 1M car./mois gratuits, très naturelle (preview)</option>
-                </select>
-              </label>
-              <label class="field">
-                <span>Voix (nom exact)</span>
-                <select id="input-gcp-voice-name">
-                  <optgroup label="WaveNet FR (recommandé)">
-                    <option value="fr-FR-Wavenet-A">fr-FR-Wavenet-A — Femme douce</option>
-                    <option value="fr-FR-Wavenet-B">fr-FR-Wavenet-B — Homme grave</option>
-                    <option value="fr-FR-Wavenet-C">fr-FR-Wavenet-C — Femme chaleureuse</option>
-                    <option value="fr-FR-Wavenet-D">fr-FR-Wavenet-D — Homme expressif</option>
-                    <option value="fr-FR-Wavenet-E">fr-FR-Wavenet-E — Femme énergique</option>
-                    <option value="fr-FR-Wavenet-F">fr-FR-Wavenet-F — Femme narrative</option>
-                  </optgroup>
-                  <optgroup label="Journey FR (très naturelle)">
-                    <option value="fr-FR-Journey-D">fr-FR-Journey-D — Homme naturel</option>
-                    <option value="fr-FR-Journey-F">fr-FR-Journey-F — Femme naturelle</option>
-                    <option value="fr-FR-Journey-O">fr-FR-Journey-O — Femme narrative</option>
-                  </optgroup>
-                  <optgroup label="Standard FR (économique)">
-                    <option value="fr-FR-Standard-A">fr-FR-Standard-A — Femme</option>
-                    <option value="fr-FR-Standard-B">fr-FR-Standard-B — Homme</option>
-                    <option value="fr-FR-Standard-C">fr-FR-Standard-C — Femme</option>
-                    <option value="fr-FR-Standard-D">fr-FR-Standard-D — Homme</option>
-                  </optgroup>
-                </select>
-              </label>
-              <label class="field">
-                <span>Langue</span>
-                <select id="input-gcp-language">
-                  <option value="fr-FR">fr-FR — Français de France</option>
-                  <option value="fr-CA">fr-CA — Français du Canada</option>
-                </select>
-              </label>
-              <label class="field">
-                <span>Vitesse de lecture <span id="gcp-rate-display">0.87×</span></span>
-                <div class="slider-row">
-                  <span class="slider-label">🐢</span>
-                  <input id="input-gcp-speaking-rate" type="range" min="0.5" max="1.3" step="0.01" value="0.87" class="speed-slider">
-                  <span class="slider-label">🐇</span>
-                </div>
-                <div class="slider-ticks">
-                  <span>0.5×</span><span>0.75×</span><span>1.0×</span><span>1.3×</span>
-                </div>
-              </label>
-              <div id="gcp-quota-box" class="quota-box hidden">
-                <div>
-                  <strong>Quota Google Cloud (estimé local)</strong>
-                  <p id="gcp-quota-text">Sauvegarde ta clé pour voir le quota.</p>
-                  <div class="quota-bar-track"><div id="gcp-quota-bar" class="quota-bar-fill"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- OPENAI TTS -->
-          <div id="tab-openai" class="tab-panel">
-            <div class="settings-stack">
-              <div class="info-box">🤖 <strong>OpenAI TTS</strong> — Payant (modèle tts-1). Très naturel. Inscription sur <a href="https://platform.openai.com" target="_blank">platform.openai.com</a>.</div>
-              <label class="field"><span>Clé API OpenAI</span><input id="input-openai-api-key" type="password" placeholder="sk-..."></label>
-              <label class="field">
-                <span>Voix</span>
-                <select id="input-openai-voice">
-                  <option value="nova">nova — Femme douce et chaleureuse</option>
-                  <option value="shimmer">shimmer — Femme posée</option>
-                  <option value="alloy">alloy — Neutre, clair</option>
-                  <option value="echo">echo — Homme posé</option>
-                  <option value="fable">fable — Homme narrateur</option>
-                  <option value="onyx">onyx — Homme grave</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <!-- ELEVENLABS -->
-          <div id="tab-eleven" class="tab-panel">
-            <div class="settings-stack">
-              <div class="info-box">🎙️ <strong>ElevenLabs</strong> — Plan gratuit : 10 000 caractères/mois. Inscription sur <a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>.</div>
-              <label class="field"><span>Clé API ElevenLabs</span><input id="input-eleven-api-key" type="password" placeholder="Clé xi-api-key"></label>
-              <label class="field">
-                <span>Voice ID</span>
-                <select id="input-eleven-voice-id">
-                  <optgroup label="Gratuites — voix par défaut">
-                    <option value="21m00Tcm4TlvDq8ikWAM">Rachel — ✅ Gratuite</option>
-                    <option value="pNInz6obpgDQGcFmaJgB">Adam — ✅ Gratuit</option>
-                    <option value="EXAVITQu4vr4xnSDxMaL">Bella — ✅ Gratuite</option>
-                    <option value="TxGEqnHWrfWFTfGW9XjX">Josh — ✅ Gratuit</option>
-                  </optgroup>
-                  <optgroup label="Voix premium / library">
-                    <option value="tKaoyJLW05zqV0tIH9FD">Gaëlle (FR)</option>
-                    <option value="ohItIVrXTBI80RrUECOD">Guillaume (FR)</option>
-                    <option value="aQROLel5sQbj1vuIVi6B">Nicolas (FR)</option>
-                    <option value="a5n9pJUnAhX4fn7lx3uo">Martin (FR)</option>
-                  </optgroup>
-                </select>
-              </label>
-              <label class="field">
-                <span>Modèle vocal</span>
-                <select id="input-eleven-model">
-                  <option value="eleven_multilingual_v2">eleven_multilingual_v2 — ⭐ Meilleure qualité FR, 29 langues</option>
-                  <option value="eleven_v3">eleven_v3 — ✨ Ultra expressif, émotions riches (lent)</option>
-                  <option value="eleven_turbo_v2_5">eleven_turbo_v2_5 — ⚡ Compromis qualité/vitesse</option>
-                  <option value="eleven_flash_v2_5">eleven_flash_v2_5 — 🚀 Ultra rapide, faible latence</option>
-                </select>
-              </label>
-              <label class="field">
-                <span>Qualité audio</span>
-                <select id="input-eleven-format">
-                  <option value="mp3_44100_128">mp3_44100_128 — Haute qualité</option>
-                  <option value="mp3_44100_64">mp3_44100_64 — Standard</option>
-                  <option value="mp3_22050_32">mp3_22050_32 — Légère (économie)</option>
-                </select>
-              </label>
-              <label class="field field--inline"><span>Forcer langue française</span><input id="input-eleven-force-fr" type="checkbox"></label>
-              <div id="eleven-quota-box" class="quota-box hidden">
-                <div><strong>Quota ElevenLabs</strong><p id="eleven-quota-text">Clique sur Actualiser.</p></div>
-                <button id="btn-refresh-eleven-quota" class="btn-secondary">Actualiser</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- HORS-LIGNE -->
-          <div id="tab-offline" class="tab-panel">
-            <div class="settings-stack">
-              <div class="quota-box">
-                <div><h3>Cache audio</h3><p id="offline-cache-status">Aucun cache.</p></div>
-                <div class="col-actions">
-                  <button id="btn-clear-audio-cache" class="btn-secondary">🗑️ Vider cache</button>
-                  <button id="btn-export-mp3-zip" class="btn-secondary">📦 Exporter ZIP MP3</button>
-                </div>
-              </div>
-              <p class="field-help">Les audios déjà en cache ne sont jamais regénérés. Exporte le ZIP MP3 pour le conserver entre déploiements.</p>
-              <label class="field"><span>Histoire à préparer</span><select id="input-offline-story"></select></label>
-              <label class="field"><span>Mode hors-ligne</span><select id="input-offline-mode"><option value="selected">Sélectionné</option><option value="base">Histoires de base</option><option value="library">Bibliothèque</option><option value="all">Tout</option></select></label>
-              <div class="row-actions">
-                <button id="btn-precache-selected" class="btn-primary">▶ Précharger sélection</button>
-                <button id="btn-precache-base" class="btn-secondary">Base</button>
-                <button id="btn-precache-library" class="btn-secondary">Bibliothèque</button>
-                <button id="btn-precache-all" class="btn-secondary">Tout</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- DEBUG -->
-          <div id="tab-debug" class="tab-panel">
-            <div class="settings-stack">
-              <label class="field field--inline"><span>Mode debug</span><input id="input-debug-enabled" type="checkbox"></label>
-              <div class="row-actions">
-                <button id="btn-download-debug" class="btn-secondary">⬇️ Télécharger debug</button>
-                <button id="btn-clear-debug" class="btn-secondary">🧹 Vider debug</button>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /parental-content -->
-      </div>
-    </section>
-
-    <!-- END SCREEN -->
-    <section id="view-end" class="view hidden">
-      <div class="end-screen">
-        <div id="end-confetti" class="confetti-area"></div>
-        <div class="end-content">
-          <div class="end-emoji">🎉</div>
-          <h2 id="end-title">Bravo !</h2>
-          <p id="end-message">Tu as terminé l'histoire !</p>
-          <button id="btn-save-adventure" class="btn-primary">💾 Garder cette aventure</button>
-          <button id="btn-end-home" class="btn-secondary">🏠 Retour</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-<script type="module" src="src/app.js"></script>
+  <aside id="update-banner" class="update-banner hidden" role="status"><span>Une nouvelle version est prête.</span><button id="apply-update" type="button">Actualiser</button></aside>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>

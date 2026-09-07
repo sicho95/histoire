@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "id": "noa-gare-etoiles",
+  "title": "Noa et la Gare des Étoiles",
+  "coverEmoji": "🚂",
+  "intro": "Un voyage nocturne où chaque décision change réellement la destination.",
+  "ageRange": "5–9 ans",
+  "durationMinutes": 5,
+  "startNode": "start",
+  "revision": 1,
+  "status": "published",
+  "storyBible": {
+    "premise": "Noa monte dans un train céleste et doit ramener l'étoile Luma chez elle.",
+    "theme": "Aider quelqu'un demande parfois de changer son propre plan.",
+    "values": ["générosité", "ingéniosité", "persévérance"],
+    "heroGoal": "Ramener Luma à la constellation du Grand Cerf avant l'aube.",
+    "stakes": "Sans elle, le Grand Cerf disparaîtra du ciel pour une année.",
+    "recurringObjects": ["un billet doré", "une montre lunaire", "une valise qui miaule"]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "headline": "Le quai numéro zéro",
+      "coverEmoji": "🌌",
+      "text": "Une nuit, Noa fut réveillé par un sifflement de locomotive sous son lit. En se penchant, il découvrit un escalier menant au quai numéro zéro. Un train bleu nuit y attendait, avec des roues faites de lunes. Dans sa poche apparut un billet doré portant ces mots : « Une place pour la destination dont tu as le plus besoin. » Au moment de monter, une petite étoile nommée Luma tomba dans sa capuche. Elle devait rejoindre la constellation du Grand Cerf avant l'aube, mais elle avait perdu son billet. Le contrôleur annonça le départ. Noa pouvait montrer son billet et expliquer le problème, ou se cacher avec Luma dans le wagon des bagages pour chercher une autre solution.",
+      "question": "Que décide Noa au départ du train ?",
+      "isEnding": false,
+      "narration": { "mood": "wonder", "pace": "normal", "intensity": 2 },
+      "choices": [
+        { "id": "ticket", "label": "Parler au contrôleur", "emoji": "🎫", "nextNode": "conductor", "consequenceHint": "Demander de l'aide franchement." },
+        { "id": "luggage", "label": "Explorer les bagages", "emoji": "🧳", "nextNode": "luggage", "consequenceHint": "Chercher discrètement une autre route." }
+      ]
+    },
+    {
+      "id": "conductor",
+      "headline": "Le contrôleur aux quatre montres",
+      "coverEmoji": "⌚",
+      "text": "Le contrôleur examina le billet avec quatre monocles. « Il peut conduire une personne où elle le souhaite, expliqua-t-il. Tu peux rentrer chez toi. Ou demander le Grand Cerf, mais nous traverserons le Tunnel des Cauchemars. » Les lampes vacillèrent. Luma pâlit : les étoiles détestent les endroits sans lumière. Noa regarda la montre lunaire. Il restait cinquante-trois minutes avant l'aube. Il pouvait offrir son billet à Luma et rentrer plus tard par ses propres moyens. Il pouvait aussi guider le train dans le tunnel, en portant une lanterne devant la locomotive, afin que Luma conserve assez de lumière pour retrouver sa place dans le ciel.",
+      "question": "Quelle aide Noa propose-t-il ?",
+      "isEnding": false,
+      "narration": { "mood": "gentle_fear", "pace": "slow", "intensity": 2 },
+      "choices": [
+        { "id": "give", "label": "Offrir le billet à Luma", "emoji": "💛", "nextNode": "gift-ending", "consequenceHint": "Une fin généreuse et inattendue." },
+        { "id": "guide", "label": "Guider le train", "emoji": "🏮", "nextNode": "tunnel", "consequenceHint": "Affronter l'obscurité ensemble." }
+      ]
+    },
+    {
+      "id": "luggage",
+      "headline": "La valise qui miaule",
+      "coverEmoji": "🧳",
+      "text": "Dans le wagon des bagages, les valises ronflaient. L'une d'elles miaulait. Noa l'ouvrit et libéra un chat cosmique dont la queue dessinait des comètes. Le chat connaissait un raccourci : la Porte des Planètes, cachée derrière les malles. Mais cette porte ne s'ouvrait qu'avec un objet auquel on tenait beaucoup. La poussière de Luma ne fonctionna pas. Noa pensa au billet doré. Il pouvait le glisser dans la serrure et renoncer à sa propre destination. Il pouvait aussi suivre le chat sur le toit du train, où les constellations étaient visibles, mais où soufflait un vent capable d'emporter une petite étoile.",
+      "question": "Quel passage Noa choisit-il ?",
+      "isEnding": false,
+      "narration": { "mood": "mystery", "pace": "normal", "intensity": 2 },
+      "choices": [
+        { "id": "door", "label": "Donner le billet à la porte", "emoji": "🚪", "nextNode": "planet-door", "consequenceHint": "Un raccourci plein d'énigmes." },
+        { "id": "roof", "label": "Grimper sur le toit", "emoji": "🐈", "nextNode": "tunnel", "consequenceHint": "Une traversée mouvementée." }
+      ]
+    },
+    {
+      "id": "tunnel",
+      "headline": "Le Tunnel des Cauchemars",
+      "coverEmoji": "🕯️",
+      "text": "L'obscurité avala le bruit des roues. Des ombres murmurèrent à Noa qu'il arriverait trop tard et que Luma tomberait. Sa gorge se serra. Puis il se souvint que les cauchemars rapetissent quand on leur donne une forme ridicule. Il imagina la plus grande ombre avec des chaussettes à pois et un nez de trompette. Luma éclata de rire et brilla plus fort. Devant eux apparurent deux rails : l'un montait directement vers le ciel mais semblait très fragile ; l'autre descendait vers une station oubliée, d'où une lumière inconnue clignotait encore. Le jour commençait déjà à bleuir le bout du tunnel.",
+      "question": "Quelle voie prend le train ?",
+      "isEnding": false,
+      "narration": { "mood": "suspense", "pace": "lively", "intensity": 3 },
+      "choices": [
+        { "id": "sky", "label": "Prendre la voie du ciel", "emoji": "⬆️", "nextNode": "constellation-ending", "consequenceHint": "Une arrivée rapide et audacieuse." },
+        { "id": "station", "label": "Explorer la station", "emoji": "🏚️", "nextNode": "lost-station", "consequenceHint": "Découvrir qui appelle à l'aide." }
+      ]
+    },
+    {
+      "id": "planet-door",
+      "headline": "La Porte des Planètes",
+      "coverEmoji": "🪐",
+      "text": "Le billet disparut dans la serrure et la porte s'ouvrit sur une salle ronde. Huit petites planètes y tournaient comme les chevaux d'un manège. Une voix demanda : « Quelle planète montre le chemin sans parler ? » Noa observa. Certaines chantaient, d'autres éternuaient des volcans. Une petite planète bleue reflétait simplement Luma et la constellation incomplète derrière elle. Noa la désigna. Elle devint une boussole, mais indiqua deux directions : la route directe vers le Grand Cerf, ou une vieille station d'où venait un appel faible. L'aube approchait. Répondre à l'inconnu risquait de leur faire perdre de précieuses minutes, mais personne ne semblait l'avoir entendu depuis longtemps.",
+      "question": "Où Noa dirige-t-il la boussole ?",
+      "isEnding": false,
+      "narration": { "mood": "mystery", "pace": "slow", "intensity": 2 },
+      "choices": [
+        { "id": "direct", "label": "Aller au Grand Cerf", "emoji": "🦌", "nextNode": "constellation-ending", "consequenceHint": "Accomplir la mission sans détour." },
+        { "id": "call", "label": "Répondre à l'appel", "emoji": "📡", "nextNode": "lost-station", "consequenceHint": "Prendre le temps d'aider encore." }
+      ]
+    },
+    {
+      "id": "lost-station",
+      "headline": "La station oubliée",
+      "coverEmoji": "🛰️",
+      "text": "La lumière venait d'une minuscule gare posée sur un astéroïde. Son gardien, un vieux robot, agitait une lanterne presque éteinte. Il gardait depuis des années un fragment du Grand Cerf, tombé autrefois sur son quai. En voyant Luma, il comprit enfin à qui le rendre. Le fragment et l'étoile tournèrent ensemble, formant une lumière assez forte pour appeler la constellation. Le robot pouvait lancer sa dernière fusée pour propulser Luma dans le ciel. Noa pouvait aussi transformer le train en pont lumineux, à condition que chaque passager accepte d'offrir un souvenir heureux comme carburant. Une solution sauvait du temps ; l'autre permettait à tous de participer.",
+      "question": "Comment rejoindre le Grand Cerf ?",
+      "isEnding": false,
+      "narration": { "mood": "wonder", "pace": "normal", "intensity": 3 },
+      "choices": [
+        { "id": "rocket", "label": "Lancer la dernière fusée", "emoji": "🚀", "nextNode": "rocket-ending", "consequenceHint": "Une fin rapide pour Luma et le gardien." },
+        { "id": "memories", "label": "Créer le pont des souvenirs", "emoji": "🌉", "nextNode": "memory-ending", "consequenceHint": "Une fin construite par tous." }
+      ]
+    },
+    {
+      "id": "gift-ending",
+      "headline": "Le billet qui revient",
+      "coverEmoji": "🎫",
+      "text": "Noa tendit son billet à Luma. Aussitôt, les lettres dorées changèrent : « Deux places pour ceux qui choisissent de s'entraider. » Le train bondit hors des rails et déposa Luma au milieu du Grand Cerf une seconde avant l'aube. La constellation inclina ses immenses bois lumineux pour remercier Noa, puis le billet le ramena dans sa chambre. Sous son oreiller, une montre lunaire brillait chaque fois que quelqu'un, quelque part, partageait quelque chose d'important. Noa comprit alors que la générosité ne vide pas les poches du cœur. Très souvent, elle y fait apparaître une place supplémentaire.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "joy", "pace": "normal", "intensity": 2 },
+      "choices": []
+    },
+    {
+      "id": "constellation-ending",
+      "headline": "Le galop dans le ciel",
+      "coverEmoji": "🦌",
+      "text": "Le train s'élança sur la voie du ciel. Derrière lui, les rails se changeaient en poussière brillante. Noa tenait Luma tandis que le chat cosmique plantait ses griffes dans le toit. Juste avant que le dernier rail disparaisse, le Grand Cerf apparut. Luma sauta et prit sa place entre deux étoiles. Le cerf galopa au-dessus des maisons, dessinant une traînée que tous les enfants endormis virent dans leurs rêves. Noa rentra avec le train du matin. Une nouvelle constellation brillait près de sa fenêtre : un petit voyageur levant une lanterne, pour rappeler que le courage peut être une lumière offerte à quelqu'un d'autre.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "triumph", "pace": "lively", "intensity": 3 },
+      "choices": []
+    },
+    {
+      "id": "rocket-ending",
+      "headline": "Le dernier lancement",
+      "coverEmoji": "🚀",
+      "text": "Le vieux robot plaça Luma dans sa fusée et appuya sur le bouton avec une émotion qui fit clignoter ses yeux. La fusée déposa l'étoile et le fragment à leur place. En récompense, le Grand Cerf envoya une pluie de vis neuves sur la station oubliée. Le robot répara ses panneaux, ses horloges et une machine à chocolat chaud. Noa installa une grande enseigne : « Ici, personne n'est oublié. » Depuis cette nuit, tous les trains célestes font une halte sur l'astéroïde. Et quand Noa regarde le ciel, une petite lanterne clignote trois fois pour lui dire bonsoir.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "joy", "pace": "normal", "intensity": 2 },
+      "choices": []
+    },
+    {
+      "id": "memory-ending",
+      "headline": "Le pont des souvenirs",
+      "coverEmoji": "🌉",
+      "text": "Chaque passager confia un souvenir heureux : un gâteau partagé, une main serrée, un fou rire sous la pluie. Ils devinrent des lanternes et formèrent un pont jusqu'au Grand Cerf. Luma le traversa avec le fragment retrouvé. Quand elle rejoignit sa place, les lanternes revinrent vers leurs propriétaires, encore plus lumineuses. Le robot devint chef de la station des Souvenirs, où les voyageurs fatigués pourraient se rappeler ce qui leur donne du courage. Noa rentra chez lui dans la valise qui miaulait. Il n'avait plus son billet, mais possédait mieux : le souvenir d'un voyage que personne n'aurait pu accomplir seul.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "joy", "pace": "slow", "intensity": 2 },
+      "choices": []
+    }
+  ]
+}

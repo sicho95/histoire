@@ -1,6 +1,16 @@
-const DB_NAME = 'conteur-db-v4';
+import { buildReviewPackage, normalizeStory, storyToPortable, validateStory } from '../core/story-model.js';
+
+const DB_NAME = 'histoires-pwa-v2';
 const DB_VERSION = 1;
+const STORES = ['stories', 'drafts', 'adventures', 'meta'];
 let dbPromise;
+
+function request(req) {
+  return new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
 
 function openDb() {
   if (dbPromise) return dbPromise;
@@ -9,7 +19,9 @@ function openDb() {
     req.onupgradeneeded = () => {
       const db = req.result;
       if (!db.objectStoreNames.contains('stories')) db.createObjectStore('stories', { keyPath: 'id' });
-      if (!db.objectStoreNames.contains('library')) db.createObjectStore('library', { keyPath: 'id', autoIncrement: true });
+      if (!db.objectStoreNames.contains('drafts')) db.createObjectStore('drafts', { keyPath: 'id' });
+      if (!db.objectStoreNames.contains('adventures')) db.createObjectStore('adventures', { keyPath: 'id' });
+      if (!db.objectStoreNames.contains('meta')) db.createObjectStore('meta', { keyPath: 'key' });
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -17,83 +29,120 @@ function openDb() {
   return dbPromise;
 }
 
-function tx(store, mode, fn) {
-  return openDb().then(db => new Promise((resolve, reject) => {
-    const tr = db.transaction(store, mode);
-    const st = tr.objectStore(store);
-    const req = fn(st);
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  }));
+async function withStore(store, mode, operation) {
+  const db = await openDb();
+  const transaction = db.transaction(store, mode);
+  return request(operation(transaction.objectStore(store)));
 }
 
-export const getAllStories = () => tx('stories', 'readonly', s => s.getAll());
-export const getStories = getAllStories; // alias de compatibilité
-export const saveStory = story => tx('stories', 'readwrite', s => s.put(story));
-export const getLibrary = () => tx('library', 'readonly', s => s.getAll());
-export const saveToLibrary = session => tx('library', 'readwrite', s => s.add(session));
+async function putAll(store, values) {
+  const db = await openDb();
+  await new Promise((resolve, reject) => {
+    const transaction = db.transaction(store, 'readwrite');
+    const objectStore = transaction.objectStore(store);
+    for (const value of values) objectStore.put(value);
+    transaction.oncomplete = resolve;
+    transaction.onerror = () => reject(transaction.error);
+  });
+}
+
+export const getAllStories = () => withStore('stories', 'readonly', store => store.getAll());
+export const getStories = getAllStories;
+export const getDrafts = () => withStore('drafts', 'readonly', store => store.getAll());
+export const getLibrary = () => withStore('adventures', 'readonly', store => store.getAll());
+export const getStory = id => withStore('stories', 'readonly', store => store.get(id));
+export const deleteDraft = id => withStore('drafts', 'readwrite', store => store.delete(id));
+
+export async function saveStory(input, meta = {}) {
+  const result = validateStory(normalizeStory(input, meta));
+  if (!result.ok) throw new Error(`Histoire invalide : ${result.errors.join(' ')}`);
+  result.story.status = meta.status || result.story.status || 'published';
+  await withStore('stories', 'readwrite', store => store.put(result.story));
+  return result.story;
+}
+
+export async function saveDraft(input, context = null) {
+  const story = normalizeStory(input, { source: 'child-draft' });
+  const draft = {
+    ...story,
+    status: 'draft',
+    creationContext: context || input.creationContext || null,
+    updatedAt: new Date().toISOString()
+  };
+  await withStore('drafts', 'readwrite', store => store.put(draft));
+  return draft;
+}
+
+export async function saveToLibrary(session) {
+  const saved = {
+    ...session,
+    id: session.id || `aventure-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    savedAt: session.savedAt || new Date().toISOString()
+  };
+  await withStore('adventures', 'readwrite', store => store.put(saved));
+  return saved;
+}
+
+export async function syncPublishedStories({ force = false } = {}) {
+  const catalogResponse = await fetch(`./stories/catalog.json${force ? `?v=${Date.now()}` : ''}`, { cache: 'no-store' });
+  if (!catalogResponse.ok) throw new Error('Le catalogue GitHub est momentanément indisponible.');
+  const catalog = await catalogResponse.json();
+  const current = new Map((await getAllStories()).map(story => [story.id, story]));
+  const synced = [];
+
+  for (const entry of catalog.stories || []) {
+    const existing = current.get(entry.id);
+    if (!force && existing && Number(existing.revision) >= Number(entry.revision || 1)) continue;
+    const response = await fetch(`./stories/${entry.file}?revision=${entry.revision || 1}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Impossible de télécharger « ${entry.title || entry.id} ».`);
+    synced.push(await saveStory(await response.json(), { source: 'github', revision: entry.revision, status: 'published' }));
+  }
+
+  await withStore('meta', 'readwrite', store => store.put({
+    key: 'catalog',
+    revision: catalog.revision || 1,
+    syncedAt: new Date().toISOString()
+  }));
+  return { catalog, synced };
+}
 
 export async function bootstrapStories() {
-  try {
-    const data = await fetch('./assets/default_stories.json', { cache: 'no-store' }).then(r => r.json());
-    await Promise.all(data.map(saveStory));
-  } catch {}
+  try { await syncPublishedStories(); } catch (error) { console.warn(error.message); }
   return getAllStories();
 }
 
 export async function exportAllData() {
-  return { stories: await getAllStories(), library: await getLibrary() };
+  return {
+    exportVersion: 2,
+    exportedAt: new Date().toISOString(),
+    stories: (await getAllStories()).map(storyToPortable),
+    drafts: (await getDrafts()).map(storyToPortable),
+    adventures: await getLibrary()
+  };
 }
 
 export async function importAllData(payload) {
-  const db = await openDb();
-  await new Promise((resolve, reject) => {
-    const tr = db.transaction(['stories', 'library'], 'readwrite');
-    const stories = tr.objectStore('stories');
-    const library = tr.objectStore('library');
-    stories.clear();
-    library.clear();
-    (payload.stories || []).forEach(s => stories.put(s));
-    (payload.library || []).forEach(s => library.add(s));
-    tr.oncomplete = resolve;
-    tr.onerror = () => reject(tr.error);
+  if (!payload || typeof payload !== 'object') throw new Error('Fichier de sauvegarde invalide.');
+  const stories = (payload.stories || []).map(story => normalizeStory(story, { source: story.source || 'import' }));
+  const drafts = (payload.drafts || []).map(story => normalizeStory(story, { source: 'child-draft' }));
+  await putAll('stories', stories);
+  await putAll('drafts', drafts);
+  await putAll('adventures', payload.adventures || payload.library || []);
+}
+
+export const importStory = story => saveDraft(story);
+export const exportStory = async id => (await getStory(id)) || withStore('drafts', 'readonly', store => store.get(id));
+export const importLibraryAdventure = item => saveToLibrary(item);
+export const loadExternalStories = syncPublishedStories;
+
+export async function exportDraftForReview(id, notes = '') {
+  const draft = await withStore('drafts', 'readonly', store => store.get(id));
+  if (!draft) throw new Error('Brouillon introuvable.');
+  return buildReviewPackage(draft, {
+    notes,
+    creationContext: draft.creationContext || null,
+    playedPath: draft.playedPath || []
   });
 }
 
-export const importLibraryAdventure = item => saveToLibrary(item);
-
-/** Importer / mettre à jour une histoire depuis un JSON externe */
-export const importStory = story => tx('stories', 'readwrite', s => s.put(story));
-
-/** Exporter une histoire par id (retourne l'objet complet) */
-export const exportStory = id => tx('stories', 'readonly', s => s.get(id));
-
-/**
- * Charger les histoires déclarées dans /stories/index.json
- * Format : ["castle.json","forest.json",…]
- * Chaque fichier est un story JSON standard.
- * Les histoires déjà présentes en IndexedDB ne sont pas écrasées.
- */
-export async function loadExternalStories() {
-  let index;
-  try {
-    const r = await fetch('./stories/index.json');
-    if (!r.ok) return;
-    index = await r.json();
-  } catch { return; }
-  const existing = await getAllStories();
-  const existingIds = new Set(existing.map(s => s.id));
-  const results = { loaded: 0, skipped: 0, errors: 0 };
-  for (const filename of index) {
-    try {
-      const r = await fetch(`./stories/${filename}`);
-      if (!r.ok) { results.errors++; continue; }
-      const story = await r.json();
-      if (!story?.id) { results.errors++; continue; }
-      if (existingIds.has(story.id)) { results.skipped++; continue; }
-      await importStory(story);
-      results.loaded++;
-    } catch { results.errors++; }
-  }
-  return results;
-}
+export { STORES };

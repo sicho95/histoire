@@ -37,7 +37,7 @@ export async function checkInternet(force = false) {
     notify();
     return false;
   }
-  const urls = ['./manifest.json', './assets/default_stories.json'];
+  const urls = ['./version.json', './stories/catalog.json'];
   let ok = false;
   for (const url of urls) {
     ok = await ping(`${url}?t=${Date.now()}`);

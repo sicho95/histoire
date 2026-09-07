@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "id": "ines-chateau-nuages",
+  "title": "Inès et le Château des Nuages",
+  "coverEmoji": "☁️",
+  "intro": "Une aventure aérienne où la curiosité, le courage et l'entraide peuvent changer le ciel.",
+  "ageRange": "5–9 ans",
+  "durationMinutes": 5,
+  "startNode": "start",
+  "revision": 1,
+  "status": "published",
+  "storyBible": {
+    "premise": "Inès découvre un château de nuages dont le cœur musical s'est tu.",
+    "theme": "On trouve de meilleures solutions quand on écoute autant son courage que les autres.",
+    "values": ["courage", "écoute", "entraide"],
+    "heroGoal": "Rallumer le cœur musical avant la grande pluie d'étoiles.",
+    "stakes": "Sans musique, le château se dissoudra au coucher du soleil.",
+    "recurringObjects": ["une plume argentée", "trois notes de musique", "une petite clé bleue"]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "headline": "L'escalier dans le ciel",
+      "coverEmoji": "🌤️",
+      "text": "Ce matin-là, Inès suivait une plume argentée qui dansait devant sa fenêtre. La plume monta au-dessus du jardin, chatouilla un rayon de soleil et révéla un escalier transparent. Tout là-haut flottait un château aux tours rondes, mais ses nuages pâlissaient comme une aquarelle sous la pluie. À la porte, un minuscule dragon nommé Pompon éternua trois étincelles bleues. Il expliqua que le cœur musical du château s'était arrêté. Avant le coucher du soleil, il fallait retrouver trois notes perdues, sinon les salles, les jardins et tous leurs habitants se changeraient en simple brume. Inès serra la plume dans sa main. Deux chemins s'ouvraient : un sentier parfumé traversait le jardin de lune, tandis qu'un pont de vapeur vibrait au-dessus d'un immense vide rose.",
+      "question": "Par quel chemin Inès commence-t-elle ?",
+      "isEnding": false,
+      "narration": { "mood": "wonder", "pace": "normal", "intensity": 2 },
+      "choices": [
+        { "id": "garden", "label": "Explorer le jardin de lune", "emoji": "🌙", "nextNode": "moon-garden", "consequenceHint": "Observer et écouter les fleurs." },
+        { "id": "bridge", "label": "Traverser le pont de vapeur", "emoji": "🌈", "nextNode": "cloud-bridge", "consequenceHint": "Avancer malgré le vertige." }
+      ]
+    },
+    {
+      "id": "moon-garden",
+      "headline": "Les fleurs qui chuchotent",
+      "coverEmoji": "🌙",
+      "text": "Dans le jardin, les fleurs n'avaient pas de couleurs. Elles murmuraient toutes en même temps : « Par ici ! Non, par là ! Écoute-moi ! » Inès ferma les yeux au lieu de se précipiter. Sous le brouhaha, elle distingua un tintement très doux : ding… ding… Une fleur timide cachait la première note sous sa corolle. Mais quand Inès s'approcha, des ronces de brume se dressèrent. Pompon proposa de les brûler avec son feu bleu. La fleur, elle, semblait trembler davantage à chaque étincelle. Inès remarqua aussi que la plume argentée s'allongeait quand elle la caressait, comme un ruban. Elle pouvait choisir la force rapide du dragon ou inventer une solution plus patiente avec la plume.",
+      "question": "Comment libérer la première note ?",
+      "isEnding": false,
+      "narration": { "mood": "mystery", "pace": "slow", "intensity": 2 },
+      "choices": [
+        { "id": "fire", "label": "Demander une flamme à Pompon", "emoji": "🔥", "nextNode": "bell-tower", "consequenceHint": "La route sera rapide, mais bruyante." },
+        { "id": "ribbon", "label": "Tresser la plume en ruban", "emoji": "🪶", "nextNode": "wind-library", "consequenceHint": "La patience révélera un secret." }
+      ]
+    },
+    {
+      "id": "cloud-bridge",
+      "headline": "Le pont qui a le vertige",
+      "coverEmoji": "🌈",
+      "text": "Le pont de vapeur se mit à trembler dès le premier pas. « Je suis désolé, avoua-t-il d'une voix minuscule. Aujourd'hui, j'ai peur du vide. » Au milieu du passage flottait la première note, brillante comme une goutte de miel. Une rafale la poussait lentement vers le bord. Inès avait elle aussi le ventre tout serré, mais elle comprit qu'elle n'était pas la seule à avoir peur. Elle pouvait courir et attraper la note avant qu'elle tombe, au risque d'effrayer davantage le pont. Ou bien elle pouvait lui parler, poser ses pieds au rythme d'une chanson et avancer avec lui. Pompon attendait, les ailes ouvertes, prêt à suivre son choix.",
+      "question": "Que fait Inès sur le pont tremblant ?",
+      "isEnding": false,
+      "narration": { "mood": "gentle_fear", "pace": "slow", "intensity": 2 },
+      "choices": [
+        { "id": "run", "label": "Courir attraper la note", "emoji": "🏃", "nextNode": "bell-tower", "consequenceHint": "Un choix courageux et mouvementé." },
+        { "id": "sing", "label": "Chanter pour rassurer le pont", "emoji": "🎵", "nextNode": "wind-library", "consequenceHint": "Un choix calme qui crée une alliance." }
+      ]
+    },
+    {
+      "id": "bell-tower",
+      "headline": "La tour aux mille cloches",
+      "coverEmoji": "🔔",
+      "text": "La première note bien à l'abri, Inès entra dans une tour remplie de cloches. Certaines étaient grandes comme des maisons, d'autres petites comme des noisettes. Soudain, toutes sonnèrent ensemble. Le vacarme fit tournoyer Pompon et réveilla une ombre gigantesque : le Gardien du Tonnerre. Il n'était pas méchant, seulement furieux qu'on ait dérangé son sommeil. Dans sa main brillait la deuxième note et, autour de son cou, la petite clé bleue. Inès pouvait frapper la plus grosse cloche pour montrer qu'elle n'avait pas peur. Elle pouvait aussi lever les mains, raconter pourquoi le château avait besoin d'aide et demander au Gardien ce qui l'avait rendu si grognon.",
+      "question": "Comment Inès répond-elle au Gardien du Tonnerre ?",
+      "isEnding": false,
+      "narration": { "mood": "suspense", "pace": "lively", "intensity": 3 },
+      "choices": [
+        { "id": "ring", "label": "Faire sonner la grande cloche", "emoji": "⚡", "nextNode": "storm-ending", "consequenceHint": "Une fin spectaculaire où Inès agit vite." },
+        { "id": "listen", "label": "Écouter le Gardien", "emoji": "👂", "nextNode": "heart-room", "consequenceHint": "Une dernière épreuve résolue ensemble." }
+      ]
+    },
+    {
+      "id": "wind-library",
+      "headline": "La bibliothèque du vent",
+      "coverEmoji": "📚",
+      "text": "Le chemin patient conduisit Inès dans une bibliothèque sans murs. Des milliers de pages volaient autour d'elle comme des oiseaux blancs. Au centre, une vieille bibliothécaire de brume retenait la deuxième note entre deux marque-pages. « Je la donnerai à qui retrouve l'histoire que le vent a déchirée », dit-elle. Sur le sol, des phrases étaient mélangées. Pompon voulait les remettre très vite dans l'ordre. Inès remarqua cependant qu'une page solitaire pleurait près d'une fenêtre : personne ne lui demandait son avis. Elle pouvait suivre le dragon et assembler les phrases qui rimaient, ou inviter chaque page à raconter ce dont elle se souvenait. Derrière la bibliothécaire, une petite clé bleue attendait dans un rayon de soleil.",
+      "question": "Comment reconstruire l'histoire du vent ?",
+      "isEnding": false,
+      "narration": { "mood": "calm", "pace": "normal", "intensity": 1 },
+      "choices": [
+        { "id": "rhyme", "label": "Assembler les phrases qui riment", "emoji": "🧩", "nextNode": "book-ending", "consequenceHint": "Une fin inventive née des mots." },
+        { "id": "voices", "label": "Écouter chaque page", "emoji": "💬", "nextNode": "heart-room", "consequenceHint": "Toutes les voix aideront pour la fin." }
+      ]
+    },
+    {
+      "id": "heart-room",
+      "headline": "Le cœur silencieux",
+      "coverEmoji": "💙",
+      "text": "Grâce à la petite clé bleue, Inès ouvrit la salle secrète. Le cœur du château était une immense boîte à musique, immobile et couverte de givre. Les deux notes retrouvées se posèrent sur son couvercle, mais un emplacement restait vide. Alors les amis rencontrés en chemin arrivèrent : le pont, les pages, les fleurs et même le Gardien. Chacun possédait un minuscule morceau de la troisième note. Personne ne pouvait la reconstituer seul. Inès comprit que le château n'attendait pas un héros capable de tout faire, mais quelqu'un capable de réunir les autres. Elle pouvait diriger chacun comme une cheffe d'orchestre, ou tendre la plume argentée afin que tous y attachent leur morceau à leur manière.",
+      "question": "Comment Inès réunit-elle la dernière note ?",
+      "isEnding": false,
+      "narration": { "mood": "wonder", "pace": "slow", "intensity": 3 },
+      "choices": [
+        { "id": "conduct", "label": "Diriger le grand orchestre", "emoji": "🎼", "nextNode": "orchestra-ending", "consequenceHint": "Une fin joyeuse et éclatante." },
+        { "id": "share", "label": "Partager la plume argentée", "emoji": "🤝", "nextNode": "friendship-ending", "consequenceHint": "Une fin douce construite par tous." }
+      ]
+    },
+    {
+      "id": "storm-ending",
+      "headline": "La danse de l'orage",
+      "coverEmoji": "⛈️",
+      "text": "Inès tira de toutes ses forces sur la corde. BOOOONG ! La grande cloche lança une onde brillante à travers le ciel. Le Gardien ouvrit de grands yeux, puis éclata de rire : personne n'avait osé répondre à son tonnerre depuis cent ans. Il frappa dans ses mains et les trois notes jaillirent de ses éclairs. Pompon les porta jusqu'au cœur musical juste avant le coucher du soleil. Le château se ralluma dans une danse d'orage, avec des éclairs en forme de rubans et une pluie qui remontait vers les étoiles. Inès rentra chez elle sur un nuage bondissant. Elle avait encore un peu peur du tonnerre, mais désormais elle savait que le courage n'empêche pas les genoux de trembler : il aide simplement à avancer malgré eux.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "triumph", "pace": "lively", "intensity": 3 },
+      "choices": []
+    },
+    {
+      "id": "book-ending",
+      "headline": "Le livre qui faisait la météo",
+      "coverEmoji": "📖",
+      "text": "Inès plaça ensemble les phrases qui rimaient. À chaque rime, une note nouvelle apparaissait, jusqu'à former un accord complet. La bibliothécaire sourit et révéla que l'histoire reconstruite était le mode d'emploi du cœur musical. Il suffisait de lire la dernière page à voix haute. Pompon prit une voix grave, Inès une voix claire, et même les pages ajoutèrent leurs petits froissements. Le château reprit des couleurs. Mieux encore : chaque fois qu'un habitant ouvrait le livre, le ciel inventait une météo merveilleuse — pluie de pétales, neige tiède ou arcs-en-ciel parfumés. Inès rapporta une page blanche chez elle. Le soir, elle y écrivit sa propre aventure et entendit, très loin au-dessus du toit, le château lui répondre par trois notes joyeuses.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "joy", "pace": "normal", "intensity": 2 },
+      "choices": []
+    },
+    {
+      "id": "orchestra-ending",
+      "headline": "Le concert des nuages",
+      "coverEmoji": "🎼",
+      "text": "Inès leva les bras. Les fleurs tintèrent, les pages battirent la mesure, le pont fredonna et le Gardien fit rouler un tonnerre tout doux. Pompon éternua exactement au bon moment. Les fragments se réunirent en une troisième note dorée qui entra dans la boîte à musique. Aussitôt, les tours retrouvèrent leurs couleurs et la grande pluie d'étoiles commença. Chaque étoile produisait un son différent en touchant les nuages. Le concert était si beau que la lune s'approcha pour écouter. Le roi du château offrit à Inès une baguette de cheffe d'orchestre, mais elle demanda plutôt que chacun puisse diriger une chanson à son tour. Depuis ce jour, au château des Nuages, la musique change sans cesse, car tout le monde a le droit d'apporter son rythme.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "triumph", "pace": "lively", "intensity": 3 },
+      "choices": []
+    },
+    {
+      "id": "friendship-ending",
+      "headline": "La plume aux mille couleurs",
+      "coverEmoji": "🪶",
+      "text": "Inès posa la plume au milieu de la salle. Chacun y attacha son fragment : la fleur avec une goutte de rosée, le pont avec un fil de vapeur, la page avec un mot, le Gardien avec une étincelle et Pompon avec un éternuement. La plume devint multicolore, puis traça dans l'air la troisième note. Le cœur musical recommença à battre doucement. Le château ne se contenta pas de retrouver sa forme : de nouvelles pièces apparurent, dessinées par les idées de tous. Il y eut une salle pour se reposer, une pour rire et une autre pour raconter ses peurs sans être jugé. Avant de partir, Inès comprit que l'objet magique n'était pas vraiment la plume. La magie venait de tout ce que chacun avait accepté de partager.",
+      "question": "",
+      "isEnding": true,
+      "narration": { "mood": "joy", "pace": "slow", "intensity": 2 },
+      "choices": []
+    }
+  ]
+}

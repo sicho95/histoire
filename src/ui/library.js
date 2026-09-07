@@ -1,40 +1,47 @@
-import { getLibrary, importLibraryAdventure } from '../storage/database.js';
-import { setView } from '../core/state.js';
-import { renderHome } from './carousel.js';
-import { playLibraryAdventure } from '../core/engine.js';
-
-function downloadJson(name, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = name;
-  a.click();
-}
+import { deleteDraft, exportDraftForReview, getDrafts, getLibrary } from '../storage/database.js';
+import { startStory } from '../core/engine.js';
+import { downloadJson } from './parental.js';
+import { showToast } from './toast.js';
 
 export async function renderLibrary() {
-  setView('view-library');
-  const list = document.getElementById('library-list');
-  const items = (await getLibrary()).reverse();
-  if (!items.length) {
-    list.innerHTML = '<div class="library-card"><h3>Aucune aventure gardée</h3><p>Termine une histoire puis appuie sur “Garder cette aventure”.</p></div>';
-  } else {
-    list.innerHTML = '';
-    items.forEach(item => {
-      const article = document.createElement('article');
-      article.className = 'library-card';
-      article.innerHTML = `<h3>${item.title}</h3><p>${item.summary || ''}</p><p>${new Date(item.savedAt).toLocaleString('fr-FR')}</p><div class="row-actions"><button class="btn-primary">▶ Lire</button><button class="btn-secondary">📤 Exporter</button></div>`;
-      const [readBtn, exportBtn] = article.querySelectorAll('button');
-      readBtn.onclick = () => playLibraryAdventure(item);
-      exportBtn.onclick = () => downloadJson(`${(item.title || 'aventure').replace(/[^a-z0-9]+/gi,'-').toLowerCase()}.json`, item);
-      list.appendChild(article);
-    });
+  const drafts = (await getDrafts()).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
+  const adventures = (await getLibrary()).sort((a, b) => String(b.savedAt).localeCompare(String(a.savedAt)));
+  const list = document.getElementById('draft-list');
+  list.replaceChildren();
+  if (!drafts.length && !adventures.length) {
+    list.innerHTML = '<div class="card"><h2>Pas encore de création</h2><p class="supporting">Les histoires inventées dans l’atelier apparaîtront ici.</p></div>';
+    return;
   }
-  document.getElementById('btn-library-back').onclick = () => renderHome();
-  document.getElementById('library-import-file').onchange = async event => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    const text = await file.text();
-    await importLibraryAdventure(JSON.parse(text));
-    await renderLibrary();
-  };
+  if (drafts.length) {
+    const heading = document.createElement('h2');
+    heading.textContent = 'Histoires inventées';
+    list.append(heading);
+  }
+  for (const draft of drafts) {
+    const card = document.createElement('article');
+    card.className = 'draft-card';
+    card.innerHTML = `<h2></h2><p></p><div class="draft-actions"><button class="secondary-button play">Lire</button><button class="secondary-button export">Préparer la révision</button><button class="text-button remove">Supprimer</button></div>`;
+    card.querySelector('h2').textContent = `${draft.coverEmoji} ${draft.title}`;
+    card.querySelector('p').textContent = `Brouillon privé · ${draft.durationMinutes} min environ`;
+    card.querySelector('.play').onclick = () => startStory(draft);
+    card.querySelector('.export').onclick = async () => {
+      downloadJson(await exportDraftForReview(draft.id), `${draft.id}-a-relire.json`);
+      showToast('Dossier prêt. Tu peux maintenant me le confier ici pour la révision et les MP3.');
+    };
+    card.querySelector('.remove').onclick = async () => { if (confirm('Supprimer ce brouillon de cet appareil ?')) { await deleteDraft(draft.id); renderLibrary(); } };
+    list.append(card);
+  }
+  if (adventures.length) {
+    const heading = document.createElement('h2');
+    heading.textContent = 'Fins déjà découvertes';
+    list.append(heading);
+    for (const adventure of adventures) {
+      const card = document.createElement('article');
+      card.className = 'draft-card';
+      card.innerHTML = '<h2></h2><p></p>';
+      card.querySelector('h2').textContent = `🌟 ${adventure.title}`;
+      card.querySelector('p').textContent = `${Math.max(1, (adventure.path || []).length - 1)} choix · gardé le ${new Date(adventure.savedAt).toLocaleDateString('fr-FR')}`;
+      list.append(card);
+    }
+  }
 }
