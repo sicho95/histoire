@@ -26,7 +26,7 @@ export async function renderLibrary() {
     card.querySelector('.play').onclick = () => startStory(draft);
     card.querySelector('.export').onclick = async () => {
       downloadJson(await exportDraftForReview(draft.id), `${draft.id}-a-relire.json`);
-      showToast('Dossier prêt. Tu peux maintenant me le confier ici pour la révision et les MP3.');
+      showToast('Dossier prêt. Tu peux maintenant me le confier ici pour la révision et les voix.');
     };
     card.querySelector('.remove').onclick = async () => { if (confirm('Supprimer ce brouillon de cet appareil ?')) { await deleteDraft(draft.id); renderLibrary(); } };
     list.append(card);

@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 2,
+  "id": "nino-doudou-voyageur",
+  "title": "Nino Ourson et le Doudou Voyageur",
+  "coverEmoji": "🧸",
+  "coverImage": "./assets/stories/nino-doudou-voyageur/cover.jpg",
+  "intro": "Le doudou de Nino a suivi un fil bleu jusque dans le jardin de la lune. Une aventure douce à écouter avant de dormir.",
+  "ageRange": "2–5 ans",
+  "ageBand": "2-5",
+  "heroVoice": "male",
+  "featuredOrder": 4,
+  "durationMinutes": 10,
+  "startNode": "decision-1",
+  "storyBible": {
+    "premise": "Nino suit un fil bleu pour retrouver son doudou Plume.",
+    "theme": "Grandir en gardant un refuge",
+    "values": [
+      "patience",
+      "entraide",
+      "sécurité affective"
+    ],
+    "heroGoal": "Retrouver Plume et rentrer avant le dernier bâillement.",
+    "stakes": "Nino craint de s’endormir sans son doudou, mais reste toujours en sécurité.",
+    "recurringObjects": [
+      "le fil bleu",
+      "Plume le doudou",
+      "la chanson petit pas, grand câlin"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-1",
+      "headline": "Le fil sous l’oreiller",
+      "coverEmoji": "🧵",
+      "text": "C’est l’heure de dormir. Nino Ourson met son pyjama vert et cherche Plume, son doudou tout doux. Pas dans le lit. Pas sous la chaise. Pas derrière le livre. Sous l’oreiller, Nino trouve un fil bleu qui passe par la fenêtre. Maman Ourse lui donne une petite lanterne et reste tout près de la maison. Dans le jardin, le fil va vers les fleurs ou vers le vieux banc. Nino respire : une fois dedans, une fois dehors.",
+      "question": "Où Nino regarde-t-il d’abord ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-1-a",
+          "label": "Près des fleurs qui brillent",
+          "emoji": "🌼",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-1-suite-a",
+          "consequenceHint": "Les fleurs ouvrent leurs pétales une par une. Dans la dernière, Nino trouve un petit morceau de tissu de Plume. Une cocc"
+        },
+        {
+          "id": "decision-1-b",
+          "label": "Sous le vieux banc",
+          "emoji": "🪑",
+          "illustration": "./assets/choices/explorer.svg",
+          "nextNode": "decision-1-suite-b",
+          "consequenceHint": "Sous le banc dort Escargot, avec le fil bleu enroulé autour de sa coquille. Il se réveille lentement et se souvient : Pl"
+        }
+      ]
+    },
+    {
+      "id": "decision-1-suite-a",
+      "headline": "Près des fleurs qui brillent",
+      "coverEmoji": "🌼",
+      "text": "Les fleurs ouvrent leurs pétales une par une. Dans la dernière, Nino trouve un petit morceau de tissu de Plume. Une coccinelle a vu le doudou passer vers le banc en saluant la lune. Le fil bleu brille un peu plus. Nino pose une patte sur son cœur. « Petit pas, grand câlin, je suis le fil et je vais bien. » La lune éclaire le prochain bout de chemin.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-1-suite-b",
+      "headline": "Sous le vieux banc",
+      "coverEmoji": "🪑",
+      "text": "Sous le banc dort Escargot, avec le fil bleu enroulé autour de sa coquille. Il se réveille lentement et se souvient : Plume suivait une luciole vers les fleurs. Escargot propose de venir aider. Le fil bleu brille un peu plus. Nino pose une patte sur son cœur. « Petit pas, grand câlin, je suis le fil et je vais bien. » La lune éclaire le prochain bout de chemin.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2",
+      "headline": "La flaque qui reflète la lune",
+      "coverEmoji": "🌙",
+      "text": "Le fil traverse une grande flaque. Dans l’eau, la lune ressemble à un bateau rond. Nino ne veut pas mouiller ses chaussons. Des pierres plates forment un chemin, mais certaines bougent un peu. Une grande feuille flotte aussi comme une barque. Escargot peut montrer les pierres solides, ou pousser doucement la feuille. Nino touche sa lanterne. Maman Ourse est visible au loin, sur le pas de la porte. Tout va bien.",
+      "question": "Comment traverser la flaque ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-2-a",
+          "label": "Marcher sur les pierres solides",
+          "emoji": "🪨",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-2-suite-a",
+          "consequenceHint": "Escargot touche chaque pierre avec ses petites cornes. Nino avance : un pas, puis un autre. La dernière pierre fait ploc"
+        },
+        {
+          "id": "decision-2-b",
+          "label": "Naviguer sur la feuille-barque",
+          "emoji": "🍃",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-2-suite-b",
+          "consequenceHint": "Nino s’assoit au milieu de la feuille. Escargot pousse, très lentement. La lune voyage avec eux dans le reflet. La barqu"
+        }
+      ]
+    },
+    {
+      "id": "decision-2-suite-a",
+      "headline": "Marcher sur les pierres solides",
+      "coverEmoji": "🪨",
+      "text": "Escargot touche chaque pierre avec ses petites cornes. Nino avance : un pas, puis un autre. La dernière pierre fait ploc, mais ses chaussons restent secs. De l’autre côté, le fil bleu l’attend. Quelque part devant, une clochette fait ding-ding. C’est celle de Plume ! Nino sourit. Il n’est pas encore arrivé, mais il sait qu’il va dans la bonne direction.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2-suite-b",
+      "headline": "Naviguer sur la feuille-barque",
+      "coverEmoji": "🍃",
+      "text": "Nino s’assoit au milieu de la feuille. Escargot pousse, très lentement. La lune voyage avec eux dans le reflet. La barque touche l’autre rive sans une seule éclaboussure. Quelque part devant, une clochette fait ding-ding. C’est celle de Plume ! Nino sourit. Il n’est pas encore arrivé, mais il sait qu’il va dans la bonne direction.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3",
+      "headline": "Le hérisson qui a peur du bruit",
+      "coverEmoji": "🦔",
+      "text": "Derrière les herbes, quelque chose fait snif. C’est Picoti le hérisson. La clochette de Plume a fait ding trop fort, alors Picoti s’est roulé en boule. Il a vu le doudou suivre le fil jusqu’au petit bois. Nino peut parler tout bas pour rassurer Picoti, ou s’asseoir près de lui jusqu’à ce qu’il soit prêt. Le vent remue les feuilles, mais la lanterne reste chaude dans la patte de Nino.",
+      "question": "Comment aider Picoti ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-3-a",
+          "label": "Chanter tout doucement",
+          "emoji": "🎵",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-3-suite-a",
+          "consequenceHint": "Nino chante : « Petit pas, grand câlin… » Sa voix est si douce que Picoti montre un œil, puis son nez. Il fredonne avec "
+        },
+        {
+          "id": "decision-3-b",
+          "label": "Attendre près de lui",
+          "emoji": "⏳",
+          "illustration": "./assets/choices/attendre.svg",
+          "nextNode": "decision-3-suite-b",
+          "consequenceHint": "Nino ne tire pas sur les piquants. Il attend et respire. Escargot attend aussi, ce qu’il sait très bien faire. Picoti se"
+        }
+      ]
+    },
+    {
+      "id": "decision-3-suite-a",
+      "headline": "Chanter tout doucement",
+      "coverEmoji": "🎵",
+      "text": "Nino chante : « Petit pas, grand câlin… » Sa voix est si douce que Picoti montre un œil, puis son nez. Il fredonne avec eux et indique le chemin du petit bois. Nino bâille un tout petit peu. Escargot bâille aussi, beaucoup plus longtemps. Ils rient doucement, puis reprennent le fil sans se presser.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3-suite-b",
+      "headline": "Attendre près de lui",
+      "coverEmoji": "⏳",
+      "text": "Nino ne tire pas sur les piquants. Il attend et respire. Escargot attend aussi, ce qu’il sait très bien faire. Picoti se déroule quand il est prêt et leur montre une empreinte de Plume. Nino bâille un tout petit peu. Escargot bâille aussi, beaucoup plus longtemps. Ils rient doucement, puis reprennent le fil sans se presser.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4",
+      "headline": "Le bois des petits sons",
+      "coverEmoji": "🌳",
+      "text": "Dans le petit bois, on entend toc dans un tronc, frou-frou dans les feuilles et hou-hou très loin. Le fil bleu se partage autour de deux arbres, puis se rejoint. D’un côté, une plume blanche est accrochée à une branche. De l’autre, une clochette brille sous une fougère. Nino sait que les deux peuvent être des indices. Il serre la main de Picoti, qui a choisi de les accompagner.",
+      "question": "Quel indice Nino suit-il ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-4-a",
+          "label": "Regarder la plume blanche",
+          "emoji": "🪶",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-4-suite-a",
+          "consequenceHint": "La plume porte l’odeur douce de Plume le doudou. Un hibou explique qu’il l’a aidé à passer sous la porte ronde. Il montr"
+        },
+        {
+          "id": "decision-4-b",
+          "label": "Écouter la clochette",
+          "emoji": "🔔",
+          "illustration": "./assets/choices/ecouter.svg",
+          "nextNode": "decision-4-suite-b",
+          "consequenceHint": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule toute seule vers une porte ronde au pied d’un arbre. De"
+        }
+      ]
+    },
+    {
+      "id": "decision-4-suite-a",
+      "headline": "Regarder la plume blanche",
+      "coverEmoji": "🪶",
+      "text": "La plume porte l’odeur douce de Plume le doudou. Un hibou explique qu’il l’a aidé à passer sous la porte ronde. Il montre un raccourci éclairé par des champignons. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4-suite-b",
+      "headline": "Écouter la clochette",
+      "coverEmoji": "🔔",
+      "text": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule toute seule vers une porte ronde au pied d’un arbre. Derrière la porte, Plume fredonne vraiment. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5",
+      "headline": "La porte du dernier bâillement",
+      "coverEmoji": "🚪",
+      "text": "La porte ronde est fermée par une poignée trop haute. Juste à côté, une balançoire de lierre peut soulever Nino. Escargot et Picoti peuvent aussi empiler de gros coussins de mousse. Nino bâille : « Haaaa… » C’est peut-être l’avant-dernier bâillement. Derrière la porte, Plume répond avec un bâillement encore plus grand. Personne n’est pressé, mais tout le monde veut préparer un passage sûr.",
+      "question": "Comment ouvrir la porte ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-5-a",
+          "label": "Monter avec la balançoire",
+          "emoji": "🌿",
+          "illustration": "./assets/choices/courage.svg",
+          "nextNode": "decision-5-suite-a",
+          "consequenceHint": "Picoti tient le lierre et Escargot dit quand pousser. Nino monte juste assez haut, tourne la poignée et redescend dans l"
+        },
+        {
+          "id": "decision-5-b",
+          "label": "Construire un escalier de mousse",
+          "emoji": "🧱",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-5-suite-b",
+          "consequenceHint": "Tous apportent un coussin de mousse. Nino teste chaque marche avant de monter. L’escalier est moelleux et solide. Il att"
+        }
+      ]
+    },
+    {
+      "id": "decision-5-suite-a",
+      "headline": "Monter avec la balançoire",
+      "coverEmoji": "🌿",
+      "text": "Picoti tient le lierre et Escargot dit quand pousser. Nino monte juste assez haut, tourne la poignée et redescend dans leurs bras. La porte s’ouvre sur un jardin rempli d’oreillers. Au bout du fil apparaît une petite porte ronde. Derrière, quelqu’un fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-b",
+      "headline": "Construire un escalier de mousse",
+      "coverEmoji": "🧱",
+      "text": "Tous apportent un coussin de mousse. Nino teste chaque marche avant de monter. L’escalier est moelleux et solide. Il atteint la poignée, puis aide ses amis à passer. Au bout du fil apparaît une petite porte ronde. Derrière, quelqu’un fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6",
+      "headline": "Le nid de Plume",
+      "coverEmoji": "🤗",
+      "text": "Au milieu du jardin d’oreillers, Plume est accroché à une branche basse. Il avait suivi le fil bleu pour rapporter à Nino un rêve tout neuf, mais le vent l’a soulevé. Une rafale fait encore danser la branche. Nino peut appeler Plume pour qu’il lâche au bon moment, demander au hibou de le porter, ou construire dessous un grand nid de coussins. La lune attend. Maman Ourse fait signe depuis la fenêtre. Nino sait qu’il retrouvera son lit, son câlin et son sommeil.",
+      "question": "Comment Nino retrouve-t-il Plume ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-6-a",
+          "label": "L’appeler au rythme de leur chanson",
+          "emoji": "🎶",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-6-suite-a",
+          "consequenceHint": "Nino chante lentement. Au mot « câlin », Plume lâche la branche et tombe juste dans ses bras. Le fil bleu s’enroule auto"
+        },
+        {
+          "id": "decision-6-b",
+          "label": "Demander l’aide du hibou",
+          "emoji": "🦉",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-6-suite-b",
+          "consequenceHint": "Le hibou déploie ses ailes sans bruit. Il prend Plume délicatement et le dépose sur la tête de Nino. Tout le monde chuch"
+        },
+        {
+          "id": "decision-6-c",
+          "label": "Préparer un nid très doux",
+          "emoji": "🪹",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-6-suite-c",
+          "consequenceHint": "Nino et ses amis empilent les oreillers. Le vent décroche Plume, qui rebondit une fois, deux fois, puis atterrit en rian"
+        }
+      ]
+    },
+    {
+      "id": "decision-6-suite-a",
+      "headline": "L’appeler au rythme de leur chanson",
+      "coverEmoji": "🎶",
+      "text": "Nino chante lentement. Au mot « câlin », Plume lâche la branche et tombe juste dans ses bras. Le fil bleu s’enroule autour d’eux comme un ruban. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6-suite-b",
+      "headline": "Demander l’aide du hibou",
+      "coverEmoji": "🦉",
+      "text": "Le hibou déploie ses ailes sans bruit. Il prend Plume délicatement et le dépose sur la tête de Nino. Tout le monde chuchote merci. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-b",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6-suite-c",
+      "headline": "Préparer un nid très doux",
+      "coverEmoji": "🪹",
+      "text": "Nino et ses amis empilent les oreillers. Le vent décroche Plume, qui rebondit une fois, deux fois, puis atterrit en riant dans le nid. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-c",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-a",
+      "headline": "Le câlin au bon moment",
+      "coverEmoji": "🤗",
+      "text": "Nino rentre en suivant le fil bleu, avec Plume contre son cœur. Maman Ourse remercie tous les amis du jardin. Dans le lit, Plume offre le rêve neuf : une promenade sur un bateau-lune. Nino chante une dernière fois : « Petit pas, grand câlin… » Puis vient le dernier bâillement. La lanterne s’éteint. Bonne nuit, Nino.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-b",
+      "headline": "Le vol tout doux",
+      "coverEmoji": "🦉",
+      "text": "Le hibou raccompagne la petite troupe jusqu’à la fenêtre. Nino garde une plume blanche pour se rappeler qu’il peut demander de l’aide. Plume retrouve sa place sous son menton. Maman Ourse ferme les rideaux, sauf un petit coin pour la lune. Nino inspire, expire et murmure merci. Ses yeux se ferment avant même la fin du dernier bâillement.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-c",
+      "headline": "Le lit le plus moelleux",
+      "coverEmoji": "🪹",
+      "text": "Le nid est si doux que tous les amis s’y reposent une minute. Puis chacun rapporte un petit coussin jusqu’à la chambre de Nino. Son lit devient un bateau de mousse pour Plume et lui. Maman Ourse borde tout le monde, même Escargot qui s’est déjà endormi. Le fil bleu brille encore un instant, puis devient calme. Bonne nuit, petit voyageur.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      },
+      "choices": []
+    }
+  ],
+  "revision": 2,
+  "status": "published",
+  "createdAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T00:00:00.000Z"
+}

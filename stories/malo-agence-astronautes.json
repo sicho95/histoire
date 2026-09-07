@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 2,
+  "id": "malo-agence-astronautes",
+  "title": "Malo et l’Agence des Animaux Astronautes",
+  "coverEmoji": "🚀",
+  "coverImage": "./assets/stories/malo-agence-astronautes/cover.jpg",
+  "intro": "La Lune a perdu son rire et commence à s’éloigner. Malo embarque avec un raton laveur, une chouette et un gecko pour mener l’enquête.",
+  "ageRange": "5–9 ans",
+  "ageBand": "5-9",
+  "heroVoice": "male",
+  "featuredOrder": 3,
+  "durationMinutes": 20,
+  "startNode": "decision-1",
+  "storyBible": {
+    "premise": "Une équipe d’animaux astronautes enquête sur le rire volé de la Lune.",
+    "theme": "Les différences font une équipe",
+    "values": [
+      "coopération",
+      "raisonnement",
+      "humour bienveillant"
+    ],
+    "heroGoal": "Retrouver le rire lunaire avant qu’elle ne quitte son orbite.",
+    "stakes": "Les marées et les animaux nocturnes perdront leur repère.",
+    "recurringObjects": [
+      "le vaisseau Gland-1",
+      "la loupe à gravité",
+      "le carnet de Malo",
+      "le rire hic-hic-hou"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "decision-1",
+      "headline": "L’appel de la Lune muette",
+      "coverEmoji": "🌙",
+      "text": "À 22 h 02, le réveil de Malo clignote : « Mission urgente. Apporte une chaussette propre. » Dans le jardin l’attend Gland-1, un vaisseau en forme de gland piloté par Roussette, raton laveur spécialiste des boutons qu’il ne faut pas toucher. Nova la chouette dirige l’enquête, et Géo le gecko répare tout avec sa langue collante. La Lune ne rit plus. Sans son fameux « hic-hic-hou », elle s’éloigne et les marées se dérèglent. Sur le toit, Malo trouve deux indices : une poudre argentée menant à l’observatoire et une vibration rigolote provenant d’un satellite-poubelle.",
+      "question": "Quelle piste vérifier en premier ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-1-a",
+          "label": "Analyser la poudre à l’observatoire",
+          "emoji": "🔭",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-1-suite-a",
+          "consequenceHint": "Sous la loupe à gravité, la poudre révèle des empreintes de bottes minuscules et des miettes de biscuit étoilé. Nova ide"
+        },
+        {
+          "id": "decision-1-b",
+          "label": "Interroger le satellite-poubelle",
+          "emoji": "🛰️",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-1-suite-b",
+          "consequenceHint": "Le satellite avale les questions et recrache les réponses à l’envers. Géo retourne l’enregistrement : « J’ai vu une bull"
+        }
+      ]
+    },
+    {
+      "id": "decision-1-suite-a",
+      "headline": "Analyser la poudre à l’observatoire",
+      "coverEmoji": "🔭",
+      "text": "Sous la loupe à gravité, la poudre révèle des empreintes de bottes minuscules et des miettes de biscuit étoilé. Nova identifie les livreurs martiens, mais Malo remarque que les traces vont dans les deux sens : ils ont peut-être apporté quelque chose plutôt que volé le rire. Malo note l’indice dans son carnet. Roussette le raton laveur veut déjà accuser quelqu’un, mais Chouette Nova rappelle : « Une piste n’est pas une preuve. » Géo le gecko colle l’indice au tableau avec sa patte et Gland-1 met le cap sur la prochaine balise. Avant de décoller, Malo vérifie trois fois les ceintures. Roussette trouve cela peu spectaculaire, jusqu’à ce que son siège se retourne tout seul. Géo répare le verrou et Nova félicite Malo : dans l’espace, la prudence fait partie de l’aventure. Une bonne enquête commence par ramener tout le monde entier, y compris les chaussettes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-1-suite-b",
+      "headline": "Interroger le satellite-poubelle",
+      "coverEmoji": "🛰️",
+      "text": "Le satellite avale les questions et recrache les réponses à l’envers. Géo retourne l’enregistrement : « J’ai vu une bulle filer vers Mars, poursuivie par un camion de livraison. » Une piste utile, mais rien ne prouve que la bulle contenait le rire. Malo note l’indice dans son carnet. Roussette le raton laveur veut déjà accuser quelqu’un, mais Chouette Nova rappelle : « Une piste n’est pas une preuve. » Géo le gecko colle l’indice au tableau avec sa patte et Gland-1 met le cap sur la prochaine balise. Avant de décoller, Malo vérifie trois fois les ceintures. Roussette trouve cela peu spectaculaire, jusqu’à ce que son siège se retourne tout seul. Géo répare le verrou et Nova félicite Malo : dans l’espace, la prudence fait partie de l’aventure. Une bonne enquête commence par ramener tout le monde entier, y compris les chaussettes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-2",
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2",
+      "headline": "Les livreurs de biscuits étoiles",
+      "coverEmoji": "🍪",
+      "text": "Le camion martien roule sur un anneau de Saturne comme sur une autoroute. Ses conducteurs, deux hamsters en casque, reconnaissent les miettes. Ils livraient à la Lune un biscuit spécial pour son anniversaire, mais une bulle géante a aspiré leur klaxon et leur bon de livraison. Roussette trouve cela très suspect. Malo préfère vérifier : le paquet est encore scellé, le camion possède une caméra, et les hamsters proposent d’aider à suivre la bulle. On peut examiner l’enregistrement image par image ou faire rejouer exactement leur trajet.",
+      "question": "Comment Malo vérifie-t-il leur histoire ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-2-a",
+          "label": "Regarder la caméra au ralenti",
+          "emoji": "🎥",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-2-suite-a",
+          "consequenceHint": "Les images montrent la bulle rebondir sur le camion puis emporter seulement le son du klaxon. Dans son reflet, Malo aper"
+        },
+        {
+          "id": "decision-2-b",
+          "label": "Rejouer le trajet avec le camion",
+          "emoji": "🛻",
+          "illustration": "./assets/choices/suivre.svg",
+          "nextNode": "decision-2-suite-b",
+          "consequenceHint": "Gland-1 suit le camion à la même vitesse. Au virage, une onde invisible fait vibrer tous les objets drôles. Le klaxon de"
+        }
+      ]
+    },
+    {
+      "id": "decision-2-suite-a",
+      "headline": "Regarder la caméra au ralenti",
+      "coverEmoji": "🎥",
+      "text": "Les images montrent la bulle rebondir sur le camion puis emporter seulement le son du klaxon. Dans son reflet, Malo aperçoit une antenne en forme de grelot. Les hamsters disaient vrai. Roussette raye leur nom de sa liste avec un air déçu mais honnête. La Lune s’éloigne encore d’un petit kilomètre. Les étoiles paraissent inquiètes, mais l’équipage transforme la pression en plan : ce qu’ils savent, ce qu’ils supposent, ce qu’ils doivent vérifier. Malo trace trois colonnes bien nettes. Les hamsters offrent un biscuit à chaque membre de l’équipe. Roussette cache le sien dans une poche déjà pleine de boulons, puis oublie laquelle. Malo inscrit leur témoignage sans supprimer les premiers doutes : être innocent sur une piste ne répond pas encore à toutes les questions. Ils repartent avec des faits, pas avec une conclusion trop grande.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-2-suite-b",
+      "headline": "Rejouer le trajet avec le camion",
+      "coverEmoji": "🛻",
+      "text": "Gland-1 suit le camion à la même vitesse. Au virage, une onde invisible fait vibrer tous les objets drôles. Le klaxon de secours s’envole presque. Malo mesure l’onde : elle attire les sons qui déclenchent le rire, pas les biscuits. La Lune s’éloigne encore d’un petit kilomètre. Les étoiles paraissent inquiètes, mais l’équipage transforme la pression en plan : ce qu’ils savent, ce qu’ils supposent, ce qu’ils doivent vérifier. Malo trace trois colonnes bien nettes. Les hamsters offrent un biscuit à chaque membre de l’équipe. Roussette cache le sien dans une poche déjà pleine de boulons, puis oublie laquelle. Malo inscrit leur témoignage sans supprimer les premiers doutes : être innocent sur une piste ne répond pas encore à toutes les questions. Ils repartent avec des faits, pas avec une conclusion trop grande.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-3",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3",
+      "headline": "Le cirque sans applaudissements",
+      "coverEmoji": "🎪",
+      "text": "L’antenne-grelot mène à un petit cirque installé sur un astéroïde. Les artistes flottent en silence. Une otarie jongle avec des planètes en mousse ; personne n’applaudit, car la bulle a aspiré tous les bravos. Le directeur, un lapin très sérieux, nie avoir touché au rire lunaire. Pourtant une cage vide porte l’étiquette « Éclats de rire ». Malo peut fouiller les coulisses avec Roussette ou demander au directeur d’expliquer l’étiquette devant toute la troupe. Une accusation trop rapide pourrait fermer la seule piste.",
+      "question": "Quelle méthode choisit l’équipe ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-3-a",
+          "label": "Inspecter les coulisses discrètement",
+          "emoji": "🔎",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-3-suite-a",
+          "consequenceHint": "Roussette découvre que la cage servait à transporter des enregistrements pour le spectacle, pas des rires vivants. Elle "
+        },
+        {
+          "id": "decision-3-b",
+          "label": "Poser une question directe et calme",
+          "emoji": "❓",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-3-suite-b",
+          "consequenceHint": "Le lapin avoue qu’il collectionnait autrefois les rires du public, jusqu’à comprendre que les enfermer les rendait trist"
+        }
+      ]
+    },
+    {
+      "id": "decision-3-suite-a",
+      "headline": "Inspecter les coulisses discrètement",
+      "coverEmoji": "🔎",
+      "text": "Roussette découvre que la cage servait à transporter des enregistrements pour le spectacle, pas des rires vivants. Elle contient un fragment de bulle et un billet pour la Comète-Karaoké. Malo photographie les preuves puis remet chaque objet à sa place. Le moteur fait pouet au lieu de vroum. Roussette prétend que c’est prévu ; personne ne le croit. Pourtant ce son absurde déclenche un minuscule écho : hic… hic… quelque part devant eux. Le rire lunaire n’est peut-être pas volé, seulement coincé. L’otarie essaie un nouveau numéro et rate sa troisième planète en mousse. Cette fois, la troupe applaudit l’effort avant le résultat. Malo note que le silence du cirque n’était pas seulement un indice : c’était aussi une tristesse à réparer. La mission avance mieux quand on laisse derrière soi un endroit un peu moins seul.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-3-suite-b",
+      "headline": "Poser une question directe et calme",
+      "coverEmoji": "❓",
+      "text": "Le lapin avoue qu’il collectionnait autrefois les rires du public, jusqu’à comprendre que les enfermer les rendait tristes. Il offre son dernier enregistrement : on y entend la bulle fredonner en direction de la Comète-Karaoké. Le moteur fait pouet au lieu de vroum. Roussette prétend que c’est prévu ; personne ne le croit. Pourtant ce son absurde déclenche un minuscule écho : hic… hic… quelque part devant eux. Le rire lunaire n’est peut-être pas volé, seulement coincé. L’otarie essaie un nouveau numéro et rate sa troisième planète en mousse. Cette fois, la troupe applaudit l’effort avant le résultat. Malo note que le silence du cirque n’était pas seulement un indice : c’était aussi une tristesse à réparer. La mission avance mieux quand on laisse derrière soi un endroit un peu moins seul.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-4",
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4",
+      "headline": "La comète qui chante faux",
+      "coverEmoji": "☄️",
+      "text": "La Comète-Karaoké traverse le système solaire en chantant beaucoup trop fort et rarement juste. Elle a avalé par accident une partie des sons joyeux attirés par la bulle. Pour parler, il faut suivre son refrain ou couper son micro cosmique pendant trois secondes. Nova préfère calculer la bonne note ; Roussette veut appuyer sur le gros bouton rouge. Malo remarque que la comète rougit chaque fois qu’on rit d’elle. Peut-être chante-t-elle plus fort pour cacher sa gêne. Il faut obtenir l’indice sans transformer sa maladresse en plaisanterie méchante.",
+      "question": "Comment approcher la comète ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-4-a",
+          "label": "Chanter avec elle sans se moquer",
+          "emoji": "🎤",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-4-suite-a",
+          "consequenceHint": "Malo trouve une note confortable et l’équipe crée des harmonies autour de la comète. Elle ralentit, soulagée de ne plus "
+        },
+        {
+          "id": "decision-4-b",
+          "label": "Demander une pause technique",
+          "emoji": "⏸️",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-4-suite-b",
+          "consequenceHint": "Au lieu de couper brutalement le micro, Malo propose une pause pour vérifier le son. Dans le silence, la comète entend e"
+        }
+      ]
+    },
+    {
+      "id": "decision-4-suite-a",
+      "headline": "Chanter avec elle sans se moquer",
+      "coverEmoji": "🎤",
+      "text": "Malo trouve une note confortable et l’équipe crée des harmonies autour de la comète. Elle ralentit, soulagée de ne plus devoir impressionner. Elle raconte que la bulle cherchait « la machine qui fait monter et descendre » sur la Lune. Géo déroule sa langue pour attraper une vis flottante. Nova calcule la trajectoire, Roussette fouille les recoins, Malo relie les idées. Aucun d’eux n’aurait réussi seul. Leur prochain indice pulse sur la carte comme un grain de maïs prêt à éclater. La comète leur confie une note minuscule qu’elle n’osait jamais chanter. Nova la place dans la carte sonore ; elle correspond exactement à la vibration enregistrée près du satellite. Une pièce du mystère se fixe. Géo rappelle cependant qu’une correspondance n’explique pas encore qui a créé la bulle, ni pourquoi elle attire les rires.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-4-suite-b",
+      "headline": "Demander une pause technique",
+      "coverEmoji": "⏸️",
+      "text": "Au lieu de couper brutalement le micro, Malo propose une pause pour vérifier le son. Dans le silence, la comète entend enfin le grelot de la bulle. Elle indique sa direction et remercie l’équipe de ne pas avoir ri contre elle. Géo déroule sa langue pour attraper une vis flottante. Nova calcule la trajectoire, Roussette fouille les recoins, Malo relie les idées. Aucun d’eux n’aurait réussi seul. Leur prochain indice pulse sur la carte comme un grain de maïs prêt à éclater. La comète leur confie une note minuscule qu’elle n’osait jamais chanter. Nova la place dans la carte sonore ; elle correspond exactement à la vibration enregistrée près du satellite. Une pièce du mystère se fixe. Géo rappelle cependant qu’une correspondance n’explique pas encore qui a créé la bulle, ni pourquoi elle attire les rires.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-5",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5",
+      "headline": "Le péage des robots littéraux",
+      "coverEmoji": "🤖",
+      "text": "Pour rejoindre la Lune, Gland-1 doit passer un péage tenu par trois robots qui comprennent tout au pied de la lettre. « Donnez votre mot de passe », ordonnent-ils. Roussette tend le carnet : « Voilà notre mot. » Alarme. Nova dit qu’ils sont pressés : les robots apportent une presse à papier. Nouvelle alarme. Malo peut résoudre leur devinette logique, ou reformuler chaque phrase de manière très précise. Derrière eux, la Lune s’éloigne encore. Géo se prépare à coller le vaisseau au péage si le courant gravitationnel devient trop fort.",
+      "question": "Comment éviter les malentendus ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-5-a",
+          "label": "Résoudre la devinette des trois portes",
+          "emoji": "🧩",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-5-suite-a",
+          "consequenceHint": "Malo compare les symboles : une porte ment, une dit vrai, une répète la précédente. Il pose une seule question et trouve"
+        },
+        {
+          "id": "decision-5-b",
+          "label": "Parler avec des phrases très précises",
+          "emoji": "🗨️",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-5-suite-b",
+          "consequenceHint": "Malo explique le but, la destination et l’urgence sans expression imagée. Les robots comprennent enfin et ouvrent une vo"
+        }
+      ]
+    },
+    {
+      "id": "decision-5-suite-a",
+      "headline": "Résoudre la devinette des trois portes",
+      "coverEmoji": "🧩",
+      "text": "Malo compare les symboles : une porte ment, une dit vrai, une répète la précédente. Il pose une seule question et trouve le passage bleu. Les robots tamponnent le carnet : « Raisonnement agréé, niveau noisette supérieure. » Une transmission inconnue répète leur propre voix avec dix secondes de retard. Malo résiste à l’envie de répondre trop vite. En écoutant jusqu’au bout, l’équipe distingue derrière l’écho un bruit de grelot venu de la face cachée de la Lune. Pendant que les robots ouvrent la barrière, Malo leur apprend l’expression « donner un coup de main ». Ils essaient aussitôt de lui détacher la main. Toute l’équipe éclate de rire, puis reformule patiemment. Le petit incident rappelle que les mêmes mots ne fabriquent pas toujours la même image dans toutes les têtes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-5-suite-b",
+      "headline": "Parler avec des phrases très précises",
+      "coverEmoji": "🗨️",
+      "text": "Malo explique le but, la destination et l’urgence sans expression imagée. Les robots comprennent enfin et ouvrent une voie prioritaire. Ils ajoutent même que la bulle a demandé l’accès à la machine des marées vingt minutes plus tôt. Une transmission inconnue répète leur propre voix avec dix secondes de retard. Malo résiste à l’envie de répondre trop vite. En écoutant jusqu’au bout, l’équipe distingue derrière l’écho un bruit de grelot venu de la face cachée de la Lune. Pendant que les robots ouvrent la barrière, Malo leur apprend l’expression « donner un coup de main ». Ils essaient aussitôt de lui détacher la main. Toute l’équipe éclate de rire, puis reformule patiemment. Le petit incident rappelle que les mêmes mots ne fabriquent pas toujours la même image dans toutes les têtes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-6",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6",
+      "headline": "Le faux coupable de la face claire",
+      "coverEmoji": "👽",
+      "text": "Près du cratère du Sourire, l’équipe trouve Zib, une minuscule extraterrestre avec l’antenne-grelot aperçue dans les reflets. Elle cache un sac qui glousse. Roussette triomphe : « Coupable ! » Mais Zib tremble et explique qu’elle ramassait seulement les petits rires perdus pour les rendre à leurs propriétaires. Dans le sac, chaque gloussement porte un nom. Aucun n’appartient à la Lune. Malo peut vérifier la collection avec la loupe à gravité, ou offrir à Zib une place dans l’équipe pour qu’elle montre où la grande bulle est passée.",
+      "question": "Comment traiter cette suspecte évidente ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 3
+      },
+      "choices": [
+        {
+          "id": "decision-6-a",
+          "label": "Vérifier avant de décider",
+          "emoji": "⚖️",
+          "illustration": "./assets/choices/observer.svg",
+          "nextNode": "decision-6-suite-a",
+          "consequenceHint": "La loupe confirme que les rires du sac viennent du cirque, des hamsters et même de Roussette, qui avait perdu un petit r"
+        },
+        {
+          "id": "decision-6-b",
+          "label": "L’inviter à guider l’enquête",
+          "emoji": "🧭",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-6-suite-b",
+          "consequenceHint": "Zib rend d’abord tous les rires puis grimpe dans Gland-1. Son antenne détecte les sons captifs. Elle révèle que la grand"
+        }
+      ]
+    },
+    {
+      "id": "decision-6-suite-a",
+      "headline": "Vérifier avant de décider",
+      "coverEmoji": "⚖️",
+      "text": "La loupe confirme que les rires du sac viennent du cirque, des hamsters et même de Roussette, qui avait perdu un petit ricanement mardi. Zib n’est pas coupable. Honteuse de son accusation, Roussette présente des excuses précises. Le carnet de Malo est presque rempli. Plusieurs suspects avaient caché quelque chose, mais aucun ne voulait blesser la Lune. Le mystère ressemble moins à un vol qu’à une suite de maladresses. Il reste à comprendre comment les réparer. Zib rend à Roussette son ricanement perdu. Il lui saute dans la gorge et ressort en éternuement. Roussette rit d’elle-même, puis demande à Zib si elle peut rire aussi. Ce simple « est-ce que ça te va ? » change l’ambiance. Malo ajoute dans son carnet : rire ensemble rapproche ; rire contre quelqu’un ferme les portes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-7",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-6-suite-b",
+      "headline": "L’inviter à guider l’enquête",
+      "coverEmoji": "🧭",
+      "text": "Zib rend d’abord tous les rires puis grimpe dans Gland-1. Son antenne détecte les sons captifs. Elle révèle que la grande bulle s’est glissée sous la surface, près de la machine des marées. Le carnet de Malo est presque rempli. Plusieurs suspects avaient caché quelque chose, mais aucun ne voulait blesser la Lune. Le mystère ressemble moins à un vol qu’à une suite de maladresses. Il reste à comprendre comment les réparer. Zib rend à Roussette son ricanement perdu. Il lui saute dans la gorge et ressort en éternuement. Roussette rit d’elle-même, puis demande à Zib si elle peut rire aussi. Ce simple « est-ce que ça te va ? » change l’ambiance. Malo ajoute dans son carnet : rire ensemble rapproche ; rire contre quelqu’un ferme les portes.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-7",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-7",
+      "headline": "La pluie de souvenirs drôles",
+      "coverEmoji": "😂",
+      "text": "Sur la face sombre, une pluie argentée montre des souvenirs amusants : la première chute de Géo dans un pot de confiture, Nova portant ses lunettes à l’envers, Malo disant « bonjour » à un lampadaire. Roussette veut tout enregistrer pour une future soirée. Mais certains souvenirs appartiennent aux autres et les gênent encore. Au milieu des images se cache la trajectoire de la bulle. L’équipe peut regarder sans conserver, en demandant la permission pour chaque souvenir, ou fermer les yeux et suivre seulement le son du grelot.",
+      "question": "Comment respecter les souvenirs tout en avançant ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-7-a",
+          "label": "Demander avant de regarder",
+          "emoji": "🙋",
+          "illustration": "./assets/choices/demander.svg",
+          "nextNode": "decision-7-suite-a",
+          "consequenceHint": "Chacun autorise certains souvenirs et en garde d’autres privés. En les triant ensemble, ils voient la bulle frôler une v"
+        },
+        {
+          "id": "decision-7-b",
+          "label": "Suivre le grelot les yeux fermés",
+          "emoji": "👂",
+          "illustration": "./assets/choices/ecouter.svg",
+          "nextNode": "decision-7-suite-b",
+          "consequenceHint": "Attachés par une corde, ils avancent au son : tin… tin… TIN. Sans les images, personne n’est exposé. Géo sent sous ses p"
+        }
+      ]
+    },
+    {
+      "id": "decision-7-suite-a",
+      "headline": "Demander avant de regarder",
+      "coverEmoji": "🙋",
+      "text": "Chacun autorise certains souvenirs et en garde d’autres privés. En les triant ensemble, ils voient la bulle frôler une vieille bouche d’aération. Roussette efface aussitôt les images non autorisées, même les plus drôles. Gland-1 traverse une pluie de poussière argentée. Chaque grain porte un souvenir drôle oublié par quelqu’un. L’équipage en attrape quelques-uns, puis les relâche : un souvenir n’est pas une preuve à garder, seulement une lumière pour avancer. Un souvenir de Malo apparaît malgré lui : sa première maquette de fusée s’était écroulée avant le décollage. Il autorise ses amis à la regarder. Nova remarque le moteur déjà ingénieux ; Géo admire les morceaux récupérables. Le souvenir reste embarrassant, mais il montre aussi le début du chemin qui l’a mené jusqu’à Gland-1.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-8",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-7-suite-b",
+      "headline": "Suivre le grelot les yeux fermés",
+      "coverEmoji": "👂",
+      "text": "Attachés par une corde, ils avancent au son : tin… tin… TIN. Sans les images, personne n’est exposé. Géo sent sous ses pattes une grille qui vibre ; l’entrée de la machine se trouve juste dessous. Gland-1 traverse une pluie de poussière argentée. Chaque grain porte un souvenir drôle oublié par quelqu’un. L’équipage en attrape quelques-uns, puis les relâche : un souvenir n’est pas une preuve à garder, seulement une lumière pour avancer. Un souvenir de Malo apparaît malgré lui : sa première maquette de fusée s’était écroulée avant le décollage. Il autorise ses amis à la regarder. Nova remarque le moteur déjà ingénieux ; Géo admire les morceaux récupérables. Le souvenir reste embarrassant, mais il montre aussi le début du chemin qui l’a mené jusqu’à Gland-1.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-8",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-8",
+      "headline": "La porte-orchestre",
+      "coverEmoji": "🥁",
+      "text": "La porte de la machine n’a ni poignée ni clavier. Quatre cercles s’allument : grave, aigu, sec, doux. Nova comprend qu’elle attend une équipe, pas un mot de passe. Malo peut diriger un rythme où chacun garde son son, ou demander à tous d’imiter le même bruit pour simplifier. Le premier essai devra être précis : une erreur déclenche un aspirateur à poussière lunaire déjà tourné vers leurs chaussures. Roussette serre sa chaussette de secours comme un trésor.",
+      "question": "Quelle musique ouvre la porte ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-8-a",
+          "label": "Assembler quatre sons différents",
+          "emoji": "🎼",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-8-suite-a",
+          "consequenceHint": "Malo tape le rythme, Nova hulule, Géo claque et Roussette secoue ses outils. Les différences s’emboîtent comme les pièce"
+        },
+        {
+          "id": "decision-8-b",
+          "label": "Commencer ensemble puis créer des solos",
+          "emoji": "🥁",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-8-suite-b",
+          "consequenceHint": "Ils frappent d’abord le même battement rassurant, puis chacun ajoute son motif. L’aspirateur hésite, se met à danser et "
+        }
+      ]
+    },
+    {
+      "id": "decision-8-suite-a",
+      "headline": "Assembler quatre sons différents",
+      "coverEmoji": "🎼",
+      "text": "Malo tape le rythme, Nova hulule, Géo claque et Roussette secoue ses outils. Les différences s’emboîtent comme les pièces d’une machine. La porte reconnaît l’harmonie et s’ouvre sans aspirer une seule chaussette. Sur la face cachée, une porte ronde refuse les codes compliqués. Elle s’ouvre seulement quand chacun produit un son différent au même rythme. Malo tape, Nova hulule, Géo claque de la langue et Roussette improvise un solo de casseroles. Une fois la porte ouverte, chacun essaie le son d’un autre et découvre que ce n’est pas si facile. Nova ne sait pas faire pouet, Roussette hulule comme une théière, et la langue de Malo ne colle absolument rien. Ils rient sans classer les talents. Puis chacun reprend sa vraie spécialité pour avancer.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-9",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-8-suite-b",
+      "headline": "Commencer ensemble puis créer des solos",
+      "coverEmoji": "🥁",
+      "text": "Ils frappent d’abord le même battement rassurant, puis chacun ajoute son motif. L’aspirateur hésite, se met à danser et s’éteint. La porte s’ouvre sur une salle remplie de tuyaux et de petits rires coincés. Sur la face cachée, une porte ronde refuse les codes compliqués. Elle s’ouvre seulement quand chacun produit un son différent au même rythme. Malo tape, Nova hulule, Géo claque de la langue et Roussette improvise un solo de casseroles. Une fois la porte ouverte, chacun essaie le son d’un autre et découvre que ce n’est pas si facile. Nova ne sait pas faire pouet, Roussette hulule comme une théière, et la langue de Malo ne colle absolument rien. Ils rient sans classer les talents. Puis chacun reprend sa vraie spécialité pour avancer.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-9",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-9",
+      "headline": "La vérité dans la machine à marées",
+      "coverEmoji": "⚙️",
+      "text": "La machine a fabriqué la bulle par accident. Lors de l’anniversaire de la Lune, chacun a voulu envoyer une blague en même temps. Surchargée, la conduite des rires a gonflé, aspiré les sons joyeux et bouché le régulateur des marées. Personne n’est un voleur ; tout le monde a contribué au problème sans le savoir. Pour libérer le rire, l’équipe peut répartir les sons dans plusieurs petits conduits, ou couper la machine quelques secondes et pousser la bulle manuellement. La première méthode demande coordination ; la seconde, confiance et force.",
+      "question": "Comment réparer la machine ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 3
+      },
+      "choices": [
+        {
+          "id": "decision-9-a",
+          "label": "Répartir les sons avec précision",
+          "emoji": "🔧",
+          "illustration": "./assets/choices/inventer.svg",
+          "nextNode": "decision-9-suite-a",
+          "consequenceHint": "Nova calcule, Géo branche, Zib écoute et Malo donne le rythme. Roussette résiste héroïquement au gros bouton rouge. La p"
+        },
+        {
+          "id": "decision-9-b",
+          "label": "Arrêter puis pousser tous ensemble",
+          "emoji": "🛑",
+          "illustration": "./assets/choices/aider.svg",
+          "nextNode": "decision-9-suite-b",
+          "consequenceHint": "Malo compte à rebours. Dans le silence spatial, tous poussent la bulle vers la sortie. Même la Lune semble retenir son s"
+        }
+      ]
+    },
+    {
+      "id": "decision-9-suite-a",
+      "headline": "Répartir les sons avec précision",
+      "coverEmoji": "🔧",
+      "text": "Nova calcule, Géo branche, Zib écoute et Malo donne le rythme. Roussette résiste héroïquement au gros bouton rouge. La pression baisse conduit après conduit. La bulle rétrécit jusqu’à tenir entre quatre pattes. Derrière la porte se trouve la machine à marées, bloquée par une énorme bulle transparente. À l’intérieur tourbillonne le rire de la Lune. La bulle grossit dès qu’on se moque de quelqu’un et rétrécit quand on rit avec lui. Malo photographie les conduits abîmés et envoie le diagnostic aux habitants qui avaient lancé les blagues. Tous proposent de réparer. Reconnaître une responsabilité partagée ne signifie pas que personne n’est responsable ; cela signifie que chacun peut prendre une part précise de la solution au lieu de chercher une seule personne à punir.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-10",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-9-suite-b",
+      "headline": "Arrêter puis pousser tous ensemble",
+      "coverEmoji": "🛑",
+      "text": "Malo compte à rebours. Dans le silence spatial, tous poussent la bulle vers la sortie. Même la Lune semble retenir son souffle. La machine redémarre juste à temps, plus stable, tandis que le rire flotte enfin libre devant eux. Derrière la porte se trouve la machine à marées, bloquée par une énorme bulle transparente. À l’intérieur tourbillonne le rire de la Lune. La bulle grossit dès qu’on se moque de quelqu’un et rétrécit quand on rit avec lui. Malo photographie les conduits abîmés et envoie le diagnostic aux habitants qui avaient lancé les blagues. Tous proposent de réparer. Reconnaître une responsabilité partagée ne signifie pas que personne n’est responsable ; cela signifie que chacun peut prendre une part précise de la solution au lieu de chercher une seule personne à punir.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "decision-10",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10",
+      "headline": "Rendre son rire à la Lune",
+      "coverEmoji": "🌕",
+      "text": "Le rire libéré ressemble à un ruban d’or qui fait « hic-hic-hou ». Mais il est fragile : un éclat trop brusque le disperserait pour toujours. Malo peut organiser une chaîne où chaque membre transmet une note jusqu’à la Lune, enfermer doucement le ruban dans Gland-1 pour le livrer au cœur du cratère, ou raconter toute l’enquête à la Lune afin qu’elle retrouve elle-même l’envie de rire. Les marées attendent. Le cirque, les hamsters, la comète et même les robots suivent la mission sur leurs écrans. Cette fois, personne ne cherche à être le héros unique.",
+      "question": "Comment l’équipe rend-elle le rire lunaire ?",
+      "isEnding": false,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": [
+        {
+          "id": "decision-10-a",
+          "label": "Créer une chaîne de sons",
+          "emoji": "🎶",
+          "illustration": "./assets/choices/chanter.svg",
+          "nextNode": "decision-10-suite-a",
+          "consequenceHint": "Chaque membre reçoit une partie du « hic-hic-hou » et la transmet au suivant sans la déformer. Le ruban grandit à chaque"
+        },
+        {
+          "id": "decision-10-b",
+          "label": "Le transporter dans Gland-1",
+          "emoji": "🚀",
+          "illustration": "./assets/choices/courage.svg",
+          "nextNode": "decision-10-suite-b",
+          "consequenceHint": "Géo transforme la cabine en boîte à musique étanche. Malo pilote très doucement jusqu’au cratère du Sourire. Roussette o"
+        },
+        {
+          "id": "decision-10-c",
+          "label": "Raconter honnêtement toute l’enquête",
+          "emoji": "📖",
+          "illustration": "./assets/choices/partager.svg",
+          "nextNode": "decision-10-suite-c",
+          "consequenceHint": "Malo raconte les fausses pistes, les excuses et la machine surchargée. La Lune comprend qu’on ne lui avait pas volé sa j"
+        }
+      ]
+    },
+    {
+      "id": "decision-10-suite-a",
+      "headline": "Créer une chaîne de sons",
+      "coverEmoji": "🎶",
+      "text": "Chaque membre reçoit une partie du « hic-hic-hou » et la transmet au suivant sans la déformer. Le ruban grandit à chaque différence bien accordée, puis rejoint la Lune comme une musique d’équipe. La bulle est presque ouverte. Il reste à rendre le rire sans qu’il s’échappe dans l’espace. L’équipe peut le guider par une chaîne de sons, le transporter dans Gland-1 ou inviter la Lune à rire elle-même en découvrant toute la vérité. La Lune se rapproche juste assez pour entendre. Son visage paraît sérieux, mais pas fâché. Malo prépare son rapport : ce qu’ils ont observé, les erreurs commises, les excuses déjà données et la réparation installée. Dire toute la vérité risque de décevoir un instant. La cacher risquerait de casser la confiance beaucoup plus longtemps.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10-suite-b",
+      "headline": "Le transporter dans Gland-1",
+      "coverEmoji": "🚀",
+      "text": "Géo transforme la cabine en boîte à musique étanche. Malo pilote très doucement jusqu’au cratère du Sourire. Roussette ouvre la porte au signal exact, et le rire retrouve sa place sans perdre une étincelle. La bulle est presque ouverte. Il reste à rendre le rire sans qu’il s’échappe dans l’espace. L’équipe peut le guider par une chaîne de sons, le transporter dans Gland-1 ou inviter la Lune à rire elle-même en découvrant toute la vérité. La Lune se rapproche juste assez pour entendre. Son visage paraît sérieux, mais pas fâché. Malo prépare son rapport : ce qu’ils ont observé, les erreurs commises, les excuses déjà données et la réparation installée. Dire toute la vérité risque de décevoir un instant. La cacher risquerait de casser la confiance beaucoup plus longtemps.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-b",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "decision-10-suite-c",
+      "headline": "Raconter honnêtement toute l’enquête",
+      "coverEmoji": "📖",
+      "text": "Malo raconte les fausses pistes, les excuses et la machine surchargée. La Lune comprend qu’on ne lui avait pas volé sa joie. Son propre rire renaît, rejoint le ruban puis éclate avec tendresse dans tout le ciel. La bulle est presque ouverte. Il reste à rendre le rire sans qu’il s’échappe dans l’espace. L’équipe peut le guider par une chaîne de sons, le transporter dans Gland-1 ou inviter la Lune à rire elle-même en découvrant toute la vérité. La Lune se rapproche juste assez pour entendre. Son visage paraît sérieux, mais pas fâché. Malo prépare son rapport : ce qu’ils ont observé, les erreurs commises, les excuses déjà données et la réparation installée. Dire toute la vérité risque de décevoir un instant. La cacher risquerait de casser la confiance beaucoup plus longtemps.",
+      "question": "",
+      "isEnding": false,
+      "nextNode": "fin-c",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-a",
+      "headline": "L’orchestre orbital",
+      "coverEmoji": "🎶",
+      "text": "Le « hic-hic-hou » remet la Lune sur son orbite. Les océans respirent de nouveau au bon rythme. Pour remercier l’équipe, la Lune transforme un petit cratère en scène de concert. Malo dirige la première répétition, où chaque son compte, même le pouet du moteur. Roussette reçoit la médaille du bouton qu’elle n’a pas appuyé. C’est, selon elle, la décoration la plus difficile à mériter de toute la galaxie.",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-b",
+      "headline": "La livraison la plus douce",
+      "coverEmoji": "🚀",
+      "text": "Gland-1 se pose au centre du cratère et la Lune récupère son rire comme on retrouve un ami. Elle offre à Malo un badge de pilote prudent, à Géo un rouleau de ruban lunaire, à Nova une carte des orbites et à Roussette une boîte contenant un bouton rouge parfaitement inutile. De retour au jardin, Malo entend les vagues au loin. Elles semblent répéter : « Une équipe, une équipe, une équipe. »",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    },
+    {
+      "id": "fin-c",
+      "headline": "Le rire retrouvé ensemble",
+      "coverEmoji": "🌕",
+      "text": "La vérité fait d’abord soupirer la Lune, puis sourire, puis rire si fort que les étoiles clignotent. Tous ceux qui avaient envoyé une blague présentent leurs excuses et organisent désormais les messages à tour de rôle. Malo ouvre officiellement l’Agence des Animaux Astronautes aux enfants enquêteurs. Sa première règle tient sur une ligne : « On vérifie avant d’accuser. » La seconde ajoute : « Et on garde toujours une chaussette propre. »",
+      "question": "",
+      "isEnding": true,
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      },
+      "choices": []
+    }
+  ],
+  "revision": 2,
+  "status": "published",
+  "createdAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T00:00:00.000Z"
+}

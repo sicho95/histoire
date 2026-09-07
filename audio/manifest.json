@@ -1,6 +1,2383 @@
 {
   "schemaVersion": 2,
-  "styleVersion": "warm-storyteller-v2",
-  "generatedAt": null,
-  "tracks": {}
+  "styleVersion": "signature-fr-v1",
+  "generatedAt": "2026-09-07T20:26:37.586Z",
+  "tracks": {
+    "aya-phare-reves:decision-1": {
+      "file": "m4a/aya-phare-reves/decision-1.m4a",
+      "textHash": "8pmiy0",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-1-question": {
+      "file": "m4a/aya-phare-reves/decision-1-question.m4a",
+      "textHash": "1oxglfk",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-1-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-1-suite-a.m4a",
+      "textHash": "frtolu",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-1-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-1-suite-b.m4a",
+      "textHash": "1i42tb2",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-10": {
+      "file": "m4a/aya-phare-reves/decision-10.m4a",
+      "textHash": "1rqg16u",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-10-question": {
+      "file": "m4a/aya-phare-reves/decision-10-question.m4a",
+      "textHash": "1g7sk2h",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-10-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-10-suite-a.m4a",
+      "textHash": "pcm41s",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-10-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-10-suite-b.m4a",
+      "textHash": "1q7dgf2",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-10-suite-c": {
+      "file": "m4a/aya-phare-reves/decision-10-suite-c.m4a",
+      "textHash": "1qnifny",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-2": {
+      "file": "m4a/aya-phare-reves/decision-2.m4a",
+      "textHash": "10zzuvn",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-2-question": {
+      "file": "m4a/aya-phare-reves/decision-2-question.m4a",
+      "textHash": "3gloz",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-2-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-2-suite-a.m4a",
+      "textHash": "aiagho",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-2-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-2-suite-b.m4a",
+      "textHash": "1k5ig47",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-3": {
+      "file": "m4a/aya-phare-reves/decision-3.m4a",
+      "textHash": "1bcei30",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 3
+      }
+    },
+    "aya-phare-reves:decision-3-question": {
+      "file": "m4a/aya-phare-reves/decision-3-question.m4a",
+      "textHash": "7nbw69",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "slow",
+        "intensity": 3
+      }
+    },
+    "aya-phare-reves:decision-3-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-3-suite-a.m4a",
+      "textHash": "gcw6xx",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-3-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-3-suite-b.m4a",
+      "textHash": "g9pm72",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-4": {
+      "file": "m4a/aya-phare-reves/decision-4.m4a",
+      "textHash": "17qq6se",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-4-question": {
+      "file": "m4a/aya-phare-reves/decision-4-question.m4a",
+      "textHash": "1bsg6dx",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-4-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-4-suite-a.m4a",
+      "textHash": "1jm1bfd",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-4-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-4-suite-b.m4a",
+      "textHash": "k48wfw",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-5": {
+      "file": "m4a/aya-phare-reves/decision-5.m4a",
+      "textHash": "rup80u",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-5-question": {
+      "file": "m4a/aya-phare-reves/decision-5-question.m4a",
+      "textHash": "3mtk00",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-5-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-5-suite-a.m4a",
+      "textHash": "7z1hje",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-5-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-5-suite-b.m4a",
+      "textHash": "1sx6gpq",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-6": {
+      "file": "m4a/aya-phare-reves/decision-6.m4a",
+      "textHash": "qwhs5t",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-6-question": {
+      "file": "m4a/aya-phare-reves/decision-6-question.m4a",
+      "textHash": "stb3ox",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-6-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-6-suite-a.m4a",
+      "textHash": "1duqisn",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-6-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-6-suite-b.m4a",
+      "textHash": "e69s75",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-7": {
+      "file": "m4a/aya-phare-reves/decision-7.m4a",
+      "textHash": "36sat2",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-7-question": {
+      "file": "m4a/aya-phare-reves/decision-7-question.m4a",
+      "textHash": "1ss1i14",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-7-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-7-suite-a.m4a",
+      "textHash": "w8sk9y",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-7-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-7-suite-b.m4a",
+      "textHash": "1aj8aje",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-8": {
+      "file": "m4a/aya-phare-reves/decision-8.m4a",
+      "textHash": "1a4xa4h",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-8-question": {
+      "file": "m4a/aya-phare-reves/decision-8-question.m4a",
+      "textHash": "t4lfoi",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-8-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-8-suite-a.m4a",
+      "textHash": "1jf4cs0",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-8-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-8-suite-b.m4a",
+      "textHash": "ro5zas",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-9": {
+      "file": "m4a/aya-phare-reves/decision-9.m4a",
+      "textHash": "kxj29j",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-9-question": {
+      "file": "m4a/aya-phare-reves/decision-9-question.m4a",
+      "textHash": "1yb2e4y",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-9-suite-a": {
+      "file": "m4a/aya-phare-reves/decision-9-suite-a.m4a",
+      "textHash": "1ktxi4f",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:decision-9-suite-b": {
+      "file": "m4a/aya-phare-reves/decision-9-suite-b.m4a",
+      "textHash": "15fbj6",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:fin-a": {
+      "file": "m4a/aya-phare-reves/fin-a.m4a",
+      "textHash": "y2wfhi",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:fin-b": {
+      "file": "m4a/aya-phare-reves/fin-b.m4a",
+      "textHash": "1wiom8u",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:fin-c": {
+      "file": "m4a/aya-phare-reves/fin-c.m4a",
+      "textHash": "1niwb7e",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "aya-phare-reves:intro": {
+      "file": "m4a/aya-phare-reves/intro.m4a",
+      "textHash": "1t8db8x",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-1": {
+      "file": "m4a/lila-fete-couleurs/decision-1.m4a",
+      "textHash": "1uonpk2",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-1-question": {
+      "file": "m4a/lila-fete-couleurs/decision-1-question.m4a",
+      "textHash": "170cb88",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-1-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-1-suite-a.m4a",
+      "textHash": "1df167p",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-1-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-1-suite-b.m4a",
+      "textHash": "1vfcli5",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-2": {
+      "file": "m4a/lila-fete-couleurs/decision-2.m4a",
+      "textHash": "1p5gjem",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-2-question": {
+      "file": "m4a/lila-fete-couleurs/decision-2-question.m4a",
+      "textHash": "mnksac",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-2-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-2-suite-a.m4a",
+      "textHash": "19rsoyn",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-2-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-2-suite-b.m4a",
+      "textHash": "owgcug",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-3": {
+      "file": "m4a/lila-fete-couleurs/decision-3.m4a",
+      "textHash": "avtyxi",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-3-question": {
+      "file": "m4a/lila-fete-couleurs/decision-3-question.m4a",
+      "textHash": "n27j4e",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-3-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-3-suite-a.m4a",
+      "textHash": "oop69a",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-3-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-3-suite-b.m4a",
+      "textHash": "yx02n",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-4": {
+      "file": "m4a/lila-fete-couleurs/decision-4.m4a",
+      "textHash": "zsug3s",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-4-question": {
+      "file": "m4a/lila-fete-couleurs/decision-4-question.m4a",
+      "textHash": "1josfv2",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-4-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-4-suite-a.m4a",
+      "textHash": "10wx7d",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-4-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-4-suite-b.m4a",
+      "textHash": "1pj1bom",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-5": {
+      "file": "m4a/lila-fete-couleurs/decision-5.m4a",
+      "textHash": "1u19w",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 3
+      }
+    },
+    "lila-fete-couleurs:decision-5-question": {
+      "file": "m4a/lila-fete-couleurs/decision-5-question.m4a",
+      "textHash": "ji8ail",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "slow",
+        "intensity": 3
+      }
+    },
+    "lila-fete-couleurs:decision-5-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-5-suite-a.m4a",
+      "textHash": "12pzppd",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-5-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-5-suite-b.m4a",
+      "textHash": "jbv9mu",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-6": {
+      "file": "m4a/lila-fete-couleurs/decision-6.m4a",
+      "textHash": "27dvrp",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-6-question": {
+      "file": "m4a/lila-fete-couleurs/decision-6-question.m4a",
+      "textHash": "16jr8fi",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-6-suite-a": {
+      "file": "m4a/lila-fete-couleurs/decision-6-suite-a.m4a",
+      "textHash": "1jzc172",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-6-suite-b": {
+      "file": "m4a/lila-fete-couleurs/decision-6-suite-b.m4a",
+      "textHash": "10dexuf",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:decision-6-suite-c": {
+      "file": "m4a/lila-fete-couleurs/decision-6-suite-c.m4a",
+      "textHash": "125qfs",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:fin-a": {
+      "file": "m4a/lila-fete-couleurs/fin-a.m4a",
+      "textHash": "s9h1cw",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:fin-b": {
+      "file": "m4a/lila-fete-couleurs/fin-b.m4a",
+      "textHash": "266h4d",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:fin-c": {
+      "file": "m4a/lila-fete-couleurs/fin-c.m4a",
+      "textHash": "f6bcuv",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "lila-fete-couleurs:intro": {
+      "file": "m4a/lila-fete-couleurs/intro.m4a",
+      "textHash": "12v86rx",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-1": {
+      "file": "m4a/malo-agence-astronautes/decision-1.m4a",
+      "textHash": "1mq47q4",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-1-question": {
+      "file": "m4a/malo-agence-astronautes/decision-1-question.m4a",
+      "textHash": "10bboh6",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-1-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-1-suite-a.m4a",
+      "textHash": "sz5bqu",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-1-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-1-suite-b.m4a",
+      "textHash": "1632ah3",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-10": {
+      "file": "m4a/malo-agence-astronautes/decision-10.m4a",
+      "textHash": "107rqjq",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-10-question": {
+      "file": "m4a/malo-agence-astronautes/decision-10-question.m4a",
+      "textHash": "p91ddm",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-10-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-10-suite-a.m4a",
+      "textHash": "cqw5a8",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-10-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-10-suite-b.m4a",
+      "textHash": "ede4iy",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-10-suite-c": {
+      "file": "m4a/malo-agence-astronautes/decision-10-suite-c.m4a",
+      "textHash": "xqp86k",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-2": {
+      "file": "m4a/malo-agence-astronautes/decision-2.m4a",
+      "textHash": "5jxwy0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-2-question": {
+      "file": "m4a/malo-agence-astronautes/decision-2-question.m4a",
+      "textHash": "sbe9my",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-2-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-2-suite-a.m4a",
+      "textHash": "1d1cdzd",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-2-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-2-suite-b.m4a",
+      "textHash": "163dcpl",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-3": {
+      "file": "m4a/malo-agence-astronautes/decision-3.m4a",
+      "textHash": "dtwg7e",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-3-question": {
+      "file": "m4a/malo-agence-astronautes/decision-3-question.m4a",
+      "textHash": "10vx90p",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-3-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-3-suite-a.m4a",
+      "textHash": "189nvxd",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-3-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-3-suite-b.m4a",
+      "textHash": "1nganig",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-4": {
+      "file": "m4a/malo-agence-astronautes/decision-4.m4a",
+      "textHash": "16fndr7",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-4-question": {
+      "file": "m4a/malo-agence-astronautes/decision-4-question.m4a",
+      "textHash": "afr9v2",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-4-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-4-suite-a.m4a",
+      "textHash": "4a448z",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-4-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-4-suite-b.m4a",
+      "textHash": "qnihlu",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-5": {
+      "file": "m4a/malo-agence-astronautes/decision-5.m4a",
+      "textHash": "1ieoc1n",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-5-question": {
+      "file": "m4a/malo-agence-astronautes/decision-5-question.m4a",
+      "textHash": "1ralj9u",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-5-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-5-suite-a.m4a",
+      "textHash": "1r44zfg",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-5-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-5-suite-b.m4a",
+      "textHash": "3rjc91",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-6": {
+      "file": "m4a/malo-agence-astronautes/decision-6.m4a",
+      "textHash": "16fugtu",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 3
+      }
+    },
+    "malo-agence-astronautes:decision-6-question": {
+      "file": "m4a/malo-agence-astronautes/decision-6-question.m4a",
+      "textHash": "c72ngh",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "slow",
+        "intensity": 3
+      }
+    },
+    "malo-agence-astronautes:decision-6-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-6-suite-a.m4a",
+      "textHash": "cksckt",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-6-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-6-suite-b.m4a",
+      "textHash": "1ya1fdo",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-7": {
+      "file": "m4a/malo-agence-astronautes/decision-7.m4a",
+      "textHash": "101k1hd",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-7-question": {
+      "file": "m4a/malo-agence-astronautes/decision-7-question.m4a",
+      "textHash": "jelp2h",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-7-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-7-suite-a.m4a",
+      "textHash": "1i9yxqg",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-7-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-7-suite-b.m4a",
+      "textHash": "x60hd7",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-8": {
+      "file": "m4a/malo-agence-astronautes/decision-8.m4a",
+      "textHash": "jqlciq",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-8-question": {
+      "file": "m4a/malo-agence-astronautes/decision-8-question.m4a",
+      "textHash": "r4pc7v",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-8-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-8-suite-a.m4a",
+      "textHash": "1ueomwy",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-8-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-8-suite-b.m4a",
+      "textHash": "1ojvw2k",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-9": {
+      "file": "m4a/malo-agence-astronautes/decision-9.m4a",
+      "textHash": "sg29n1",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 3
+      }
+    },
+    "malo-agence-astronautes:decision-9-question": {
+      "file": "m4a/malo-agence-astronautes/decision-9-question.m4a",
+      "textHash": "1ck3pz0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "slow",
+        "intensity": 3
+      }
+    },
+    "malo-agence-astronautes:decision-9-suite-a": {
+      "file": "m4a/malo-agence-astronautes/decision-9-suite-a.m4a",
+      "textHash": "r2rib9",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:decision-9-suite-b": {
+      "file": "m4a/malo-agence-astronautes/decision-9-suite-b.m4a",
+      "textHash": "i2jhvk",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:fin-a": {
+      "file": "m4a/malo-agence-astronautes/fin-a.m4a",
+      "textHash": "oiqkh6",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:fin-b": {
+      "file": "m4a/malo-agence-astronautes/fin-b.m4a",
+      "textHash": "1tbx4x1",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:fin-c": {
+      "file": "m4a/malo-agence-astronautes/fin-c.m4a",
+      "textHash": "8vzycy",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "malo-agence-astronautes:intro": {
+      "file": "m4a/malo-agence-astronautes/intro.m4a",
+      "textHash": "1c9kt28",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-1": {
+      "file": "m4a/mila-oeuf-orage/decision-1.m4a",
+      "textHash": "tysvdx",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-1-question": {
+      "file": "m4a/mila-oeuf-orage/decision-1-question.m4a",
+      "textHash": "1wn25er",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-1-suite-a": {
+      "file": "m4a/mila-oeuf-orage/decision-1-suite-a.m4a",
+      "textHash": "1n7rtd3",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-1-suite-b": {
+      "file": "m4a/mila-oeuf-orage/decision-1-suite-b.m4a",
+      "textHash": "1q4ii2q",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-2": {
+      "file": "m4a/mila-oeuf-orage/decision-2.m4a",
+      "textHash": "16xaxbp",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-2-question": {
+      "file": "m4a/mila-oeuf-orage/decision-2-question.m4a",
+      "textHash": "kap48b",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-2-suite-a": {
+      "file": "m4a/mila-oeuf-orage/decision-2-suite-a.m4a",
+      "textHash": "1yfcz6g",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-2-suite-b": {
+      "file": "m4a/mila-oeuf-orage/decision-2-suite-b.m4a",
+      "textHash": "psesot",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-3": {
+      "file": "m4a/mila-oeuf-orage/decision-3.m4a",
+      "textHash": "1dvrs0g",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 3
+      }
+    },
+    "mila-oeuf-orage:decision-3-question": {
+      "file": "m4a/mila-oeuf-orage/decision-3-question.m4a",
+      "textHash": "152l3s1",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "slow",
+        "intensity": 3
+      }
+    },
+    "mila-oeuf-orage:decision-3-suite-a": {
+      "file": "m4a/mila-oeuf-orage/decision-3-suite-a.m4a",
+      "textHash": "enpe23",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-3-suite-b": {
+      "file": "m4a/mila-oeuf-orage/decision-3-suite-b.m4a",
+      "textHash": "9hz7k3",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "suspense",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-4": {
+      "file": "m4a/mila-oeuf-orage/decision-4.m4a",
+      "textHash": "13ibuid",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-4-question": {
+      "file": "m4a/mila-oeuf-orage/decision-4-question.m4a",
+      "textHash": "1oe71kw",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-4-suite-a": {
+      "file": "m4a/mila-oeuf-orage/decision-4-suite-a.m4a",
+      "textHash": "1vsop8s",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-4-suite-b": {
+      "file": "m4a/mila-oeuf-orage/decision-4-suite-b.m4a",
+      "textHash": "xpti6x",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-5": {
+      "file": "m4a/mila-oeuf-orage/decision-5.m4a",
+      "textHash": "1nzkpbm",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-5-question": {
+      "file": "m4a/mila-oeuf-orage/decision-5-question.m4a",
+      "textHash": "1llvsne",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-5-suite-a": {
+      "file": "m4a/mila-oeuf-orage/decision-5-suite-a.m4a",
+      "textHash": "1nkk6ji",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-5-suite-b": {
+      "file": "m4a/mila-oeuf-orage/decision-5-suite-b.m4a",
+      "textHash": "ycp3i5",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:decision-5-suite-c": {
+      "file": "m4a/mila-oeuf-orage/decision-5-suite-c.m4a",
+      "textHash": "1yzcjh8",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:fin-a": {
+      "file": "m4a/mila-oeuf-orage/fin-a.m4a",
+      "textHash": "prm07j",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:fin-b": {
+      "file": "m4a/mila-oeuf-orage/fin-b.m4a",
+      "textHash": "95rbs1",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:fin-c": {
+      "file": "m4a/mila-oeuf-orage/fin-c.m4a",
+      "textHash": "756gs5",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "mila-oeuf-orage:intro": {
+      "file": "m4a/mila-oeuf-orage/intro.m4a",
+      "textHash": "jfbsfu",
+      "voice": "Flo",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-1": {
+      "file": "m4a/nino-doudou-voyageur/decision-1.m4a",
+      "textHash": "12mrkho",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-1-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-1-question.m4a",
+      "textHash": "65yrgu",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-1-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-1-suite-a.m4a",
+      "textHash": "1u62lu6",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-1-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-1-suite-b.m4a",
+      "textHash": "g6naa7",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-2": {
+      "file": "m4a/nino-doudou-voyageur/decision-2.m4a",
+      "textHash": "inafax",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-2-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-2-question.m4a",
+      "textHash": "gazyps",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-2-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-2-suite-a.m4a",
+      "textHash": "qe2nly",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-2-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-2-suite-b.m4a",
+      "textHash": "1397rrz",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-3": {
+      "file": "m4a/nino-doudou-voyageur/decision-3.m4a",
+      "textHash": "x2l7ln",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-3-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-3-question.m4a",
+      "textHash": "7lptue",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-3-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-3-suite-a.m4a",
+      "textHash": "l94lq1",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-3-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-3-suite-b.m4a",
+      "textHash": "vqm3bw",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "gentle_fear",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-4": {
+      "file": "m4a/nino-doudou-voyageur/decision-4.m4a",
+      "textHash": "1c2wrl4",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-4-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-4-question.m4a",
+      "textHash": "1i9hie4",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-4-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-4-suite-a.m4a",
+      "textHash": "1lu74sz",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-4-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-4-suite-b.m4a",
+      "textHash": "1pmg5ln",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-5": {
+      "file": "m4a/nino-doudou-voyageur/decision-5.m4a",
+      "textHash": "11bcgd4",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-5-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-5-question.m4a",
+      "textHash": "mmpvsb",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-5-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-5-suite-a.m4a",
+      "textHash": "jl9fq8",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-5-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-5-suite-b.m4a",
+      "textHash": "h8t1w8",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "calm",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-6": {
+      "file": "m4a/nino-doudou-voyageur/decision-6.m4a",
+      "textHash": "1w97gll",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-6-question": {
+      "file": "m4a/nino-doudou-voyageur/decision-6-question.m4a",
+      "textHash": "cdaf3b",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-6-suite-a": {
+      "file": "m4a/nino-doudou-voyageur/decision-6-suite-a.m4a",
+      "textHash": "90x9r5",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-6-suite-b": {
+      "file": "m4a/nino-doudou-voyageur/decision-6-suite-b.m4a",
+      "textHash": "mypnx6",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:decision-6-suite-c": {
+      "file": "m4a/nino-doudou-voyageur/decision-6-suite-c.m4a",
+      "textHash": "dhdvii",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:fin-a": {
+      "file": "m4a/nino-doudou-voyageur/fin-a.m4a",
+      "textHash": "1n6l9p9",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:fin-b": {
+      "file": "m4a/nino-doudou-voyageur/fin-b.m4a",
+      "textHash": "1vi70n0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:fin-c": {
+      "file": "m4a/nino-doudou-voyageur/fin-c.m4a",
+      "textHash": "1xojkvf",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "nino-doudou-voyageur:intro": {
+      "file": "m4a/nino-doudou-voyageur/intro.m4a",
+      "textHash": "ycyu15",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-1": {
+      "file": "m4a/sacha-poste-oceans/decision-1.m4a",
+      "textHash": "nsppw5",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-1-question": {
+      "file": "m4a/sacha-poste-oceans/decision-1-question.m4a",
+      "textHash": "1wvxpdp",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-1-suite-a": {
+      "file": "m4a/sacha-poste-oceans/decision-1-suite-a.m4a",
+      "textHash": "8l8672",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-1-suite-b": {
+      "file": "m4a/sacha-poste-oceans/decision-1-suite-b.m4a",
+      "textHash": "4ome2f",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-2": {
+      "file": "m4a/sacha-poste-oceans/decision-2.m4a",
+      "textHash": "1dq4lux",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-2-question": {
+      "file": "m4a/sacha-poste-oceans/decision-2-question.m4a",
+      "textHash": "12oyrc1",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-2-suite-a": {
+      "file": "m4a/sacha-poste-oceans/decision-2-suite-a.m4a",
+      "textHash": "jw6sc0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-2-suite-b": {
+      "file": "m4a/sacha-poste-oceans/decision-2-suite-b.m4a",
+      "textHash": "5ph6fz",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "joy",
+        "pace": "lively",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-3": {
+      "file": "m4a/sacha-poste-oceans/decision-3.m4a",
+      "textHash": "3i1glc",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-3-question": {
+      "file": "m4a/sacha-poste-oceans/decision-3-question.m4a",
+      "textHash": "qnw42r",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-3-suite-a": {
+      "file": "m4a/sacha-poste-oceans/decision-3-suite-a.m4a",
+      "textHash": "16anpgw",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-3-suite-b": {
+      "file": "m4a/sacha-poste-oceans/decision-3-suite-b.m4a",
+      "textHash": "1uzcnf5",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "mystery",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-4": {
+      "file": "m4a/sacha-poste-oceans/decision-4.m4a",
+      "textHash": "hh75ze",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-4-question": {
+      "file": "m4a/sacha-poste-oceans/decision-4-question.m4a",
+      "textHash": "1w7rw86",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-4-suite-a": {
+      "file": "m4a/sacha-poste-oceans/decision-4-suite-a.m4a",
+      "textHash": "1ujqdnl",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-4-suite-b": {
+      "file": "m4a/sacha-poste-oceans/decision-4-suite-b.m4a",
+      "textHash": "167u2ie",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "sadness",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-5": {
+      "file": "m4a/sacha-poste-oceans/decision-5.m4a",
+      "textHash": "x4qepv",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-5-question": {
+      "file": "m4a/sacha-poste-oceans/decision-5-question.m4a",
+      "textHash": "1cwvla0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "slow",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-5-suite-a": {
+      "file": "m4a/sacha-poste-oceans/decision-5-suite-a.m4a",
+      "textHash": "1gb519k",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-5-suite-b": {
+      "file": "m4a/sacha-poste-oceans/decision-5-suite-b.m4a",
+      "textHash": "bssfhz",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:decision-5-suite-c": {
+      "file": "m4a/sacha-poste-oceans/decision-5-suite-c.m4a",
+      "textHash": "14dcmuj",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:fin-a": {
+      "file": "m4a/sacha-poste-oceans/fin-a.m4a",
+      "textHash": "ue6ed0",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:fin-b": {
+      "file": "m4a/sacha-poste-oceans/fin-b.m4a",
+      "textHash": "v4lf7k",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:fin-c": {
+      "file": "m4a/sacha-poste-oceans/fin-c.m4a",
+      "textHash": "b28o9l",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "triumph",
+        "pace": "normal",
+        "intensity": 2
+      }
+    },
+    "sacha-poste-oceans:intro": {
+      "file": "m4a/sacha-poste-oceans/intro.m4a",
+      "textHash": "i5powk",
+      "voice": "Thomas",
+      "model": "macos-say",
+      "format": "m4a",
+      "narration": {
+        "mood": "wonder",
+        "pace": "slow",
+        "intensity": 2
+      }
+    }
+  }
 }

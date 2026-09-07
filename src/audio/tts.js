@@ -49,7 +49,8 @@ function narrationInstructions(context = {}) {
   };
   const pace = { slow: 'un rythme lent', normal: 'un rythme naturel', lively: 'un rythme vivant' };
   const narration = context.narration || {};
-  return `Raconte en français comme une conteuse chaleureuse pour enfants, ${moods[narration.mood] || moods.wonder}, avec ${pace[narration.pace] || pace.normal}. Marque les surprises, les dialogues et les silences avec naturel. Ne surjoue pas et ne deviens jamais effrayante.`;
+  const role = context.heroVoice === 'male' ? 'un conteur chaleureux' : 'une conteuse chaleureuse';
+  return `Raconte en français comme ${role} pour enfants, ${moods[narration.mood] || moods.wonder}, avec ${pace[narration.pace] || pace.normal}. Marque les surprises, les dialogues et les silences avec naturel. Ne surjoue pas et ne rends jamais la scène terrifiante.`;
 }
 
 function splitText(text, limit = 3900) {
@@ -103,9 +104,10 @@ function playBlob(blob, meta = {}) {
   });
 }
 
-function preferredFrenchVoice() {
+function preferredFrenchVoice(heroVoice = 'female') {
   const voices = speechSynthesis.getVoices().filter(voice => /^fr/i.test(voice.lang));
-  return voices.find(voice => /premium|enhanced|audrey|amelie|thomas|google/i.test(voice.name)) || voices[0] || null;
+  const genderPattern = heroVoice === 'male' ? /thomas|jacques|henri|nicolas/i : /flo|audrey|am[eé]lie|aurelie|virginie/i;
+  return voices.find(voice => genderPattern.test(voice.name)) || voices.find(voice => /premium|enhanced|google/i.test(voice.name)) || voices[0] || null;
 }
 
 function speakBrowser(text, context = {}) {
@@ -117,7 +119,7 @@ function speakBrowser(text, context = {}) {
     utterance.lang = 'fr-FR';
     utterance.rate = context.narration?.pace === 'slow' ? 0.86 : context.narration?.pace === 'lively' ? 1.02 : getSettings().speechRate;
     utterance.pitch = ['joy', 'wonder', 'triumph'].includes(mood) ? 1.08 : ['suspense', 'gentle_fear'].includes(mood) ? 0.94 : 1;
-    const voice = preferredFrenchVoice();
+    const voice = preferredFrenchVoice(context.heroVoice);
     if (voice) utterance.voice = voice;
     currentUtterance = utterance;
     activeResolve = resolve;

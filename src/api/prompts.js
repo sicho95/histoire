@@ -7,7 +7,8 @@ const choiceSchema = {
     label: { type: 'string' },
     emoji: { type: 'string' },
     nextNode: { type: 'string' },
-    consequenceHint: { type: 'string' }
+    consequenceHint: { type: 'string' },
+    illustration: { type: 'string' }
   }
 };
 
@@ -41,7 +42,7 @@ const nodeSchema = {
 export const STORY_RESPONSE_SCHEMA = {
   type: 'object',
   additionalProperties: false,
-  required: ['schemaVersion', 'id', 'title', 'coverEmoji', 'intro', 'ageRange', 'durationMinutes', 'startNode', 'storyBible', 'nodes'],
+  required: ['schemaVersion', 'id', 'title', 'coverEmoji', 'intro', 'ageRange', 'ageBand', 'heroVoice', 'durationMinutes', 'startNode', 'storyBible', 'nodes'],
   properties: {
     schemaVersion: { type: 'integer', enum: [2] },
     id: { type: 'string' },
@@ -49,7 +50,9 @@ export const STORY_RESPONSE_SCHEMA = {
     coverEmoji: { type: 'string' },
     intro: { type: 'string' },
     ageRange: { type: 'string' },
-    durationMinutes: { type: 'integer', minimum: 12, maximum: 35 },
+    ageBand: { type: 'string', enum: ['2-5', '5-9'] },
+    heroVoice: { type: 'string', enum: ['female', 'male'] },
+    durationMinutes: { type: 'integer', minimum: 6, maximum: 24 },
     startNode: { type: 'string' },
     storyBible: {
       type: 'object', additionalProperties: false,
@@ -63,7 +66,7 @@ export const STORY_RESPONSE_SCHEMA = {
         recurringObjects: { type: 'array', minItems: 1, maxItems: 5, items: { type: 'string' } }
       }
     },
-    nodes: { type: 'array', minItems: 10, maxItems: 14, items: nodeSchema }
+    nodes: { type: 'array', minItems: 10, maxItems: 40, items: nodeSchema }
   }
 };
 
@@ -77,20 +80,27 @@ export const BRANCH_RESPONSE_SCHEMA = {
   }
 };
 
-const SAFETY = `Public : enfant de 4 à 8 ans. Aucun contenu sexuel, humiliant, discriminatoire, dangereux à reproduire ou graphiquement violent. La peur reste légère, brève et toujours résolue par une action rassurante. Pas de morale assénée : les valeurs apparaissent dans les conséquences.`;
+const SAFETY = `Public : enfant de 2 à 9 ans selon l’âge demandé. Aucun contenu sexuel, humiliant, discriminatoire, dangereux à reproduire ou graphiquement violent. La peur reste légère, brève et toujours résolue par une action rassurante. Pas de morale assénée : les valeurs apparaissent dans les conséquences.`;
 
 export function buildFullStoryRequest(input) {
-  const lengthGuide = input.length === 'long' ? '12 à 14 scènes, environ 25 à 30 minutes' : '10 à 12 scènes, environ 15 à 22 minutes';
+  const age = Number(input.age || 7);
+  const duration = Number(input.duration || 10);
+  const preschool = age <= 4;
+  const sceneWords = preschool ? '60 à 110 mots, avec répétitions et phrases simples' : '90 à 190 mots, avec dialogues courts et détails sensoriels';
+  const nodeGuide = duration >= 18 ? '28 à 36 scènes, dont 9 à 11 moments de choix' : duration >= 10 ? '18 à 25 scènes, dont 5 à 7 moments de choix' : '15 à 21 scènes, dont 4 à 6 moments de choix';
+  const choiceTiming = `Un moment de choix doit arriver toutes les 45 à 150 secondes de narration, jamais plus rapproché que 45 secondes pour une histoire courte.`;
   const instructions = `Tu es auteur et architecte de contes interactifs français. ${SAFETY}
 
 Écris une aventure complète et cohérente, pensée pour être racontée à voix haute. Construis une progression en trois actes : désir clair, complications croissantes, résolution gagnée par les décisions de l'enfant. Chaque choix doit provoquer une conséquence visible dès la scène suivante. Les branches peuvent se rejoindre, mais jamais immédiatement et jamais sans conserver la conséquence du choix. Prévois au moins trois fins distinctes et accessibles.
 
 Exigences éditoriales :
-- ${lengthGuide} ;
-- scènes narratives de 180 à 280 mots, fins de 110 à 180 mots ;
+- durée cible : ${duration} minutes à l’oral ;
+- ${nodeGuide} ;
+- scènes de ${sceneWords}, fins de 60 à 140 mots ;
+- ${choiceTiming}
 - dialogues courts, vocabulaire concret, détails sensoriels variés ;
 - personnages, objets et règles du monde parfaitement constants ;
-- 2 ou 3 choix courts par scène, menant à au moins 2 destinations différentes ;
+- 2 ou 3 choix courts à chaque moment de décision, menant à des conséquences différentes ;
 - trois émotions ou intensités différentes au fil du récit ;
 - aucune mention de modèle, prompt, génération, nœud ou embranchement.
 
@@ -101,8 +111,9 @@ Prénom d'usage : ${input.name || 'un prénom inventé adapté'}.
 Univers : ${input.place}.
 Genre : ${input.theme}.
 Élément souhaité par l'enfant : ${input.wish || 'surprise libre'}.
-Âge : ${input.age || '6 ans'}.
-Longueur : ${input.length || 'longue'}.
+Âge : ${age} ans.
+Durée cible : ${duration} minutes.
+Choisis heroVoice="female" si le personnage principal est présenté comme une héroïne, heroVoice="male" s’il est présenté comme un héros. Utilise ageBand="2-5" jusqu’à 4 ans, sinon ageBand="5-9".
 Le prénom fourni est un prénom d'usage seulement : n'invente aucune donnée personnelle.`;
   return { instructions, userInput };
 }

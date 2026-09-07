@@ -22,13 +22,14 @@ export function initWizard() {
       place: document.getElementById('studio-place').value,
       theme: document.getElementById('studio-theme').value,
       wish: document.getElementById('studio-wish').value.trim(),
-      age: '6 ans', length: 'long'
+      age: Number(document.getElementById('studio-age').value),
+      duration: Number(document.getElementById('studio-duration').value)
     };
     button.disabled = true;
     status.textContent = 'J’imagine les personnages, les vrais embranchements et plusieurs fins…';
     try {
       const request = buildFullStoryRequest(input);
-      const { data } = await queryStructured({ name: 'complete_child_story', schema: STORY_RESPONSE_SCHEMA, ...request, maxOutputTokens: 7000 });
+      const { data } = await queryStructured({ name: 'complete_child_story', schema: STORY_RESPONSE_SCHEMA, ...request, maxOutputTokens: 12000 });
       const story = normalizeStory({ ...data, source: 'child-draft', status: 'draft' }, { source: 'child-draft' });
       story.durationMinutes = estimateDurationMinutes(story);
       const validation = validateStory(story);
