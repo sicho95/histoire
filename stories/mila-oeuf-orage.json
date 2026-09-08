@@ -45,7 +45,7 @@
           "id": "decision-1-a",
           "label": "Suivre les traces du bois",
           "emoji": "👣",
-          "illustration": "./assets/choices/suivre.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
           "consequenceHint": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un bébé tricératops transparent comme une b"
         },
@@ -53,7 +53,7 @@
           "id": "decision-1-b",
           "label": "Monter vers le moulin",
           "emoji": "🧭",
-          "illustration": "./assets/choices/explorer.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-1-b.jpg",
           "nextNode": "decision-1-suite-b",
           "consequenceHint": "Mila suit le souffle doré jusqu’au moulin. Dans ses ailes immobiles est coincé un ruban de nuage couvert d’empreintes de"
         }
@@ -106,7 +106,7 @@
           "id": "decision-2-a",
           "label": "Lui offrir un grelot",
           "emoji": "🔔",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-2-a.jpg",
           "nextNode": "decision-2-suite-a",
           "consequenceHint": "Mila détache le petit grelot de sa fermeture éclair et le fait tinter. Le corbeau incline la tête, ravi, puis dépose la "
         },
@@ -114,7 +114,7 @@
           "id": "decision-2-b",
           "label": "Imiter le chant de la plume",
           "emoji": "🎶",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-2-b.jpg",
           "nextNode": "decision-2-suite-b",
           "consequenceHint": "Mila souffle entre ses mains : « fi-ou, fi-ou ». Toupik ajoute un « prout-prout » involontaire avec ses naseaux. Le corb"
         }
@@ -167,7 +167,7 @@
           "id": "decision-3-a",
           "label": "Construire un pont de tronc",
           "emoji": "🌉",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-3-a.jpg",
           "nextNode": "decision-3-suite-a",
           "consequenceHint": "Mila et Toupik tirent ensemble sur les lianes. Le tronc se pose d’une rive à l’autre. Toupik traverse d’abord, pattes éc"
         },
@@ -175,7 +175,7 @@
           "id": "decision-3-b",
           "label": "Faire des barques-feuilles",
           "emoji": "🍃",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-3-b.jpg",
           "nextNode": "decision-3-suite-b",
           "consequenceHint": "Mila replie les bords des grandes feuilles et Toupik les pousse du museau. Les musaraignes embarquent avec l’œuf au cent"
         }
@@ -228,7 +228,7 @@
           "id": "decision-4-a",
           "label": "Grimper jusqu’au ruban",
           "emoji": "🪢",
-          "illustration": "./assets/choices/courage.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-4-a.jpg",
           "nextNode": "decision-4-suite-a",
           "consequenceHint": "Mila monte lentement, trois marches à la fois, puis s’arrête pour respirer. Toupik guide ses pieds depuis le sol. Elle a"
         },
@@ -236,7 +236,7 @@
           "id": "decision-4-b",
           "label": "Souffler tous ensemble",
           "emoji": "💨",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
           "consequenceHint": "Mila appelle les musaraignes et le corbeau. Chacun inspire. « Un, deux, trois… FROUUU ! » Toupik souffle si fort qu’il r"
         }
@@ -289,7 +289,7 @@
           "id": "decision-5-a",
           "label": "Chanter leur drôle de chanson",
           "emoji": "🎵",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-5-a.jpg",
           "nextNode": "decision-5-suite-a",
           "consequenceHint": "Mila reprend « fi-ou, fi-ou » et Toupik ajoute son fameux « prout-prout ». Le bébé cesse de pousser la coquille et écout"
         },
@@ -297,7 +297,7 @@
           "id": "decision-5-b",
           "label": "Lui raconter tous les gestes d’entraide",
           "emoji": "💗",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-5-b.jpg",
           "nextNode": "decision-5-suite-b",
           "consequenceHint": "Mila raconte le corbeau, les musaraignes et tous ceux qui ont aidé. À chaque merci, une couleur du pont devient plus sol"
         },
@@ -305,7 +305,7 @@
           "id": "decision-5-c",
           "label": "Respirer et avancer tout doucement",
           "emoji": "⭐",
-          "illustration": "./assets/choices/attendre.svg",
+          "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-5-c.jpg",
           "nextNode": "decision-5-suite-c",
           "consequenceHint": "Mila pose la main sur la coquille. Ensemble, ils inspirent pendant trois couleurs et expirent pendant trois autres. Le v"
         }
@@ -399,8 +399,8 @@
       "choices": []
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
-  "updatedAt": "2026-09-07T00:00:00.000Z"
+  "updatedAt": "2026-09-08T00:00:00.000Z"
 }

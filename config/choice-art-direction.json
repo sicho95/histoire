@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "styleVersion": "signature-choice-art-v1",
+  "acceptedAt": "2026-09-08",
+  "corePrinciple": "Un embranchement équivaut à tourner une page : l’image illustre la suite possible tout en restant un bouton de choix immédiatement compréhensible.",
+  "roles": [
+    "faire comprendre l’action avant la lecture du libellé",
+    "prolonger l’univers visuel de l’album",
+    "maintenir l’identité du héros et des compagnons"
+  ],
+  "publicationTiers": {
+    "childDraft": {
+      "specificArtRequired": false,
+      "genericPictogramsAllowed": true,
+      "privacy": "local jusqu’à export et validation parentale"
+    },
+    "consolidated": {
+      "specificArtRequired": true,
+      "genericPictogramsAllowed": false,
+      "uniqueImagePerChoice": true
+    },
+    "signature": {
+      "specificArtRequired": true,
+      "genericPictogramsAllowed": false,
+      "uniqueImagePerChoice": true,
+      "precacheForOfflineReading": true
+    }
+  },
+  "composition": {
+    "primaryActionCount": 1,
+    "oversizedClueCount": 1,
+    "background": "minimal, doux et secondaire",
+    "textInsideImage": false,
+    "smallSizeReadabilityTargetPx": 120,
+    "choiceLabelAlwaysVisibleBelow": true,
+    "characterAndUniverseContinuity": true
+  },
+  "customChoice": {
+    "label": "Dire une autre idée",
+    "showOnlyWhenLlmConfigured": true,
+    "requiresOnlineConnection": true,
+    "requiresSpeechRecognition": true,
+    "hiddenOtherwise": true,
+    "result": "branche privée créée localement avec pictogrammes génériques jusqu’à consolidation"
+  },
+  "ageBands": {
+    "2-5": {
+      "style": "aquarelle et gouache douce, formes rondes",
+      "maxMainCharacters": 2,
+      "exceptionalMaxCharacters": 3,
+      "detailLevel": "très faible",
+      "emotion": "lisible, rassurante, sans ambiguïté"
+    },
+    "5-9": {
+      "style": "illustration d’album riche mais focalisée",
+      "maxMainCharacters": 4,
+      "detailLevel": "modéré",
+      "emotion": "expressive, aventureuse, jamais surchargée"
+    }
+  },
+  "delivery": {
+    "format": "JPEG",
+    "displayWidthPx": 360,
+    "naming": "assets/stories/<story-id>/choices/<choice-id>.jpg",
+    "fallback": "assets/choices/*.svg uniquement pour les brouillons"
+  },
+  "signatureInventory": [
+    { "id": "mila-oeuf-orage", "ageBand": "5-9", "choiceImages": 11, "universe": "jungle d’orage, moulin et dinosaures célestes" },
+    { "id": "sacha-poste-oceans", "ageBand": "5-9", "choiceImages": 11, "universe": "poste sous-marine et cité de Coralline" },
+    { "id": "aya-phare-reves", "ageBand": "5-9", "choiceImages": 21, "universe": "phare nocturne, émotions et rêves lumineux" },
+    { "id": "malo-agence-astronautes", "ageBand": "5-9", "choiceImages": 21, "universe": "agence spatiale joyeuse et enquête musicale" },
+    { "id": "nino-doudou-voyageur", "ageBand": "2-5", "choiceImages": 13, "universe": "jardin au clair de lune, lanterne et doudous" },
+    { "id": "lila-fete-couleurs", "ageBand": "2-5", "choiceImages": 13, "universe": "lagon pastel, couleurs, musique et rubans" }
+  ]
+}

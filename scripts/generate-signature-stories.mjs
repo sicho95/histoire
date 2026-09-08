@@ -4,8 +4,6 @@ import { fileURLToPath } from 'node:url';
 import definitions from '../content/signature-stories.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const choiceAssets = ['explorer','ecouter','aider','courage','inventer','observer','chanter','suivre','partager','attendre','demander','rentrer'].map(name => `./assets/choices/${name}.svg`);
-
 function buildStory(definition, featuredOrder) {
   const nodes = [];
   definition.episodes.forEach((episode, index) => {
@@ -18,7 +16,7 @@ function buildStory(definition, featuredOrder) {
         id: `${sceneId}-${suffix}`,
         label: option.label,
         emoji: option.emoji,
-        illustration: option.illustration,
+        illustration: `./assets/stories/${definition.id}/choices/${sceneId}-${suffix}.jpg`,
         nextNode: `${sceneId}-suite-${suffix}`,
         consequenceHint: option.consequence.slice(0, 120)
       };
@@ -73,10 +71,10 @@ function buildStory(definition, featuredOrder) {
     startNode: 'decision-1',
     storyBible: definition.bible,
     nodes,
-    revision: 2,
+    revision: 3,
     status: 'published',
     createdAt: '2026-09-07T00:00:00.000Z',
-    updatedAt: '2026-09-07T00:00:00.000Z'
+    updatedAt: '2026-09-08T00:00:00.000Z'
   };
 }
 
@@ -87,7 +85,7 @@ for (const story of stories) {
 }
 const catalog = {
   schemaVersion: 1,
-  revision: 3,
+  revision: 4,
   stories: stories.map(story => ({
     id: story.id,
     title: story.title,
@@ -99,7 +97,7 @@ const catalog = {
     coverImage: story.coverImage,
     audioReady: true,
     signature: true,
-    choiceAssets
+    choiceAssets: story.nodes.flatMap(node => node.choices.map(choice => choice.illustration))
   }))
 };
 await writeFile(join(root, 'stories/catalog.json'), `${JSON.stringify(catalog, null, 2)}\n`);

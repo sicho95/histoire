@@ -46,7 +46,7 @@
           "id": "decision-1-a",
           "label": "Analyser la poudre à l’observatoire",
           "emoji": "🔭",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
           "consequenceHint": "Sous la loupe à gravité, la poudre révèle des empreintes de bottes minuscules et des miettes de biscuit étoilé. Nova ide"
         },
@@ -54,7 +54,7 @@
           "id": "decision-1-b",
           "label": "Interroger le satellite-poubelle",
           "emoji": "🛰️",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-1-b.jpg",
           "nextNode": "decision-1-suite-b",
           "consequenceHint": "Le satellite avale les questions et recrache les réponses à l’envers. Géo retourne l’enregistrement : « J’ai vu une bull"
         }
@@ -107,7 +107,7 @@
           "id": "decision-2-a",
           "label": "Regarder la caméra au ralenti",
           "emoji": "🎥",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-2-a.jpg",
           "nextNode": "decision-2-suite-a",
           "consequenceHint": "Les images montrent la bulle rebondir sur le camion puis emporter seulement le son du klaxon. Dans son reflet, Malo aper"
         },
@@ -115,7 +115,7 @@
           "id": "decision-2-b",
           "label": "Rejouer le trajet avec le camion",
           "emoji": "🛻",
-          "illustration": "./assets/choices/suivre.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-2-b.jpg",
           "nextNode": "decision-2-suite-b",
           "consequenceHint": "Gland-1 suit le camion à la même vitesse. Au virage, une onde invisible fait vibrer tous les objets drôles. Le klaxon de"
         }
@@ -168,7 +168,7 @@
           "id": "decision-3-a",
           "label": "Inspecter les coulisses discrètement",
           "emoji": "🔎",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-3-a.jpg",
           "nextNode": "decision-3-suite-a",
           "consequenceHint": "Roussette découvre que la cage servait à transporter des enregistrements pour le spectacle, pas des rires vivants. Elle "
         },
@@ -176,7 +176,7 @@
           "id": "decision-3-b",
           "label": "Poser une question directe et calme",
           "emoji": "❓",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-3-b.jpg",
           "nextNode": "decision-3-suite-b",
           "consequenceHint": "Le lapin avoue qu’il collectionnait autrefois les rires du public, jusqu’à comprendre que les enfermer les rendait trist"
         }
@@ -229,7 +229,7 @@
           "id": "decision-4-a",
           "label": "Chanter avec elle sans se moquer",
           "emoji": "🎤",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-4-a.jpg",
           "nextNode": "decision-4-suite-a",
           "consequenceHint": "Malo trouve une note confortable et l’équipe crée des harmonies autour de la comète. Elle ralentit, soulagée de ne plus "
         },
@@ -237,7 +237,7 @@
           "id": "decision-4-b",
           "label": "Demander une pause technique",
           "emoji": "⏸️",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
           "consequenceHint": "Au lieu de couper brutalement le micro, Malo propose une pause pour vérifier le son. Dans le silence, la comète entend e"
         }
@@ -290,7 +290,7 @@
           "id": "decision-5-a",
           "label": "Résoudre la devinette des trois portes",
           "emoji": "🧩",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-5-a.jpg",
           "nextNode": "decision-5-suite-a",
           "consequenceHint": "Malo compare les symboles : une porte ment, une dit vrai, une répète la précédente. Il pose une seule question et trouve"
         },
@@ -298,7 +298,7 @@
           "id": "decision-5-b",
           "label": "Parler avec des phrases très précises",
           "emoji": "🗨️",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-5-b.jpg",
           "nextNode": "decision-5-suite-b",
           "consequenceHint": "Malo explique le but, la destination et l’urgence sans expression imagée. Les robots comprennent enfin et ouvrent une vo"
         }
@@ -351,7 +351,7 @@
           "id": "decision-6-a",
           "label": "Vérifier avant de décider",
           "emoji": "⚖️",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-6-a.jpg",
           "nextNode": "decision-6-suite-a",
           "consequenceHint": "La loupe confirme que les rires du sac viennent du cirque, des hamsters et même de Roussette, qui avait perdu un petit r"
         },
@@ -359,7 +359,7 @@
           "id": "decision-6-b",
           "label": "L’inviter à guider l’enquête",
           "emoji": "🧭",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-6-b.jpg",
           "nextNode": "decision-6-suite-b",
           "consequenceHint": "Zib rend d’abord tous les rires puis grimpe dans Gland-1. Son antenne détecte les sons captifs. Elle révèle que la grand"
         }
@@ -412,7 +412,7 @@
           "id": "decision-7-a",
           "label": "Demander avant de regarder",
           "emoji": "🙋",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-7-a.jpg",
           "nextNode": "decision-7-suite-a",
           "consequenceHint": "Chacun autorise certains souvenirs et en garde d’autres privés. En les triant ensemble, ils voient la bulle frôler une v"
         },
@@ -420,7 +420,7 @@
           "id": "decision-7-b",
           "label": "Suivre le grelot les yeux fermés",
           "emoji": "👂",
-          "illustration": "./assets/choices/ecouter.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-7-b.jpg",
           "nextNode": "decision-7-suite-b",
           "consequenceHint": "Attachés par une corde, ils avancent au son : tin… tin… TIN. Sans les images, personne n’est exposé. Géo sent sous ses p"
         }
@@ -473,7 +473,7 @@
           "id": "decision-8-a",
           "label": "Assembler quatre sons différents",
           "emoji": "🎼",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-8-a.jpg",
           "nextNode": "decision-8-suite-a",
           "consequenceHint": "Malo tape le rythme, Nova hulule, Géo claque et Roussette secoue ses outils. Les différences s’emboîtent comme les pièce"
         },
@@ -481,7 +481,7 @@
           "id": "decision-8-b",
           "label": "Commencer ensemble puis créer des solos",
           "emoji": "🥁",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-8-b.jpg",
           "nextNode": "decision-8-suite-b",
           "consequenceHint": "Ils frappent d’abord le même battement rassurant, puis chacun ajoute son motif. L’aspirateur hésite, se met à danser et "
         }
@@ -534,7 +534,7 @@
           "id": "decision-9-a",
           "label": "Répartir les sons avec précision",
           "emoji": "🔧",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-9-a.jpg",
           "nextNode": "decision-9-suite-a",
           "consequenceHint": "Nova calcule, Géo branche, Zib écoute et Malo donne le rythme. Roussette résiste héroïquement au gros bouton rouge. La p"
         },
@@ -542,7 +542,7 @@
           "id": "decision-9-b",
           "label": "Arrêter puis pousser tous ensemble",
           "emoji": "🛑",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-9-b.jpg",
           "nextNode": "decision-9-suite-b",
           "consequenceHint": "Malo compte à rebours. Dans le silence spatial, tous poussent la bulle vers la sortie. Même la Lune semble retenir son s"
         }
@@ -595,7 +595,7 @@
           "id": "decision-10-a",
           "label": "Créer une chaîne de sons",
           "emoji": "🎶",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-10-a.jpg",
           "nextNode": "decision-10-suite-a",
           "consequenceHint": "Chaque membre reçoit une partie du « hic-hic-hou » et la transmet au suivant sans la déformer. Le ruban grandit à chaque"
         },
@@ -603,7 +603,7 @@
           "id": "decision-10-b",
           "label": "Le transporter dans Gland-1",
           "emoji": "🚀",
-          "illustration": "./assets/choices/courage.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-10-b.jpg",
           "nextNode": "decision-10-suite-b",
           "consequenceHint": "Géo transforme la cabine en boîte à musique étanche. Malo pilote très doucement jusqu’au cratère du Sourire. Roussette o"
         },
@@ -611,7 +611,7 @@
           "id": "decision-10-c",
           "label": "Raconter honnêtement toute l’enquête",
           "emoji": "📖",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/malo-agence-astronautes/choices/decision-10-c.jpg",
           "nextNode": "decision-10-suite-c",
           "consequenceHint": "Malo raconte les fausses pistes, les excuses et la machine surchargée. La Lune comprend qu’on ne lui avait pas volé sa j"
         }
@@ -705,8 +705,8 @@
       "choices": []
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
-  "updatedAt": "2026-09-07T00:00:00.000Z"
+  "updatedAt": "2026-09-08T00:00:00.000Z"
 }

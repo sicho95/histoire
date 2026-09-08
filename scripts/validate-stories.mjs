@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeStory, validateStory } from '../src/core/story-model.js';
@@ -36,10 +36,30 @@ function signatureMetrics(story) {
   };
 }
 
+async function validateSignatureArt(raw) {
+  const errors = [];
+  const choices = raw.nodes.flatMap(node => node.choices || []);
+  const illustrations = choices.map(choice => choice.illustration);
+  const expectedPrefix = `./assets/stories/${raw.id}/choices/`;
+  if (new Set(illustrations).size !== illustrations.length) errors.push('chaque choix signature doit avoir une illustration unique.');
+  for (const choice of choices) {
+    const expected = `${expectedPrefix}${choice.id}.jpg`;
+    if (choice.illustration !== expected) {
+      errors.push(`${choice.id}: illustration attendue ${expected}.`);
+      continue;
+    }
+    try { await access(join(root, choice.illustration.replace(/^\.\//, ''))); }
+    catch { errors.push(`${choice.id}: fichier d’illustration introuvable.`); }
+  }
+  return errors;
+}
+
 for (const entry of catalog.stories) {
   const raw = JSON.parse(await readFile(join(root, 'stories', entry.file), 'utf8'));
   const story = normalizeStory(raw, { source: 'github', revision: entry.revision });
   const result = validateStory(story, { editorial: true });
+  if (entry.signature) result.errors.push(...await validateSignatureArt(raw));
+  result.ok = result.errors.length === 0;
   if (!result.ok) {
     failed = true;
     console.error(`${entry.file}:\n- ${result.errors.join('\n- ')}`);

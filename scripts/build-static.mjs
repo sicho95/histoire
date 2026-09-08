@@ -44,7 +44,12 @@ const catalog = JSON.parse(await readFile(join(root, 'stories/catalog.json'), 'u
 const audioManifest = JSON.parse(await readFile(join(root, 'audio/manifest.json'), 'utf8'));
 const storyAssets = (catalog.stories || []).map(entry => `./stories/${entry.file}`);
 const coverAssets = (catalog.stories || []).map(entry => entry.coverImage).filter(Boolean);
-const choiceAssets = [...new Set((catalog.stories || []).flatMap(entry => entry.choiceAssets || []))];
+const genericChoiceAssets = ['explorer', 'ecouter', 'aider', 'courage', 'inventer', 'observer', 'chanter', 'suivre', 'partager', 'attendre', 'demander', 'rentrer']
+  .map(name => `./assets/choices/${name}.svg`);
+const choiceAssets = [...new Set([
+  ...genericChoiceAssets,
+  ...(catalog.stories || []).flatMap(entry => entry.choiceAssets || [])
+])];
 const assets = [
   './', './index.html', './manifest.json', './version.json',
   './css/variables.css', './css/layout.css', './css/components.css',
