@@ -20,8 +20,10 @@ const narrationSchema = {
   additionalProperties: false,
   required: ['mood', 'pace', 'intensity'],
   properties: {
-    mood: { type: 'string', enum: ['wonder', 'joy', 'mystery', 'suspense', 'gentle_fear', 'sadness', 'calm', 'triumph'] },
-    pace: { type: 'string', enum: ['slow', 'normal', 'lively'] },
+    // Groq peut inventer une nuance proche ("adventure", "excited", etc.).
+    // Le modèle local la ramène ensuite vers notre vocabulaire vocal sûr.
+    mood: { type: 'string' },
+    pace: { type: 'string' },
     intensity: { type: 'integer', minimum: 1, maximum: 3 }
   }
 };
@@ -148,13 +150,14 @@ Structure obligatoire des nœuds :
 Chaque choice pointe d’abord vers une conséquence unique. Deux choices d’une même décision ne pointent jamais vers le même nœud. Tous les nextNode existent, toutes les scènes sont accessibles depuis startNode et les identifiants sont des slugs ASCII uniques. Avant de répondre, simule silencieusement chaque chemin du début à chacune des fins et corrige toute apparition inexpliquée, objet non acquis, répétition de décision ou transition manquante.`;
   const userInput = `Crée maintenant l'histoire demandée.
 Héros : ${input.hero}.
+Présentation choisie : ${input.heroVoice === 'male' ? 'héros masculin' : 'héroïne féminine'}.
 Prénom d'usage : ${input.name || 'un prénom inventé adapté'}.
 Univers : ${input.place}.
 Genre : ${input.theme}.
 Élément souhaité par l'enfant : ${input.wish || 'surprise libre'}.
 Âge : ${age} ans.
 Durée cible : ${duration} minutes.
-Choisis heroVoice="female" si le personnage principal est présenté comme une héroïne, heroVoice="male" s’il est présenté comme un héros. Utilise ageBand="2-5" jusqu’à 4 ans, sinon ageBand="5-9".
+Le premier nœud désigné par startNode est obligatoirement une décision : il contient la première scène, une question adressée à l’enfant et 2 ou 3 choix, sans écran « Continuer » préalable. Utilise exactement heroVoice="${input.heroVoice === 'male' ? 'male' : 'female'}". Utilise ageBand="2-5" jusqu’à 4 ans, sinon ageBand="5-9".
 Le prénom fourni est un prénom d'usage seulement : n'invente aucune donnée personnelle.`;
   return { instructions, userInput };
 }

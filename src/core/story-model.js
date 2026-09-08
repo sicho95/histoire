@@ -77,6 +77,25 @@ export function normalizeStory(raw, meta = {}) {
   };
 }
 
+export function harmonizeCreatedStoryOpening(input) {
+  const story = structuredClone(input);
+  if (story.source !== 'child-draft') return story;
+  const preludeIds = [];
+  let node = story.nodes[story.startNode];
+  const seen = new Set();
+  while (node && node.nextNode && !node.choices.length && !node.isEnding && !seen.has(node.id)) {
+    seen.add(node.id);
+    preludeIds.push(node.id);
+    node = story.nodes[node.nextNode];
+  }
+  if (!preludeIds.length || !node || node.choices.length < 2 || !node.question) return story;
+  const prelude = preludeIds.map(id => story.nodes[id]?.text).filter(Boolean);
+  node.text = [...prelude, node.text].join('\n\n');
+  story.startNode = node.id;
+  for (const id of preludeIds) delete story.nodes[id];
+  return story;
+}
+
 export function storyToPortable(story) {
   const normalized = normalizeStory(story, { source: story.source, revision: story.revision });
   return {

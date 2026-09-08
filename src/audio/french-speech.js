@@ -1,10 +1,10 @@
-export const FRENCH_SPEECH_VERSION = 'fr-pronunciation-v1';
+export const FRENCH_SPEECH_VERSION = 'fr-pronunciation-v2';
 
 const FRENCH_ONOMATOPOEIA = new Map([
   ['plouf', 'plouffe'], ['pouf', 'pouffe'], ['boum', 'boume'], ['ploc', 'ploque'],
   ['plim', 'plime'], ['plam', 'plame'], ['plop', 'plope'], ['pop', 'pope'],
   ['ding', 'dingue'], ['toc', 'toque'], ['clac', 'claque'], ['cric', 'crique'],
-  ['hic', 'hique'], ['snif', 'sniffe'], ['tin', 'tine'], ['vroum', 'vroume'],
+  ['hic', 'hique'], ['snif', 'sniffe'], ['tin', 'tain'], ['vroum', 'vroume'],
   ['pouet', 'pouète'], ['bou', 'bouh'], ['frou-frou', 'frou frou'], ['hou-hou', 'hou hou'],
   ['fi-ou', 'fi ou'], ['prout-prout', 'proute proute'], ['fiiiiou', 'fiii ou'],
   ['iiiiik', 'iiiiique'], ['frouuu', 'frou-ou']

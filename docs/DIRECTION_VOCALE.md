@@ -30,7 +30,7 @@ La saisie d’une autre idée n’est jamais un enregistrement à arrêter manue
 
 L’intensité `1`, `2` ou `3` module finement l’énergie à l’intérieur d’une même intention. Une scène pressée peut utiliser `pace: "lively"`, tandis que le stress et le suspense conservent un débit retenu pour rester compréhensibles et rassurants. Ces paramètres changent la réalisation, jamais le narrateur.
 
-Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise. En complément, `src/audio/french-speech.js` applique uniquement au texte envoyé à la voix un lexique phonétique central (`plouf → plouffe`, `ding → dingue`, `boum → boume`, etc.). Le mot correctement orthographié reste inchangé à l’écran. Toute modification de ce lexique change `speechHash` et oblige le générateur à refaire la piste concernée.
+Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise. En complément, `src/audio/french-speech.js` applique uniquement au texte envoyé à la voix un lexique phonétique central (`plouf → plouffe`, `ding → dingue`, `boum → boume`, `tin → tain`, etc.). Le mot correctement orthographié reste inchangé à l’écran. Toute modification de ce lexique change `speechHash` et oblige le générateur à refaire la piste concernée.
 
 ## Régénération
 
@@ -51,16 +51,19 @@ L’ordre de lecture est volontairement déterministe :
 
 1. MP3 éditorial correspondant exactement au texte de l’histoire signature ;
 2. MP3 portable déjà importé ou généré sur cet appareil ;
-3. essai Edge TTS gratuit, sans clé, avec Vivienne ou Rémy et les réglages de la scène ;
-4. Azure Speech si un parent a configuré une clé et une région ;
-5. meilleure voix française installée sur l’appareil, avec vitesse et hauteur adaptées à l’âge.
+3. Edge TTS gratuit via `proxy.sicho95.workers.dev/v1/tts/edge`, avec Vivienne ou Rémy et les réglages de la scène ;
+4. essai Edge direct lorsque le navigateur Microsoft Edge le permet ;
+5. Azure Speech si un parent a configuré une clé et une région ;
+6. OpenAI TTS si une clé est configurée ;
+7. Google AI Studio TTS si une clé est configurée ;
+8. meilleure voix française installée sur l’appareil, avec vitesse et hauteur adaptées à l’âge.
 
-Edge TTS est une opportunité gratuite, pas une garantie de service : certains navigateurs refusent sa connexion. Son échec doit être rapide et silencieux, puis déclencher Azure ou la voix locale sans bloquer l’histoire. Les secrets Azure restent dans la session de l’appareil et ne figurent jamais dans une histoire ni dans son export.
+Le navigateur ne contacte pas directement Microsoft sur Safari ou Firefox : le Worker ouvre la connexion nécessaire et transmet le MP3 une seule fois. La PWA enregistre immédiatement cette piste dans IndexedDB ; la lecture suivante et l’export ZIP utilisent la copie locale, sans nouveau transit Cloudflare. Un cache Cloudflare par texte, voix et prosodie évite aussi une régénération identique. Edge TTS reste un service non garanti : son échec doit être rapide et silencieux, puis déclencher Azure, OpenAI, Google ou la voix locale sans bloquer l’histoire. Les clés parentales restent dans la session de l’appareil et ne figurent jamais dans une histoire ni dans son export.
 
 Le lecteur conserve un seul élément audio pendant toute la séance. Cette continuité est indispensable sur Safari et iOS : remplacer le lecteur entre les pistes peut perdre l’autorisation de lecture acquise par le geste de l’enfant et faire défiler une scène sans la raconter.
 
 ## Paquet vocal portable
 
-L’export ZIP d’un brouillon contient une piste MP3 distincte pour l’introduction, chaque scène et chaque question, plus un manifeste liant texte, voix et réglages. Une piste produite uniquement par la synthèse locale du téléphone n’est pas exportable ; dans ce cas l’application explique qu’Edge TTS ou Azure doit d’abord fournir les MP3.
+L’export ZIP d’un brouillon contient une piste MP3 ou WAV distincte pour l’introduction, chaque scène et chaque question, plus un manifeste liant texte, voix et réglages. Une piste produite uniquement par la synthèse locale du téléphone n’est pas récupérable comme fichier par les navigateurs. L’archive reste néanmoins téléchargeable avec le récit complet et la liste précise des voix manquantes, afin qu’une repasse Edge, Azure, OpenAI ou Google puisse les compléter plus tard.
 
 Après réimport, ces pistes portables passent avant toute synthèse en ligne. Une consolidation éditoriale peut ensuite reprendre le même paquet, relire le récit, améliorer les images et régénérer les voix sans changer l’identité du narrateur choisie pour l’histoire.

@@ -10,6 +10,10 @@ test('force les onomatopées vers une graphie vocale française sans changer le 
   );
 });
 
+test('prononce Tin à la française, y compris répété et en capitales', () => {
+  assert.equal(forceFrenchPronunciation('Tin… Tin TIN !'), 'tain… tain tain !');
+});
+
 test('lit la question puis chaque choix affiché', () => {
   assert.equal(
     buildSpokenChoicePrompt('Où aller ?', [{ label: 'Vers la forêt' }, { label: 'Dans le bateau' }, { label: 'Sous les étoiles' }]),

@@ -8,11 +8,12 @@ const defaults = {
   theme: 'auto',
   generationProvider: 'groq',
   generationModel: 'openai/gpt-oss-120b',
-  ttsProvider: 'edge-azure',
-  ttsCascadeVersion: 1,
+  ttsProvider: 'auto',
+  ttsCascadeVersion: 2,
   azureSpeechRegion: 'francecentral',
   openaiTtsModel: 'gpt-4o-mini-tts',
   openaiVoice: 'marin',
+  googleTtsModel: 'gemini-3.1-flash-tts-preview',
   narrationStyle: 'warm-storyteller-v2',
   speechRate: 0.94,
   quietMode: false,
@@ -38,7 +39,7 @@ function migrateLegacy() {
     speechRate: Number(legacy.gcpSpeakingRate || defaults.speechRate),
     debugEnabled: Boolean(legacy.debugEnabled)
   };
-  const secrets = { groqApiKey: legacy.apiKey || '', openaiApiKey: legacy.openaiApiKey || '', azureSpeechKey: '' };
+  const secrets = { groqApiKey: legacy.apiKey || '', openaiApiKey: legacy.openaiApiKey || '', azureSpeechKey: '', googleAiKey: '' };
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
   sessionStorage.setItem(SESSION_SECRET_KEY, JSON.stringify(secrets));
   localStorage.removeItem(LEGACY_KEY);
@@ -49,11 +50,12 @@ migrateLegacy();
 export function getSettings() {
   if (!storageAvailable()) return { ...defaults };
   const stored = parse(localStorage, SETTINGS_KEY);
-  if (!stored.ttsCascadeVersion) {
-    stored.ttsProvider = stored.ttsProvider === 'openai' ? 'openai' : 'edge-azure';
-    stored.ttsCascadeVersion = 1;
+  if (Number(stored.ttsCascadeVersion || 0) < 2) {
+    stored.ttsProvider = ['openai', 'azure', 'browser'].includes(stored.ttsProvider) ? stored.ttsProvider : 'auto';
+    stored.ttsCascadeVersion = 2;
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...defaults, ...stored }));
   }
+  if (stored.ttsProvider === 'edge-azure') stored.ttsProvider = 'auto';
   return { ...defaults, ...stored };
 }
 
@@ -62,6 +64,8 @@ export function saveSettings(next) {
   const safe = { ...defaults, ...next };
   delete safe.groqApiKey;
   delete safe.openaiApiKey;
+  delete safe.azureSpeechKey;
+  delete safe.googleAiKey;
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(safe));
 }
 
@@ -76,7 +80,8 @@ export function saveSecrets(secrets, { remember = getSettings().rememberKeys } =
   const clean = {
     groqApiKey: String(secrets.groqApiKey || '').trim(),
     openaiApiKey: String(secrets.openaiApiKey || '').trim(),
-    azureSpeechKey: String(secrets.azureSpeechKey || '').trim()
+    azureSpeechKey: String(secrets.azureSpeechKey || '').trim(),
+    googleAiKey: String(secrets.googleAiKey || '').trim()
   };
   sessionStorage.setItem(SESSION_SECRET_KEY, JSON.stringify(clean));
   if (remember) localStorage.setItem(DEVICE_SECRET_KEY, JSON.stringify(clean));

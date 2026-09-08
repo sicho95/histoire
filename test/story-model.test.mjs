@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildReviewPackage, normalizeStory, reachableNodeIds, storyToPortable, validateStory } from '../src/core/story-model.js';
+import { buildReviewPackage, harmonizeCreatedStoryOpening, normalizeStory, reachableNodeIds, storyToPortable, validateStory } from '../src/core/story-model.js';
 import { pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
 
@@ -79,4 +79,20 @@ test('fabrique et relit un ZIP autonome sans dépendance externe', async () => {
   const files = await readZip(zip);
   assert.equal(JSON.parse(decodeZipText(files.get('story.json'))).title, 'Étoile');
   assert.deepEqual([...files.get('audio/mp3/scene.mp3')], [1, 2, 3, 4]);
+});
+
+test('une création commence directement par sa première décision', () => {
+  const story = normalizeStory({
+    ...legacy,
+    source: 'child-draft',
+    start_node: 'prologue',
+    nodes: {
+      ...legacy.nodes,
+      prologue: { text: 'Le départ est raconté.', next_node: 'start', choices: [] }
+    }
+  }, { source: 'child-draft' });
+  const harmonized = harmonizeCreatedStoryOpening(story);
+  assert.equal(harmonized.startNode, 'start');
+  assert.match(harmonized.nodes.start.text, /^Le départ est raconté\./);
+  assert.equal(harmonized.nodes.prologue, undefined);
 });

@@ -57,9 +57,9 @@ Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md
 
 La génération utilise l'offre gratuite Groq avec `openai/gpt-oss-120b` et des sorties JSON structurées. La clé est saisie dans l'espace parents et reste en session par défaut. Elle n'est jamais ajoutée au dépôt ou aux exports.
 
-La lecture suit une cascade explicite : MP3 éditorial inclus, MP3 portable importé, essai Edge TTS gratuit, Azure Speech si une clé parentale est configurée, puis meilleure voix française de l’appareil. Le lecteur réutilise un unique élément audio afin de préserver l’autorisation de lecture automatique entre deux scènes sur Safari/iOS.
+La lecture suit une cascade explicite : MP3 éditorial inclus, piste portable importée, Edge TTS gratuit via le Worker Sicho95, essai Edge direct dans Microsoft Edge, Azure Speech si configuré, OpenAI si configuré, Google AI Studio si configuré, puis meilleure voix française de l’appareil. Le Worker ne sert qu’à fabriquer la piste Edge : l’audio traverse Cloudflare une seule fois, est enregistré dans IndexedDB, puis toutes les réécoutes et l’export utilisent la copie locale. Le lecteur réutilise un unique élément audio afin de préserver l’autorisation de lecture automatique entre deux scènes sur Safari/iOS.
 
-Un brouillon peut être exporté en ZIP complet contenant l’histoire, le dossier de révision et toutes les pistes MP3 générables. Le même ZIP se réimporte dans la PWA et garde ses voix hors connexion ; un parent peut aussi le relire puis l’intégrer au dépôt comme nouvelle histoire consolidée.
+Un brouillon peut être exporté en ZIP contenant toujours l’histoire et le dossier de révision, plus toutes les pistes MP3 ou WAV générables. Une panne de voix en ligne ne bloque plus l’archive : le manifeste liste les pistes manquantes pour une repasse ultérieure. Le même ZIP se réimporte dans la PWA et garde ses voix hors connexion ; un parent peut aussi le relire puis l’intégrer au dépôt comme nouvelle histoire consolidée.
 
 ## Expérience mobile
 
