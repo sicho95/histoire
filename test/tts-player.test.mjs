@@ -8,6 +8,7 @@ test('réutilise le même lecteur pour les scènes qui s’enchaînent', async t
   const originalLocalStorage = globalThis.localStorage;
   const originalSessionStorage = globalThis.sessionStorage;
   let audioCreations = 0;
+  const progress = [];
 
   const memoryStorage = () => {
     const values = new Map();
@@ -23,13 +24,15 @@ test('réutilise le même lecteur pour les scènes qui s’enchaînent', async t
       audioCreations += 1;
       this.onended = null;
       this.onerror = null;
+      this.duration = 10;
+      this.currentTime = 5;
       this.src = '';
     }
 
     pause() {}
 
     play() {
-      queueMicrotask(() => this.onended?.());
+      queueMicrotask(() => { this.onloadedmetadata?.(); this.ontimeupdate?.(); this.onended?.(); });
       return Promise.resolve();
     }
   }
@@ -60,8 +63,9 @@ test('réutilise le même lecteur pour les scènes qui s’enchaînent', async t
     globalThis.sessionStorage = originalSessionStorage;
   });
 
-  await tts.speak('Première scène.', { storyId: 'histoire', nodeId: 'scene-1' });
+  await tts.speak('Première scène.', { storyId: 'histoire', nodeId: 'scene-1', onProgress: value => progress.push(value) });
   await tts.speak('Deuxième scène.', { storyId: 'histoire', nodeId: 'scene-2' });
 
   assert.equal(audioCreations, 1);
+  assert.deepEqual(progress, [0, 0.5, 1]);
 });

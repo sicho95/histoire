@@ -86,6 +86,7 @@ export function initParental() {
       openaiApiKey: document.getElementById('openai-key').value,
       azureSpeechKey: document.getElementById('azure-speech-key').value
     }, { remember: settings.rememberKeys });
+    window.dispatchEvent(new CustomEvent('app:secretsChanged'));
     document.getElementById('settings-status').textContent = settings.rememberKeys ? 'Enregistré sur cet appareil.' : 'Enregistré pour cette session.';
     showToast('Réglages enregistrés.');
   };

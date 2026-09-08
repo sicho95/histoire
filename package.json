@@ -1,6 +1,6 @@
 {
   "name": "histoires-pwa",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
   "type": "module",
   "description": "Conteur interactif pour enfants, installable et utilisable hors ligne.",

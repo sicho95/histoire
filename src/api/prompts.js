@@ -130,6 +130,7 @@ Exigences éditoriales :
 - scènes de ${sceneWords}, fins de 60 à 140 mots ;
 - ${choiceTiming}
 - dialogues courts, vocabulaire concret, détails sensoriels variés ;
+- les onomatopées restent dans une phrase clairement française (par exemple « la bulle éclate avec un petit plouf »), jamais seules, en capitales ou écrites comme un mot anglais ;
 - personnages, objets et règles du monde parfaitement constants ;
 - introduis chaque personnage par son nom ET son rôle avant de réutiliser son nom seul ;
 - après une convergence, n’utilise que les personnages, objets, indices et pouvoirs obtenus sur tous les chemins qui y mènent ;
@@ -181,6 +182,7 @@ Sinon :
 - écris une conséquence différente de 70 à 130 mots pour chaque choix, dans le même ordre que les choix ;
 - chaque conséquence doit honorer le choix, conserver l’idée personnalisée, puis fournir une transition causale vers UN rejoinNodeId autorisé ;
 - ne résous jamais d’un coup la quête centrale et ne contredis aucune scène déjà vécue.
+- place toute onomatopée dans une phrase française complète afin que la synthèse vocale conserve la prononciation française ;
 Avant de répondre, relis silencieusement la scène précédente puis simule les 2 ou 3 suites. Le nombre de consequences doit être exactement celui des choices.`;
   const userInput = `Titre : ${story.title}
 Bible : ${JSON.stringify(story.storyBible)}

@@ -73,7 +73,7 @@ function buildStory(definition, featuredOrder) {
     startNode: 'decision-1',
     storyBible: definition.bible,
     nodes,
-    revision: 4,
+    revision: 5,
     status: 'published',
     createdAt: '2026-09-07T00:00:00.000Z',
     updatedAt: '2026-09-08T00:00:00.000Z'
@@ -87,7 +87,7 @@ for (const story of stories) {
 }
 const catalog = {
   schemaVersion: 1,
-  revision: 5,
+  revision: 6,
   stories: stories.map(story => ({
     id: story.id,
     title: story.title,

@@ -26,6 +26,8 @@ Ce document résume les règles que les futures évolutions doivent préserver. 
 
 - `main` reste la source et `WebApp` le résultat statique publié. La version produit et le `buildId` technique restent distincts.
 - Lecture et création s’adaptent à la hauteur de l’écran sans défilement ; seuls l’accueil et les espaces utilitaires peuvent défiler.
-- Un texte trop long devient plusieurs pages, jamais une zone interne minuscule à faire défiler.
+- Un texte trop long devient plusieurs pages, jamais une zone interne minuscule à faire défiler. En narration, elles avancent automatiquement avec la position du son ; en mode discret ou en relecture, l’enfant les tourne avec deux flèches simples.
+- Le double toucher ne déclenche pas de zoom dans l’interface enfant.
 - Le thème automatique, clair ou sombre occupe l’action supérieure. L’espace Parents n’existe qu’une fois, dans la navigation basse, derrière un code à quatre chiffres.
 - L’atelier est dans Création. La bibliothèque publiée reste le centre de l’accueil.
+- L’atelier est invisible sans clé LLM. L’onglet ne conserve que des histoires personnelles réellement rejouables, y compris celles enrichies d’une branche personnalisée, et non une simple liste de choix passés.

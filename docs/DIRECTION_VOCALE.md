@@ -28,6 +28,8 @@ Le profil `2-5` est sensiblement plus lent que le profil `5-9`. Les questions so
 
 L’intensité `1`, `2` ou `3` module finement l’énergie à l’intérieur d’une même intention. Une scène pressée peut utiliser `pace: "lively"`, tandis que le stress et le suspense conservent un débit retenu pour rester compréhensibles et rassurants. Ces paramètres changent la réalisation, jamais le narrateur.
 
+Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise.
+
 ## Régénération
 
 Le moteur retenu est Edge TTS avec les voix neuronales françaises de Microsoft. Il faut installer `edge-tts`, puis lancer :

@@ -32,7 +32,7 @@
       "id": "decision-1",
       "headline": "La bouteille qui appelle",
       "coverEmoji": "🌊",
-      "text": "Sur la plage, Sacha construit un port pour coquillages lorsqu’une bouteille remonte le sable à contre-vague. À l’intérieur brille une enveloppe marquée : « À celle ou celui qui garde toutes les couleurs. Cité de Coralline. Urgent avant le coucher de la lune. » Dès qu’il la touche, une bulle géante l’enveloppe. Plouf ! Sacha descend sous la mer sans être mouillé. Une pieuvre lavande, Octavia, l’attend avec une casquette de postière. Elle explique que trois habitants prétendent garder les couleurs : le peintre hippocampe, la baleine chanteuse et le vieux jardinier corail. La lettre ne s’ouvrira que devant le bon destinataire.",
+      "text": "Sur la plage, Sacha construit un port pour coquillages lorsqu’une bouteille remonte le sable à contre-vague. À l’intérieur brille une enveloppe marquée : « À celle ou celui qui garde toutes les couleurs. Cité de Coralline. Urgent avant le coucher de la lune. » Dès qu’il la touche, une bulle géante l’enveloppe. Dans un grand plouf, Sacha descend sous la mer sans être mouillé. Une pieuvre lavande, Octavia, l’attend avec une casquette de postière. Elle explique que trois habitants prétendent garder les couleurs : le peintre hippocampe, la baleine chanteuse et le vieux jardinier corail. La lettre ne s’ouvrira que devant le bon destinataire.",
       "question": "Par quelle piste commencer ?",
       "isEnding": false,
       "narration": {
@@ -261,7 +261,7 @@
       "id": "decision-4-suite-b",
       "headline": "Écouter le battement de la lettre",
       "coverEmoji": "💓",
-      "text": "Alba pose l’enveloppe contre sa grande oreille. Entre deux battements, elle entend des voix mêlées : corail, poissons, vagues et enfants. « Ce message est pour la ville entière », souffle-t-elle. Elle fredonne alors la note bleue entendue dans le message, et sa certitude fait revenir une fine bande de couleur sur la place. Toutes les pistes convergent vers la grande place. Le silence y est si épais qu’on entend les crabes marcher sur la pointe des pinces. Au centre attend une boîte aux lettres fermée par trois symboles.",
+      "text": "Alba pose l’enveloppe contre sa grande oreille. Entre deux battements, elle entend des voix mêlées : corail, poissons, vagues et enfants. « Ce message est pour la ville entière », souffle-t-elle. Avec un doux fredonnement, Alba reprend toute la note bleue qu’elle vient d’entendre dans le message. Sa certitude fait alors revenir une fine bande de couleur sur la place. Toutes les pistes convergent vers la grande place. Le silence y est si épais qu’on entend les crabes marcher sur la pointe des pinces. Au centre attend une boîte aux lettres fermée par trois symboles.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-5",
@@ -399,7 +399,7 @@
       "choices": []
     }
   ],
-  "revision": 4,
+  "revision": 5,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"

@@ -1,14 +1,15 @@
 import { bootstrapStories, syncPublishedStories } from './storage/database.js';
 import { state, setView } from './core/state.js';
-import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayQuestion, saveCurrentAdventure, startStory } from './core/engine.js';
+import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayQuestion, startStory } from './core/engine.js';
 import { renderHome } from './ui/carousel.js';
-import { renderLibrary } from './ui/library.js';
+import { refreshCreationAvailability, renderLibrary } from './ui/library.js';
 import { initParental, openParental, renderParental } from './ui/parental.js';
 import { initWizard } from './ui/wizard.js';
 import { showToast } from './ui/toast.js';
 import { initPwaUpdates } from './pwa/update.js';
 import { onNetworkStateChange, startNetworkWatcher } from './core/network.js';
-import { getSettings, saveSettings } from './storage/settings.js';
+import { getSecrets, getSettings, saveSettings } from './storage/settings.js';
+import { toggleReaderPassage } from './ui/reader.js';
 
 function goHome() { pauseAudio(); setView('view-home'); renderHome(); }
 
@@ -41,7 +42,9 @@ function initNavigation() {
       if (view === 'view-parents') renderParental();
     };
   });
-  document.getElementById('start-studio').onclick = () => setView('view-studio');
+  document.getElementById('start-studio').onclick = () => {
+    if (getSecrets().groqApiKey) setView('view-studio');
+  };
   document.getElementById('reader-close').onclick = goHome;
   document.getElementById('reader-audio').onclick = () => state.isNarrating ? pauseAudio() : replayCurrentNode();
   document.getElementById('reader-mode').onclick = async () => {
@@ -53,15 +56,10 @@ function initNavigation() {
   };
   document.getElementById('reader-continue').onclick = continueQuietReading;
   document.getElementById('replay-question').onclick = replayQuestion;
-  document.getElementById('toggle-passage').onclick = () => {
-    const card = document.querySelector('#view-reader .reader-card');
-    card.classList.toggle('passage-open');
-    document.getElementById('toggle-passage').textContent = card.classList.contains('passage-open') ? 'Masquer le passage' : 'Relire le passage';
-  };
+  document.getElementById('toggle-passage').onclick = toggleReaderPassage;
   document.getElementById('speak-choice').onclick = handleVoiceChoice;
   document.getElementById('restart-story').onclick = () => startStory(state.currentStory);
   document.getElementById('end-home').onclick = goHome;
-  document.getElementById('save-adventure').onclick = async () => { await saveCurrentAdventure(); showToast('Ce parcours est gardé sur cet appareil.'); };
   document.getElementById('sync-stories').onclick = async event => {
     event.currentTarget.disabled = true;
     try {
@@ -79,6 +77,8 @@ async function init() {
   initNavigation();
   initParental();
   initWizard();
+  refreshCreationAvailability();
+  window.addEventListener('app:secretsChanged', refreshCreationAvailability);
   state.stories = await bootstrapStories();
   renderHome();
   onNetworkStateChange(({ internetReachable }) => {

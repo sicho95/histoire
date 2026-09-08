@@ -61,7 +61,7 @@ Un brouillon peut être exporté en ZIP complet contenant l’histoire, le dossi
 
 ## Expérience mobile
 
-La lecture et les trois étapes de création occupent exactement l’écran disponible, sans défilement vertical ou horizontal. Les textes longs sont découpés en pages et l’enfant tourne une page avant d’atteindre la question. L’accueil reste défilable pour parcourir la bibliothèque. Le bouton supérieur règle le thème automatique, clair ou sombre ; l’espace Parents reste en bas et exige un code à quatre chiffres. L’atelier d’invention appartient à l’onglet Création, pas à l’accueil.
+La lecture et les trois étapes de création occupent exactement l’écran disponible, sans défilement vertical ou horizontal. Les textes longs sont découpés selon la hauteur : pendant la narration, la page visible suit automatiquement l’avancement du MP3 ; en mode discret ou lors d’une relecture, les flèches permettent de tourner les pages soi-même. Le double toucher ne zoome pas l’interface enfant. L’accueil reste défilable pour parcourir la bibliothèque. Le bouton supérieur règle le thème automatique, clair ou sombre ; l’espace Parents reste en bas et exige un code à quatre chiffres. L’atelier d’invention appartient à l’onglet Création et reste invisible sans clé Groq. Seules les histoires personnelles rejouables y sont conservées : une simple liste des choix effectués n’est pas une création.
 
 ## Vie privée
 
