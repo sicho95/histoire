@@ -49,6 +49,8 @@ Pour les histoires consolidées, un embranchement est traité comme une nouvelle
 
 Les scènes proposent 2 ou 3 choix préparés. Quand une histoire accumule davantage de possibilités personnalisées, la PWA en montre seulement 2 ou 3, de façon stable pendant la lecture, pour ne pas surcharger l’enfant. Le bouton **Dire une autre idée** permet une branche personnalisée uniquement si un parent a configuré le LLM gratuit, si l’appareil est en ligne et si la reconnaissance vocale est disponible ; il reste caché dans tous les autres cas.
 
+À chaque embranchement, la narration pose la question puis lit distinctement le premier, le deuxième et éventuellement le troisième choix affiché. Pour une autre idée, le micro attend quelques secondes le début de la parole, s’arrête automatiquement après le silence qui suit la phrase et n’appelle jamais le LLM si rien n’a été dit.
+
 Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md).
 
 ## Création, voix et export

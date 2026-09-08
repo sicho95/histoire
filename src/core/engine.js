@@ -1,11 +1,13 @@
 import { speak, stopSpeak } from '../audio/tts.js';
-import { listenOnce } from '../audio/stt.js';
+import { listenOnce, stopListening } from '../audio/stt.js';
+import { buildSpokenChoicePrompt } from '../audio/choice-prompt.js';
 import { getSecrets, getSettings } from '../storage/settings.js';
 import { currentNode, setView, state } from './state.js';
 import { weaveChoice } from './weaver.js';
 import { renderReader, syncReaderToNarration } from '../ui/reader.js';
 import { renderEndScreen } from '../ui/end_screen.js';
 import { showToast } from '../ui/toast.js';
+import { pickDisplayChoices } from './choices.js';
 
 let playbackToken = 0;
 
@@ -42,9 +44,11 @@ async function playCurrentNode(token = ++playbackToken) {
 async function askCurrentQuestion(token = playbackToken) {
   const node = currentNode();
   if (!node?.question) return;
+  const displayedChoices = pickDisplayChoices(node);
+  const spokenPrompt = buildSpokenChoicePrompt(node.question, displayedChoices);
   state.isNarrating = true;
   renderReader({ phase: 'choice', preserve: true });
-  await speak(node.question, { ...narrationContext(node), nodeId: `${node.id}-question`, narration: { ...node.narration, pace: 'slow' } });
+  await speak(spokenPrompt, { ...narrationContext(node), nodeId: `${node.id}-question`, narration: { ...node.narration, pace: 'slow' } });
   if (token !== playbackToken) return;
   state.isNarrating = false;
   renderReader({ phase: 'choice', preserve: true });
@@ -53,6 +57,7 @@ async function askCurrentQuestion(token = playbackToken) {
 export async function startStory(story) {
   const token = ++playbackToken;
   stopSpeak();
+  stopListening();
   state.currentStory = structuredClone(story);
   state.currentNodeId = story.startNode;
   state.path = [];
@@ -68,6 +73,7 @@ export async function startStory(story) {
 export async function chooseOption(choice) {
   const token = ++playbackToken;
   stopSpeak();
+  stopListening();
   state.currentNodeId = choice.nextNode;
   const node = currentNode();
   if (!node) return showToast('Cette piste est incomplète. Le brouillon pourra être corrigé lors de la révision.');
@@ -80,14 +86,20 @@ export async function handleVoiceChoice() {
   if (!node) return;
   if (!getSecrets().groqApiKey) return showToast('Un parent doit d’abord ajouter la clé Groq gratuite.');
   const button = document.getElementById('speak-choice');
+  const help = document.getElementById('voice-help');
   button.disabled = true;
-  button.textContent = '🎧 Je t’écoute…';
+  button.textContent = '🎧 Parle maintenant…';
+  help.textContent = 'L’écoute s’arrête toute seule après ta phrase.';
+  help.classList.remove('hidden');
   const transcript = await listenOnce();
   if (!transcript) {
     button.disabled = false;
     button.innerHTML = '<span>🎤</span> Dire une autre idée';
+    help.classList.add('hidden');
     return showToast('Je n’ai rien entendu. Tu peux réessayer ou toucher un choix.');
   }
+  button.textContent = '✨ J’imagine la suite…';
+  help.textContent = `J’ai entendu : « ${transcript} »`;
   try {
     const result = await weaveChoice({ story: state.currentStory, node, transcript, path: state.path });
     if (result.story) state.currentStory = result.story;
@@ -95,12 +107,14 @@ export async function handleVoiceChoice() {
   } catch (error) {
     showToast(error.message);
   } finally {
+    stopListening();
     button.disabled = false;
     button.innerHTML = '<span>🎤</span> Dire une autre idée';
+    help.classList.add('hidden');
   }
 }
 
-export function pauseAudio() { playbackToken += 1; stopSpeak(); state.isNarrating = false; renderReader({ phase: state.readerPhase, preserve: true }); }
+export function pauseAudio() { playbackToken += 1; stopSpeak(); stopListening(); state.isNarrating = false; renderReader({ phase: state.readerPhase, preserve: true }); }
 export async function replayCurrentNode() { stopSpeak(); await playCurrentNode(++playbackToken); }
 export function refreshFreeChoiceAvailability() { renderReader({ phase: state.readerPhase, preserve: true }); }
 export function startStoryFromCarousel(story) { return startStory(story); }

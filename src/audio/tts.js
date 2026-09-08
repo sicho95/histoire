@@ -1,6 +1,7 @@
 import { getSettings, getSecrets } from '../storage/settings.js';
 import { logDebug } from '../core/debug.js';
 import { getAudioCacheEntry, getStaticAudio, putAudioCacheEntry } from '../storage/audio_cache.js';
+import { forceFrenchPronunciation, FRENCH_SPEECH_VERSION } from './french-speech.js';
 
 let audioPlayer = null;
 let currentAudioUrl = null;
@@ -28,13 +29,14 @@ function cacheId(settings, text, context) {
     settings.openaiTtsModel,
     ['edge-azure', 'azure'].includes(settings.ttsProvider) ? azureVoice(context) : settings.openaiVoice,
     settings.narrationStyle,
+    FRENCH_SPEECH_VERSION,
     context?.narration?.mood || 'neutral',
     hashText(text)
   ].join('::');
 }
 
 export function portableAudioId({ storyId, nodeId, textHash }) {
-  return `portable::${storyId}::${nodeId}::${textHash}`;
+  return `portable::${FRENCH_SPEECH_VERSION}::${storyId}::${nodeId}::${textHash}`;
 }
 
 const AZURE_PROFILES = {
@@ -271,9 +273,7 @@ export async function prepareSpeech(text, context = {}) {
   if (!text) return null;
   const settings = getSettings();
   const textHash = hashText(text);
-  const providerText = String(context.nodeId || '').endsWith('-question')
-    ? `À toi de choisir… ${text} Prends ton temps et regarde bien les images.`
-    : text;
+  const providerText = forceFrenchPronunciation(text);
   const staticAudio = await getStaticAudio({ storyId: context.storyId, nodeId: context.nodeId, textHash });
   if (staticAudio) return { blob: staticAudio, source: 'editorial', textHash };
 

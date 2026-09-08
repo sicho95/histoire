@@ -24,11 +24,13 @@ L’identité de la voix reste fixe, mais la réalisation varie avec `narration.
 | tristesse | lent, bas et tendre |
 | triomphe | plus ouvert, lumineux et énergique |
 
-Le profil `2-5` est sensiblement plus lent que le profil `5-9`. Les questions sont encore ralenties, légèrement mises en avant et enregistrées dans une piste distincte. Elles commencent par « À toi de choisir » et laissent explicitement à l’enfant le temps de regarder les images.
+Le profil `2-5` est sensiblement plus lent que le profil `5-9`. Les questions sont encore ralenties, légèrement mises en avant et enregistrées dans une piste distincte. Elles commencent par « À toi de choisir », posent la question, puis annoncent distinctement « premier choix », « deuxième choix » et éventuellement « troisième choix » avec le libellé exact affiché. Elles laissent ensuite explicitement à l’enfant le temps de regarder les images et de toucher sa réponse.
+
+La saisie d’une autre idée n’est jamais un enregistrement à arrêter manuellement. Le micro attend au maximum quelques secondes le début de la parole, laisse l’enfant finir sa phrase, puis se coupe après environ une seconde de silence. Sans parole reconnue, aucune requête LLM n’est envoyée.
 
 L’intensité `1`, `2` ou `3` module finement l’énergie à l’intérieur d’une même intention. Une scène pressée peut utiliser `pace: "lively"`, tandis que le stress et le suspense conservent un débit retenu pour rester compréhensibles et rassurants. Ces paramètres changent la réalisation, jamais le narrateur.
 
-Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise.
+Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise. En complément, `src/audio/french-speech.js` applique uniquement au texte envoyé à la voix un lexique phonétique central (`plouf → plouffe`, `ding → dingue`, `boum → boume`, etc.). Le mot correctement orthographié reste inchangé à l’écran. Toute modification de ce lexique change `speechHash` et oblige le générateur à refaire la piste concernée.
 
 ## Régénération
 

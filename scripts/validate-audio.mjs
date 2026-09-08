@@ -1,6 +1,8 @@
 import { readFile, stat } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSpokenChoicePrompt } from '../src/audio/choice-prompt.js';
+import { forceFrenchPronunciation } from '../src/audio/french-speech.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(await readFile(join(root, 'stories/catalog.json'), 'utf8'));
@@ -25,7 +27,7 @@ for (const entry of catalog.stories) {
   expected.set(`${story.id}:intro`, `${story.title}. ${story.intro}`);
   for (const node of story.nodes) {
     expected.set(`${story.id}:${node.id}`, node.text);
-    if (node.question) expected.set(`${story.id}:${node.id}-question`, node.question);
+    if (node.question) expected.set(`${story.id}:${node.id}-question`, buildSpokenChoicePrompt(node.question, node.choices));
   }
 }
 
@@ -34,6 +36,7 @@ for (const [key, text] of expected) {
   const track = manifest.tracks?.[key];
   if (!track) { errors.push(`Piste absente : ${key}`); continue; }
   if (track.textHash !== hashText(text)) errors.push(`Texte modifié sans régénérer la voix : ${key}`);
+  if (track.speechHash !== hashText(forceFrenchPronunciation(text))) errors.push(`Prononciation française modifiée sans régénérer la voix : ${key}`);
   const storyId = key.split(':')[0];
   const story = storiesById.get(storyId);
   const expectedVoice = direction.storyVoices?.[storyId] || direction.voices[story?.heroVoice];

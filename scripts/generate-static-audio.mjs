@@ -2,6 +2,8 @@ import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSpokenChoicePrompt } from '../src/audio/choice-prompt.js';
+import { forceFrenchPronunciation } from '../src/audio/french-speech.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const audioRoot = join(root, 'audio');
@@ -44,10 +46,7 @@ function tuningFor(job) {
   };
 }
 
-function spokenText(job) {
-  if (job.kind === 'question') return `À toi de choisir… ${job.text} Prends ton temps et regarde bien les images.`;
-  return job.text;
-}
+function spokenText(job) { return forceFrenchPronunciation(job.text); }
 
 async function validFile(file) {
   try { return (await stat(file)).size > 4096; } catch { return false; }
@@ -84,7 +83,7 @@ for (const entry of catalog.stories) {
   jobs.push({ story, nodeId: 'intro', text: `${story.title}. ${story.intro}`, narration: introNarration, kind: 'intro' });
   for (const node of story.nodes) {
     jobs.push({ story, nodeId: node.id, text: node.text, narration: node.narration, kind: 'scene' });
-    if (node.question) jobs.push({ story, nodeId: `${node.id}-question`, text: node.question, narration: { ...node.narration, pace: 'slow' }, kind: 'question' });
+    if (node.question) jobs.push({ story, nodeId: `${node.id}-question`, text: buildSpokenChoicePrompt(node.question, node.choices), narration: { ...node.narration, pace: 'slow' }, kind: 'question' });
   }
 }
 
@@ -100,13 +99,15 @@ async function worker() {
     const file = join(audioRoot, relativeFile);
     await mkdir(directory, { recursive: true });
     const previous = previousManifest.tracks?.[`${job.story.id}:${job.nodeId}`];
-    if (force || previous?.textHash !== hashText(job.text) || !(await validFile(file))) {
+    const speechHash = hashText(spokenText(job));
+    if (force || previous?.textHash !== hashText(job.text) || previous?.speechHash !== speechHash || !(await validFile(file))) {
       await generateWithRetry(job, file);
       if (!(await validFile(file))) throw new Error(`Piste vide : ${relativeFile}`);
     }
     tracks[`${job.story.id}:${job.nodeId}`] = {
       file: relativeFile,
       textHash: hashText(job.text),
+      speechHash,
       voice: voiceFor(job.story),
       model: direction.engine,
       format: direction.format,

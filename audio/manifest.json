@@ -1,11 +1,12 @@
 {
   "schemaVersion": 2,
-  "styleVersion": "signature-fr-neural-v2",
-  "generatedAt": "2026-09-08T14:00:33.015Z",
+  "styleVersion": "signature-fr-neural-v3",
+  "generatedAt": "2026-09-08T14:22:19.470Z",
   "tracks": {
     "aya-phare-reves:decision-1": {
       "file": "mp3/aya-phare-reves/decision-1.mp3",
       "textHash": "8pmiy0",
+      "speechHash": "1hjdze0",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -24,7 +25,8 @@
     },
     "aya-phare-reves:decision-1-question": {
       "file": "mp3/aya-phare-reves/decision-1-question.mp3",
-      "textHash": "1oxglfk",
+      "textHash": "1ucz6np",
+      "speechHash": "1b8wjvz",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -44,6 +46,7 @@
     "aya-phare-reves:decision-1-suite-a": {
       "file": "mp3/aya-phare-reves/decision-1-suite-a.mp3",
       "textHash": "frtolu",
+      "speechHash": "frtolu",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -63,6 +66,7 @@
     "aya-phare-reves:decision-1-suite-b": {
       "file": "mp3/aya-phare-reves/decision-1-suite-b.mp3",
       "textHash": "1i42tb2",
+      "speechHash": "xn4ou",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -82,6 +86,7 @@
     "aya-phare-reves:decision-10": {
       "file": "mp3/aya-phare-reves/decision-10.mp3",
       "textHash": "1rqg16u",
+      "speechHash": "1rqg16u",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -100,7 +105,8 @@
     },
     "aya-phare-reves:decision-10-question": {
       "file": "mp3/aya-phare-reves/decision-10-question.mp3",
-      "textHash": "1g7sk2h",
+      "textHash": "1f08r8f",
+      "speechHash": "1f08r8f",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -120,6 +126,7 @@
     "aya-phare-reves:decision-10-suite-a": {
       "file": "mp3/aya-phare-reves/decision-10-suite-a.mp3",
       "textHash": "1srtlkc",
+      "speechHash": "1srtlkc",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -139,6 +146,7 @@
     "aya-phare-reves:decision-10-suite-b": {
       "file": "mp3/aya-phare-reves/decision-10-suite-b.mp3",
       "textHash": "tvr7q2",
+      "speechHash": "tvr7q2",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -158,6 +166,7 @@
     "aya-phare-reves:decision-10-suite-c": {
       "file": "mp3/aya-phare-reves/decision-10-suite-c.mp3",
       "textHash": "fymg7e",
+      "speechHash": "fymg7e",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -177,6 +186,7 @@
     "aya-phare-reves:decision-2": {
       "file": "mp3/aya-phare-reves/decision-2.mp3",
       "textHash": "10zzuvn",
+      "speechHash": "10zzuvn",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -195,7 +205,8 @@
     },
     "aya-phare-reves:decision-2-question": {
       "file": "mp3/aya-phare-reves/decision-2-question.mp3",
-      "textHash": "3gloz",
+      "textHash": "wi5tyl",
+      "speechHash": "wi5tyl",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -215,6 +226,7 @@
     "aya-phare-reves:decision-2-suite-a": {
       "file": "mp3/aya-phare-reves/decision-2-suite-a.mp3",
       "textHash": "aiagho",
+      "speechHash": "aiagho",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -234,6 +246,7 @@
     "aya-phare-reves:decision-2-suite-b": {
       "file": "mp3/aya-phare-reves/decision-2-suite-b.mp3",
       "textHash": "1k5ig47",
+      "speechHash": "1k5ig47",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -253,6 +266,7 @@
     "aya-phare-reves:decision-3": {
       "file": "mp3/aya-phare-reves/decision-3.mp3",
       "textHash": "1bcei30",
+      "speechHash": "1bcei30",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -271,7 +285,8 @@
     },
     "aya-phare-reves:decision-3-question": {
       "file": "mp3/aya-phare-reves/decision-3-question.mp3",
-      "textHash": "7nbw69",
+      "textHash": "96clhl",
+      "speechHash": "96clhl",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -291,6 +306,7 @@
     "aya-phare-reves:decision-3-suite-a": {
       "file": "mp3/aya-phare-reves/decision-3-suite-a.mp3",
       "textHash": "gcw6xx",
+      "speechHash": "gcw6xx",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -310,6 +326,7 @@
     "aya-phare-reves:decision-3-suite-b": {
       "file": "mp3/aya-phare-reves/decision-3-suite-b.mp3",
       "textHash": "g9pm72",
+      "speechHash": "g9pm72",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -329,6 +346,7 @@
     "aya-phare-reves:decision-4": {
       "file": "mp3/aya-phare-reves/decision-4.mp3",
       "textHash": "17qq6se",
+      "speechHash": "17qq6se",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -347,7 +365,8 @@
     },
     "aya-phare-reves:decision-4-question": {
       "file": "mp3/aya-phare-reves/decision-4-question.mp3",
-      "textHash": "1bsg6dx",
+      "textHash": "88erfv",
+      "speechHash": "88erfv",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -367,6 +386,7 @@
     "aya-phare-reves:decision-4-suite-a": {
       "file": "mp3/aya-phare-reves/decision-4-suite-a.mp3",
       "textHash": "1jm1bfd",
+      "speechHash": "1jm1bfd",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -386,6 +406,7 @@
     "aya-phare-reves:decision-4-suite-b": {
       "file": "mp3/aya-phare-reves/decision-4-suite-b.mp3",
       "textHash": "k48wfw",
+      "speechHash": "k48wfw",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -405,6 +426,7 @@
     "aya-phare-reves:decision-5": {
       "file": "mp3/aya-phare-reves/decision-5.mp3",
       "textHash": "rup80u",
+      "speechHash": "rup80u",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -423,7 +445,8 @@
     },
     "aya-phare-reves:decision-5-question": {
       "file": "mp3/aya-phare-reves/decision-5-question.mp3",
-      "textHash": "3mtk00",
+      "textHash": "1epn1if",
+      "speechHash": "1epn1if",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -443,6 +466,7 @@
     "aya-phare-reves:decision-5-suite-a": {
       "file": "mp3/aya-phare-reves/decision-5-suite-a.mp3",
       "textHash": "123rr13",
+      "speechHash": "123rr13",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -462,6 +486,7 @@
     "aya-phare-reves:decision-5-suite-b": {
       "file": "mp3/aya-phare-reves/decision-5-suite-b.mp3",
       "textHash": "hr619v",
+      "speechHash": "hr619v",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -481,6 +506,7 @@
     "aya-phare-reves:decision-6": {
       "file": "mp3/aya-phare-reves/decision-6.mp3",
       "textHash": "qwhs5t",
+      "speechHash": "qwhs5t",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -499,7 +525,8 @@
     },
     "aya-phare-reves:decision-6-question": {
       "file": "mp3/aya-phare-reves/decision-6-question.mp3",
-      "textHash": "stb3ox",
+      "textHash": "dpksab",
+      "speechHash": "dpksab",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -519,6 +546,7 @@
     "aya-phare-reves:decision-6-suite-a": {
       "file": "mp3/aya-phare-reves/decision-6-suite-a.mp3",
       "textHash": "18ohqlv",
+      "speechHash": "18ohqlv",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -538,6 +566,7 @@
     "aya-phare-reves:decision-6-suite-b": {
       "file": "mp3/aya-phare-reves/decision-6-suite-b.mp3",
       "textHash": "iqinul",
+      "speechHash": "iqinul",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -557,6 +586,7 @@
     "aya-phare-reves:decision-7": {
       "file": "mp3/aya-phare-reves/decision-7.mp3",
       "textHash": "36sat2",
+      "speechHash": "36sat2",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -575,7 +605,8 @@
     },
     "aya-phare-reves:decision-7-question": {
       "file": "mp3/aya-phare-reves/decision-7-question.mp3",
-      "textHash": "1ss1i14",
+      "textHash": "1vaf9lb",
+      "speechHash": "1vaf9lb",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -595,6 +626,7 @@
     "aya-phare-reves:decision-7-suite-a": {
       "file": "mp3/aya-phare-reves/decision-7-suite-a.mp3",
       "textHash": "1djavyk",
+      "speechHash": "1djavyk",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -614,6 +646,7 @@
     "aya-phare-reves:decision-7-suite-b": {
       "file": "mp3/aya-phare-reves/decision-7-suite-b.mp3",
       "textHash": "1jkfs08",
+      "speechHash": "1jkfs08",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -633,6 +666,7 @@
     "aya-phare-reves:decision-8": {
       "file": "mp3/aya-phare-reves/decision-8.mp3",
       "textHash": "1a4xa4h",
+      "speechHash": "1a4xa4h",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -651,7 +685,8 @@
     },
     "aya-phare-reves:decision-8-question": {
       "file": "mp3/aya-phare-reves/decision-8-question.mp3",
-      "textHash": "t4lfoi",
+      "textHash": "1ocmlpw",
+      "speechHash": "1ocmlpw",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -671,6 +706,7 @@
     "aya-phare-reves:decision-8-suite-a": {
       "file": "mp3/aya-phare-reves/decision-8-suite-a.mp3",
       "textHash": "1pfpbcd",
+      "speechHash": "1pfpbcd",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -690,6 +726,7 @@
     "aya-phare-reves:decision-8-suite-b": {
       "file": "mp3/aya-phare-reves/decision-8-suite-b.mp3",
       "textHash": "1cc5dzd",
+      "speechHash": "1cc5dzd",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -709,6 +746,7 @@
     "aya-phare-reves:decision-9": {
       "file": "mp3/aya-phare-reves/decision-9.mp3",
       "textHash": "kxj29j",
+      "speechHash": "kxj29j",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -727,7 +765,8 @@
     },
     "aya-phare-reves:decision-9-question": {
       "file": "mp3/aya-phare-reves/decision-9-question.mp3",
-      "textHash": "1yb2e4y",
+      "textHash": "gtrjlk",
+      "speechHash": "gtrjlk",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -747,6 +786,7 @@
     "aya-phare-reves:decision-9-suite-a": {
       "file": "mp3/aya-phare-reves/decision-9-suite-a.mp3",
       "textHash": "1ktxi4f",
+      "speechHash": "is11tr",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -766,6 +806,7 @@
     "aya-phare-reves:decision-9-suite-b": {
       "file": "mp3/aya-phare-reves/decision-9-suite-b.mp3",
       "textHash": "15fbj6",
+      "speechHash": "15fbj6",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -785,6 +826,7 @@
     "aya-phare-reves:fin-a": {
       "file": "mp3/aya-phare-reves/fin-a.mp3",
       "textHash": "y2wfhi",
+      "speechHash": "y2wfhi",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -804,6 +846,7 @@
     "aya-phare-reves:fin-b": {
       "file": "mp3/aya-phare-reves/fin-b.mp3",
       "textHash": "1wiom8u",
+      "speechHash": "1wiom8u",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -823,6 +866,7 @@
     "aya-phare-reves:fin-c": {
       "file": "mp3/aya-phare-reves/fin-c.mp3",
       "textHash": "1niwb7e",
+      "speechHash": "1niwb7e",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -842,6 +886,7 @@
     "aya-phare-reves:intro": {
       "file": "mp3/aya-phare-reves/intro.mp3",
       "textHash": "1t8db8x",
+      "speechHash": "1t8db8x",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -861,6 +906,7 @@
     "lila-fete-couleurs:decision-1": {
       "file": "mp3/lila-fete-couleurs/decision-1.mp3",
       "textHash": "zisjxn",
+      "speechHash": "1horah3",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -879,7 +925,8 @@
     },
     "lila-fete-couleurs:decision-1-question": {
       "file": "mp3/lila-fete-couleurs/decision-1-question.mp3",
-      "textHash": "170cb88",
+      "textHash": "1q60ts7",
+      "speechHash": "1q60ts7",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -899,6 +946,7 @@
     "lila-fete-couleurs:decision-1-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-1-suite-a.mp3",
       "textHash": "1df167p",
+      "speechHash": "kayjeg",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -918,6 +966,7 @@
     "lila-fete-couleurs:decision-1-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-1-suite-b.mp3",
       "textHash": "1vfcli5",
+      "speechHash": "3cn5sa",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -937,6 +986,7 @@
     "lila-fete-couleurs:decision-2": {
       "file": "mp3/lila-fete-couleurs/decision-2.mp3",
       "textHash": "1p5gjem",
+      "speechHash": "1p5gjem",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -955,7 +1005,8 @@
     },
     "lila-fete-couleurs:decision-2-question": {
       "file": "mp3/lila-fete-couleurs/decision-2-question.mp3",
-      "textHash": "mnksac",
+      "textHash": "1xcfbyh",
+      "speechHash": "1xcfbyh",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -975,6 +1026,7 @@
     "lila-fete-couleurs:decision-2-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-2-suite-a.mp3",
       "textHash": "19rsoyn",
+      "speechHash": "19rsoyn",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -994,6 +1046,7 @@
     "lila-fete-couleurs:decision-2-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-2-suite-b.mp3",
       "textHash": "owgcug",
+      "speechHash": "k5a2fk",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1013,6 +1066,7 @@
     "lila-fete-couleurs:decision-3": {
       "file": "mp3/lila-fete-couleurs/decision-3.mp3",
       "textHash": "avtyxi",
+      "speechHash": "p37pbq",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1031,7 +1085,8 @@
     },
     "lila-fete-couleurs:decision-3-question": {
       "file": "mp3/lila-fete-couleurs/decision-3-question.mp3",
-      "textHash": "n27j4e",
+      "textHash": "1q6g76l",
+      "speechHash": "1q6g76l",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1051,6 +1106,7 @@
     "lila-fete-couleurs:decision-3-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-3-suite-a.mp3",
       "textHash": "oop69a",
+      "speechHash": "17p4c2w",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1070,6 +1126,7 @@
     "lila-fete-couleurs:decision-3-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-3-suite-b.mp3",
       "textHash": "yx02n",
+      "speechHash": "kjj19p",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1089,6 +1146,7 @@
     "lila-fete-couleurs:decision-4": {
       "file": "mp3/lila-fete-couleurs/decision-4.mp3",
       "textHash": "zsug3s",
+      "speechHash": "zsug3s",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1107,7 +1165,8 @@
     },
     "lila-fete-couleurs:decision-4-question": {
       "file": "mp3/lila-fete-couleurs/decision-4-question.mp3",
-      "textHash": "1josfv2",
+      "textHash": "q3ornf",
+      "speechHash": "q3ornf",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1127,6 +1186,7 @@
     "lila-fete-couleurs:decision-4-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-a.mp3",
       "textHash": "apq84p",
+      "speechHash": "1ssaxx7",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1146,6 +1206,7 @@
     "lila-fete-couleurs:decision-4-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-b.mp3",
       "textHash": "1bkx44o",
+      "speechHash": "1xd06pw",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1165,6 +1226,7 @@
     "lila-fete-couleurs:decision-5": {
       "file": "mp3/lila-fete-couleurs/decision-5.mp3",
       "textHash": "1u19w",
+      "speechHash": "1u19w",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1183,7 +1245,8 @@
     },
     "lila-fete-couleurs:decision-5-question": {
       "file": "mp3/lila-fete-couleurs/decision-5-question.mp3",
-      "textHash": "ji8ail",
+      "textHash": "137w5y8",
+      "speechHash": "137w5y8",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1203,6 +1266,7 @@
     "lila-fete-couleurs:decision-5-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-5-suite-a.mp3",
       "textHash": "12pzppd",
+      "speechHash": "12pzppd",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1222,6 +1286,7 @@
     "lila-fete-couleurs:decision-5-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-5-suite-b.mp3",
       "textHash": "jbv9mu",
+      "speechHash": "jbv9mu",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1241,6 +1306,7 @@
     "lila-fete-couleurs:decision-6": {
       "file": "mp3/lila-fete-couleurs/decision-6.mp3",
       "textHash": "27dvrp",
+      "speechHash": "zsy8aj",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1259,7 +1325,8 @@
     },
     "lila-fete-couleurs:decision-6-question": {
       "file": "mp3/lila-fete-couleurs/decision-6-question.mp3",
-      "textHash": "16jr8fi",
+      "textHash": "1ktxf0i",
+      "speechHash": "1ktxf0i",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1279,6 +1346,7 @@
     "lila-fete-couleurs:decision-6-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-a.mp3",
       "textHash": "1jh5rx",
+      "speechHash": "1yxd732",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1298,6 +1366,7 @@
     "lila-fete-couleurs:decision-6-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-b.mp3",
       "textHash": "12y9py0",
+      "speechHash": "12y9py0",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1317,6 +1386,7 @@
     "lila-fete-couleurs:decision-6-suite-c": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-c.mp3",
       "textHash": "1kzyxkj",
+      "speechHash": "1kzyxkj",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1336,6 +1406,7 @@
     "lila-fete-couleurs:fin-a": {
       "file": "mp3/lila-fete-couleurs/fin-a.mp3",
       "textHash": "s9h1cw",
+      "speechHash": "1739nbx",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1355,6 +1426,7 @@
     "lila-fete-couleurs:fin-b": {
       "file": "mp3/lila-fete-couleurs/fin-b.mp3",
       "textHash": "266h4d",
+      "speechHash": "266h4d",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1374,6 +1446,7 @@
     "lila-fete-couleurs:fin-c": {
       "file": "mp3/lila-fete-couleurs/fin-c.mp3",
       "textHash": "f6bcuv",
+      "speechHash": "n8v0q4",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1393,6 +1466,7 @@
     "lila-fete-couleurs:intro": {
       "file": "mp3/lila-fete-couleurs/intro.mp3",
       "textHash": "12v86rx",
+      "speechHash": "12v86rx",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1412,6 +1486,7 @@
     "malo-agence-astronautes:decision-1": {
       "file": "mp3/malo-agence-astronautes/decision-1.mp3",
       "textHash": "1mq47q4",
+      "speechHash": "5x6y10",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1430,7 +1505,8 @@
     },
     "malo-agence-astronautes:decision-1-question": {
       "file": "mp3/malo-agence-astronautes/decision-1-question.mp3",
-      "textHash": "10bboh6",
+      "textHash": "13o0kz7",
+      "speechHash": "13o0kz7",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1450,6 +1526,7 @@
     "malo-agence-astronautes:decision-1-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-1-suite-a.mp3",
       "textHash": "sz5bqu",
+      "speechHash": "sz5bqu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1469,6 +1546,7 @@
     "malo-agence-astronautes:decision-1-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-1-suite-b.mp3",
       "textHash": "1632ah3",
+      "speechHash": "1632ah3",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1488,6 +1566,7 @@
     "malo-agence-astronautes:decision-10": {
       "file": "mp3/malo-agence-astronautes/decision-10.mp3",
       "textHash": "107rqjq",
+      "speechHash": "w8szge",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1506,7 +1585,8 @@
     },
     "malo-agence-astronautes:decision-10-question": {
       "file": "mp3/malo-agence-astronautes/decision-10-question.mp3",
-      "textHash": "p91ddm",
+      "textHash": "19r17qe",
+      "speechHash": "19r17qe",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1526,6 +1606,7 @@
     "malo-agence-astronautes:decision-10-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-10-suite-a.mp3",
       "textHash": "1cik9i3",
+      "speechHash": "mdpzyb",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1545,6 +1626,7 @@
     "malo-agence-astronautes:decision-10-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-10-suite-b.mp3",
       "textHash": "150k2qx",
+      "speechHash": "150k2qx",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1564,6 +1646,7 @@
     "malo-agence-astronautes:decision-10-suite-c": {
       "file": "mp3/malo-agence-astronautes/decision-10-suite-c.mp3",
       "textHash": "3hcz0v",
+      "speechHash": "3hcz0v",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1583,6 +1666,7 @@
     "malo-agence-astronautes:decision-2": {
       "file": "mp3/malo-agence-astronautes/decision-2.mp3",
       "textHash": "5jxwy0",
+      "speechHash": "5jxwy0",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1601,7 +1685,8 @@
     },
     "malo-agence-astronautes:decision-2-question": {
       "file": "mp3/malo-agence-astronautes/decision-2-question.mp3",
-      "textHash": "sbe9my",
+      "textHash": "zysqx5",
+      "speechHash": "zysqx5",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1621,6 +1706,7 @@
     "malo-agence-astronautes:decision-2-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-2-suite-a.mp3",
       "textHash": "1d1cdzd",
+      "speechHash": "1d1cdzd",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1640,6 +1726,7 @@
     "malo-agence-astronautes:decision-2-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-2-suite-b.mp3",
       "textHash": "163dcpl",
+      "speechHash": "163dcpl",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1659,6 +1746,7 @@
     "malo-agence-astronautes:decision-3": {
       "file": "mp3/malo-agence-astronautes/decision-3.mp3",
       "textHash": "dtwg7e",
+      "speechHash": "dtwg7e",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1677,7 +1765,8 @@
     },
     "malo-agence-astronautes:decision-3-question": {
       "file": "mp3/malo-agence-astronautes/decision-3-question.mp3",
-      "textHash": "10vx90p",
+      "textHash": "15o0k5a",
+      "speechHash": "15o0k5a",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1697,6 +1786,7 @@
     "malo-agence-astronautes:decision-3-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-3-suite-a.mp3",
       "textHash": "189nvxd",
+      "speechHash": "1fdcwp6",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1716,6 +1806,7 @@
     "malo-agence-astronautes:decision-3-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-3-suite-b.mp3",
       "textHash": "1nganig",
+      "speechHash": "vjy8fr",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1735,6 +1826,7 @@
     "malo-agence-astronautes:decision-4": {
       "file": "mp3/malo-agence-astronautes/decision-4.mp3",
       "textHash": "16fndr7",
+      "speechHash": "16fndr7",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1753,7 +1845,8 @@
     },
     "malo-agence-astronautes:decision-4-question": {
       "file": "mp3/malo-agence-astronautes/decision-4-question.mp3",
-      "textHash": "afr9v2",
+      "textHash": "l69r60",
+      "speechHash": "l69r60",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1773,6 +1866,7 @@
     "malo-agence-astronautes:decision-4-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-4-suite-a.mp3",
       "textHash": "4a448z",
+      "speechHash": "4a448z",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1792,6 +1886,7 @@
     "malo-agence-astronautes:decision-4-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-4-suite-b.mp3",
       "textHash": "qnihlu",
+      "speechHash": "qnihlu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1811,6 +1906,7 @@
     "malo-agence-astronautes:decision-5": {
       "file": "mp3/malo-agence-astronautes/decision-5.mp3",
       "textHash": "1ieoc1n",
+      "speechHash": "1ieoc1n",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1829,7 +1925,8 @@
     },
     "malo-agence-astronautes:decision-5-question": {
       "file": "mp3/malo-agence-astronautes/decision-5-question.mp3",
-      "textHash": "1ralj9u",
+      "textHash": "1jwtrag",
+      "speechHash": "1jwtrag",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1849,6 +1946,7 @@
     "malo-agence-astronautes:decision-5-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-5-suite-a.mp3",
       "textHash": "1r44zfg",
+      "speechHash": "1r44zfg",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1868,6 +1966,7 @@
     "malo-agence-astronautes:decision-5-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-5-suite-b.mp3",
       "textHash": "3rjc91",
+      "speechHash": "3rjc91",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1887,6 +1986,7 @@
     "malo-agence-astronautes:decision-6": {
       "file": "mp3/malo-agence-astronautes/decision-6.mp3",
       "textHash": "16fugtu",
+      "speechHash": "16fugtu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1905,7 +2005,8 @@
     },
     "malo-agence-astronautes:decision-6-question": {
       "file": "mp3/malo-agence-astronautes/decision-6-question.mp3",
-      "textHash": "c72ngh",
+      "textHash": "1rtgq7p",
+      "speechHash": "1rtgq7p",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1925,6 +2026,7 @@
     "malo-agence-astronautes:decision-6-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-6-suite-a.mp3",
       "textHash": "llp1kd",
+      "speechHash": "llp1kd",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1944,6 +2046,7 @@
     "malo-agence-astronautes:decision-6-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-6-suite-b.mp3",
       "textHash": "1ya1fdo",
+      "speechHash": "1ya1fdo",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1963,6 +2066,7 @@
     "malo-agence-astronautes:decision-7": {
       "file": "mp3/malo-agence-astronautes/decision-7.mp3",
       "textHash": "101k1hd",
+      "speechHash": "101k1hd",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1981,7 +2085,8 @@
     },
     "malo-agence-astronautes:decision-7-question": {
       "file": "mp3/malo-agence-astronautes/decision-7-question.mp3",
-      "textHash": "jelp2h",
+      "textHash": "uj09hz",
+      "speechHash": "uj09hz",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2001,6 +2106,7 @@
     "malo-agence-astronautes:decision-7-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-7-suite-a.mp3",
       "textHash": "1i9yxqg",
+      "speechHash": "1i9yxqg",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2020,6 +2126,7 @@
     "malo-agence-astronautes:decision-7-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-7-suite-b.mp3",
       "textHash": "x60hd7",
+      "speechHash": "7k3co",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2039,6 +2146,7 @@
     "malo-agence-astronautes:decision-8": {
       "file": "mp3/malo-agence-astronautes/decision-8.mp3",
       "textHash": "jqlciq",
+      "speechHash": "jqlciq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2057,7 +2165,8 @@
     },
     "malo-agence-astronautes:decision-8-question": {
       "file": "mp3/malo-agence-astronautes/decision-8-question.mp3",
-      "textHash": "r4pc7v",
+      "textHash": "k0ilsq",
+      "speechHash": "k0ilsq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2077,6 +2186,7 @@
     "malo-agence-astronautes:decision-8-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-8-suite-a.mp3",
       "textHash": "138pcr6",
+      "speechHash": "15xqtec",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2096,6 +2206,7 @@
     "malo-agence-astronautes:decision-8-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-8-suite-b.mp3",
       "textHash": "d3p924",
+      "speechHash": "1jt0z7e",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2115,6 +2226,7 @@
     "malo-agence-astronautes:decision-9": {
       "file": "mp3/malo-agence-astronautes/decision-9.mp3",
       "textHash": "sg29n1",
+      "speechHash": "sg29n1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2133,7 +2245,8 @@
     },
     "malo-agence-astronautes:decision-9-question": {
       "file": "mp3/malo-agence-astronautes/decision-9-question.mp3",
-      "textHash": "1ck3pz0",
+      "textHash": "1yo3n5l",
+      "speechHash": "1yo3n5l",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2153,6 +2266,7 @@
     "malo-agence-astronautes:decision-9-suite-a": {
       "file": "mp3/malo-agence-astronautes/decision-9-suite-a.mp3",
       "textHash": "ufgta9",
+      "speechHash": "ufgta9",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2172,6 +2286,7 @@
     "malo-agence-astronautes:decision-9-suite-b": {
       "file": "mp3/malo-agence-astronautes/decision-9-suite-b.mp3",
       "textHash": "1u65iry",
+      "speechHash": "1u65iry",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2191,6 +2306,7 @@
     "malo-agence-astronautes:fin-a": {
       "file": "mp3/malo-agence-astronautes/fin-a.mp3",
       "textHash": "oiqkh6",
+      "speechHash": "1pns9l6",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2210,6 +2326,7 @@
     "malo-agence-astronautes:fin-b": {
       "file": "mp3/malo-agence-astronautes/fin-b.mp3",
       "textHash": "1tbx4x1",
+      "speechHash": "1tbx4x1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2229,6 +2346,7 @@
     "malo-agence-astronautes:fin-c": {
       "file": "mp3/malo-agence-astronautes/fin-c.mp3",
       "textHash": "8vzycy",
+      "speechHash": "8vzycy",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2248,6 +2366,7 @@
     "malo-agence-astronautes:intro": {
       "file": "mp3/malo-agence-astronautes/intro.mp3",
       "textHash": "1c9kt28",
+      "speechHash": "1c9kt28",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2267,6 +2386,7 @@
     "mila-oeuf-orage:decision-1": {
       "file": "mp3/mila-oeuf-orage/decision-1.mp3",
       "textHash": "1j18yp",
+      "speechHash": "5zp151",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2285,7 +2405,8 @@
     },
     "mila-oeuf-orage:decision-1-question": {
       "file": "mp3/mila-oeuf-orage/decision-1-question.mp3",
-      "textHash": "1wn25er",
+      "textHash": "1il64mf",
+      "speechHash": "1il64mf",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2305,6 +2426,7 @@
     "mila-oeuf-orage:decision-1-suite-a": {
       "file": "mp3/mila-oeuf-orage/decision-1-suite-a.mp3",
       "textHash": "btvvnr",
+      "speechHash": "krey3z",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2324,6 +2446,7 @@
     "mila-oeuf-orage:decision-1-suite-b": {
       "file": "mp3/mila-oeuf-orage/decision-1-suite-b.mp3",
       "textHash": "1q4ii2q",
+      "speechHash": "1wtupji",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2343,6 +2466,7 @@
     "mila-oeuf-orage:decision-2": {
       "file": "mp3/mila-oeuf-orage/decision-2.mp3",
       "textHash": "16xaxbp",
+      "speechHash": "16xaxbp",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2361,7 +2485,8 @@
     },
     "mila-oeuf-orage:decision-2-question": {
       "file": "mp3/mila-oeuf-orage/decision-2-question.mp3",
-      "textHash": "kap48b",
+      "textHash": "1oz7cu9",
+      "speechHash": "1oz7cu9",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2381,6 +2506,7 @@
     "mila-oeuf-orage:decision-2-suite-a": {
       "file": "mp3/mila-oeuf-orage/decision-2-suite-a.mp3",
       "textHash": "1yfcz6g",
+      "speechHash": "guhnfg",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2400,6 +2526,7 @@
     "mila-oeuf-orage:decision-2-suite-b": {
       "file": "mp3/mila-oeuf-orage/decision-2-suite-b.mp3",
       "textHash": "psesot",
+      "speechHash": "6o4u34",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2419,6 +2546,7 @@
     "mila-oeuf-orage:decision-3": {
       "file": "mp3/mila-oeuf-orage/decision-3.mp3",
       "textHash": "7vwatc",
+      "speechHash": "a8dmpn",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2437,7 +2565,8 @@
     },
     "mila-oeuf-orage:decision-3-question": {
       "file": "mp3/mila-oeuf-orage/decision-3-question.mp3",
-      "textHash": "152l3s1",
+      "textHash": "24adty",
+      "speechHash": "24adty",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2457,6 +2586,7 @@
     "mila-oeuf-orage:decision-3-suite-a": {
       "file": "mp3/mila-oeuf-orage/decision-3-suite-a.mp3",
       "textHash": "enpe23",
+      "speechHash": "enpe23",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2476,6 +2606,7 @@
     "mila-oeuf-orage:decision-3-suite-b": {
       "file": "mp3/mila-oeuf-orage/decision-3-suite-b.mp3",
       "textHash": "9hz7k3",
+      "speechHash": "9hz7k3",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2495,6 +2626,7 @@
     "mila-oeuf-orage:decision-4": {
       "file": "mp3/mila-oeuf-orage/decision-4.mp3",
       "textHash": "13ibuid",
+      "speechHash": "pmztvd",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2513,7 +2645,8 @@
     },
     "mila-oeuf-orage:decision-4-question": {
       "file": "mp3/mila-oeuf-orage/decision-4-question.mp3",
-      "textHash": "1oe71kw",
+      "textHash": "zxlgkf",
+      "speechHash": "zxlgkf",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2533,6 +2666,7 @@
     "mila-oeuf-orage:decision-4-suite-a": {
       "file": "mp3/mila-oeuf-orage/decision-4-suite-a.mp3",
       "textHash": "1vsop8s",
+      "speechHash": "1vsop8s",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2552,6 +2686,7 @@
     "mila-oeuf-orage:decision-4-suite-b": {
       "file": "mp3/mila-oeuf-orage/decision-4-suite-b.mp3",
       "textHash": "xpti6x",
+      "speechHash": "y74j7a",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2571,6 +2706,7 @@
     "mila-oeuf-orage:decision-5": {
       "file": "mp3/mila-oeuf-orage/decision-5.mp3",
       "textHash": "1nzkpbm",
+      "speechHash": "1nzkpbm",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2589,7 +2725,8 @@
     },
     "mila-oeuf-orage:decision-5-question": {
       "file": "mp3/mila-oeuf-orage/decision-5-question.mp3",
-      "textHash": "1llvsne",
+      "textHash": "1m2lnmo",
+      "speechHash": "1m2lnmo",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2609,6 +2746,7 @@
     "mila-oeuf-orage:decision-5-suite-a": {
       "file": "mp3/mila-oeuf-orage/decision-5-suite-a.mp3",
       "textHash": "18fh8dm",
+      "speechHash": "d3f9vh",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2628,6 +2766,7 @@
     "mila-oeuf-orage:decision-5-suite-b": {
       "file": "mp3/mila-oeuf-orage/decision-5-suite-b.mp3",
       "textHash": "ng14g7",
+      "speechHash": "ng14g7",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2647,6 +2786,7 @@
     "mila-oeuf-orage:decision-5-suite-c": {
       "file": "mp3/mila-oeuf-orage/decision-5-suite-c.mp3",
       "textHash": "18sk0b0",
+      "speechHash": "18sk0b0",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2666,6 +2806,7 @@
     "mila-oeuf-orage:fin-a": {
       "file": "mp3/mila-oeuf-orage/fin-a.mp3",
       "textHash": "prm07j",
+      "speechHash": "1kzvg2g",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2685,6 +2826,7 @@
     "mila-oeuf-orage:fin-b": {
       "file": "mp3/mila-oeuf-orage/fin-b.mp3",
       "textHash": "95rbs1",
+      "speechHash": "95rbs1",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2704,6 +2846,7 @@
     "mila-oeuf-orage:fin-c": {
       "file": "mp3/mila-oeuf-orage/fin-c.mp3",
       "textHash": "756gs5",
+      "speechHash": "756gs5",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2723,6 +2866,7 @@
     "mila-oeuf-orage:intro": {
       "file": "mp3/mila-oeuf-orage/intro.mp3",
       "textHash": "jfbsfu",
+      "speechHash": "jfbsfu",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2742,6 +2886,7 @@
     "nino-doudou-voyageur:decision-1": {
       "file": "mp3/nino-doudou-voyageur/decision-1.mp3",
       "textHash": "12mrkho",
+      "speechHash": "12mrkho",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2760,7 +2905,8 @@
     },
     "nino-doudou-voyageur:decision-1-question": {
       "file": "mp3/nino-doudou-voyageur/decision-1-question.mp3",
-      "textHash": "65yrgu",
+      "textHash": "12v3oun",
+      "speechHash": "12v3oun",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2780,6 +2926,7 @@
     "nino-doudou-voyageur:decision-1-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-a.mp3",
       "textHash": "ys5pk6",
+      "speechHash": "ys5pk6",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2799,6 +2946,7 @@
     "nino-doudou-voyageur:decision-1-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-b.mp3",
       "textHash": "g6naa7",
+      "speechHash": "g6naa7",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2818,6 +2966,7 @@
     "nino-doudou-voyageur:decision-2": {
       "file": "mp3/nino-doudou-voyageur/decision-2.mp3",
       "textHash": "inafax",
+      "speechHash": "inafax",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2836,7 +2985,8 @@
     },
     "nino-doudou-voyageur:decision-2-question": {
       "file": "mp3/nino-doudou-voyageur/decision-2-question.mp3",
-      "textHash": "gazyps",
+      "textHash": "1eahe0u",
+      "speechHash": "1eahe0u",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2856,6 +3006,7 @@
     "nino-doudou-voyageur:decision-2-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-a.mp3",
       "textHash": "qe2nly",
+      "speechHash": "pfqlhm",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2875,6 +3026,7 @@
     "nino-doudou-voyageur:decision-2-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-b.mp3",
       "textHash": "1397rrz",
+      "speechHash": "vzhagj",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2894,6 +3046,7 @@
     "nino-doudou-voyageur:decision-3": {
       "file": "mp3/nino-doudou-voyageur/decision-3.mp3",
       "textHash": "x2l7ln",
+      "speechHash": "1w44s4w",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2912,7 +3065,8 @@
     },
     "nino-doudou-voyageur:decision-3-question": {
       "file": "mp3/nino-doudou-voyageur/decision-3-question.mp3",
-      "textHash": "7lptue",
+      "textHash": "1xkipui",
+      "speechHash": "1xkipui",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2932,6 +3086,7 @@
     "nino-doudou-voyageur:decision-3-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-a.mp3",
       "textHash": "l94lq1",
+      "speechHash": "l94lq1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2951,6 +3106,7 @@
     "nino-doudou-voyageur:decision-3-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-b.mp3",
       "textHash": "vqm3bw",
+      "speechHash": "vqm3bw",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2970,6 +3126,7 @@
     "nino-doudou-voyageur:decision-4": {
       "file": "mp3/nino-doudou-voyageur/decision-4.mp3",
       "textHash": "1c2wrl4",
+      "speechHash": "1xymx88",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2988,7 +3145,8 @@
     },
     "nino-doudou-voyageur:decision-4-question": {
       "file": "mp3/nino-doudou-voyageur/decision-4-question.mp3",
-      "textHash": "1i9hie4",
+      "textHash": "p3x3lq",
+      "speechHash": "p3x3lq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3008,6 +3166,7 @@
     "nino-doudou-voyageur:decision-4-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-a.mp3",
       "textHash": "1lu74sz",
+      "speechHash": "1lu74sz",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3027,6 +3186,7 @@
     "nino-doudou-voyageur:decision-4-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-b.mp3",
       "textHash": "1opgpeq",
+      "speechHash": "t799h6",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3046,6 +3206,7 @@
     "nino-doudou-voyageur:decision-5": {
       "file": "mp3/nino-doudou-voyageur/decision-5.mp3",
       "textHash": "11bcgd4",
+      "speechHash": "11bcgd4",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3064,7 +3225,8 @@
     },
     "nino-doudou-voyageur:decision-5-question": {
       "file": "mp3/nino-doudou-voyageur/decision-5-question.mp3",
-      "textHash": "mmpvsb",
+      "textHash": "83lruu",
+      "speechHash": "83lruu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3084,6 +3246,7 @@
     "nino-doudou-voyageur:decision-5-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-a.mp3",
       "textHash": "xx7abf",
+      "speechHash": "xx7abf",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3103,6 +3266,7 @@
     "nino-doudou-voyageur:decision-5-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-b.mp3",
       "textHash": "odpboj",
+      "speechHash": "odpboj",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3122,6 +3286,7 @@
     "nino-doudou-voyageur:decision-6": {
       "file": "mp3/nino-doudou-voyageur/decision-6.mp3",
       "textHash": "1w97gll",
+      "speechHash": "1w97gll",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3140,7 +3305,8 @@
     },
     "nino-doudou-voyageur:decision-6-question": {
       "file": "mp3/nino-doudou-voyageur/decision-6-question.mp3",
-      "textHash": "cdaf3b",
+      "textHash": "amngmm",
+      "speechHash": "amngmm",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3160,6 +3326,7 @@
     "nino-doudou-voyageur:decision-6-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-a.mp3",
       "textHash": "15ccem2",
+      "speechHash": "15ccem2",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3179,6 +3346,7 @@
     "nino-doudou-voyageur:decision-6-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-b.mp3",
       "textHash": "1ox1dzb",
+      "speechHash": "1ox1dzb",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3198,6 +3366,7 @@
     "nino-doudou-voyageur:decision-6-suite-c": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-c.mp3",
       "textHash": "1o94dh3",
+      "speechHash": "1o94dh3",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3217,6 +3386,7 @@
     "nino-doudou-voyageur:fin-a": {
       "file": "mp3/nino-doudou-voyageur/fin-a.mp3",
       "textHash": "1n6l9p9",
+      "speechHash": "1n6l9p9",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3236,6 +3406,7 @@
     "nino-doudou-voyageur:fin-b": {
       "file": "mp3/nino-doudou-voyageur/fin-b.mp3",
       "textHash": "1vi70n0",
+      "speechHash": "1vi70n0",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3255,6 +3426,7 @@
     "nino-doudou-voyageur:fin-c": {
       "file": "mp3/nino-doudou-voyageur/fin-c.mp3",
       "textHash": "1xojkvf",
+      "speechHash": "1xojkvf",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3274,6 +3446,7 @@
     "nino-doudou-voyageur:intro": {
       "file": "mp3/nino-doudou-voyageur/intro.mp3",
       "textHash": "ycyu15",
+      "speechHash": "ycyu15",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3293,6 +3466,7 @@
     "sacha-poste-oceans:decision-1": {
       "file": "mp3/sacha-poste-oceans/decision-1.mp3",
       "textHash": "227ny3",
+      "speechHash": "i8m3ac",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3311,7 +3485,8 @@
     },
     "sacha-poste-oceans:decision-1-question": {
       "file": "mp3/sacha-poste-oceans/decision-1-question.mp3",
-      "textHash": "1wvxpdp",
+      "textHash": "e44si2",
+      "speechHash": "e44si2",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3331,6 +3506,7 @@
     "sacha-poste-oceans:decision-1-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-1-suite-a.mp3",
       "textHash": "8l8672",
+      "speechHash": "19hxl7f",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3350,6 +3526,7 @@
     "sacha-poste-oceans:decision-1-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-1-suite-b.mp3",
       "textHash": "4ome2f",
+      "speechHash": "1yo6uhc",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3369,6 +3546,7 @@
     "sacha-poste-oceans:decision-2": {
       "file": "mp3/sacha-poste-oceans/decision-2.mp3",
       "textHash": "1dq4lux",
+      "speechHash": "1dq4lux",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3387,7 +3565,8 @@
     },
     "sacha-poste-oceans:decision-2-question": {
       "file": "mp3/sacha-poste-oceans/decision-2-question.mp3",
-      "textHash": "12oyrc1",
+      "textHash": "qn3hk2",
+      "speechHash": "qn3hk2",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3407,6 +3586,7 @@
     "sacha-poste-oceans:decision-2-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-2-suite-a.mp3",
       "textHash": "jw6sc0",
+      "speechHash": "jw6sc0",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3426,6 +3606,7 @@
     "sacha-poste-oceans:decision-2-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-2-suite-b.mp3",
       "textHash": "5ph6fz",
+      "speechHash": "5ph6fz",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3445,6 +3626,7 @@
     "sacha-poste-oceans:decision-3": {
       "file": "mp3/sacha-poste-oceans/decision-3.mp3",
       "textHash": "4rj3pf",
+      "speechHash": "4rj3pf",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3463,7 +3645,8 @@
     },
     "sacha-poste-oceans:decision-3-question": {
       "file": "mp3/sacha-poste-oceans/decision-3-question.mp3",
-      "textHash": "qnw42r",
+      "textHash": "urvqlb",
+      "speechHash": "urvqlb",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3483,6 +3666,7 @@
     "sacha-poste-oceans:decision-3-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-3-suite-a.mp3",
       "textHash": "16anpgw",
+      "speechHash": "16anpgw",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3502,6 +3686,7 @@
     "sacha-poste-oceans:decision-3-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-3-suite-b.mp3",
       "textHash": "17e4tcw",
+      "speechHash": "17e4tcw",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3521,6 +3706,7 @@
     "sacha-poste-oceans:decision-4": {
       "file": "mp3/sacha-poste-oceans/decision-4.mp3",
       "textHash": "hh75ze",
+      "speechHash": "hh75ze",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3539,7 +3725,8 @@
     },
     "sacha-poste-oceans:decision-4-question": {
       "file": "mp3/sacha-poste-oceans/decision-4-question.mp3",
-      "textHash": "1w7rw86",
+      "textHash": "1w9feql",
+      "speechHash": "1w9feql",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3559,6 +3746,7 @@
     "sacha-poste-oceans:decision-4-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-4-suite-a.mp3",
       "textHash": "1ujqdnl",
+      "speechHash": "1ujqdnl",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3578,6 +3766,7 @@
     "sacha-poste-oceans:decision-4-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-4-suite-b.mp3",
       "textHash": "n228w1",
+      "speechHash": "n228w1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3597,6 +3786,7 @@
     "sacha-poste-oceans:decision-5": {
       "file": "mp3/sacha-poste-oceans/decision-5.mp3",
       "textHash": "x4qepv",
+      "speechHash": "x4qepv",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3615,7 +3805,8 @@
     },
     "sacha-poste-oceans:decision-5-question": {
       "file": "mp3/sacha-poste-oceans/decision-5-question.mp3",
-      "textHash": "1cwvla0",
+      "textHash": "uya5dj",
+      "speechHash": "uya5dj",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3635,6 +3826,7 @@
     "sacha-poste-oceans:decision-5-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-5-suite-a.mp3",
       "textHash": "1kvmvl2",
+      "speechHash": "1kvmvl2",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3654,6 +3846,7 @@
     "sacha-poste-oceans:decision-5-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-5-suite-b.mp3",
       "textHash": "lomwjv",
+      "speechHash": "lomwjv",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3673,6 +3866,7 @@
     "sacha-poste-oceans:decision-5-suite-c": {
       "file": "mp3/sacha-poste-oceans/decision-5-suite-c.mp3",
       "textHash": "5r7ht3",
+      "speechHash": "5r7ht3",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3692,6 +3886,7 @@
     "sacha-poste-oceans:fin-a": {
       "file": "mp3/sacha-poste-oceans/fin-a.mp3",
       "textHash": "ue6ed0",
+      "speechHash": "ue6ed0",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3711,6 +3906,7 @@
     "sacha-poste-oceans:fin-b": {
       "file": "mp3/sacha-poste-oceans/fin-b.mp3",
       "textHash": "v4lf7k",
+      "speechHash": "v4lf7k",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3730,6 +3926,7 @@
     "sacha-poste-oceans:fin-c": {
       "file": "mp3/sacha-poste-oceans/fin-c.mp3",
       "textHash": "b28o9l",
+      "speechHash": "b28o9l",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3749,6 +3946,7 @@
     "sacha-poste-oceans:intro": {
       "file": "mp3/sacha-poste-oceans/intro.mp3",
       "textHash": "i5powk",
+      "speechHash": "i5powk",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",

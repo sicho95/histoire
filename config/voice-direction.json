@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "styleVersion": "signature-fr-neural-v2",
+  "styleVersion": "signature-fr-neural-v3",
   "engine": "edge-tts",
   "format": "mp3",
   "voices": {
