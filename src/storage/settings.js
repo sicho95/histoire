@@ -12,6 +12,7 @@ const defaults = {
   openaiVoice: 'marin',
   narrationStyle: 'warm-storyteller-v2',
   speechRate: 0.94,
+  quietMode: false,
   rememberKeys: false,
   autoSyncCatalog: true,
   debugEnabled: false

@@ -43,6 +43,7 @@
         <div class="reader-topline">
           <button id="reader-close" class="icon-button" type="button" aria-label="Fermer l'histoire">✕</button>
           <div class="reader-progress"><span id="reader-progress-bar"></span></div>
+          <button id="reader-mode" class="icon-button" type="button" aria-label="Activer le mode discret" title="Mode discret">🔊</button>
           <button id="reader-audio" class="icon-button" type="button" aria-label="Mettre la lecture en pause">⏸</button>
         </div>
         <article class="reader-card">
@@ -51,10 +52,14 @@
           <p id="reader-story-title" class="eyebrow"></p>
           <h1 id="reader-headline"></h1>
           <p id="reader-text" class="reader-text"></p>
+          <button id="reader-continue" class="primary-button full-button hidden" type="button">Continuer</button>
         </article>
         <div id="reader-question" class="reader-question hidden">
+          <p class="choice-kicker">À toi de choisir</p>
           <h2 id="question-text">Que choisis-tu ?</h2>
+          <button id="replay-question" class="question-audio-button" type="button"><span>🔊</span> Réécouter la question</button>
           <div id="choices-grid" class="choice-grid"></div>
+          <button id="toggle-passage" class="text-button passage-button" type="button">Relire le passage</button>
           <button id="speak-choice" class="voice-button" type="button"><span>🎤</span> Dire une autre idée</button>
           <p id="voice-help" class="microcopy">Nécessite Internet et la clé gratuite configurée par un parent.</p>
         </div>
@@ -106,7 +111,7 @@
             <p id="settings-status" class="form-status" role="status"></p>
           </section>
         </div>
-        <p class="version-line">Version 2.1.0 · build <span id="build-id">94146badc57929b6ff4f66e4434f823e9f0edaed-5</span></p>
+        <p class="version-line">Version 2.1.1 · build <span id="build-id">c6e7b00558f831f25eb823e4eea585e5f1766054-6</span></p>
       </section>
 
       <section id="view-end" class="view hidden end-view">
