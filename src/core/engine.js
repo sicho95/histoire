@@ -11,7 +11,7 @@ import { showToast } from '../ui/toast.js';
 let playbackToken = 0;
 
 function narrationContext(node) {
-  return { storyId: state.currentStory?.id, nodeId: node?.id, narration: node?.narration, heroVoice: state.currentStory?.heroVoice };
+  return { storyId: state.currentStory?.id, nodeId: node?.id, narration: node?.narration, heroVoice: state.currentStory?.heroVoice, ageBand: state.currentStory?.ageBand };
 }
 
 async function playCurrentNode(token = ++playbackToken) {
@@ -62,7 +62,7 @@ export async function startStory(story) {
   state.path.push({ nodeId: node.id, headline: node.headline });
   state.isNarrating = true;
   renderReader({ phase: 'narration' });
-  if (!getSettings().quietMode) await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', heroVoice: story.heroVoice, narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
+  if (!getSettings().quietMode) await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', heroVoice: story.heroVoice, ageBand: story.ageBand, narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
   if (token === playbackToken) await playCurrentNode(token);
 }
 

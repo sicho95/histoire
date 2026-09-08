@@ -47,7 +47,7 @@
           "emoji": "👣",
           "illustration": "./assets/stories/mila-oeuf-orage/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
-          "consequenceHint": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un bébé tricératops transparent comme une b"
+          "consequenceHint": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un tout petit tricératops transparent comme"
         },
         {
           "id": "decision-1-b",
@@ -63,7 +63,7 @@
       "id": "decision-1-suite-a",
       "headline": "Suivre les traces du bois",
       "coverEmoji": "👣",
-      "text": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un bébé tricératops transparent comme une bulle. Il s’était échappé du nuage pour chercher l’œuf. Rassuré par la douceur de Mila, il lui confie que les dinosaures du ciel rejoignent leur vallée par le vieux moulin. Au loin, le tonnerre répond : boum… boum. Pas méchant, mais pressé. Sur la coquille, une ligne de lumière dessine une flèche. Mila remet la boussole-plume dans sa poche et avance : le prochain indice les attend déjà.",
+      "text": "Mila s’accroupit pour ne perdre aucune empreinte. Les traces appartiennent à un tout petit tricératops transparent comme une bulle. Elles contournent le moulin puis disparaissent sous les fougères du bois. De là vient une voix qui couine : « Gardien du passage, prêt… enfin presque ! » Mila avance doucement sans encore voir qui parle. Au loin, le tonnerre répond : boum… boum. Pas méchant, mais pressé. Sur la coquille, une ligne de lumière dessine une flèche. Mila remet la boussole-plume dans sa poche et avance : le prochain indice les attend déjà.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-2",
@@ -315,7 +315,7 @@
       "id": "decision-5-suite-a",
       "headline": "Chanter leur drôle de chanson",
       "coverEmoji": "🎵",
-      "text": "Mila reprend « fi-ou, fi-ou » et Toupik ajoute son fameux « prout-prout ». Le bébé cesse de pousser la coquille et écoute. Le pont vibre au même rythme ; ils traversent en chantant, juste avant que l’éclair illumine le ciel comme un feu d’artifice. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "text": "Mila reprend « fi-ou, fi-ou » et Toupik ajoute son fameux « prout-prout ». Le bébé cesse de pousser la coquille et écoute. Le pont vibre au même rythme ; ils traversent en chantant, juste avant que l’éclair illumine le ciel comme un feu d’artifice.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-a",
@@ -330,7 +330,7 @@
       "id": "decision-5-suite-b",
       "headline": "Lui raconter tous les gestes d’entraide",
       "coverEmoji": "💗",
-      "text": "Mila raconte le corbeau, les musaraignes et tous ceux qui ont aidé. À chaque merci, une couleur du pont devient plus solide. Le bébé donne un petit coup confiant. Toute la troupe avance serrée, portée par les liens qu’elle a créés. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "text": "Mila raconte le corbeau, les musaraignes et tous ceux qui ont aidé. À chaque merci, une couleur du pont devient plus solide. Le bébé donne un petit coup confiant. Toute la troupe avance serrée, portée par les liens qu’elle a créés.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-b",
@@ -345,7 +345,7 @@
       "id": "decision-5-suite-c",
       "headline": "Respirer et avancer tout doucement",
       "coverEmoji": "⭐",
-      "text": "Mila pose la main sur la coquille. Ensemble, ils inspirent pendant trois couleurs et expirent pendant trois autres. Le vacarme paraît moins grand. Pas après pas, sans courir, ils atteignent la maman tricératops au moment où le ciel redevient bleu. Derrière les nuages, une silhouette à trois cornes appelle doucement. La famille est proche. Mila sent le petit dinosaure pousser contre la coquille : il veut sortir, mais surtout il veut entendre une voix rassurante pour son dernier passage.",
+      "text": "Mila pose la main sur la coquille. Ensemble, ils inspirent pendant trois couleurs et expirent pendant trois autres. Le vacarme paraît moins grand. Pas après pas, sans courir, ils atteignent la maman tricératops au moment où le ciel redevient bleu.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-c",
@@ -399,7 +399,7 @@
       "choices": []
     }
   ],
-  "revision": 3,
+  "revision": 4,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"

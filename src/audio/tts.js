@@ -2,9 +2,15 @@ import { getSettings, getSecrets } from '../storage/settings.js';
 import { logDebug } from '../core/debug.js';
 import { getAudioCacheEntry, getStaticAudio, putAudioCacheEntry } from '../storage/audio_cache.js';
 
-let currentAudio = null;
+let audioPlayer = null;
+let currentAudioUrl = null;
 let currentUtterance = null;
 let activeResolve = null;
+let audioGeneration = 0;
+let edgeModulePromise = null;
+let edgeRetryAfter = 0;
+
+const EDGE_TTS_MODULE = 'https://cdn.jsdelivr.net/npm/edge-tts-universal@1.4.0/dist/browser.js';
 
 export function hashText(text) {
   let hash = 2166136261;
@@ -18,12 +24,99 @@ export function hashText(text) {
 function cacheId(settings, text, context) {
   return [
     settings.ttsProvider,
+    settings.azureSpeechRegion,
     settings.openaiTtsModel,
-    settings.openaiVoice,
+    ['edge-azure', 'azure'].includes(settings.ttsProvider) ? azureVoice(context) : settings.openaiVoice,
     settings.narrationStyle,
     context?.narration?.mood || 'neutral',
     hashText(text)
   ].join('::');
+}
+
+export function portableAudioId({ storyId, nodeId, textHash }) {
+  return `portable::${storyId}::${nodeId}::${textHash}`;
+}
+
+const AZURE_PROFILES = {
+  pace: { slow: -6, normal: 0, lively: 5 },
+  mood: {
+    calm: { rate: -5, pitch: -2, volume: -2 }, wonder: { rate: -2, pitch: 1, volume: 0 },
+    joy: { rate: 2, pitch: 3, volume: 2 }, mystery: { rate: -4, pitch: -2, volume: -1 },
+    suspense: { rate: -5, pitch: -4, volume: 0 }, gentle_fear: { rate: -6, pitch: -3, volume: -2 },
+    sadness: { rate: -6, pitch: -2, volume: -3 }, triumph: { rate: 1, pitch: 3, volume: 3 }
+  }
+};
+
+function azureVoice(context = {}) {
+  return context.heroVoice === 'male' ? 'fr-FR-RemyMultilingualNeural' : 'fr-FR-VivienneMultilingualNeural';
+}
+
+function escapeXml(text) {
+  return String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
+}
+
+function signed(value, suffix) {
+  const rounded = Math.round(value || 0);
+  return `${rounded >= 0 ? '+' : ''}${rounded}${suffix}`;
+}
+
+function azureProsody(context = {}) {
+  const ageRate = context.ageBand === '2-5' ? -18 : -10;
+  const mood = AZURE_PROFILES.mood[context.narration?.mood] || AZURE_PROFILES.mood.wonder;
+  const intensity = Number(context.narration?.intensity || 2);
+  const question = String(context.nodeId || '').endsWith('-question');
+  return {
+    rate: signed(ageRate + (AZURE_PROFILES.pace[context.narration?.pace] || 0) + mood.rate + (intensity === 3 ? 2 : intensity === 1 ? -2 : 0) + (question ? -5 : 0), '%'),
+    pitch: signed(mood.pitch + (intensity === 3 ? 1 : 0) + (question ? 1 : 0), 'Hz'),
+    volume: signed(mood.volume + (intensity === 3 ? 2 : intensity === 1 ? -2 : 0) + (question ? 2 : 0), '%')
+  };
+}
+
+async function fetchAzure(text, context) {
+  const settings = getSettings();
+  const key = getSecrets().azureSpeechKey;
+  const region = String(settings.azureSpeechRegion || '').trim().toLowerCase();
+  if (!key) throw new Error('Ajoute la clé Azure Speech dans l’espace Parents.');
+  if (!/^[a-z0-9-]+$/.test(region)) throw new Error('La région Azure Speech est invalide.');
+  const prosody = azureProsody(context);
+  const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="fr-FR"><voice name="${azureVoice(context)}"><prosody rate="${prosody.rate}" pitch="${prosody.pitch}" volume="${prosody.volume}">${escapeXml(text)}</prosody></voice></speak>`;
+  const response = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
+    method: 'POST',
+    headers: {
+      'Ocp-Apim-Subscription-Key': key,
+      'Content-Type': 'application/ssml+xml',
+      'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3'
+    },
+    body: ssml
+  });
+  if (!response.ok) throw new Error(`La narration Microsoft a échoué (${response.status}).`);
+  return response.blob();
+}
+
+function timeoutAfter(milliseconds, message) {
+  return new Promise((_, reject) => setTimeout(() => reject(new Error(message)), milliseconds));
+}
+
+async function fetchEdge(text, context) {
+  if (Date.now() < edgeRetryAfter) throw new Error('Edge TTS est temporairement écarté après un échec.');
+  try {
+    edgeModulePromise ||= import(EDGE_TTS_MODULE);
+    const edge = await Promise.race([edgeModulePromise, timeoutAfter(5000, 'Le module Edge TTS ne répond pas.')]);
+    const TTS = edge.EdgeTTS || edge.UniversalEdgeTTS;
+    if (!TTS) throw new Error('Le module Edge TTS est incompatible.');
+    const result = await Promise.race([
+      new TTS(String(text), azureVoice(context), azureProsody(context)).synthesize(),
+      timeoutAfter(Math.min(30000, Math.max(9000, String(text).length * 28)), 'La voix Edge met trop de temps à répondre.')
+    ]);
+    if (!result?.audio) throw new Error('Edge TTS n’a renvoyé aucun son.');
+    if (result.audio instanceof Blob) return result.audio;
+    if (typeof result.audio.arrayBuffer === 'function') return new Blob([await result.audio.arrayBuffer()], { type: 'audio/mpeg' });
+    return new Blob([result.audio], { type: 'audio/mpeg' });
+  } catch (error) {
+    edgeModulePromise = null;
+    edgeRetryAfter = Date.now() + 5 * 60 * 1000;
+    throw error;
+  }
 }
 
 function blobToDataUrl(blob) {
@@ -88,15 +181,26 @@ function playBlob(blob, meta = {}) {
   return new Promise(resolve => {
     stopSpeak();
     const url = URL.createObjectURL(blob);
-    const audio = new Audio(url);
-    currentAudio = audio;
+    const audio = audioPlayer || new Audio();
+    audioPlayer = audio;
+    currentAudioUrl = url;
     activeResolve = resolve;
+    const generation = audioGeneration;
+    let settled = false;
     const finish = () => {
-      URL.revokeObjectURL(url);
-      currentAudio = null;
-      activeResolve = null;
+      if (settled || generation !== audioGeneration) return;
+      settled = true;
+      audio.onended = null;
+      audio.onerror = null;
+      if (currentAudioUrl === url) {
+        URL.revokeObjectURL(url);
+        currentAudioUrl = null;
+      }
+      if (activeResolve === resolve) activeResolve = null;
       resolve();
     };
+    audio.preload = 'auto';
+    audio.src = url;
     audio.onended = finish;
     audio.onerror = finish;
     logDebug('tts.play', meta);
@@ -117,7 +221,8 @@ function speakBrowser(text, context = {}) {
     const mood = context.narration?.mood;
     const utterance = new SpeechSynthesisUtterance(String(text));
     utterance.lang = 'fr-FR';
-    utterance.rate = context.narration?.pace === 'slow' ? 0.86 : context.narration?.pace === 'lively' ? 1.02 : getSettings().speechRate;
+    const ageRate = context.ageBand === '2-5' ? 0.84 : 0.92;
+    utterance.rate = context.narration?.pace === 'slow' ? ageRate - 0.06 : context.narration?.pace === 'lively' ? ageRate + 0.08 : ageRate;
     utterance.pitch = ['joy', 'wonder', 'triumph'].includes(mood) ? 1.08 : ['suspense', 'gentle_fear'].includes(mood) ? 0.94 : 1;
     const voice = preferredFrenchVoice(context.heroVoice);
     if (voice) utterance.voice = voice;
@@ -131,11 +236,16 @@ function speakBrowser(text, context = {}) {
 }
 
 export function stopSpeak() {
+  audioGeneration += 1;
   try { window.speechSynthesis?.cancel(); } catch {}
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.src = '';
-    currentAudio = null;
+  if (audioPlayer) {
+    audioPlayer.onended = null;
+    audioPlayer.onerror = null;
+    audioPlayer.pause();
+  }
+  if (currentAudioUrl) {
+    URL.revokeObjectURL(currentAudioUrl);
+    currentAudioUrl = null;
   }
   currentUtterance = null;
   const resolve = activeResolve;
@@ -147,37 +257,87 @@ export function primeTts() {
   try { window.speechSynthesis?.getVoices(); } catch {}
 }
 
-export async function speak(text, context = {}) {
-  if (!text) return;
+export async function prepareSpeech(text, context = {}) {
+  if (!text) return null;
   const settings = getSettings();
   const textHash = hashText(text);
+  const providerText = String(context.nodeId || '').endsWith('-question')
+    ? `À toi de choisir… ${text} Prends ton temps et regarde bien les images.`
+    : text;
   const staticAudio = await getStaticAudio({ storyId: context.storyId, nodeId: context.nodeId, textHash });
-  if (staticAudio) return playBlob(staticAudio, { source: 'editorial', ...context });
+  if (staticAudio) return { blob: staticAudio, source: 'editorial', textHash };
+
+  const portableId = portableAudioId({ ...context, textHash });
+  const portable = context.storyId && context.nodeId ? await getAudioCacheEntry(portableId) : null;
+  if (portable?.dataUrl) return { blob: dataUrlToBlob(portable.dataUrl), source: 'portable', textHash, voice: portable.voice };
+
+  if (settings.ttsProvider === 'edge-azure') {
+    const id = `edge::${azureVoice(context)}::${context.narration?.mood || 'wonder'}::${textHash}`;
+    try {
+      const cached = await getAudioCacheEntry(id);
+      if (cached?.dataUrl) return { blob: dataUrlToBlob(cached.dataUrl), source: 'edge-cache', id, textHash, voice: cached.voice };
+      const blob = await fetchEdge(providerText, context);
+      const dataUrl = await blobToDataUrl(blob);
+      const metadata = { dataUrl, createdAt: Date.now(), textHash, storyId: context.storyId, nodeId: context.nodeId, voice: azureVoice(context), provider: 'edge', narration: context.narration };
+      await putAudioCacheEntry({ id, ...metadata });
+      if (context.storyId && context.nodeId) await putAudioCacheEntry({ id: portableId, ...metadata });
+      return { blob, source: 'edge', id, textHash, voice: metadata.voice };
+    } catch (error) {
+      logDebug('tts.edge.fallback', { message: error.message });
+    }
+  }
+
+  if (['edge-azure', 'azure'].includes(settings.ttsProvider) && getSecrets().azureSpeechKey) {
+    const id = cacheId(settings, text, context);
+    try {
+      const cached = await getAudioCacheEntry(id);
+      if (cached?.dataUrl) return { blob: dataUrlToBlob(cached.dataUrl), source: 'azure-cache', id, textHash, voice: cached.voice };
+      const blob = await fetchAzure(providerText, context);
+      const dataUrl = await blobToDataUrl(blob);
+      const metadata = { dataUrl, createdAt: Date.now(), textHash, storyId: context.storyId, nodeId: context.nodeId, voice: azureVoice(context), provider: 'azure', narration: context.narration };
+      await putAudioCacheEntry({ id, ...metadata });
+      if (context.storyId && context.nodeId) await putAudioCacheEntry({ id: portableId, ...metadata });
+      return { blob, source: 'azure', id, textHash, voice: metadata.voice };
+    } catch (error) {
+      logDebug('tts.azure.fallback', { message: error.message });
+    }
+  }
 
   if (settings.ttsProvider === 'openai' && getSecrets().openaiApiKey) {
     const id = cacheId(settings, text, context);
     try {
       const cached = await getAudioCacheEntry(id);
-      if (cached?.dataUrl) return playBlob(dataUrlToBlob(cached.dataUrl), { source: 'cache', id });
+      if (cached?.dataUrl) return { blob: dataUrlToBlob(cached.dataUrl), source: 'openai-cache', id, textHash, voice: cached.voice };
       const blobs = [];
-      for (const chunk of splitText(text)) blobs.push(await fetchOpenAi(chunk, context));
+      for (const chunk of splitText(providerText)) blobs.push(await fetchOpenAi(chunk, context));
       const blob = new Blob(blobs, { type: 'audio/mpeg' });
-      await putAudioCacheEntry({ id, dataUrl: await blobToDataUrl(blob), createdAt: Date.now(), textHash });
-      return playBlob(blob, { source: 'openai', id });
+      const dataUrl = await blobToDataUrl(blob);
+      const metadata = { dataUrl, createdAt: Date.now(), textHash, storyId: context.storyId, nodeId: context.nodeId, voice: settings.openaiVoice, provider: 'openai', narration: context.narration };
+      await putAudioCacheEntry({ id, ...metadata });
+      if (context.storyId && context.nodeId) await putAudioCacheEntry({ id: portableId, ...metadata });
+      return { blob, source: 'openai', id, textHash, voice: metadata.voice };
     } catch (error) {
       logDebug('tts.openai.fallback', { message: error.message });
     }
   }
+  return null;
+}
+
+export async function speak(text, context = {}) {
+  if (!text) return;
+  const prepared = await prepareSpeech(text, context);
+  if (prepared?.blob) return playBlob(prepared.blob, { source: prepared.source, id: prepared.id, ...context });
   return speakBrowser(text, context);
 }
 
 export async function warmTtsCache(items = []) {
   let stored = 0;
+  let skipped = 0;
   for (const item of items) {
     const text = typeof item === 'string' ? item : item.text;
     const context = typeof item === 'string' ? {} : item;
-    await speak(text, context);
-    stored += 1;
+    if (await prepareSpeech(text, context)) stored += 1;
+    else skipped += 1;
   }
-  return { stored, skipped: 0 };
+  return { stored, skipped };
 }

@@ -23,4 +23,4 @@ Les narrations préparées sont placées dans ce dossier. Les histoires signatur
 }
 ```
 
-`npm run validate:audio` garantit que les 198 fichiers existent et correspondent encore exactement au texte publié. En l'absence de piste correspondante, la PWA utilise gratuitement une voix installée sur l'appareil. Une clé OpenAI parentale peut aussi produire une narration à la demande, mais elle n'est jamais nécessaire pour lire les histoires publiées.
+`npm run validate:audio` garantit que les 198 fichiers existent et correspondent encore exactement au texte publié. En l'absence de piste correspondante, la PWA cherche un MP3 portable, tente Edge TTS gratuitement, utilise Azure Speech si une clé parentale est configurée, puis choisit la meilleure voix française installée sur l'appareil. Une clé OpenAI parentale reste une option séparée, mais aucune clé n'est nécessaire pour lire les histoires publiées.

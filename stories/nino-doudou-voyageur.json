@@ -63,7 +63,7 @@
       "id": "decision-1-suite-a",
       "headline": "Près des fleurs qui brillent",
       "coverEmoji": "🌼",
-      "text": "Les fleurs ouvrent leurs pétales une par une. Dans la dernière, Nino trouve un petit morceau de tissu de Plume. Une coccinelle a vu le doudou passer vers le banc en saluant la lune. Le fil bleu brille un peu plus. Nino pose une patte sur son cœur. « Petit pas, grand câlin, je suis le fil et je vais bien. » La lune éclaire le prochain bout de chemin.",
+      "text": "Les fleurs ouvrent leurs pétales une par une. Dans la dernière, Nino trouve un petit morceau de tissu de Plume. Une coccinelle a vu le doudou passer vers le banc. Sous les feuilles apparaît Escargot, un nouvel ami très lent qui propose de suivre le fil avec Nino. Le fil bleu brille un peu plus. Nino pose une patte sur son cœur. « Petit pas, grand câlin, je suis le fil et je vais bien. » La lune éclaire le prochain bout de chemin.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-2",
@@ -238,7 +238,7 @@
           "emoji": "🔔",
           "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
-          "consequenceHint": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule toute seule vers une porte ronde au pied d’un arbre. De"
+          "consequenceHint": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hibou desce"
         }
       ]
     },
@@ -261,7 +261,7 @@
       "id": "decision-4-suite-b",
       "headline": "Écouter la clochette",
       "coverEmoji": "🔔",
-      "text": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule toute seule vers une porte ronde au pied d’un arbre. Derrière la porte, Plume fredonne vraiment. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
+      "text": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hibou descend sans bruit, explique qu’il a vu Plume passer par là et propose de les accompagner. Derrière la porte, Plume fredonne vraiment. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-5",
@@ -307,7 +307,7 @@
       "id": "decision-5-suite-a",
       "headline": "Monter avec la balançoire",
       "coverEmoji": "🌿",
-      "text": "Picoti tient le lierre et Escargot dit quand pousser. Nino monte juste assez haut, tourne la poignée et redescend dans leurs bras. La porte s’ouvre sur un jardin rempli d’oreillers. Au bout du fil apparaît une petite porte ronde. Derrière, quelqu’un fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
+      "text": "Picoti tient le lierre et Escargot dit quand pousser. Nino monte juste assez haut, tourne la poignée et redescend dans leurs bras. La porte s’ouvre sur un jardin rempli d’oreillers. Derrière la porte maintenant ouverte commence un jardin d’oreillers. Quelqu’un y fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-6",
@@ -322,7 +322,7 @@
       "id": "decision-5-suite-b",
       "headline": "Construire un escalier de mousse",
       "coverEmoji": "🧱",
-      "text": "Tous apportent un coussin de mousse. Nino teste chaque marche avant de monter. L’escalier est moelleux et solide. Il atteint la poignée, puis aide ses amis à passer. Au bout du fil apparaît une petite porte ronde. Derrière, quelqu’un fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
+      "text": "Tous apportent un coussin de mousse. Nino teste chaque marche avant de monter. L’escalier est moelleux et solide. Il atteint la poignée, puis aide ses amis à passer. Derrière la porte maintenant ouverte commence un jardin d’oreillers. Quelqu’un y fredonne leur chanson. Nino reconnaît la voix de Plume et sent son ventre devenir léger.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-6",
@@ -376,7 +376,7 @@
       "id": "decision-6-suite-a",
       "headline": "L’appeler au rythme de leur chanson",
       "coverEmoji": "🎶",
-      "text": "Nino chante lentement. Au mot « câlin », Plume lâche la branche et tombe juste dans ses bras. Le fil bleu s’enroule autour d’eux comme un ruban. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "text": "Nino chante lentement. Au mot « câlin », Plume lâche la branche et tombe juste dans ses bras. Le fil bleu s’enroule autour d’eux comme un ruban.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-a",
@@ -391,7 +391,7 @@
       "id": "decision-6-suite-b",
       "headline": "Demander l’aide du hibou",
       "coverEmoji": "🦉",
-      "text": "Le hibou déploie ses ailes sans bruit. Il prend Plume délicatement et le dépose sur la tête de Nino. Tout le monde chuchote merci. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "text": "Le hibou déploie ses ailes sans bruit. Il prend Plume délicatement et le dépose sur la tête de Nino. Tout le monde chuchote merci.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-b",
@@ -406,7 +406,7 @@
       "id": "decision-6-suite-c",
       "headline": "Préparer un nid très doux",
       "coverEmoji": "🪹",
-      "text": "Nino et ses amis empilent les oreillers. Le vent décroche Plume, qui rebondit une fois, deux fois, puis atterrit en riant dans le nid. Plume est là, mais une dernière rafale sépare encore les deux amis. Nino peut l’appeler, demander de l’aide ou préparer un nid doux pour l’accueillir.",
+      "text": "Nino et ses amis empilent les oreillers. Le vent décroche Plume, qui rebondit une fois, deux fois, puis atterrit en riant dans le nid.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-c",
@@ -460,7 +460,7 @@
       "choices": []
     }
   ],
-  "revision": 3,
+  "revision": 4,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"

@@ -4,6 +4,45 @@ import { pickDisplayChoices } from '../core/choices.js';
 import { chooseOption } from '../core/engine.js';
 import { getSettings } from '../storage/settings.js';
 
+let paginatedNodeId = '';
+let textPageIndex = 0;
+
+function paginateText(text, targetWords = 55) {
+  const sentences = String(text || '').match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g) || [];
+  const pages = [];
+  let page = '';
+  for (const sentence of sentences.map(value => value.trim()).filter(Boolean)) {
+    const words = sentence.split(/\s+/);
+    if (words.length > targetWords) {
+      if (page) { pages.push(page); page = ''; }
+      for (let index = 0; index < words.length; index += targetWords) pages.push(words.slice(index, index + targetWords).join(' '));
+    } else if (page && `${page} ${sentence}`.split(/\s+/).length > targetWords) {
+      pages.push(page);
+      page = sentence;
+    } else page = page ? `${page} ${sentence}` : sentence;
+  }
+  if (page) pages.push(page);
+  return pages.length ? pages : [''];
+}
+
+function renderTextPage(node, phase) {
+  if (paginatedNodeId !== node.id) { paginatedNodeId = node.id; textPageIndex = 0; }
+  const pages = paginateText(node.text, window.innerHeight < 690 ? 42 : 55);
+  textPageIndex = Math.min(textPageIndex, pages.length - 1);
+  document.getElementById('reader-text').textContent = pages[textPageIndex];
+  const navigation = document.getElementById('reader-page-nav');
+  navigation.classList.toggle('hidden', pages.length < 2);
+  document.getElementById('reader-page-count').textContent = `${textPageIndex + 1} / ${pages.length}`;
+  const previous = document.getElementById('reader-page-prev');
+  const next = document.getElementById('reader-page-next');
+  previous.disabled = textPageIndex === 0;
+  next.disabled = textPageIndex === pages.length - 1;
+  previous.onclick = () => { textPageIndex -= 1; renderTextPage(node, phase); };
+  next.onclick = () => { textPageIndex += 1; renderTextPage(node, phase); };
+  const quietPhase = ['quiet-decision', 'quiet-continuation', 'quiet-ending'].includes(phase);
+  document.getElementById('reader-continue').classList.toggle('hidden', !quietPhase || textPageIndex !== pages.length - 1);
+}
+
 export function renderReader({ phase = 'narration', preserve = false } = {}) {
   const node = currentNode();
   if (!node) return;
@@ -21,7 +60,7 @@ export function renderReader({ phase = 'narration', preserve = false } = {}) {
   art.src = state.currentStory.coverImage || '';
   art.classList.toggle('hidden', !state.currentStory.coverImage);
   document.getElementById('reader-emoji').classList.toggle('hidden', Boolean(state.currentStory.coverImage));
-  document.getElementById('reader-text').textContent = node.text;
+  renderTextPage(node, phase);
   const total = Math.max(5, Object.keys(state.currentStory.nodes).length * .55);
   document.getElementById('reader-progress-bar').style.width = `${Math.min(100, (state.path.length / total) * 100)}%`;
   document.getElementById('reader-audio').textContent = state.isNarrating ? '⏸' : '▶';
@@ -31,7 +70,6 @@ export function renderReader({ phase = 'narration', preserve = false } = {}) {
   modeButton.setAttribute('aria-label', quietMode ? 'Quitter le mode discret' : 'Activer le mode discret');
   modeButton.title = quietMode ? 'Quitter le mode discret' : 'Mode discret';
   const continueButton = document.getElementById('reader-continue');
-  continueButton.classList.toggle('hidden', !['quiet-decision', 'quiet-continuation', 'quiet-ending'].includes(phase));
   continueButton.textContent = phase === 'quiet-ending' ? 'Voir la fin' : phase === 'quiet-decision' ? 'Faire un choix' : 'Continuer';
 
   const question = document.getElementById('reader-question');

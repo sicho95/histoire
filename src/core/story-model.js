@@ -108,9 +108,14 @@ export function storyToPortable(story) {
         emoji: choice.emoji,
         illustration: choice.illustration,
         nextNode: choice.nextNode,
-        consequenceHint: choice.consequenceHint
+        consequenceHint: choice.consequenceHint,
+        learned: choice.learned,
+        playCount: choice.playCount
       }))
     })),
+    creationContext: story.creationContext || null,
+    playedPath: story.playedPath || [],
+    source: normalized.source,
     revision: normalized.revision,
     status: normalized.status,
     createdAt: normalized.createdAt,
@@ -142,7 +147,9 @@ export function validateStory(input, { editorial = false } = {}) {
   if (nodes.length < 6) errors.push('Une histoire doit contenir au moins 6 scènes.');
 
   for (const node of nodes) {
-    const editorialMinimum = node.nextNode ? 45 : story.ageBand === '2-5' ? 55 : 75;
+    const editorialMinimum = node.nextNode
+      ? (story.nodes[node.nextNode]?.isEnding ? 20 : 45)
+      : story.ageBand === '2-5' ? 55 : 75;
     if (wordCount(node.text) < (node.isEnding ? 45 : editorial ? editorialMinimum : 80)) {
       warnings.push(`${node.id} est courte (${wordCount(node.text)} mots).`);
     }

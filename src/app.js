@@ -3,7 +3,7 @@ import { state, setView } from './core/state.js';
 import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayQuestion, saveCurrentAdventure, startStory } from './core/engine.js';
 import { renderHome } from './ui/carousel.js';
 import { renderLibrary } from './ui/library.js';
-import { initParental, renderParental } from './ui/parental.js';
+import { initParental, openParental, renderParental } from './ui/parental.js';
 import { initWizard } from './ui/wizard.js';
 import { showToast } from './ui/toast.js';
 import { initPwaUpdates } from './pwa/update.js';
@@ -12,13 +12,30 @@ import { getSettings, saveSettings } from './storage/settings.js';
 
 function goHome() { pauseAudio(); setView('view-home'); renderHome(); }
 
+function applyTheme(theme = getSettings().theme || 'auto') {
+  const allowed = ['auto', 'light', 'dark'];
+  const value = allowed.includes(theme) ? theme : 'auto';
+  document.documentElement.dataset.theme = value;
+  const button = document.getElementById('theme-toggle');
+  const labels = { auto: ['◐', 'Thème automatique'], light: ['☀️', 'Thème clair'], dark: ['🌙', 'Thème sombre'] };
+  button.textContent = labels[value][0];
+  button.title = labels[value][1];
+  button.setAttribute('aria-label', `${labels[value][1]}. Toucher pour changer.`);
+}
+
 function initNavigation() {
   document.getElementById('home-logo').onclick = goHome;
-  document.getElementById('open-parents').onclick = () => { setView('view-parents'); renderParental(); };
+  document.getElementById('theme-toggle').onclick = () => {
+    const settings = getSettings();
+    const next = { auto: 'light', light: 'dark', dark: 'auto' }[settings.theme || 'auto'];
+    saveSettings({ ...settings, theme: next });
+    applyTheme(next);
+  };
   document.querySelectorAll('.back-home').forEach(button => { button.onclick = goHome; });
   document.querySelectorAll('.bottom-nav button').forEach(button => {
     button.onclick = async () => {
       const view = button.dataset.view;
+      if (view === 'view-parents') return openParental();
       setView(view);
       if (view === 'view-library') await renderLibrary();
       if (view === 'view-parents') renderParental();
@@ -58,6 +75,7 @@ function initNavigation() {
 }
 
 async function init() {
+  applyTheme();
   initNavigation();
   initParental();
   initWizard();
