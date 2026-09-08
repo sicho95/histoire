@@ -1,4 +1,5 @@
 import { prepareSpeech, portableAudioId } from '../audio/tts.js';
+import { buildSpokenChoicePrompt } from '../audio/choice-prompt.js';
 import { buildReviewPackage, storyToPortable } from '../core/story-model.js';
 import { putAudioCacheEntry } from '../storage/audio_cache.js';
 import { saveDraft } from '../storage/database.js';
@@ -19,7 +20,7 @@ function narrationJobs(story) {
   }];
   for (const node of Object.values(story.nodes)) {
     jobs.push({ ...common, nodeId: node.id, kind: 'scene', text: node.text, narration: node.narration });
-    if (node.question) jobs.push({ ...common, nodeId: `${node.id}-question`, kind: 'question', text: node.question, narration: { ...node.narration, pace: 'slow' } });
+    if (node.question) jobs.push({ ...common, nodeId: `${node.id}-question`, kind: 'question', text: buildSpokenChoicePrompt(node.question, node.choices), narration: { ...node.narration, pace: 'slow' } });
   }
   return jobs.filter(job => job.text);
 }

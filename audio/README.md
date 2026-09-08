@@ -7,12 +7,13 @@ Les narrations préparées sont placées dans ce dossier. Les histoires signatur
 ```json
 {
   "schemaVersion": 2,
-  "styleVersion": "signature-fr-neural-v2",
+  "styleVersion": "signature-fr-neural-v3",
   "generatedAt": "2026-09-07T12:00:00Z",
   "tracks": {
     "mila-oeuf-orage:decision-1": {
       "file": "mp3/mila-oeuf-orage/decision-1.mp3",
       "textHash": "a1b2c3d4",
+      "speechHash": "e5f6g7h8",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
