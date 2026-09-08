@@ -1,9 +1,14 @@
-import { deleteDraft, getDrafts, getLibrary } from '../storage/database.js';
+import { deleteDraft, getDrafts } from '../storage/database.js';
+import { hasGenerationKey } from '../storage/settings.js';
 import { startStory } from '../core/engine.js';
 import { createStoryPackage, downloadBlob } from '../export/story-package.js';
 import { showToast } from './toast.js';
 
 let libraryPage = 0;
+
+export function refreshCreationAvailability() {
+  document.querySelector('.studio-callout')?.classList.toggle('hidden', !hasGenerationKey());
+}
 
 function appendPager(list, page, pages) {
   if (pages < 2) return;
@@ -19,52 +24,40 @@ function appendPager(list, page, pages) {
 }
 
 export async function renderLibrary() {
+  refreshCreationAvailability();
   const drafts = (await getDrafts()).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
-  const adventures = (await getLibrary()).sort((a, b) => String(b.savedAt).localeCompare(String(a.savedAt)));
-  const items = [...drafts.map(value => ({ type: 'draft', value })), ...adventures.map(value => ({ type: 'adventure', value }))];
   const list = document.getElementById('draft-list');
   list.replaceChildren();
-  if (!items.length) {
-    list.innerHTML = '<div class="card"><h2>Pas encore de création</h2><p class="supporting">Les histoires inventées dans l’atelier apparaîtront ici.</p></div>';
+  if (!drafts.length) {
+    list.innerHTML = `<div class="card"><h2>Aucune histoire personnelle</h2><p class="supporting">${hasGenerationKey() ? 'Les histoires inventées dans l’atelier apparaîtront ici.' : 'L’atelier sera proposé lorsqu’un parent aura configuré une clé Groq.'}</p></div>`;
     return;
   }
   const pageSize = window.innerHeight < 760 ? 1 : 2;
-  const pages = Math.ceil(items.length / pageSize);
+  const pages = Math.ceil(drafts.length / pageSize);
   libraryPage = Math.min(libraryPage, pages - 1);
-  for (const item of items.slice(libraryPage * pageSize, (libraryPage + 1) * pageSize)) {
-    if (item.type === 'draft') {
-      const draft = item.value;
-      const card = document.createElement('article');
-      card.className = 'draft-card';
-      card.innerHTML = `<h2></h2><p></p><div class="draft-actions"><button class="secondary-button play">Lire</button><button class="secondary-button export">ZIP + voix</button><button class="text-button remove">Supprimer</button></div>`;
-      card.querySelector('h2').textContent = `${draft.coverEmoji} ${draft.title}`;
-      card.querySelector('p').textContent = `Brouillon privé · ${draft.durationMinutes} min environ`;
-      card.querySelector('.play').onclick = () => startStory(draft);
-      card.querySelector('.export').onclick = async event => {
-        const button = event.currentTarget;
-        button.disabled = true;
-        try {
-          const blob = await createStoryPackage(draft, {
-            onProgress: ({ current, total }) => { button.textContent = `Voix ${current}/${total}`; }
-          });
-          downloadBlob(blob, `${draft.id}-histoire-et-voix.zip`);
-          showToast('ZIP complet prêt : histoire, relecture et tous les MP3.');
-        } catch (error) { showToast(error.message); }
-        finally { button.disabled = false; button.textContent = 'ZIP + voix'; }
-      };
-      card.querySelector('.remove').onclick = async () => {
-        if (confirm('Supprimer ce brouillon de cet appareil ?')) { await deleteDraft(draft.id); libraryPage = 0; renderLibrary(); }
-      };
-      list.append(card);
-    } else {
-      const adventure = item.value;
-      const card = document.createElement('article');
-      card.className = 'draft-card';
-      card.innerHTML = '<h2></h2><p></p>';
-      card.querySelector('h2').textContent = `🌟 ${adventure.title}`;
-      card.querySelector('p').textContent = `${Math.max(1, (adventure.path || []).length - 1)} choix · gardé le ${new Date(adventure.savedAt).toLocaleDateString('fr-FR')}`;
-      list.append(card);
-    }
+  for (const draft of drafts.slice(libraryPage * pageSize, (libraryPage + 1) * pageSize)) {
+    const card = document.createElement('article');
+    card.className = 'draft-card';
+    card.innerHTML = `<h2></h2><p></p><div class="draft-actions"><button class="secondary-button play">Lire</button><button class="secondary-button export">ZIP + voix</button><button class="text-button remove">Supprimer</button></div>`;
+    card.querySelector('h2').textContent = `${draft.coverEmoji} ${draft.title}`;
+    card.querySelector('p').textContent = `Histoire personnelle · ${draft.durationMinutes} min environ`;
+    card.querySelector('.play').onclick = () => startStory(draft);
+    card.querySelector('.export').onclick = async event => {
+      const button = event.currentTarget;
+      button.disabled = true;
+      try {
+        const blob = await createStoryPackage(draft, {
+          onProgress: ({ current, total }) => { button.textContent = `Voix ${current}/${total}`; }
+        });
+        downloadBlob(blob, `${draft.id}-histoire-et-voix.zip`);
+        showToast('ZIP complet prêt : histoire, relecture et tous les MP3.');
+      } catch (error) { showToast(error.message); }
+      finally { button.disabled = false; button.textContent = 'ZIP + voix'; }
+    };
+    card.querySelector('.remove').onclick = async () => {
+      if (confirm('Supprimer cette histoire personnelle de cet appareil ?')) { await deleteDraft(draft.id); libraryPage = 0; renderLibrary(); }
+    };
+    list.append(card);
   }
   appendPager(list, libraryPage, pages);
 }

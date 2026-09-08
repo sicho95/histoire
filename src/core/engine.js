@@ -1,10 +1,9 @@
 import { speak, stopSpeak } from '../audio/tts.js';
 import { listenOnce } from '../audio/stt.js';
 import { getSecrets, getSettings } from '../storage/settings.js';
-import { saveToLibrary } from '../storage/database.js';
 import { currentNode, setView, state } from './state.js';
 import { weaveChoice } from './weaver.js';
-import { renderReader } from '../ui/reader.js';
+import { renderReader, syncReaderToNarration } from '../ui/reader.js';
 import { renderEndScreen } from '../ui/end_screen.js';
 import { showToast } from '../ui/toast.js';
 
@@ -24,8 +23,8 @@ async function playCurrentNode(token = ++playbackToken) {
     return renderReader({ phase: 'quiet-decision' });
   }
   state.isNarrating = true;
-  renderReader({ phase: 'narration' });
-  await speak(node.text, narrationContext(node));
+  renderReader({ phase: 'narration', resetPage: true });
+  await speak(node.text, { ...narrationContext(node), onProgress: progress => syncReaderToNarration(node.id, progress) });
   if (token !== playbackToken) return;
   state.isNarrating = false;
   if (node.isEnding) return renderEndScreen();
@@ -126,8 +125,3 @@ export async function refreshNarrationMode() {
   return playCurrentNode(token);
 }
 export function playLibraryAdventure(adventure) { return startStory(adventure.story || adventure); }
-
-export async function saveCurrentAdventure() {
-  if (!state.currentStory) return;
-  return saveToLibrary({ title: state.currentStory.title, storyId: state.currentStory.id, path: state.path, endingNodeId: state.currentNodeId });
-}

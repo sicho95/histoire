@@ -180,6 +180,7 @@ async function fetchOpenAi(text, context) {
 function playBlob(blob, meta = {}) {
   return new Promise(resolve => {
     stopSpeak();
+    const { onProgress, ...debugMeta } = meta;
     const url = URL.createObjectURL(blob);
     const audio = audioPlayer || new Audio();
     audioPlayer = audio;
@@ -192,6 +193,8 @@ function playBlob(blob, meta = {}) {
       settled = true;
       audio.onended = null;
       audio.onerror = null;
+      audio.ontimeupdate = null;
+      audio.onloadedmetadata = null;
       if (currentAudioUrl === url) {
         URL.revokeObjectURL(url);
         currentAudioUrl = null;
@@ -201,9 +204,13 @@ function playBlob(blob, meta = {}) {
     };
     audio.preload = 'auto';
     audio.src = url;
-    audio.onended = finish;
+    audio.onloadedmetadata = () => onProgress?.(0);
+    audio.ontimeupdate = () => {
+      if (Number.isFinite(audio.duration) && audio.duration > 0) onProgress?.(audio.currentTime / audio.duration);
+    };
+    audio.onended = () => { onProgress?.(1); finish(); };
     audio.onerror = finish;
-    logDebug('tts.play', meta);
+    logDebug('tts.play', debugMeta);
     audio.play().catch(finish);
   });
 }
@@ -228,7 +235,8 @@ function speakBrowser(text, context = {}) {
     if (voice) utterance.voice = voice;
     currentUtterance = utterance;
     activeResolve = resolve;
-    const finish = () => { currentUtterance = null; activeResolve = null; resolve(); };
+    const finish = () => { context.onProgress?.(1); currentUtterance = null; activeResolve = null; resolve(); };
+    utterance.onboundary = event => context.onProgress?.(Math.min(1, event.charIndex / Math.max(1, String(text).length)));
     utterance.onend = finish;
     utterance.onerror = finish;
     speechSynthesis.speak(utterance);
@@ -241,6 +249,8 @@ export function stopSpeak() {
   if (audioPlayer) {
     audioPlayer.onended = null;
     audioPlayer.onerror = null;
+    audioPlayer.ontimeupdate = null;
+    audioPlayer.onloadedmetadata = null;
     audioPlayer.pause();
   }
   if (currentAudioUrl) {

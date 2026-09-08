@@ -6,6 +6,7 @@ import { getSettings } from '../storage/settings.js';
 
 let paginatedNodeId = '';
 let textPageIndex = 0;
+let textPages = [''];
 
 function paginateText(text, targetWords = 55) {
   const sentences = String(text || '').match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g) || [];
@@ -25,25 +26,51 @@ function paginateText(text, targetWords = 55) {
   return pages.length ? pages : [''];
 }
 
-function renderTextPage(node, phase) {
-  if (paginatedNodeId !== node.id) { paginatedNodeId = node.id; textPageIndex = 0; }
-  const pages = paginateText(node.text, window.innerHeight < 690 ? 42 : 55);
-  textPageIndex = Math.min(textPageIndex, pages.length - 1);
-  document.getElementById('reader-text').textContent = pages[textPageIndex];
+function showTextPage(node, phase) {
+  if (!node) return;
+  textPageIndex = Math.max(0, Math.min(textPageIndex, textPages.length - 1));
+  document.getElementById('reader-text').textContent = textPages[textPageIndex];
   const navigation = document.getElementById('reader-page-nav');
-  navigation.classList.toggle('hidden', pages.length < 2);
-  document.getElementById('reader-page-count').textContent = `${textPageIndex + 1} / ${pages.length}`;
+  const manualPaging = phase === 'choice' || String(phase).startsWith('quiet-');
+  navigation.classList.toggle('hidden', textPages.length < 2 || !manualPaging);
+  document.getElementById('reader-page-count').textContent = `${textPageIndex + 1} / ${textPages.length}`;
   const previous = document.getElementById('reader-page-prev');
   const next = document.getElementById('reader-page-next');
   previous.disabled = textPageIndex === 0;
-  next.disabled = textPageIndex === pages.length - 1;
-  previous.onclick = () => { textPageIndex -= 1; renderTextPage(node, phase); };
-  next.onclick = () => { textPageIndex += 1; renderTextPage(node, phase); };
+  next.disabled = textPageIndex === textPages.length - 1;
+  previous.onclick = () => { textPageIndex -= 1; showTextPage(node, phase); };
+  next.onclick = () => { textPageIndex += 1; showTextPage(node, phase); };
   const quietPhase = ['quiet-decision', 'quiet-continuation', 'quiet-ending'].includes(phase);
-  document.getElementById('reader-continue').classList.toggle('hidden', !quietPhase || textPageIndex !== pages.length - 1);
+  document.getElementById('reader-continue').classList.toggle('hidden', !quietPhase || textPageIndex !== textPages.length - 1);
 }
 
-export function renderReader({ phase = 'narration', preserve = false } = {}) {
+function renderTextPage(node, phase, resetPage = false) {
+  if (paginatedNodeId !== node.id || resetPage) {
+    paginatedNodeId = node.id;
+    textPageIndex = 0;
+  }
+  textPages = paginateText(node.text, window.innerHeight < 620 ? 34 : window.innerHeight < 740 ? 42 : 55);
+  showTextPage(node, phase);
+}
+
+export function syncReaderToNarration(nodeId, progress) {
+  if (paginatedNodeId !== nodeId || textPages.length < 2) return;
+  const ratio = Math.max(0, Math.min(0.999999, Number(progress) || 0));
+  const nextPage = Math.min(textPages.length - 1, Math.floor(ratio * textPages.length));
+  if (nextPage === textPageIndex) return;
+  textPageIndex = nextPage;
+  showTextPage(currentNode(), 'narration');
+}
+
+export function toggleReaderPassage() {
+  const card = document.querySelector('#view-reader .reader-card');
+  const opening = !card.classList.contains('passage-open');
+  card.classList.toggle('passage-open', opening);
+  if (opening) textPageIndex = 0;
+  renderReader({ phase: state.readerPhase, preserve: true });
+}
+
+export function renderReader({ phase = 'narration', preserve = false, resetPage = false } = {}) {
   const node = currentNode();
   if (!node) return;
   state.readerPhase = phase;
@@ -60,7 +87,7 @@ export function renderReader({ phase = 'narration', preserve = false } = {}) {
   art.src = state.currentStory.coverImage || '';
   art.classList.toggle('hidden', !state.currentStory.coverImage);
   document.getElementById('reader-emoji').classList.toggle('hidden', Boolean(state.currentStory.coverImage));
-  renderTextPage(node, phase);
+  renderTextPage(node, phase, resetPage);
   const total = Math.max(5, Object.keys(state.currentStory.nodes).length * .55);
   document.getElementById('reader-progress-bar').style.width = `${Math.min(100, (state.path.length / total) * 100)}%`;
   document.getElementById('reader-audio').textContent = state.isNarrating ? '⏸' : '▶';

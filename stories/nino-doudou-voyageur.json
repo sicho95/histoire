@@ -238,7 +238,7 @@
           "emoji": "🔔",
           "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
-          "consequenceHint": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hibou desce"
+          "consequenceHint": "La clochette fait doucement ding… ding… quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hib"
         }
       ]
     },
@@ -261,7 +261,7 @@
       "id": "decision-4-suite-b",
       "headline": "Écouter la clochette",
       "coverEmoji": "🔔",
-      "text": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hibou descend sans bruit, explique qu’il a vu Plume passer par là et propose de les accompagner. Derrière la porte, Plume fredonne vraiment. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
+      "text": "La clochette fait doucement ding… ding… quand Nino l’appelle. Elle roule vers une porte ronde au pied d’un arbre. Un hibou descend sans bruit, explique qu’il a vu Plume passer par là et propose de les accompagner. Derrière la porte, Plume fredonne vraiment. Le jardin sent la menthe et la pluie. Nino entend un froissement familier. Plume n’est plus très loin. Pour continuer, il suffit d’un choix calme et d’un pas après l’autre.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-5",
@@ -460,7 +460,7 @@
       "choices": []
     }
   ],
-  "revision": 4,
+  "revision": 5,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"

@@ -32,7 +32,7 @@
       "id": "decision-1",
       "headline": "L’œuf qui tombe du ciel",
       "coverEmoji": "⛈️",
-      "text": "Mila collectionne les bruits de pluie. Ploc sur les feuilles, flic-flac dans les flaques, frou-frou sous son capuchon jaune. Mais ce soir-là, un bruit nouveau traverse le jardin : fiiiiou… POUF ! Dans les capucines repose un œuf gros comme un ballon, turquoise, couvert de petites étoiles lumineuses. Une voix de tonnerre gronde au-dessus des nuages : « Objet perdu ! Retour avant le grand éclair ! » L’œuf tremble. Mila pose une main dessus et sent un cœur minuscule battre très vite. Près du trou dans les fleurs, elle découvre une plume aimantée qui tourne comme une boussole. Un chemin de traces rondes file vers le bois, tandis qu’un courant d’air doré monte droit vers le vieux moulin.",
+      "text": "Mila collectionne les bruits de pluie. La pluie fait ploc sur les feuilles, flic-flac dans les flaques et frou-frou sous son capuchon jaune. Mais ce soir-là, un sifflement nouveau traverse le jardin, puis un grand pouf résonne ! Dans les capucines repose un œuf gros comme un ballon, turquoise, couvert de petites étoiles lumineuses. Une voix de tonnerre gronde au-dessus des nuages : « Objet perdu ! Retour avant le grand éclair ! » L’œuf tremble. Mila pose une main dessus et sent un cœur minuscule battre très vite. Près du trou dans les fleurs, elle découvre une plume aimantée qui tourne comme une boussole. Un chemin de traces rondes file vers le bois, tandis qu’un courant d’air doré monte droit vers le vieux moulin.",
       "question": "Pour trouver d’où vient l’œuf, que fait Mila ?",
       "isEnding": false,
       "narration": {
@@ -154,7 +154,7 @@
       "id": "decision-3",
       "headline": "La rivière qui monte",
       "coverEmoji": "🌊",
-      "text": "Les deux morceaux réunis, la boussole-plume pointe vers le moulin. Mais le ruisseau est devenu une large rivière brune. Sur une pierre, une famille de musaraignes attend, entourée d’eau. Toupik veut foncer : sa sœur est de l’autre côté. L’œuf, lui, pulse d’une lumière orange chaque fois que les petites bêtes appellent. Mila voit un tronc solide retenu par des lianes. Plus loin, de grandes feuilles creuses pourraient devenir des barques. Le tonnerre se rapproche : boum-BOUM. Il faut traverser, mais l’œuf semble refuser qu’on laisse les musaraignes derrière.",
+      "text": "Les deux morceaux réunis, la boussole-plume pointe vers le moulin. Mais le ruisseau est devenu une large rivière brune. Sur une pierre, une famille de musaraignes attend, entourée d’eau. Toupik veut foncer : sa sœur est de l’autre côté. L’œuf, lui, pulse d’une lumière orange chaque fois que les petites bêtes appellent. Mila voit un tronc solide retenu par des lianes. Plus loin, de grandes feuilles creuses pourraient devenir des barques. Le tonnerre se rapproche avec deux grands boum. Il faut traverser, mais l’œuf semble refuser qu’on laisse les musaraignes derrière.",
       "question": "Quelle traversée Mila prépare-t-elle ?",
       "isEnding": false,
       "narration": {
@@ -399,7 +399,7 @@
       "choices": []
     }
   ],
-  "revision": 4,
+  "revision": 5,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"

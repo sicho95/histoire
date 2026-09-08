@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "styleVersion": "signature-fr-neural-v2",
-  "generatedAt": "2026-09-08T13:01:08.817Z",
+  "generatedAt": "2026-09-08T14:00:33.015Z",
   "tracks": {
     "aya-phare-reves:decision-1": {
       "file": "mp3/aya-phare-reves/decision-1.mp3",
@@ -860,7 +860,7 @@
     },
     "lila-fete-couleurs:decision-1": {
       "file": "mp3/lila-fete-couleurs/decision-1.mp3",
-      "textHash": "1uonpk2",
+      "textHash": "zisjxn",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2266,7 +2266,7 @@
     },
     "mila-oeuf-orage:decision-1": {
       "file": "mp3/mila-oeuf-orage/decision-1.mp3",
-      "textHash": "tysvdx",
+      "textHash": "1j18yp",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2418,7 +2418,7 @@
     },
     "mila-oeuf-orage:decision-3": {
       "file": "mp3/mila-oeuf-orage/decision-3.mp3",
-      "textHash": "1dvrs0g",
+      "textHash": "7vwatc",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3026,7 +3026,7 @@
     },
     "nino-doudou-voyageur:decision-4-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-b.mp3",
-      "textHash": "s2p2fs",
+      "textHash": "1opgpeq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3292,7 +3292,7 @@
     },
     "sacha-poste-oceans:decision-1": {
       "file": "mp3/sacha-poste-oceans/decision-1.mp3",
-      "textHash": "nsppw5",
+      "textHash": "227ny3",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3577,7 +3577,7 @@
     },
     "sacha-poste-oceans:decision-4-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-4-suite-b.mp3",
-      "textHash": "1hcqi4e",
+      "textHash": "n228w1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",

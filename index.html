@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
   <meta name="theme-color" content="#fff8eb">
   <meta name="description" content="Des histoires à embranchements pour enfants, disponibles hors connexion.">
   <title>Histoires à choisir</title>
@@ -47,7 +47,7 @@
           <p id="reader-story-title" class="eyebrow"></p>
           <h1 id="reader-headline"></h1>
           <p id="reader-text" class="reader-text"></p>
-          <div id="reader-page-nav" class="reader-page-nav hidden"><button id="reader-page-prev" class="secondary-button" type="button">← Page</button><span id="reader-page-count"></span><button id="reader-page-next" class="secondary-button" type="button">Page →</button></div>
+          <div id="reader-page-nav" class="reader-page-nav hidden"><button id="reader-page-prev" class="secondary-button" type="button" aria-label="Page précédente">←</button><span id="reader-page-count"></span><button id="reader-page-next" class="secondary-button" type="button" aria-label="Page suivante">→</button></div>
           <button id="reader-continue" class="primary-button full-button hidden" type="button">Continuer</button>
         </article>
         <div id="reader-question" class="reader-question hidden">
@@ -125,13 +125,13 @@
             <p id="settings-status" class="form-status" role="status"></p>
           </section>
         </div>
-        <p class="version-line">Version 2.3.0 · build <span id="build-id">6c5ee0e9869e53250ceb5ac45ce64943b302c98c-8</span></p>
+        <p class="version-line">Version 2.3.1 · build <span id="build-id">8b8bf569e0ec36a3021ebf806385ec2c45cc6d48-9</span></p>
       </section>
 
       <section id="view-end" class="view hidden end-view">
         <div id="end-emoji" class="end-emoji">🌟</div><p class="eyebrow">Fin de cette aventure</p><h1 id="end-title">Bravo !</h1>
         <p id="end-summary"></p>
-        <div class="button-row centered"><button id="restart-story" class="secondary-button" type="button">Rejouer</button><button id="save-adventure" class="primary-button" type="button">Garder ce parcours</button></div>
+        <div class="button-row centered"><button id="restart-story" class="primary-button" type="button">Rejouer autrement</button></div>
         <button id="end-home" class="text-button" type="button">Choisir une autre histoire</button>
       </section>
     </main>

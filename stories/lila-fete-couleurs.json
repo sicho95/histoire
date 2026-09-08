@@ -32,7 +32,7 @@
       "id": "decision-1",
       "headline": "La mer toute grise",
       "coverEmoji": "🌊",
-      "text": "Ce matin, Lila Loutre plonge dans la mer. Oh ! Les algues sont grises. Les poissons sont gris. Même son xylophone-coquillage est gris. Ce soir, c’est la Fête des Couleurs. Une petite bulle rouge passe près de son nez : pop ! Puis elle file vers le jardin de corail. Une bulle bleue part vers la grotte qui chante. Lila ne peut pas suivre les deux en même temps. Elle touche une coquille : plim… presque aucun son.",
+      "text": "Ce matin, Lila Loutre plonge dans la mer. Oh ! Les algues sont grises. Les poissons sont gris. Même son xylophone-coquillage est gris. Ce soir, c’est la Fête des Couleurs. Une petite bulle rouge éclate avec un léger pop près de son nez, puis elle file vers le jardin de corail. Une bulle bleue part vers la grotte qui chante. Lila ne peut pas suivre les deux en même temps. Elle touche une coquille qui répond par un faible plim.",
       "question": "Quelle bulle Lila suit-elle ?",
       "isEnding": false,
       "narration": {
@@ -460,7 +460,7 @@
       "choices": []
     }
   ],
-  "revision": 4,
+  "revision": 5,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
   "updatedAt": "2026-09-08T00:00:00.000Z"
