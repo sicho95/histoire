@@ -46,8 +46,10 @@ export function renderReader({ phase = 'narration', preserve = false } = {}) {
     button.className = 'choice-button';
     button.innerHTML = choice.illustration ? '<img><strong></strong>' : '<span></span><strong></strong>';
     if (choice.illustration) {
-      button.querySelector('img').src = choice.illustration;
-      button.querySelector('img').alt = '';
+      const image = button.querySelector('img');
+      image.src = choice.illustration;
+      image.alt = '';
+      image.className = choice.illustration.includes('/stories/') ? 'choice-art-signature' : 'choice-art-generic';
     }
     else button.querySelector('span').textContent = choice.emoji;
     button.querySelector('strong').textContent = choice.label;

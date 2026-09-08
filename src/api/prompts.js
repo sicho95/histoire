@@ -1,14 +1,17 @@
+const GENERIC_CHOICE_ILLUSTRATIONS = ['explorer', 'ecouter', 'aider', 'courage', 'inventer', 'observer', 'chanter', 'suivre', 'partager', 'attendre', 'demander', 'rentrer']
+  .map(name => `./assets/choices/${name}.svg`);
+
 const choiceSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['id', 'label', 'emoji', 'nextNode', 'consequenceHint'],
+  required: ['id', 'label', 'emoji', 'illustration', 'nextNode', 'consequenceHint'],
   properties: {
     id: { type: 'string' },
     label: { type: 'string' },
     emoji: { type: 'string' },
     nextNode: { type: 'string' },
     consequenceHint: { type: 'string' },
-    illustration: { type: 'string' }
+    illustration: { type: 'string', enum: GENERIC_CHOICE_ILLUSTRATIONS }
   }
 };
 
@@ -101,6 +104,7 @@ Exigences éditoriales :
 - dialogues courts, vocabulaire concret, détails sensoriels variés ;
 - personnages, objets et règles du monde parfaitement constants ;
 - 2 ou 3 choix courts à chaque moment de décision, menant à des conséquences différentes ;
+- pour chaque choix, utilise uniquement le pictogramme générique le plus clair parmi : ${GENERIC_CHOICE_ILLUSTRATIONS.join(', ')} ;
 - trois émotions ou intensités différentes au fil du récit ;
 - aucune mention de modèle, prompt, génération, nœud ou embranchement.
 

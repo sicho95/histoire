@@ -46,7 +46,7 @@
           "id": "decision-1-a",
           "label": "Suivre les lucioles joyeuses",
           "emoji": "✨",
-          "illustration": "./assets/choices/suivre.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
           "consequenceHint": "Les lucioles filent vite et entraînent la barque dans une ronde étincelante. Aya rit, puis remarque qu’elles tournent po"
         },
@@ -54,7 +54,7 @@
           "id": "decision-1-b",
           "label": "Écouter les bouées inquiètes",
           "emoji": "🔔",
-          "illustration": "./assets/choices/ecouter.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-1-b.jpg",
           "nextNode": "decision-1-suite-b",
           "consequenceHint": "Chaque bouée sonne avant une vague cachée. Aya compte les tintements et guide la barque entre les rochers. Son inquiétud"
         }
@@ -107,7 +107,7 @@
           "id": "decision-2-a",
           "label": "Ouvrir un espace pour danser",
           "emoji": "🪟",
-          "illustration": "./assets/choices/explorer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-2-a.jpg",
           "nextNode": "decision-2-suite-a",
           "consequenceHint": "Aya ouvre les grandes fenêtres. Les ballons s’élancent autour du phare au lieu de se cogner entre eux. La petite joie tr"
         },
@@ -115,7 +115,7 @@
           "id": "decision-2-b",
           "label": "Partager les joies à tour de rôle",
           "emoji": "🗣️",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-2-b.jpg",
           "nextNode": "decision-2-suite-b",
           "consequenceHint": "Aya donne la parole avec la clé-lune comme bâton de parole. Chaque ballon raconte une joie, puis écoute celle du suivant"
         }
@@ -168,7 +168,7 @@
           "id": "decision-3-a",
           "label": "Mettre des mots précis",
           "emoji": "💬",
-          "illustration": "./assets/choices/demander.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-3-a.jpg",
           "nextNode": "decision-3-suite-a",
           "consequenceHint": "Aya demande : « Qu’est-ce qui s’est passé ? De quoi as-tu besoin maintenant ? » Le rêve desserre ses poings et raconte. "
         },
@@ -176,7 +176,7 @@
           "id": "decision-3-b",
           "label": "Pousser le coussin-tempête",
           "emoji": "💪",
-          "illustration": "./assets/choices/courage.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-3-b.jpg",
           "nextNode": "decision-3-suite-b",
           "consequenceHint": "Aya et le rêve poussent le coussin de toutes leurs forces. Ombre compte jusqu’à dix. L’énergie rouge cesse de renverser "
         }
@@ -229,7 +229,7 @@
           "id": "decision-4-a",
           "label": "Rester près d’elle en silence",
           "emoji": "🫶",
-          "illustration": "./assets/choices/attendre.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-4-a.jpg",
           "nextNode": "decision-4-suite-a",
           "consequenceHint": "Aya s’assoit sous la pluie. Elle ne dit ni « ce n’est rien » ni « souris ». Ombre se roule contre les bottes de la fille"
         },
@@ -237,7 +237,7 @@
           "id": "decision-4-b",
           "label": "Construire un bateau-souvenir",
           "emoji": "⛵",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
           "consequenceHint": "Aya plie une page de son carnet et la fillette y dessine le cerf-volant. Elles posent le bateau sur une flaque ; il empo"
         }
@@ -290,7 +290,7 @@
           "id": "decision-5-a",
           "label": "Examiner les peurs une par une",
           "emoji": "🔍",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-5-a.jpg",
           "nextNode": "decision-5-suite-a",
           "consequenceHint": "À la veilleuse, Aya trie les livres : danger réel, imagination, souvenir. Quand une peur est nommée, sa couverture repre"
         },
@@ -298,7 +298,7 @@
           "id": "decision-5-b",
           "label": "Inviter Ombre à parler",
           "emoji": "🐈",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-5-b.jpg",
           "nextNode": "decision-5-suite-b",
           "consequenceHint": "Ombre avoue qu’il a peur de ne pas être un guide assez courageux. Dire la vérité ne le rapetisse pas ; au contraire, sa "
         }
@@ -351,7 +351,7 @@
           "id": "decision-6-a",
           "label": "Chercher la force unique de chacune",
           "emoji": "🌿",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-6-a.jpg",
           "nextNode": "decision-6-suite-a",
           "consequenceHint": "Aya demande à chaque plante ce qu’elle offre déjà. La fougère protège les jeunes pousses, le rosier abrite les oiseaux, "
         },
@@ -359,7 +359,7 @@
           "id": "decision-6-b",
           "label": "Créer un jardin d’échanges",
           "emoji": "🌱",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-6-b.jpg",
           "nextNode": "decision-6-suite-b",
           "consequenceHint": "Les plantes partagent graines, conseils et lumière, sans arracher leurs racines. La fougère reçoit un cristal qui reflèt"
         }
@@ -412,7 +412,7 @@
           "id": "decision-7-a",
           "label": "Redessiner la scène avec douceur",
           "emoji": "🖍️",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-7-a.jpg",
           "nextNode": "decision-7-suite-a",
           "consequenceHint": "Aya dessine son erreur, puis ajoute une bulle : « Se tromper n’enlève rien à ta valeur. » Elle dessine aussi une porte d"
         },
@@ -420,7 +420,7 @@
           "id": "decision-7-b",
           "label": "Raconter la vérité à Ombre",
           "emoji": "🤫",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-7-b.jpg",
           "nextNode": "decision-7-suite-b",
           "consequenceHint": "Aya raconte tout, même la chaleur dans ses joues. Ombre ne plaisante pas. Il dit seulement : « J’aurais aimé être là pou"
         }
@@ -473,7 +473,7 @@
           "id": "decision-8-a",
           "label": "Tester, observer, puis avancer",
           "emoji": "🦶",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-8-a.jpg",
           "nextNode": "decision-8-suite-a",
           "consequenceHint": "Aya touche chaque marche avant d’y poser son poids. Elle ne sait pas ce qui vient, mais elle sait quoi faire ensuite : r"
         },
@@ -481,7 +481,7 @@
           "id": "decision-8-b",
           "label": "Inventer le cri « Hop, changement ! »",
           "emoji": "📣",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-8-b.jpg",
           "nextNode": "decision-8-suite-b",
           "consequenceHint": "À chaque transformation, toute la troupe crie : « Hop, changement ! » Même quand Aya tombe dans un coussin de mousse, el"
         }
@@ -534,7 +534,7 @@
           "id": "decision-9-a",
           "label": "Remercier chaque compagnon",
           "emoji": "🙏",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-9-a.jpg",
           "nextNode": "decision-9-suite-a",
           "consequenceHint": "Aya cite Ombre, les bouées, les ballons, la fillette de brume et même sa peur prudente. Les couronnes s’effacent ; une l"
         },
@@ -542,7 +542,7 @@
           "id": "decision-9-b",
           "label": "Montrer les efforts dans les miroirs",
           "emoji": "🪞",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-9-b.jpg",
           "nextNode": "decision-9-suite-b",
           "consequenceHint": "Aya retourne les miroirs. Ils montrent ses hésitations, ses respirations, ses erreurs corrigées et les pattes tremblante"
         }
@@ -595,7 +595,7 @@
           "id": "decision-10-a",
           "label": "Envoyer un grand faisceau arc-en-ciel",
           "emoji": "🌈",
-          "illustration": "./assets/choices/courage.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-10-a.jpg",
           "nextNode": "decision-10-suite-a",
           "consequenceHint": "Aya place toute la lanterne dans la lentille. Un faisceau traverse la mer, touche chaque fenêtre et ouvre une sortie lum"
         },
@@ -603,7 +603,7 @@
           "id": "decision-10-b",
           "label": "Dessiner une constellation des émotions",
           "emoji": "🌌",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-10-b.jpg",
           "nextNode": "decision-10-suite-b",
           "consequenceHint": "Aya projette chaque couleur dans le ciel et les relie avec la clé-lune. La constellation forme une carte : écouter, resp"
         },
@@ -611,7 +611,7 @@
           "id": "decision-10-c",
           "label": "Partager des lanternes dans le village",
           "emoji": "🏮",
-          "illustration": "./assets/choices/partager.svg",
+          "illustration": "./assets/stories/aya-phare-reves/choices/decision-10-c.jpg",
           "nextNode": "decision-10-suite-c",
           "consequenceHint": "Aya divise la lumière sans la diminuer. Chaque habitant reçoit une petite lanterne et apprend le refrain. De maison en m"
         }
@@ -705,8 +705,8 @@
       "choices": []
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
-  "updatedAt": "2026-09-07T00:00:00.000Z"
+  "updatedAt": "2026-09-08T00:00:00.000Z"
 }

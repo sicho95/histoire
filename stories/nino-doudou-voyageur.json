@@ -45,7 +45,7 @@
           "id": "decision-1-a",
           "label": "Près des fleurs qui brillent",
           "emoji": "🌼",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
           "consequenceHint": "Les fleurs ouvrent leurs pétales une par une. Dans la dernière, Nino trouve un petit morceau de tissu de Plume. Une cocc"
         },
@@ -53,7 +53,7 @@
           "id": "decision-1-b",
           "label": "Sous le vieux banc",
           "emoji": "🪑",
-          "illustration": "./assets/choices/explorer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-1-b.jpg",
           "nextNode": "decision-1-suite-b",
           "consequenceHint": "Sous le banc dort Escargot, avec le fil bleu enroulé autour de sa coquille. Il se réveille lentement et se souvient : Pl"
         }
@@ -106,7 +106,7 @@
           "id": "decision-2-a",
           "label": "Marcher sur les pierres solides",
           "emoji": "🪨",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-2-a.jpg",
           "nextNode": "decision-2-suite-a",
           "consequenceHint": "Escargot touche chaque pierre avec ses petites cornes. Nino avance : un pas, puis un autre. La dernière pierre fait ploc"
         },
@@ -114,7 +114,7 @@
           "id": "decision-2-b",
           "label": "Naviguer sur la feuille-barque",
           "emoji": "🍃",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-2-b.jpg",
           "nextNode": "decision-2-suite-b",
           "consequenceHint": "Nino s’assoit au milieu de la feuille. Escargot pousse, très lentement. La lune voyage avec eux dans le reflet. La barqu"
         }
@@ -167,7 +167,7 @@
           "id": "decision-3-a",
           "label": "Chanter tout doucement",
           "emoji": "🎵",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-3-a.jpg",
           "nextNode": "decision-3-suite-a",
           "consequenceHint": "Nino chante : « Petit pas, grand câlin… » Sa voix est si douce que Picoti montre un œil, puis son nez. Il fredonne avec "
         },
@@ -175,7 +175,7 @@
           "id": "decision-3-b",
           "label": "Attendre près de lui",
           "emoji": "⏳",
-          "illustration": "./assets/choices/attendre.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-3-b.jpg",
           "nextNode": "decision-3-suite-b",
           "consequenceHint": "Nino ne tire pas sur les piquants. Il attend et respire. Escargot attend aussi, ce qu’il sait très bien faire. Picoti se"
         }
@@ -228,7 +228,7 @@
           "id": "decision-4-a",
           "label": "Regarder la plume blanche",
           "emoji": "🪶",
-          "illustration": "./assets/choices/observer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-4-a.jpg",
           "nextNode": "decision-4-suite-a",
           "consequenceHint": "La plume porte l’odeur douce de Plume le doudou. Un hibou explique qu’il l’a aidé à passer sous la porte ronde. Il montr"
         },
@@ -236,7 +236,7 @@
           "id": "decision-4-b",
           "label": "Écouter la clochette",
           "emoji": "🔔",
-          "illustration": "./assets/choices/ecouter.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
           "consequenceHint": "Ding… ding… La clochette répond quand Nino l’appelle. Elle roule toute seule vers une porte ronde au pied d’un arbre. De"
         }
@@ -289,7 +289,7 @@
           "id": "decision-5-a",
           "label": "Monter avec la balançoire",
           "emoji": "🌿",
-          "illustration": "./assets/choices/courage.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-5-a.jpg",
           "nextNode": "decision-5-suite-a",
           "consequenceHint": "Picoti tient le lierre et Escargot dit quand pousser. Nino monte juste assez haut, tourne la poignée et redescend dans l"
         },
@@ -297,7 +297,7 @@
           "id": "decision-5-b",
           "label": "Construire un escalier de mousse",
           "emoji": "🧱",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-5-b.jpg",
           "nextNode": "decision-5-suite-b",
           "consequenceHint": "Tous apportent un coussin de mousse. Nino teste chaque marche avant de monter. L’escalier est moelleux et solide. Il att"
         }
@@ -350,7 +350,7 @@
           "id": "decision-6-a",
           "label": "L’appeler au rythme de leur chanson",
           "emoji": "🎶",
-          "illustration": "./assets/choices/chanter.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-6-a.jpg",
           "nextNode": "decision-6-suite-a",
           "consequenceHint": "Nino chante lentement. Au mot « câlin », Plume lâche la branche et tombe juste dans ses bras. Le fil bleu s’enroule auto"
         },
@@ -358,7 +358,7 @@
           "id": "decision-6-b",
           "label": "Demander l’aide du hibou",
           "emoji": "🦉",
-          "illustration": "./assets/choices/aider.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-6-b.jpg",
           "nextNode": "decision-6-suite-b",
           "consequenceHint": "Le hibou déploie ses ailes sans bruit. Il prend Plume délicatement et le dépose sur la tête de Nino. Tout le monde chuch"
         },
@@ -366,7 +366,7 @@
           "id": "decision-6-c",
           "label": "Préparer un nid très doux",
           "emoji": "🪹",
-          "illustration": "./assets/choices/inventer.svg",
+          "illustration": "./assets/stories/nino-doudou-voyageur/choices/decision-6-c.jpg",
           "nextNode": "decision-6-suite-c",
           "consequenceHint": "Nino et ses amis empilent les oreillers. Le vent décroche Plume, qui rebondit une fois, deux fois, puis atterrit en rian"
         }
@@ -460,8 +460,8 @@
       "choices": []
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
-  "updatedAt": "2026-09-07T00:00:00.000Z"
+  "updatedAt": "2026-09-08T00:00:00.000Z"
 }
