@@ -33,11 +33,13 @@ function buildStory(definition, featuredOrder) {
     });
     episode.choices.forEach((option, optionIndex) => {
       const suffix = String.fromCharCode(97 + optionIndex);
+      const transition = episode.final ? '' : definition.transitions[index];
+      const reflection = episode.final ? '' : definition.reflections?.[index];
       nodes.push({
         id: `${sceneId}-suite-${suffix}`,
         headline: option.label,
         coverEmoji: option.emoji,
-        text: `${option.consequence} ${definition.transitions[index]} ${definition.reflections?.[index] || ''}`.trim(),
+        text: `${option.consequence} ${transition} ${reflection || ''}`.trim(),
         question: '',
         isEnding: false,
         nextNode: episode.final ? `fin-${suffix}` : nextSceneId,
@@ -71,7 +73,7 @@ function buildStory(definition, featuredOrder) {
     startNode: 'decision-1',
     storyBible: definition.bible,
     nodes,
-    revision: 3,
+    revision: 4,
     status: 'published',
     createdAt: '2026-09-07T00:00:00.000Z',
     updatedAt: '2026-09-08T00:00:00.000Z'
@@ -85,7 +87,7 @@ for (const story of stories) {
 }
 const catalog = {
   schemaVersion: 1,
-  revision: 4,
+  revision: 5,
   stories: stories.map(story => ({
     id: story.id,
     title: story.title,

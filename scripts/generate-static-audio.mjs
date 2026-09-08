@@ -10,6 +10,8 @@ const direction = JSON.parse(await readFile(join(root, 'config/voice-direction.j
 const force = process.argv.includes('--force');
 const concurrency = Math.max(1, Math.min(4, Number(process.env.HISTOIRE_AUDIO_JOBS || 3)));
 const edgeTtsBin = process.env.EDGE_TTS_BIN || 'edge-tts';
+let previousManifest = { tracks: {} };
+try { previousManifest = JSON.parse(await readFile(join(audioRoot, 'manifest.json'), 'utf8')); } catch {}
 
 function hashText(text) {
   let hash = 2166136261;
@@ -97,7 +99,8 @@ async function worker() {
     const relativeFile = `mp3/${job.story.id}/${job.nodeId}.mp3`;
     const file = join(audioRoot, relativeFile);
     await mkdir(directory, { recursive: true });
-    if (force || !(await validFile(file))) {
+    const previous = previousManifest.tracks?.[`${job.story.id}:${job.nodeId}`];
+    if (force || previous?.textHash !== hashText(job.text) || !(await validFile(file))) {
       await generateWithRetry(job, file);
       if (!(await validFile(file))) throw new Error(`Piste vide : ${relativeFile}`);
     }

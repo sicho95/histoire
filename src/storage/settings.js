@@ -5,9 +5,12 @@ const LEGACY_KEY = 'conteur_settings_v11';
 
 const defaults = {
   pin: '',
+  theme: 'auto',
   generationProvider: 'groq',
   generationModel: 'openai/gpt-oss-120b',
-  ttsProvider: 'browser',
+  ttsProvider: 'edge-azure',
+  ttsCascadeVersion: 1,
+  azureSpeechRegion: 'francecentral',
   openaiTtsModel: 'gpt-4o-mini-tts',
   openaiVoice: 'marin',
   narrationStyle: 'warm-storyteller-v2',
@@ -35,7 +38,7 @@ function migrateLegacy() {
     speechRate: Number(legacy.gcpSpeakingRate || defaults.speechRate),
     debugEnabled: Boolean(legacy.debugEnabled)
   };
-  const secrets = { groqApiKey: legacy.apiKey || '', openaiApiKey: legacy.openaiApiKey || '' };
+  const secrets = { groqApiKey: legacy.apiKey || '', openaiApiKey: legacy.openaiApiKey || '', azureSpeechKey: '' };
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
   sessionStorage.setItem(SESSION_SECRET_KEY, JSON.stringify(secrets));
   localStorage.removeItem(LEGACY_KEY);
@@ -45,7 +48,13 @@ migrateLegacy();
 
 export function getSettings() {
   if (!storageAvailable()) return { ...defaults };
-  return { ...defaults, ...parse(localStorage, SETTINGS_KEY) };
+  const stored = parse(localStorage, SETTINGS_KEY);
+  if (!stored.ttsCascadeVersion) {
+    stored.ttsProvider = stored.ttsProvider === 'openai' ? 'openai' : 'edge-azure';
+    stored.ttsCascadeVersion = 1;
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...defaults, ...stored }));
+  }
+  return { ...defaults, ...stored };
 }
 
 export function saveSettings(next) {
@@ -66,7 +75,8 @@ export function saveSecrets(secrets, { remember = getSettings().rememberKeys } =
   if (!storageAvailable()) return;
   const clean = {
     groqApiKey: String(secrets.groqApiKey || '').trim(),
-    openaiApiKey: String(secrets.openaiApiKey || '').trim()
+    openaiApiKey: String(secrets.openaiApiKey || '').trim(),
+    azureSpeechKey: String(secrets.azureSpeechKey || '').trim()
   };
   sessionStorage.setItem(SESSION_SECRET_KEY, JSON.stringify(clean));
   if (remember) localStorage.setItem(DEVICE_SECRET_KEY, JSON.stringify(clean));

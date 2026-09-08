@@ -10,7 +10,7 @@ Pour publier une histoire :
 4. ajouter éventuellement ses pistes dans `audio/manifest.json` ;
 5. pousser sur `main` : le workflow produit la branche statique `WebApp`.
 
-Les brouillons inventés par les enfants ne sont jamais publiés automatiquement. Ils sont exportés depuis l'application dans un dossier de révision parentale, puis relus avant d'entrer dans ce catalogue.
+Les brouillons inventés par les enfants ne sont jamais publiés automatiquement. Ils sont exportés depuis l'application dans un ZIP de révision contenant le récit et ses MP3, puis relus avant d'entrer dans ce catalogue. Ce paquet est aussi réimportable dans la PWA pour conserver l’histoire et ses voix hors connexion.
 
 ## Histoires signature
 

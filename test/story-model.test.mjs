@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildReviewPackage, normalizeStory, reachableNodeIds, validateStory } from '../src/core/story-model.js';
+import { buildReviewPackage, normalizeStory, reachableNodeIds, storyToPortable, validateStory } from '../src/core/story-model.js';
+import { pickDisplayChoices } from '../src/core/choices.js';
+import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
 
 const legacy = {
   id: 'Test ancien', title: 'Une histoire test', start_node: 'start',
@@ -45,4 +47,36 @@ test('une continuation narrative rejoint le prochain embranchement', () => {
   assert.equal(story.nodes.consequence.question, '');
   assert.equal(story.nodes.consequence.nextNode, 'end-a');
   assert.ok(reachableNodeIds(story).has('consequence'));
+});
+
+test('conserve les choix appris dans un export réimportable', () => {
+  const story = normalizeStory(legacy);
+  story.nodes.start.choices[0].learned = true;
+  story.nodes.start.choices[0].playCount = 3;
+  const portable = storyToPortable(story);
+  assert.equal(portable.nodes.find(node => node.id === 'start').choices[0].learned, true);
+  assert.equal(portable.nodes.find(node => node.id === 'start').choices[0].playCount, 3);
+});
+
+test('affiche un mélange stable de deux ou trois choix accumulés', () => {
+  const node = { choices: [
+    { id: 'a', learned: false }, { id: 'b', learned: false },
+    { id: 'c', learned: true }, { id: 'd', learned: true }
+  ] };
+  const first = pickDisplayChoices(node, () => 0.2);
+  const second = pickDisplayChoices(node, () => 0.9);
+  assert.equal(first, second);
+  assert.equal(first.length, 3);
+  assert.ok(first.some(choice => choice.learned));
+  assert.ok(first.some(choice => !choice.learned));
+});
+
+test('fabrique et relit un ZIP autonome sans dépendance externe', async () => {
+  const zip = await createZip([
+    { name: 'story.json', data: '{"title":"Étoile"}' },
+    { name: 'audio/mp3/scene.mp3', data: new Uint8Array([1, 2, 3, 4]) }
+  ]);
+  const files = await readZip(zip);
+  assert.equal(JSON.parse(decodeZipText(files.get('story.json'))).title, 'Étoile');
+  assert.deepEqual([...files.get('audio/mp3/scene.mp3')], [1, 2, 3, 4]);
 });

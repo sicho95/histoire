@@ -5,7 +5,7 @@ PWA mobile de contes interactifs pour enfants. Elle distingue deux circuits :
 - **Bibliothèque éditoriale** : histoires relues dans `stories/`, publiées par GitHub et accompagnées de narrations préparées dans `audio/`.
 - **Atelier enfant** : histoires inventées gratuitement avec Groq, conservées comme brouillons privés sur l'appareil, puis exportables pour révision.
 
-La version 2.2 comprend six histoires signature originales : deux aventures de 8 minutes et deux de 20 minutes pour les 5–9 ans, puis deux histoires de 10 minutes pour les 2–5 ans. Elles proposent de 5 à 10 décisions, trois fins, des couvertures illustrées, 90 illustrations de choix originales et 198 pistes vocales françaises incluses.
+La version 2.3 comprend six histoires signature originales : deux aventures de 8 minutes et deux de 20 minutes pour les 5–9 ans, puis deux histoires de 10 minutes pour les 2–5 ans. Elles proposent de 5 à 10 décisions, trois fins, des couvertures illustrées, 90 illustrations de choix originales et 198 pistes vocales françaises incluses. Leurs enchaînements ont été reparcourus route par route afin qu’un personnage, un objet ou une action ne surgisse jamais sans introduction.
 
 ## Développement
 
@@ -47,14 +47,24 @@ La génération audio gratuite utilise deux voix neuronales françaises fixes : 
 
 Pour les histoires consolidées, un embranchement est traité comme une nouvelle page illustrée : l’image reste simple et immédiatement identifiable, tout en conservant le héros et l’univers du récit. Les brouillons gratuits peuvent utiliser des pictogrammes génériques jusqu’à leur révision. La charte et ses contrôles sont conservés dans [docs/DIRECTION_VISUELLE_CHOIX.md](docs/DIRECTION_VISUELLE_CHOIX.md) et `config/choice-art-direction.json`.
 
-Les scènes proposent 2 ou 3 choix préparés. Le bouton **Dire une autre idée** permet une branche personnalisée uniquement si un parent a configuré le LLM gratuit, si l’appareil est en ligne et si la reconnaissance vocale est disponible ; il reste caché dans tous les autres cas.
+Les scènes proposent 2 ou 3 choix préparés. Quand une histoire accumule davantage de possibilités personnalisées, la PWA en montre seulement 2 ou 3, de façon stable pendant la lecture, pour ne pas surcharger l’enfant. Le bouton **Dire une autre idée** permet une branche personnalisée uniquement si un parent a configuré le LLM gratuit, si l’appareil est en ligne et si la reconnaissance vocale est disponible ; il reste caché dans tous les autres cas.
 
 Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md).
 
-## Génération gratuite
+## Création, voix et export
 
 La génération utilise l'offre gratuite Groq avec `openai/gpt-oss-120b` et des sorties JSON structurées. La clé est saisie dans l'espace parents et reste en session par défaut. Elle n'est jamais ajoutée au dépôt ou aux exports.
+
+La lecture suit une cascade explicite : MP3 éditorial inclus, MP3 portable importé, essai Edge TTS gratuit, Azure Speech si une clé parentale est configurée, puis meilleure voix française de l’appareil. Le lecteur réutilise un unique élément audio afin de préserver l’autorisation de lecture automatique entre deux scènes sur Safari/iOS.
+
+Un brouillon peut être exporté en ZIP complet contenant l’histoire, le dossier de révision et toutes les pistes MP3 générables. Le même ZIP se réimporte dans la PWA et garde ses voix hors connexion ; un parent peut aussi le relire puis l’intégrer au dépôt comme nouvelle histoire consolidée.
+
+## Expérience mobile
+
+La lecture et les trois étapes de création occupent exactement l’écran disponible, sans défilement vertical ou horizontal. Les textes longs sont découpés en pages et l’enfant tourne une page avant d’atteindre la question. L’accueil reste défilable pour parcourir la bibliothèque. Le bouton supérieur règle le thème automatique, clair ou sombre ; l’espace Parents reste en bas et exige un code à quatre chiffres. L’atelier d’invention appartient à l’onglet Création, pas à l’accueil.
 
 ## Vie privée
 
 Une création d'enfant reste locale tant qu'un parent ne l'exporte pas. L'export de révision rappelle de retirer nom complet, école, adresse, voix ou autre information personnelle avant toute publication dans un dépôt public.
+
+Les décisions durables et leurs raisons sont regroupées dans [docs/DECISIONS_PROJET.md](docs/DECISIONS_PROJET.md).

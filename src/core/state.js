@@ -12,7 +12,8 @@ export function setView(id) {
   document.querySelectorAll('.bottom-nav button').forEach(button => button.classList.toggle('active', button.dataset.view === id));
   document.querySelector('.bottom-nav')?.classList.toggle('hidden', id === 'view-reader');
   document.querySelector('.topbar')?.classList.toggle('hidden', id === 'view-reader');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.body.dataset.view = id;
+  document.getElementById(id)?.scrollTo?.({ top: 0 });
   window.dispatchEvent(new CustomEvent('app:viewChanged', { detail: { id } }));
 }
 

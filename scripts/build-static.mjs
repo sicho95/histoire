@@ -56,6 +56,7 @@ const assets = [
   './src/app.js', './src/pwa/update.js',
   './src/api/router.js', './src/api/prompts.js',
   './src/audio/stt.js', './src/audio/tts.js',
+  './src/export/story-package.js', './src/export/zip.js',
   './src/core/choices.js', './src/core/debug.js', './src/core/engine.js',
   './src/core/network.js', './src/core/state.js', './src/core/story-model.js', './src/core/weaver.js',
   './src/storage/audio_cache.js', './src/storage/database.js', './src/storage/settings.js',

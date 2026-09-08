@@ -7,6 +7,16 @@ import { startStory } from '../core/engine.js';
 import { showToast } from './toast.js';
 
 export function initWizard() {
+  let step = 0;
+  const showStep = next => {
+    step = Math.max(0, Math.min(2, next));
+    document.querySelectorAll('[data-studio-step]').forEach(panel => panel.classList.toggle('hidden', Number(panel.dataset.studioStep) !== step));
+    document.querySelectorAll('.studio-progress span').forEach((dot, index) => dot.classList.toggle('active', index <= step));
+  };
+  document.querySelectorAll('.studio-next').forEach(button => { button.onclick = () => showStep(step + 1); });
+  document.querySelectorAll('.studio-prev').forEach(button => { button.onclick = () => showStep(step - 1); });
+  window.addEventListener('app:viewChanged', event => { if (event.detail?.id === 'view-studio') showStep(0); });
+  showStep(0);
   document.getElementById('studio-form').onsubmit = async event => {
     event.preventDefault();
     const status = document.getElementById('studio-status');
