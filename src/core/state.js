@@ -3,7 +3,8 @@ export const state = {
   currentStory: null,
   currentNodeId: null,
   path: [],
-  isNarrating: false
+  isNarrating: false,
+  readerPhase: 'narration'
 };
 
 export function setView(id) {

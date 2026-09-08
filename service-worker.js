@@ -1,6 +1,6 @@
 const BUILD_ID = '__BUILD_ID__';
 const APP_CACHE = `histoires-app-${BUILD_ID}`;
-const AUDIO_CACHE = 'histoires-audio-v2';
+const AUDIO_CACHE = 'histoires-audio-__AUDIO_STYLE_VERSION__';
 const PRECACHE = __PRECACHE_MANIFEST__;
 
 self.addEventListener('install', event => {
@@ -15,6 +15,7 @@ self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
     await Promise.all(keys.filter(key => key.startsWith('histoires-app-') && key !== APP_CACHE).map(key => caches.delete(key)));
+    await Promise.all(keys.filter(key => key.startsWith('histoires-audio-') && key !== AUDIO_CACHE).map(key => caches.delete(key)));
     await self.clients.claim();
   })());
 });

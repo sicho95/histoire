@@ -1,6 +1,6 @@
 import { speak, stopSpeak } from '../audio/tts.js';
 import { listenOnce } from '../audio/stt.js';
-import { getSecrets } from '../storage/settings.js';
+import { getSecrets, getSettings } from '../storage/settings.js';
 import { saveToLibrary } from '../storage/database.js';
 import { currentNode, setView, state } from './state.js';
 import { weaveChoice } from './weaver.js';
@@ -17,6 +17,12 @@ function narrationContext(node) {
 async function playCurrentNode(token = ++playbackToken) {
   const node = currentNode();
   if (!node) return;
+  if (getSettings().quietMode) {
+    state.isNarrating = false;
+    if (node.isEnding) return renderReader({ phase: 'quiet-ending' });
+    if (node.nextNode) return renderReader({ phase: 'quiet-continuation' });
+    return renderReader({ phase: 'quiet-decision' });
+  }
   state.isNarrating = true;
   renderReader({ phase: 'narration' });
   await speak(node.text, narrationContext(node));
@@ -31,8 +37,18 @@ async function playCurrentNode(token = ++playbackToken) {
     state.path.push({ nodeId: next.id, headline: next.headline, automatic: true });
     return playCurrentNode(token);
   }
-  renderReader({ phase: 'choice' });
+  await askCurrentQuestion(token);
+}
+
+async function askCurrentQuestion(token = playbackToken) {
+  const node = currentNode();
+  if (!node?.question) return;
+  state.isNarrating = true;
+  renderReader({ phase: 'choice', preserve: true });
   await speak(node.question, { ...narrationContext(node), nodeId: `${node.id}-question`, narration: { ...node.narration, pace: 'slow' } });
+  if (token !== playbackToken) return;
+  state.isNarrating = false;
+  renderReader({ phase: 'choice', preserve: true });
 }
 
 export async function startStory(story) {
@@ -46,7 +62,7 @@ export async function startStory(story) {
   state.path.push({ nodeId: node.id, headline: node.headline });
   state.isNarrating = true;
   renderReader({ phase: 'narration' });
-  await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', heroVoice: story.heroVoice, narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
+  if (!getSettings().quietMode) await speak(`${story.title}. ${story.intro}`, { storyId: story.id, nodeId: 'intro', heroVoice: story.heroVoice, narration: { mood: 'wonder', pace: 'slow', intensity: 2 } });
   if (token === playbackToken) await playCurrentNode(token);
 }
 
@@ -85,11 +101,30 @@ export async function handleVoiceChoice() {
   }
 }
 
-export function pauseAudio() { playbackToken += 1; stopSpeak(); state.isNarrating = false; renderReader({ phase: 'narration' }); }
+export function pauseAudio() { playbackToken += 1; stopSpeak(); state.isNarrating = false; renderReader({ phase: state.readerPhase, preserve: true }); }
 export async function replayCurrentNode() { stopSpeak(); await playCurrentNode(++playbackToken); }
-export function refreshFreeChoiceAvailability() { renderReader({ phase: currentNode()?.isEnding ? 'narration' : 'choice', preserve: true }); }
+export function refreshFreeChoiceAvailability() { renderReader({ phase: state.readerPhase, preserve: true }); }
 export function startStoryFromCarousel(story) { return startStory(story); }
-export function replayQuestion() { const node = currentNode(); return node?.question ? speak(node.question, narrationContext(node)) : null; }
+export async function replayQuestion() { const token = ++playbackToken; stopSpeak(); return askCurrentQuestion(token); }
+export async function continueQuietReading() {
+  const token = ++playbackToken;
+  const node = currentNode();
+  if (!node) return;
+  if (node.isEnding) return renderEndScreen();
+  if (!node.nextNode) return renderReader({ phase: 'choice' });
+  state.currentNodeId = node.nextNode;
+  const next = currentNode();
+  state.path.push({ nodeId: next.id, headline: next.headline, automatic: true });
+  return playCurrentNode(token);
+}
+export async function refreshNarrationMode() {
+  const token = ++playbackToken;
+  stopSpeak();
+  const node = currentNode();
+  if (!node) return;
+  if (!getSettings().quietMode && state.readerPhase === 'choice' && node.question) return askCurrentQuestion(token);
+  return playCurrentNode(token);
+}
 export function playLibraryAdventure(adventure) { return startStory(adventure.story || adventure); }
 
 export async function saveCurrentAdventure() {

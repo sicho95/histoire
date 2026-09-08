@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "styleVersion": "signature-fr-neural-v2",
+  "engine": "edge-tts",
+  "format": "mp3",
+  "voices": {
+    "female": "fr-FR-VivienneMultilingualNeural",
+    "male": "fr-FR-RemyMultilingualNeural"
+  },
+  "storyVoices": {
+    "mila-oeuf-orage": "fr-FR-VivienneMultilingualNeural",
+    "sacha-poste-oceans": "fr-FR-RemyMultilingualNeural",
+    "aya-phare-reves": "fr-FR-VivienneMultilingualNeural",
+    "malo-agence-astronautes": "fr-FR-RemyMultilingualNeural",
+    "nino-doudou-voyageur": "fr-FR-RemyMultilingualNeural",
+    "lila-fete-couleurs": "fr-FR-VivienneMultilingualNeural"
+  },
+  "ageProfiles": {
+    "2-5": { "rate": -18, "pitch": 0, "volume": 0 },
+    "5-9": { "rate": -10, "pitch": 0, "volume": 0 }
+  },
+  "paceModifiers": {
+    "slow": { "rate": -6 },
+    "normal": { "rate": 0 },
+    "lively": { "rate": 5 }
+  },
+  "intensityProfiles": {
+    "1": { "rate": -2, "pitch": 0, "volume": -2 },
+    "2": { "rate": 0, "pitch": 0, "volume": 0 },
+    "3": { "rate": 2, "pitch": 1, "volume": 2 }
+  },
+  "moodProfiles": {
+    "calm": { "rate": -5, "pitch": -2, "volume": -2 },
+    "wonder": { "rate": -2, "pitch": 1, "volume": 0 },
+    "joy": { "rate": 2, "pitch": 3, "volume": 2 },
+    "mystery": { "rate": -4, "pitch": -2, "volume": -1 },
+    "suspense": { "rate": -5, "pitch": -4, "volume": 0 },
+    "gentle_fear": { "rate": -6, "pitch": -3, "volume": -2 },
+    "sadness": { "rate": -6, "pitch": -2, "volume": -3 },
+    "triumph": { "rate": 1, "pitch": 3, "volume": 3 }
+  },
+  "questionModifier": { "rate": -5, "pitch": 1, "volume": 2 }
+}

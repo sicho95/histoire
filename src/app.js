@@ -1,6 +1,6 @@
 import { bootstrapStories, syncPublishedStories } from './storage/database.js';
 import { state, setView } from './core/state.js';
-import { handleVoiceChoice, pauseAudio, replayCurrentNode, saveCurrentAdventure, startStory } from './core/engine.js';
+import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayQuestion, saveCurrentAdventure, startStory } from './core/engine.js';
 import { renderHome } from './ui/carousel.js';
 import { renderLibrary } from './ui/library.js';
 import { initParental, renderParental } from './ui/parental.js';
@@ -8,6 +8,7 @@ import { initWizard } from './ui/wizard.js';
 import { showToast } from './ui/toast.js';
 import { initPwaUpdates } from './pwa/update.js';
 import { onNetworkStateChange, startNetworkWatcher } from './core/network.js';
+import { getSettings, saveSettings } from './storage/settings.js';
 
 function goHome() { pauseAudio(); setView('view-home'); renderHome(); }
 
@@ -26,6 +27,20 @@ function initNavigation() {
   document.getElementById('start-studio').onclick = () => setView('view-studio');
   document.getElementById('reader-close').onclick = goHome;
   document.getElementById('reader-audio').onclick = () => state.isNarrating ? pauseAudio() : replayCurrentNode();
+  document.getElementById('reader-mode').onclick = async () => {
+    const settings = getSettings();
+    const quietMode = !settings.quietMode;
+    saveSettings({ ...settings, quietMode });
+    showToast(quietMode ? 'Mode discret : lis et avance à ton rythme.' : 'Narration vocale réactivée.');
+    await refreshNarrationMode();
+  };
+  document.getElementById('reader-continue').onclick = continueQuietReading;
+  document.getElementById('replay-question').onclick = replayQuestion;
+  document.getElementById('toggle-passage').onclick = () => {
+    const card = document.querySelector('#view-reader .reader-card');
+    card.classList.toggle('passage-open');
+    document.getElementById('toggle-passage').textContent = card.classList.contains('passage-open') ? 'Masquer le passage' : 'Relire le passage';
+  };
   document.getElementById('speak-choice').onclick = handleVoiceChoice;
   document.getElementById('restart-story').onclick = () => startStory(state.currentStory);
   document.getElementById('end-home').onclick = goHome;

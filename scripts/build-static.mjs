@@ -63,6 +63,7 @@ const assets = [
 const swPath = join(out, 'service-worker.js');
 const sw = (await readFile(swPath, 'utf8'))
   .replaceAll('__BUILD_ID__', buildId)
+  .replaceAll('__AUDIO_STYLE_VERSION__', audioManifest.styleVersion || 'default')
   .replace('__PRECACHE_MANIFEST__', JSON.stringify(assets));
 await writeFile(swPath, sw);
 await writeFile(join(out, '.nojekyll'), '');

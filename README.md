@@ -43,7 +43,7 @@ npm run generate:audio
 npm run check
 ```
 
-La génération audio gratuite utilise les voix françaises installées sur macOS : Flo pour les héroïnes et Thomas pour les héros. Le rythme et les silences varient selon l’âge et l’émotion. Les fichiers M4A ne sont pas tous préchargés lors de l’installation : ils sont mis en cache à la première écoute pour garder une PWA légère, puis restent disponibles hors connexion.
+La génération audio gratuite utilise deux voix neuronales françaises fixes : Vivienne pour les héroïnes et Rémy pour les héros. Le débit général est volontairement lent et varie ensuite selon l’âge, le rythme et l’émotion de chaque scène. Les MP3 ne sont pas tous préchargés lors de l’installation : ils sont mis en cache à la première écoute pour garder une PWA légère, puis restent disponibles hors connexion. La direction vocale complète et ses paramètres exécutables sont conservés dans [docs/DIRECTION_VOCALE.md](docs/DIRECTION_VOCALE.md) et `config/voice-direction.json`.
 
 Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md).
 
