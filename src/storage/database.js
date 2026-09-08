@@ -1,4 +1,4 @@
-import { buildReviewPackage, normalizeStory, storyToPortable, validateStory } from '../core/story-model.js';
+import { buildReviewPackage, harmonizeCreatedStoryOpening, normalizeStory, storyToPortable, validateStory } from '../core/story-model.js';
 
 const DB_NAME = 'histoires-pwa-v2';
 const DB_VERSION = 1;
@@ -48,7 +48,7 @@ async function putAll(store, values) {
 
 export const getAllStories = () => withStore('stories', 'readonly', store => store.getAll());
 export const getStories = getAllStories;
-export const getDrafts = () => withStore('drafts', 'readonly', store => store.getAll());
+export const getDrafts = async () => (await withStore('drafts', 'readonly', store => store.getAll())).map(harmonizeCreatedStoryOpening);
 export const getLibrary = () => withStore('adventures', 'readonly', store => store.getAll());
 export const getStory = id => withStore('stories', 'readonly', store => store.get(id));
 export const deleteDraft = id => withStore('drafts', 'readwrite', store => store.delete(id));
@@ -62,7 +62,7 @@ export async function saveStory(input, meta = {}) {
 }
 
 export async function saveDraft(input, context = null) {
-  const story = normalizeStory(input, { source: 'child-draft' });
+  const story = harmonizeCreatedStoryOpening(normalizeStory(input, { source: 'child-draft' }));
   const draft = {
     ...story,
     status: 'draft',

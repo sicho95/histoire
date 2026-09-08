@@ -67,7 +67,8 @@
           <div class="studio-progress"><span></span><span></span><span></span></div>
           <fieldset class="studio-step" data-studio-step="0">
             <legend>1. Qui part à l’aventure ?</legend>
-            <label><span>Le héros ou l’héroïne</span><select id="studio-hero"><option>une exploratrice intrépide</option><option>un petit dragon curieux</option><option>une vétérinaire des animaux magiques</option><option>un astronaute inventeur</option><option>une apprentie sorcière bienveillante</option><option>un dinosaure au grand cœur</option><option>une détective malicieuse</option><option>un chevalier qui préfère réfléchir</option><option>une sirène exploratrice</option><option>un robot qui découvre les émotions</option><option>un animal rigolo</option></select></label>
+            <label><span>Tu choisis</span><select id="studio-gender"><option value="female">une héroïne</option><option value="male">un héros</option></select></label>
+            <label><span>Quel personnage ?</span><select id="studio-hero"></select></label>
             <label><span>Son prénom d’histoire</span><input id="studio-name" maxlength="20" placeholder="Ex. Lila" autocomplete="off"></label>
             <button class="primary-button full-button studio-next" type="button">Suivant →</button>
           </fieldset>
@@ -109,13 +110,15 @@
           </section>
           <section class="card form-stack">
             <h2>Voix de narration</h2>
-            <label><span>Mode</span><select id="tts-provider"><option value="edge-azure">Automatique — Edge gratuit, puis Azure</option><option value="azure">Microsoft Azure seulement</option><option value="browser">Voix gratuite de l’appareil</option><option value="openai">OpenAI — voix naturelle à la demande</option></select></label>
+            <label><span>Mode</span><select id="tts-provider"><option value="auto">Automatique — toutes les voix disponibles</option><option value="azure">Microsoft Azure seulement</option><option value="openai">OpenAI seulement</option><option value="google">Google AI Studio seulement</option><option value="browser">Voix gratuite de l’appareil</option></select></label>
             <label><span>Clé Azure Speech <small>(facultatif)</small></span><input id="azure-speech-key" type="password" placeholder="Clé du service Speech" autocomplete="off"></label>
             <label><span>Région Azure</span><input id="azure-speech-region" type="text" value="francecentral" placeholder="Ex. francecentral" autocomplete="off"></label>
             <p class="supporting"><a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank" rel="noopener noreferrer">Créer une ressource Azure Speech gratuite (F0)</a>, puis copier sa clé et sa région ici.</p>
             <label><span>Clé OpenAI <small>(facultatif)</small></span><input id="openai-key" type="password" placeholder="sk-…" autocomplete="off"></label>
             <label><span>Voix</span><select id="openai-voice"><option value="marin">Marin</option><option value="cedar">Cedar</option><option value="coral">Coral</option><option value="nova">Nova</option></select></label>
-            <p class="supporting">Les MP3 éditoriaux inclus restent toujours prioritaires. Pour une création, l’app essaie Edge sans clé, puis Azure avec son quota si une clé est renseignée, et enfin la meilleure voix française de l’appareil. Remy ou Vivienne gardent l’identité du narrateur tandis que le rythme, le ton et le volume s’adaptent à chaque scène.</p>
+            <label><span>Clé Google AI Studio <small>(facultatif)</small></span><input id="google-ai-key" type="password" placeholder="Clé Gemini API" autocomplete="off"></label>
+            <p class="supporting"><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Créer une clé Google AI Studio</a>. Gemini TTS produit un fichier WAV naturel et expressif lorsque les autres voix en ligne sont indisponibles.</p>
+            <p class="supporting">Les voix incluses restent prioritaires. En automatique : Edge gratuit via le relais Sicho95, Azure si configuré, OpenAI si configuré, Google AI Studio si configuré, puis voix française locale pour la lecture. La piste Edge est ensuite conservée sur cet appareil : elle ne repasse pas par le relais à chaque écoute. Remy ou Vivienne gardent l’identité du narrateur tandis que le rythme, le ton et le volume s’adaptent à chaque scène.</p>
           </section>
           <section class="card form-stack">
             <h2>Sauvegarde</h2>
@@ -125,7 +128,7 @@
             <p id="settings-status" class="form-status" role="status"></p>
           </section>
         </div>
-        <p class="version-line">Version 2.3.2 · build <span id="build-id">fb9e85a542f6bd9d71f598ebe329c0d4fe8cae50-10</span></p>
+        <p class="version-line">Version 2.3.3 · build <span id="build-id">2d8058cc434dc90cf4cccdefaa3f93c0cfe5945d-11</span></p>
       </section>
 
       <section id="view-end" class="view hidden end-view">

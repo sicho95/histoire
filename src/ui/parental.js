@@ -58,6 +58,7 @@ export function renderParental() {
   const secrets = getSecrets();
   document.getElementById('groq-key').value = secrets.groqApiKey || '';
   document.getElementById('openai-key').value = secrets.openaiApiKey || '';
+  document.getElementById('google-ai-key').value = secrets.googleAiKey || '';
   document.getElementById('azure-speech-key').value = secrets.azureSpeechKey || '';
   document.getElementById('azure-speech-region').value = settings.azureSpeechRegion || 'francecentral';
   document.getElementById('generation-model').value = settings.generationModel;
@@ -84,7 +85,8 @@ export function initParental() {
     saveSecrets({
       groqApiKey: document.getElementById('groq-key').value,
       openaiApiKey: document.getElementById('openai-key').value,
-      azureSpeechKey: document.getElementById('azure-speech-key').value
+      azureSpeechKey: document.getElementById('azure-speech-key').value,
+      googleAiKey: document.getElementById('google-ai-key').value
     }, { remember: settings.rememberKeys });
     window.dispatchEvent(new CustomEvent('app:secretsChanged'));
     document.getElementById('settings-status').textContent = settings.rememberKeys ? 'Enregistré sur cet appareil.' : 'Enregistré pour cette session.';

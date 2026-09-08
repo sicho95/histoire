@@ -46,11 +46,13 @@ export async function renderLibrary() {
       const button = event.currentTarget;
       button.disabled = true;
       try {
-        const blob = await createStoryPackage(draft, {
+        const result = await createStoryPackage(draft, {
           onProgress: ({ current, total }) => { button.textContent = `Voix ${current}/${total}`; }
         });
-        downloadBlob(blob, `${draft.id}-histoire-et-voix.zip`);
-        showToast('ZIP complet prêt : histoire, relecture et tous les MP3.');
+        downloadBlob(result.blob, `${draft.id}-histoire-et-voix.zip`);
+        showToast(result.missingCount
+          ? `ZIP prêt avec le récit et ${result.audioCount} voix. ${result.missingCount} voix pourront être ajoutées plus tard.`
+          : `ZIP complet prêt : histoire, relecture et ${result.audioCount} voix.`);
       } catch (error) { showToast(error.message); }
       finally { button.disabled = false; button.textContent = 'ZIP + voix'; }
     };

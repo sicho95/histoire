@@ -25,8 +25,9 @@ function narrationJobs(story) {
   return jobs.filter(job => job.text);
 }
 
-function filenameFor(job) {
-  return `audio/mp3/${job.storyId}/${job.nodeId}.mp3`;
+function filenameFor(job, blob) {
+  const format = blob.type === 'audio/wav' ? 'wav' : 'mp3';
+  return `audio/${format}/${job.storyId}/${job.nodeId}.${format}`;
 }
 
 function dataUrlFromBytes(bytes, type = 'audio/mpeg') {
@@ -40,37 +41,44 @@ export async function createStoryPackage(story, { onProgress = () => {} } = {}) 
   const jobs = narrationJobs(story);
   const tracks = {};
   const audioFiles = [];
+  const missingTracks = [];
   for (let index = 0; index < jobs.length; index += 1) {
     const job = jobs[index];
     onProgress({ current: index + 1, total: jobs.length, label: job.kind === 'question' ? 'question' : 'passage' });
     const prepared = await prepareSpeech(job.text, job);
     if (!prepared?.blob) {
-      throw new Error('Impossible de fabriquer tous les MP3. Réessaie en ligne avec Microsoft Edge, ou renseigne une clé Azure Speech gratuite.');
+      missingTracks.push({ nodeId: job.nodeId, kind: job.kind, text: job.text });
+      continue;
     }
-    const file = filenameFor(job);
+    const file = filenameFor(job, prepared.blob);
     audioFiles.push({ name: file, data: prepared.blob });
     tracks[`${story.id}:${job.nodeId}`] = {
       file: file.replace(/^audio\//, ''),
       textHash: prepared.textHash,
       voice: prepared.voice || story.heroVoice,
       provider: prepared.source,
+      format: prepared.blob.type === 'audio/wav' ? 'wav' : 'mp3',
       kind: job.kind,
       narration: job.narration
     };
   }
-  const manifest = { schemaVersion: 2, packageVersion: 1, storyId: story.id, generatedAt: new Date().toISOString(), tracks };
+  const manifest = { schemaVersion: 2, packageVersion: 1, storyId: story.id, generatedAt: new Date().toISOString(), tracks, missingTracks };
   const review = buildReviewPackage(story, {
     creationContext: story.creationContext || null,
     playedPath: story.playedPath || []
   });
-  const readme = `# ${story.title}\n\nArchive autonome Histoires à choisir.\n\n- story.json : histoire réimportable\n- review.json : dossier de relecture et de consolidation\n- audio/manifest.json : index des voix\n- audio/mp3/ : toutes les narrations et questions\n\nAvant une publication GitHub, un parent doit relire le texte et retirer toute information personnelle.\n`;
-  return createZip([
+  const audioNote = missingTracks.length
+    ? `\n⚠️ ${missingTracks.length} piste(s) n'ont pas pu être fabriquées sur cet appareil. Le récit reste complet et réimportable ; les voix manquantes sont listées dans audio/manifest.json.\n`
+    : '\nToutes les narrations et questions sont incluses dans audio/.\n';
+  const readme = `# ${story.title}\n\nArchive autonome Histoires à choisir.\n\n- story.json : histoire réimportable\n- review.json : dossier de relecture et de consolidation\n- audio/manifest.json : index des voix et pistes manquantes\n- audio/ : narrations disponibles en MP3 ou WAV\n${audioNote}\nAvant une publication GitHub, un parent doit relire le texte et retirer toute information personnelle.\n`;
+  const blob = await createZip([
     { name: 'story.json', data: json(portable) },
     { name: 'review.json', data: json(review) },
     { name: 'audio/manifest.json', data: json(manifest) },
     { name: 'README.md', data: readme },
     ...audioFiles
   ]);
+  return { blob, audioCount: audioFiles.length, missingCount: missingTracks.length };
 }
 
 export async function importStoryPackage(file) {
@@ -88,7 +96,7 @@ export async function importStoryPackage(file) {
     if (!bytes || !nodeId || !track.textHash) continue;
     await putAudioCacheEntry({
       id: portableAudioId({ storyId: draft.id, nodeId, textHash: track.textHash }),
-      dataUrl: dataUrlFromBytes(bytes),
+      dataUrl: dataUrlFromBytes(bytes, track.format === 'wav' || /\.wav$/i.test(track.file) ? 'audio/wav' : 'audio/mpeg'),
       createdAt: Date.now(),
       textHash: track.textHash,
       storyId: draft.id,
