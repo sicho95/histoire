@@ -4,7 +4,7 @@
   "title": "Lila Loutre et la Fête des Couleurs",
   "coverEmoji": "🎨",
   "coverImage": "./assets/stories/lila-fete-couleurs/cover.jpg",
-  "intro": "La mer a perdu ses couleurs juste avant la fête. Lila découvre qu’on peut les réveiller avec des sons, des gestes et beaucoup d’entraide.",
+  "intro": "La mer est devenue toute grise. Lila veut retrouver les couleurs avant la fête. Ses amis vont chanter, danser et l’aider.",
   "ageRange": "2–5 ans",
   "ageBand": "2-5",
   "heroVoice": "female",
@@ -32,8 +32,8 @@
       "id": "decision-1",
       "headline": "La mer toute grise",
       "coverEmoji": "🌊",
-      "text": "Ce matin, Lila Loutre plonge dans la mer. Oh ! Les algues sont grises. Les poissons sont gris. Même son xylophone-coquillage est gris. Ce soir, c’est la Fête des Couleurs. Une petite bulle rouge éclate avec un léger pop près de son nez, puis elle file vers le jardin de corail. Une bulle bleue part vers la grotte qui chante. Lila ne peut pas suivre les deux en même temps. Elle touche une coquille qui répond par un faible plim.",
-      "question": "Quelle bulle Lila suit-elle ?",
+      "text": "Ce matin, Lila Loutre plonge dans la mer. Oh ! Les plantes sont grises. Les poissons sont gris. Même son petit xylophone est gris. Ce soir, il y a une grande fête. Mais une fête grise, ce n’est pas très gai. Pop ! Une bulle rouge saute près du nez de Lila. Elle part vers les plantes de la mer. Une bulle bleue part vers une grotte. Lila ne peut pas suivre les deux. Elle touche son xylophone. Il fait un tout petit plim.",
+      "question": "Quelle bulle va suivre Lila ?",
       "isEnding": false,
       "narration": {
         "mood": "wonder",
@@ -43,7 +43,7 @@
       "choices": [
         {
           "id": "decision-1-a",
-          "label": "La bulle rouge qui danse",
+          "label": "La bulle rouge",
           "emoji": "🔴",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-1-a.jpg",
           "nextNode": "decision-1-suite-a",
@@ -51,7 +51,7 @@
         },
         {
           "id": "decision-1-b",
-          "label": "La bulle bleue qui fredonne",
+          "label": "La bulle bleue",
           "emoji": "🔵",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-1-b.jpg",
           "nextNode": "decision-1-suite-b",
@@ -63,7 +63,7 @@
       "id": "decision-1-suite-a",
       "headline": "La bulle rouge qui danse",
       "coverEmoji": "🔴",
-      "text": "La bulle rouge zigzague entre les coraux. Lila bouge comme elle : à gauche, à droite, petit tour. Les coraux se réveillent et tapent un rythme chaud. Une note rouge entre dans le xylophone. Une note colorée entre dans le xylophone : plim ! Lila remue ses moustaches. « Une couleur réveillée, continuons la journée ! » Ses amis frappent doucement le rythme.",
+      "text": "La bulle rouge nage entre les plantes. Elle va à gauche. Puis à droite. Puis elle fait un petit tour. Lila fait pareil. À gauche. À droite. Petit tour ! Les plantes bougent avec elle. Elles deviennent un peu rouges. Une lumière rouge entre dans le xylophone. Plim ! Le xylophone a retrouvé sa première couleur. Lila remue ses moustaches. Elle rit et dit : « Bonjour, rouge ! » Les petits poissons dansent autour d’elle. Puis tous repartent vers la fête.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-2",
@@ -78,7 +78,7 @@
       "id": "decision-1-suite-b",
       "headline": "La bulle bleue qui fredonne",
       "coverEmoji": "🔵",
-      "text": "La bulle bleue chante « plam, plam » dans la grotte. Lila répond doucement. L’écho devient une vague musicale. Une note bleue se pose dans son xylophone. Une note colorée entre dans le xylophone : plim ! Lila remue ses moustaches. « Une couleur réveillée, continuons la journée ! » Ses amis frappent doucement le rythme.",
+      "text": "La bulle bleue entre dans la grotte. Elle chante : « Plam, plam. » Lila répond : « Plam, plam. » La grotte chante aussi. La petite chanson revient encore. Une lumière bleue sort de la paroi. Elle entre dans le xylophone. Plim ! Le xylophone a retrouvé sa première couleur. Lila remue ses moustaches. Elle rit et dit : « Bonjour, bleu ! » Les petits poissons chantent autour d’elle. Puis tous repartent vers la fête.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-2",
@@ -93,8 +93,8 @@
       "id": "decision-2",
       "headline": "Crabi ne veut pas danser",
       "coverEmoji": "🦀",
-      "text": "Sur le sable, Crabi regarde ses pinces grises. Il ne veut pas danser comme les autres. Ses pas vont de côté, jamais devant. Lila lui dit que la fête a besoin de toutes les danses. Elle peut apprendre les pas de côté avec lui, ou lui proposer de jouer du tambour pendant qu’elle danse. Crabi lève une pince, puis l’autre. Peut-être qu’il veut essayer, si personne ne se moque.",
-      "question": "Comment Crabi participe-t-il ?",
+      "text": "Sur le sable, Lila voit un petit crabe. Il s’appelle Crabi. Ses pinces sont grises. Crabi ne veut pas danser. Il dit : « Je marche de côté. Je ne danse pas comme les poissons. » Lila sourit. Elle peut marcher de côté avec lui. Crabi verra une nouvelle danse. Elle peut aussi lui donner un petit tambour. Crabi pourra faire de la musique avec ses pinces. Crabi lève une pince. Puis l’autre. Il veut bien essayer. Personne ne va rire de lui.",
+      "question": "Que va faire Crabi ?",
       "isEnding": false,
       "narration": {
         "mood": "joy",
@@ -104,7 +104,7 @@
       "choices": [
         {
           "id": "decision-2-a",
-          "label": "Inventer la danse de côté",
+          "label": "Danser de côté",
           "emoji": "🦀",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-2-a.jpg",
           "nextNode": "decision-2-suite-a",
@@ -112,7 +112,7 @@
         },
         {
           "id": "decision-2-b",
-          "label": "Jouer le rythme avec ses pinces",
+          "label": "Jouer du tambour",
           "emoji": "🥁",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-2-b.jpg",
           "nextNode": "decision-2-suite-b",
@@ -124,7 +124,7 @@
       "id": "decision-2-suite-a",
       "headline": "Inventer la danse de côté",
       "coverEmoji": "🦀",
-      "text": "Lila fait un pas de côté. Crabi en fait deux. Bientôt les poissons les imitent. Le sable dessine des lignes orange sous leurs pieds. Crabi sourit : sa danse devient celle de la fête. Dans l’eau grise apparaît une petite traînée brillante. Elle mène au prochain ami. Lila nage sans éclabousser les bébés poissons et garde le xylophone bien serré.",
+      "text": "Lila fait un pas de côté. Crabi en fait deux. Lila recommence. Un pas. Deux pas. Petit tour ! Les poissons veulent essayer. Bientôt, tout le monde marche de côté. Crabi rit très fort. Sous ses pattes, le sable devient orange. Une lumière orange saute dans le xylophone. Plim ! Une autre couleur est réveillée. Dans l’eau, une petite ligne brille. Elle montre le chemin. Lila prend son xylophone. Avec Crabi, elle suit la lumière sans toucher les bébés poissons.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-3",
@@ -139,7 +139,7 @@
       "id": "decision-2-suite-b",
       "headline": "Jouer le rythme avec ses pinces",
       "coverEmoji": "🥁",
-      "text": "Clac, clac, pause. Clac, clac, pause. Crabi trouve un rythme parfait. Lila danse dessus. Une petite lumière orange saute du tambour jusque dans le xylophone. Dans l’eau grise apparaît une petite traînée brillante. Elle mène au prochain ami. Lila nage sans éclabousser les bébés poissons et garde le xylophone bien serré.",
+      "text": "Crabi prend le petit tambour. Clac, clac, pause. Clac, clac, pause. Ses pinces font un joli bruit. Lila danse avec la musique. Les poissons bougent aussi. Crabi joue plus fort. Pas trop fort. Juste comme il faut. Une lumière orange sort du tambour. Elle saute dans le xylophone. Plim ! Une autre couleur est réveillée. Dans l’eau, une petite ligne brille. Elle montre le chemin. Lila et Crabi suivent la lumière sans toucher les bébés poissons.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-3",
@@ -154,8 +154,8 @@
       "id": "decision-3",
       "headline": "La tortue au ruban pâle",
       "coverEmoji": "🐢",
-      "text": "Tortille la tortue porte un long ruban sans couleur. Elle nage lentement et croit qu’elle arrivera trop tard. Lila peut ralentir pour avancer près d’elle, ou attacher le ruban entre tous les amis afin que chacun le porte un petit peu. La place de la fête se voit au loin. Personne n’a besoin de courir. Le xylophone fait plim et plam, comme deux encouragements.",
-      "question": "Comment accompagner Tortille ?",
+      "text": "La lumière mène vers une tortue. Elle s’appelle Tortille. Tortille porte un long ruban gris. Elle nage très lentement. Elle a peur d’arriver après la fête. Lila dit : « Nous avons le temps. » Elle peut nager lentement près de Tortille. Elle peut aussi donner un bout du ruban à chaque ami. Le ruban sera plus facile à porter. Au loin, on voit la place de la fête. Personne ne doit courir. Le xylophone fait plim, puis plam. Il semble dire : « On va t’aider. »",
+      "question": "Comment aider Tortille ?",
       "isEnding": false,
       "narration": {
         "mood": "calm",
@@ -165,7 +165,7 @@
       "choices": [
         {
           "id": "decision-3-a",
-          "label": "Nager à son rythme",
+          "label": "Nager près de Tortille",
           "emoji": "🐢",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-3-a.jpg",
           "nextNode": "decision-3-suite-a",
@@ -173,7 +173,7 @@
         },
         {
           "id": "decision-3-b",
-          "label": "Porter le ruban tous ensemble",
+          "label": "Porter le ruban ensemble",
           "emoji": "🤝",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-3-b.jpg",
           "nextNode": "decision-3-suite-b",
@@ -185,7 +185,7 @@
       "id": "decision-3-suite-a",
       "headline": "Nager à son rythme",
       "coverEmoji": "🐢",
-      "text": "Lila reste près de Tortille. Elles regardent les petits poissons, puis respirent à la surface. Le ruban devient vert, couleur du chemin pris sans se presser. Le refrain grandit : « Plim, plam, plume, couleur dans l’écume ! » On peut le chanter, le taper ou simplement l’écouter. Chacun participe à sa façon.",
+      "text": "Lila nage près de Tortille. Doucement, doucement. Elles regardent les petits poissons. Elles montent respirer. Puis elles redescendent. Crabi attend aussi. Personne ne pousse Tortille. Le ruban devient vert. Tortille sourit. Elle n’est plus seule. Tous chantent : « Plim, plam, plume. Voici une couleur ! » On peut chanter fort. On peut chanter tout bas. On peut aussi écouter. Tortille avance encore. Petit à petit, les amis arrivent près de la grotte.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-4",
@@ -200,7 +200,7 @@
       "id": "decision-3-suite-b",
       "headline": "Porter le ruban tous ensemble",
       "coverEmoji": "🤝",
-      "text": "Crabi prend un bout, Lila le milieu et les poissons la fin. Tortille nage plus légère. Le ruban se colore en vert tendre et relie toute la petite troupe. Le refrain grandit : « Plim, plam, plume, couleur dans l’écume ! » On peut le chanter, le taper ou simplement l’écouter. Chacun participe à sa façon.",
+      "text": "Crabi prend un bout du ruban. Lila prend le milieu. Les poissons prennent l’autre bout. Maintenant, le ruban est léger. Tortille nage plus facilement. Le long ruban devient vert. Tous les amis sont reliés. Ils chantent : « Plim, plam, plume. Voici une couleur ! » On peut chanter fort. On peut chanter tout bas. On peut aussi écouter. Tortille sourit et avance encore. Petit à petit, les amis arrivent près de la grotte.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-4",
@@ -215,7 +215,7 @@
       "id": "decision-4",
       "headline": "La grotte des échos timides",
       "coverEmoji": "🎵",
-      "text": "Dans la grotte, un petit hippocampe se cache. Il connaît la note jaune, mais sa voix est minuscule. Quand tout le monde parle, on ne l’entend plus. Lila peut demander un grand silence pour écouter, ou jouer une note très douce afin que l’hippocampe puisse répondre. Crabi range ses pinces derrière son dos. Même les bulles font moins de bruit.",
+      "text": "Dans la grotte, un petit hippocampe se cache. Il s’appelle Hippo. Hippo connaît la note jaune. Mais sa voix est toute petite. Il essaie de chanter. Personne ne l’entend. Les poissons parlent trop fort. Crabi fait clac avec ses pinces. Lila peut demander le silence. Tout le monde pourra écouter Hippo. Elle peut aussi jouer une note très douce. Hippo pourra répondre à cette note. Crabi met ses pinces derrière son dos. Même les bulles font moins de bruit.",
       "question": "Comment écouter la petite voix ?",
       "isEnding": false,
       "narration": {
@@ -226,7 +226,7 @@
       "choices": [
         {
           "id": "decision-4-a",
-          "label": "Faire le silence des oreilles ouvertes",
+          "label": "Faire silence",
           "emoji": "👂",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-4-a.jpg",
           "nextNode": "decision-4-suite-a",
@@ -234,7 +234,7 @@
         },
         {
           "id": "decision-4-b",
-          "label": "Jouer une note douce avec lui",
+          "label": "Jouer tout doucement",
           "emoji": "🎼",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-4-b.jpg",
           "nextNode": "decision-4-suite-b",
@@ -246,7 +246,7 @@
       "id": "decision-4-suite-a",
       "headline": "Faire le silence des oreilles ouvertes",
       "coverEmoji": "👂",
-      "text": "Tout devient calme. On entend : « tin… » L’hippocampe recommence, plus confiant : « TIN ! » Sa note jaune éclaire la grotte et rejoint le xylophone. Le jaune rejoint les couleurs déjà réveillées. Toutes dessinent un chemin vers la place de corail, mais un courant tournoyant emporte les rubans et les instruments. La fête a maintenant besoin que chacun protège ce qu’il peut atteindre.",
+      "text": "Lila lève une patte. Tout le monde se tait. La grotte devient calme. On entend Hippo : « Tin… » Il recommence un peu plus fort : « Tin ! » Sa petite note devient une lumière jaune. La lumière entre dans le xylophone. Plim ! Hippo sourit. Tout le monde l’a entendu. Soudain, l’eau tourne près de la sortie. Le courant prend les rubans. Il prend aussi les chapeaux. Oh là là ! Les amis nagent vite vers la place. Il faut rattraper toutes les affaires.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-5",
@@ -261,7 +261,7 @@
       "id": "decision-4-suite-b",
       "headline": "Jouer une note douce avec lui",
       "coverEmoji": "🎼",
-      "text": "Lila joue plim. L’hippocampe répond tin. Ensemble : plim-tin, plim-tin. Sa voix n’a pas besoin d’être forte pour compter. Une lumière jaune danse entre eux. Le jaune rejoint les couleurs déjà réveillées. Toutes dessinent un chemin vers la place de corail, mais un courant tournoyant emporte les rubans et les instruments. La fête a maintenant besoin que chacun protège ce qu’il peut atteindre.",
+      "text": "Lila joue une note très douce. Plim. Hippo répond : « Tin. » Lila recommence. Plim. Hippo répond plus fort : « Tin ! » Ensemble, ils font plim, tin, plim, tin. Une lumière jaune danse entre eux. Elle entre dans le xylophone. Hippo sourit. Sa petite voix est belle. Soudain, l’eau tourne près de la sortie. Le courant prend les rubans. Il prend aussi les chapeaux. Oh là là ! Les amis nagent vers la place. Il faut rattraper toutes les affaires.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-5",
@@ -276,8 +276,8 @@
       "id": "decision-5",
       "headline": "Le courant qui mélange tout",
       "coverEmoji": "🌀",
-      "text": "Un courant tourne autour de la place de corail. Il mélange les rubans, les instruments et les chapeaux. Rien n’est dangereux, mais tout vole ! Lila peut demander à chacun d’attraper une chose près de lui, ou planter le long ruban vert entre deux rochers pour faire une ligne où se tenir. Les amis se regardent. Ils ont déjà appris à écouter, attendre et aider.",
-      "question": "Comment ranger le tourbillon ?",
+      "text": "L’eau tourne autour de la place. Les rubans volent. Les chapeaux volent. Le petit tambour roule sur le sable. Rien ne fait mal. Mais quel bazar ! Lila peut demander à chaque ami de prendre un objet. Crabi peut prendre les chapeaux. Tortille peut prendre les rubans. Lila peut aussi attacher le grand ruban vert entre deux rochers. Tous les amis pourront le tenir. Ils resteront ensemble pendant que l’eau tourne. Les amis se regardent. Ils sont prêts à aider.",
+      "question": "Comment arrêter le bazar ?",
       "isEnding": false,
       "narration": {
         "mood": "suspense",
@@ -287,7 +287,7 @@
       "choices": [
         {
           "id": "decision-5-a",
-          "label": "Chacun aide près de lui",
+          "label": "Chacun prend un objet",
           "emoji": "🫧",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-5-a.jpg",
           "nextNode": "decision-5-suite-a",
@@ -295,7 +295,7 @@
         },
         {
           "id": "decision-5-b",
-          "label": "Fabriquer une ligne avec le ruban",
+          "label": "Tenir le grand ruban",
           "emoji": "〰️",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-5-b.jpg",
           "nextNode": "decision-5-suite-b",
@@ -307,7 +307,7 @@
       "id": "decision-5-suite-a",
       "headline": "Chacun aide près de lui",
       "coverEmoji": "🫧",
-      "text": "Crabi attrape les chapeaux, Tortille les rubans, l’hippocampe les petites clochettes. Lila récupère le xylophone. Le courant ralentit parce que tout le monde fait une petite part. La place de corail est proche. Les animaux apportent leurs sons, leurs pas et leurs sourires. Lila comprend que la dernière couleur ne se trouve pas : elle se fabrique ensemble.",
+      "text": "Crabi attrape les chapeaux. Tortille attrape les rubans. Hippo prend les petites clochettes. Lila court après le xylophone. Hop ! Elle le rattrape. Chaque ami prend une chose. Petit à petit, la place redevient propre. L’eau tourne moins vite. Puis elle s’arrête. Tout le monde apporte ses affaires au milieu de la place. Les amis ont des sons, des danses et des couleurs. Lila dit : « La fête peut commencer ! » Mais le grand coquillage est encore gris.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-6",
@@ -322,7 +322,7 @@
       "id": "decision-5-suite-b",
       "headline": "Fabriquer une ligne avec le ruban",
       "coverEmoji": "〰️",
-      "text": "Lila attache le ruban vert. Tous s’y tiennent d’une nageoire ou d’une pince. Le courant les fait danser sans les disperser, puis dépose les objets à leurs pieds. La place de corail est proche. Les animaux apportent leurs sons, leurs pas et leurs sourires. Lila comprend que la dernière couleur ne se trouve pas : elle se fabrique ensemble.",
+      "text": "Lila attache le ruban vert entre deux rochers. Crabi le tient avec une pince. Tortille le tient avec sa bouche. Les poissons le tiennent avec leurs nageoires. Tous restent ensemble. L’eau les pousse à gauche. Puis à droite. Mais personne ne part au loin. Le courant ralentit. Les objets tombent doucement sur le sable. Enfin, l’eau s’arrête. Les amis ramassent tout. Lila dit : « La fête peut commencer ! » Mais le grand coquillage est encore gris.",
       "question": "",
       "isEnding": false,
       "nextNode": "decision-6",
@@ -337,8 +337,8 @@
       "id": "decision-6",
       "headline": "La couleur de la fête",
       "coverEmoji": "🌈",
-      "text": "La place est prête. Rouge, bleu, orange, vert et jaune brillent dans le xylophone. Pourtant le grand coquillage de la fête reste gris. Il attend le geste de tous les amis. Lila peut lancer la chanson « Plim, plam, plume », inviter chacun à montrer son mouvement préféré, ou partager les rubans pour dessiner un arc-en-ciel dans l’eau. Crabi lève ses pinces. Tortille déroule son ruban. L’hippocampe prend une grande inspiration.",
-      "question": "Comment commence la Fête des Couleurs ?",
+      "text": "La place est prête. Le xylophone brille en rouge, bleu, orange, vert et jaune. Mais le grand coquillage reste gris. Lila touche sa coquille. Elle est froide. Tous les amis doivent faire quelque chose ensemble. Ils peuvent chanter : « Plim, plam, plume ! » Ils peuvent montrer leur danse préférée. Ils peuvent aussi nager avec les rubans pour faire un arc-en-ciel. Crabi lève ses pinces. Tortille déroule son ruban. Hippo prend beaucoup d’air. Les petits poissons attendent. La fête va commencer.",
+      "question": "Que font les amis pour la fête ?",
       "isEnding": false,
       "narration": {
         "mood": "triumph",
@@ -348,7 +348,7 @@
       "choices": [
         {
           "id": "decision-6-a",
-          "label": "Chanter tous les sons ensemble",
+          "label": "Chanter ensemble",
           "emoji": "🎶",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-6-a.jpg",
           "nextNode": "decision-6-suite-a",
@@ -356,7 +356,7 @@
         },
         {
           "id": "decision-6-b",
-          "label": "Faire la danse de chacun",
+          "label": "Danser ensemble",
           "emoji": "💃",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-6-b.jpg",
           "nextNode": "decision-6-suite-b",
@@ -364,7 +364,7 @@
         },
         {
           "id": "decision-6-c",
-          "label": "Dessiner avec les rubans",
+          "label": "Nager avec les rubans",
           "emoji": "🌈",
           "illustration": "./assets/stories/lila-fete-couleurs/choices/decision-6-c.jpg",
           "nextNode": "decision-6-suite-c",
@@ -376,7 +376,7 @@
       "id": "decision-6-suite-a",
       "headline": "Chanter tous les sons ensemble",
       "coverEmoji": "🎶",
-      "text": "Plim, plam, tin, clac ! Les sons se répondent. Le grand coquillage devient rose et envoie des bulles colorées dans toute la mer.",
+      "text": "Lila commence : « Plim, plam ! » Hippo ajoute son petit tin. Crabi fait clac avec ses pinces. Tortille chante tout bas. Puis les poissons chantent aussi. Le grand coquillage écoute tous les amis. Il devient rose. Il s’ouvre doucement. Des bulles rouges, bleues et jaunes sortent dans la mer. La fête commence en musique.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-a",
@@ -391,7 +391,7 @@
       "id": "decision-6-suite-b",
       "headline": "Faire la danse de chacun",
       "coverEmoji": "💃",
-      "text": "Un pas de côté, une nage lente, un petit tour et une bulle. Chaque mouvement ajoute une couleur. Le grand coquillage scintille comme un soleil sous l’eau.",
+      "text": "Crabi fait un pas de côté. Tortille nage doucement. Hippo fait un petit tour. Lila roule dans une bulle. Les poissons battent des nageoires. Chaque danse ajoute une couleur. Le grand coquillage devient rouge. Puis bleu. Puis jaune. Enfin, il brille de toutes les couleurs. Il s’ouvre et joue une jolie musique. La fête commence en dansant.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-b",
@@ -406,7 +406,7 @@
       "id": "decision-6-suite-c",
       "headline": "Dessiner avec les rubans",
       "coverEmoji": "🌈",
-      "text": "Chaque ami tient une couleur. Ils nagent ensemble et tracent un immense arc-en-ciel. Le grand coquillage s’ouvre et lance la fête.",
+      "text": "Chaque ami prend un ruban. Lila a le rouge. Crabi a le bleu. Tortille a le vert. Hippo a le jaune. Tous nagent autour de la place. Les rubans dessinent un grand rond. Puis ils montent et descendent. Un arc-en-ciel apparaît dans l’eau. Le grand coquillage retrouve toutes ses couleurs. Il s’ouvre doucement. Dingue ! La fête commence sous les rubans.",
       "question": "",
       "isEnding": false,
       "nextNode": "fin-c",
@@ -421,7 +421,7 @@
       "id": "fin-a",
       "headline": "Le concert de l’écume",
       "coverEmoji": "🎶",
-      "text": "Toute la mer chante : « Plim, plam, plume, couleur dans l’écume ! » Les bébés poissons font seulement « bou », et c’est très bien. Lila joue doucement, Crabi garde le rythme et l’hippocampe ose son petit tin. Le soir, les couleurs se reposent dans les coquillages, prêtes à revenir demain.",
+      "text": "Toute la mer chante : « Plim, plam, plume ! » Les bébés poissons font seulement : « Bou ! » C’est très bien. Lila joue du xylophone. Crabi fait clac avec ses pinces. Hippo chante son petit tin. Tortille balance la tête. Tous les sons sont différents. Ensemble, ils font une jolie chanson. Le soir arrive. Les couleurs entrent dans les petits coquillages pour dormir. Elles reviendront demain. Lila dit bonne nuit à tous ses amis.",
       "question": "",
       "isEnding": true,
       "narration": {
@@ -435,7 +435,7 @@
       "id": "fin-b",
       "headline": "La danse de toutes les nageoires",
       "coverEmoji": "💃",
-      "text": "Personne ne danse pareil, alors la fête ne ressemble à aucune autre. Tortille avance lentement, Crabi va de côté et Lila tourne sur le dos. Les couleurs suivent chaque mouvement. Quand la musique se calme, tous se saluent. La mer garde un petit reflet doré pour dire merci.",
+      "text": "Tous les amis dansent. Mais personne ne danse pareil. Tortille avance lentement. Crabi marche de côté. Hippo fait de petits ronds. Lila tourne sur le dos. Les poissons montent et descendent. Les couleurs suivent chaque ami. Rouge, bleu, jaune, vert ! Quand la musique s’arrête, tout le monde applaudit. La mer garde une petite lumière dorée. Elle brille au-dessus de la place. Lila salue ses amis. Quelle belle fête !",
       "question": "",
       "isEnding": true,
       "narration": {
@@ -449,7 +449,7 @@
       "id": "fin-c",
       "headline": "L’arc-en-ciel sous la mer",
       "coverEmoji": "🌈",
-      "text": "Les rubans forment un arc-en-ciel assez grand pour abriter toute la place. Les animaux s’y installent pour partager des fruits de mer en forme d’étoile. Lila accroche le dernier ruban à son xylophone. Chaque fois qu’elle joue plim, une petite couleur revient danser dans l’écume.",
+      "text": "Les rubans font un grand arc-en-ciel. Il passe au-dessus de toute la place. Les amis s’assoient dessous. Ils mangent de petits gâteaux en forme d’étoile. Lila attache un bout de ruban à son xylophone. Elle joue une note. Plim ! Une petite couleur saute dans l’eau. Elle joue encore. Plim ! Une autre couleur danse près des poissons. Crabi, Tortille et Hippo rient. Lila garde son xylophone contre elle. La mer ne sera plus grise.",
       "question": "",
       "isEnding": true,
       "narration": {
@@ -460,8 +460,8 @@
       "choices": []
     }
   ],
-  "revision": 5,
+  "revision": 6,
   "status": "published",
   "createdAt": "2026-09-07T00:00:00.000Z",
-  "updatedAt": "2026-09-08T00:00:00.000Z"
+  "updatedAt": "2026-09-11T00:00:00.000Z"
 }

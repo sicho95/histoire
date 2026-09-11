@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "styleVersion": "signature-fr-neural-v3",
-  "generatedAt": "2026-09-08T15:38:20.971Z",
+  "styleVersion": "signature-fr-neural-v4",
+  "generatedAt": "2026-09-11T19:26:52.137Z",
   "tracks": {
     "aya-phare-reves:decision-1": {
       "file": "mp3/aya-phare-reves/decision-1.mp3",
@@ -25,8 +25,8 @@
     },
     "aya-phare-reves:decision-1-question": {
       "file": "mp3/aya-phare-reves/decision-1-question.mp3",
-      "textHash": "1ucz6np",
-      "speechHash": "1b8wjvz",
+      "textHash": "1xrfvni",
+      "speechHash": "wl3l1p",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -105,8 +105,8 @@
     },
     "aya-phare-reves:decision-10-question": {
       "file": "mp3/aya-phare-reves/decision-10-question.mp3",
-      "textHash": "1f08r8f",
-      "speechHash": "1f08r8f",
+      "textHash": "1xx0cry",
+      "speechHash": "t68cz2",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -186,7 +186,7 @@
     "aya-phare-reves:decision-2": {
       "file": "mp3/aya-phare-reves/decision-2.mp3",
       "textHash": "10zzuvn",
-      "speechHash": "10zzuvn",
+      "speechHash": "1oullwj",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -205,8 +205,8 @@
     },
     "aya-phare-reves:decision-2-question": {
       "file": "mp3/aya-phare-reves/decision-2-question.mp3",
-      "textHash": "wi5tyl",
-      "speechHash": "wi5tyl",
+      "textHash": "zw4z88",
+      "speechHash": "zw4z88",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -285,8 +285,8 @@
     },
     "aya-phare-reves:decision-3-question": {
       "file": "mp3/aya-phare-reves/decision-3-question.mp3",
-      "textHash": "96clhl",
-      "speechHash": "96clhl",
+      "textHash": "1bqc6gw",
+      "speechHash": "1bqc6gw",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -365,8 +365,8 @@
     },
     "aya-phare-reves:decision-4-question": {
       "file": "mp3/aya-phare-reves/decision-4-question.mp3",
-      "textHash": "88erfv",
-      "speechHash": "88erfv",
+      "textHash": "1rbci14",
+      "speechHash": "1ogzdio",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -445,8 +445,8 @@
     },
     "aya-phare-reves:decision-5-question": {
       "file": "mp3/aya-phare-reves/decision-5-question.mp3",
-      "textHash": "1epn1if",
-      "speechHash": "1epn1if",
+      "textHash": "otmhk0",
+      "speechHash": "otmhk0",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -525,8 +525,8 @@
     },
     "aya-phare-reves:decision-6-question": {
       "file": "mp3/aya-phare-reves/decision-6-question.mp3",
-      "textHash": "dpksab",
-      "speechHash": "dpksab",
+      "textHash": "1t091wg",
+      "speechHash": "1t091wg",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -546,7 +546,7 @@
     "aya-phare-reves:decision-6-suite-a": {
       "file": "mp3/aya-phare-reves/decision-6-suite-a.mp3",
       "textHash": "18ohqlv",
-      "speechHash": "18ohqlv",
+      "speechHash": "1rzrvj7",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -566,7 +566,7 @@
     "aya-phare-reves:decision-6-suite-b": {
       "file": "mp3/aya-phare-reves/decision-6-suite-b.mp3",
       "textHash": "iqinul",
-      "speechHash": "iqinul",
+      "speechHash": "b8sxm5",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -605,8 +605,8 @@
     },
     "aya-phare-reves:decision-7-question": {
       "file": "mp3/aya-phare-reves/decision-7-question.mp3",
-      "textHash": "1vaf9lb",
-      "speechHash": "1vaf9lb",
+      "textHash": "1qko6i4",
+      "speechHash": "1mlgwp7",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -685,8 +685,8 @@
     },
     "aya-phare-reves:decision-8-question": {
       "file": "mp3/aya-phare-reves/decision-8-question.mp3",
-      "textHash": "1ocmlpw",
-      "speechHash": "1ocmlpw",
+      "textHash": "djnaiv",
+      "speechHash": "djnaiv",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -765,8 +765,8 @@
     },
     "aya-phare-reves:decision-9-question": {
       "file": "mp3/aya-phare-reves/decision-9-question.mp3",
-      "textHash": "gtrjlk",
-      "speechHash": "gtrjlk",
+      "textHash": "12x8bo3",
+      "speechHash": "wqn46k",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -905,15 +905,15 @@
     },
     "lila-fete-couleurs:decision-1": {
       "file": "mp3/lila-fete-couleurs/decision-1.mp3",
-      "textHash": "zisjxn",
-      "speechHash": "1horah3",
+      "textHash": "m6ubiw",
+      "speechHash": "15iu86a",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -925,15 +925,15 @@
     },
     "lila-fete-couleurs:decision-1-question": {
       "file": "mp3/lila-fete-couleurs/decision-1-question.mp3",
-      "textHash": "1q60ts7",
-      "speechHash": "1q60ts7",
+      "textHash": "bhazn9",
+      "speechHash": "bhazn9",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-31%",
+        "rate": "-27%",
         "pitch": "+2Hz",
         "volume": "+2%"
       },
@@ -945,15 +945,15 @@
     },
     "lila-fete-couleurs:decision-1-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-1-suite-a.mp3",
-      "textHash": "1df167p",
-      "speechHash": "kayjeg",
+      "textHash": "15mxpn0",
+      "speechHash": "kb5x1v",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -965,15 +965,15 @@
     },
     "lila-fete-couleurs:decision-1-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-1-suite-b.mp3",
-      "textHash": "1vfcli5",
-      "speechHash": "3cn5sa",
+      "textHash": "1clzea2",
+      "speechHash": "1ctnig9",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -985,15 +985,15 @@
     },
     "lila-fete-couleurs:decision-2": {
       "file": "mp3/lila-fete-couleurs/decision-2.mp3",
-      "textHash": "1p5gjem",
-      "speechHash": "1p5gjem",
+      "textHash": "1fgqxnl",
+      "speechHash": "1fgqxnl",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-16%",
+        "rate": "-12%",
         "pitch": "+3Hz",
         "volume": "+2%"
       },
@@ -1005,15 +1005,15 @@
     },
     "lila-fete-couleurs:decision-2-question": {
       "file": "mp3/lila-fete-couleurs/decision-2-question.mp3",
-      "textHash": "1xcfbyh",
-      "speechHash": "1xcfbyh",
+      "textHash": "w7eckz",
+      "speechHash": "w7eckz",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-27%",
+        "rate": "-23%",
         "pitch": "+4Hz",
         "volume": "+4%"
       },
@@ -1025,15 +1025,15 @@
     },
     "lila-fete-couleurs:decision-2-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-2-suite-a.mp3",
-      "textHash": "19rsoyn",
-      "speechHash": "19rsoyn",
+      "textHash": "1g7hi9y",
+      "speechHash": "8r4s9",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-16%",
+        "rate": "-12%",
         "pitch": "+3Hz",
         "volume": "+2%"
       },
@@ -1045,15 +1045,15 @@
     },
     "lila-fete-couleurs:decision-2-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-2-suite-b.mp3",
-      "textHash": "owgcug",
-      "speechHash": "k5a2fk",
+      "textHash": "18so3bz",
+      "speechHash": "1eiecyy",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-16%",
+        "rate": "-12%",
         "pitch": "+3Hz",
         "volume": "+2%"
       },
@@ -1065,15 +1065,15 @@
     },
     "lila-fete-couleurs:decision-3": {
       "file": "mp3/lila-fete-couleurs/decision-3.mp3",
-      "textHash": "avtyxi",
-      "speechHash": "p37pbq",
+      "textHash": "17fyah9",
+      "speechHash": "1ofzb3b",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -1085,15 +1085,15 @@
     },
     "lila-fete-couleurs:decision-3-question": {
       "file": "mp3/lila-fete-couleurs/decision-3-question.mp3",
-      "textHash": "1q6g76l",
-      "speechHash": "1q6g76l",
+      "textHash": "74x1is",
+      "speechHash": "74x1is",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-34%",
+        "rate": "-30%",
         "pitch": "-1Hz",
         "volume": "+0%"
       },
@@ -1105,15 +1105,15 @@
     },
     "lila-fete-couleurs:decision-3-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-3-suite-a.mp3",
-      "textHash": "oop69a",
-      "speechHash": "17p4c2w",
+      "textHash": "1dfplcs",
+      "speechHash": "ubm46i",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -1125,15 +1125,15 @@
     },
     "lila-fete-couleurs:decision-3-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-3-suite-b.mp3",
-      "textHash": "yx02n",
-      "speechHash": "kjj19p",
+      "textHash": "1wjempa",
+      "speechHash": "1h1x964",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -1145,15 +1145,15 @@
     },
     "lila-fete-couleurs:decision-4": {
       "file": "mp3/lila-fete-couleurs/decision-4.mp3",
-      "textHash": "zsug3s",
-      "speechHash": "zsug3s",
+      "textHash": "1yfqvyh",
+      "speechHash": "1f8z12p",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -1165,15 +1165,15 @@
     },
     "lila-fete-couleurs:decision-4-question": {
       "file": "mp3/lila-fete-couleurs/decision-4-question.mp3",
-      "textHash": "q3ornf",
-      "speechHash": "q3ornf",
+      "textHash": "1m0s74g",
+      "speechHash": "1m0s74g",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-33%",
+        "rate": "-29%",
         "pitch": "-1Hz",
         "volume": "+1%"
       },
@@ -1185,15 +1185,15 @@
     },
     "lila-fete-couleurs:decision-4-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-a.mp3",
-      "textHash": "apq84p",
-      "speechHash": "pawb43",
+      "textHash": "iknx75",
+      "speechHash": "1hel52q",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -1205,15 +1205,15 @@
     },
     "lila-fete-couleurs:decision-4-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-b.mp3",
-      "textHash": "1bkx44o",
-      "speechHash": "19obau2",
+      "textHash": "1v32cc3",
+      "speechHash": "4aqugp",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -1225,15 +1225,15 @@
     },
     "lila-fete-couleurs:decision-5": {
       "file": "mp3/lila-fete-couleurs/decision-5.mp3",
-      "textHash": "1u19w",
-      "speechHash": "1u19w",
+      "textHash": "1sem5w9",
+      "speechHash": "1sem5w9",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-21%",
+        "rate": "-17%",
         "pitch": "-3Hz",
         "volume": "+2%"
       },
@@ -1245,15 +1245,15 @@
     },
     "lila-fete-couleurs:decision-5-question": {
       "file": "mp3/lila-fete-couleurs/decision-5-question.mp3",
-      "textHash": "137w5y8",
-      "speechHash": "137w5y8",
+      "textHash": "1auckly",
+      "speechHash": "1auckly",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-32%",
+        "rate": "-28%",
         "pitch": "-2Hz",
         "volume": "+4%"
       },
@@ -1265,15 +1265,15 @@
     },
     "lila-fete-couleurs:decision-5-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-5-suite-a.mp3",
-      "textHash": "12pzppd",
-      "speechHash": "12pzppd",
+      "textHash": "1j3um5c",
+      "speechHash": "1j3um5c",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "-4Hz",
         "volume": "+0%"
       },
@@ -1285,15 +1285,15 @@
     },
     "lila-fete-couleurs:decision-5-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-5-suite-b.mp3",
-      "textHash": "jbv9mu",
-      "speechHash": "jbv9mu",
+      "textHash": "1if0amv",
+      "speechHash": "1if0amv",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "-4Hz",
         "volume": "+0%"
       },
@@ -1305,15 +1305,15 @@
     },
     "lila-fete-couleurs:decision-6": {
       "file": "mp3/lila-fete-couleurs/decision-6.mp3",
-      "textHash": "27dvrp",
-      "speechHash": "zsy8aj",
+      "textHash": "jgr48p",
+      "speechHash": "sc9d47",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-17%",
+        "rate": "-13%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1325,15 +1325,15 @@
     },
     "lila-fete-couleurs:decision-6-question": {
       "file": "mp3/lila-fete-couleurs/decision-6-question.mp3",
-      "textHash": "1ktxf0i",
-      "speechHash": "1ktxf0i",
+      "textHash": "ringen",
+      "speechHash": "ringen",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "+4Hz",
         "volume": "+5%"
       },
@@ -1345,15 +1345,15 @@
     },
     "lila-fete-couleurs:decision-6-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-a.mp3",
-      "textHash": "1jh5rx",
-      "speechHash": "1g7cv7c",
+      "textHash": "sxggmx",
+      "speechHash": "1vk6rrk",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-17%",
+        "rate": "-13%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1365,15 +1365,15 @@
     },
     "lila-fete-couleurs:decision-6-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-b.mp3",
-      "textHash": "12y9py0",
-      "speechHash": "12y9py0",
+      "textHash": "1bhpdlm",
+      "speechHash": "1bhpdlm",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-17%",
+        "rate": "-13%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1385,15 +1385,15 @@
     },
     "lila-fete-couleurs:decision-6-suite-c": {
       "file": "mp3/lila-fete-couleurs/decision-6-suite-c.mp3",
-      "textHash": "1kzyxkj",
-      "speechHash": "1kzyxkj",
+      "textHash": "gim9kl",
+      "speechHash": "gim9kl",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-17%",
+        "rate": "-13%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1405,15 +1405,15 @@
     },
     "lila-fete-couleurs:fin-a": {
       "file": "mp3/lila-fete-couleurs/fin-a.mp3",
-      "textHash": "s9h1cw",
-      "speechHash": "28qj27",
+      "textHash": "1ra6bc2",
+      "speechHash": "1dbixex",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1425,15 +1425,15 @@
     },
     "lila-fete-couleurs:fin-b": {
       "file": "mp3/lila-fete-couleurs/fin-b.mp3",
-      "textHash": "266h4d",
-      "speechHash": "266h4d",
+      "textHash": "c0f76m",
+      "speechHash": "c0f76m",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1445,15 +1445,15 @@
     },
     "lila-fete-couleurs:fin-c": {
       "file": "mp3/lila-fete-couleurs/fin-c.mp3",
-      "textHash": "f6bcuv",
-      "speechHash": "n8v0q4",
+      "textHash": "179fb64",
+      "speechHash": "11ndixy",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -1465,15 +1465,15 @@
     },
     "lila-fete-couleurs:intro": {
       "file": "mp3/lila-fete-couleurs/intro.mp3",
-      "textHash": "12v86rx",
-      "speechHash": "12v86rx",
+      "textHash": "663afo",
+      "speechHash": "663afo",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "intro",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -1505,8 +1505,8 @@
     },
     "malo-agence-astronautes:decision-1-question": {
       "file": "mp3/malo-agence-astronautes/decision-1-question.mp3",
-      "textHash": "13o0kz7",
-      "speechHash": "13o0kz7",
+      "textHash": "sd2nsy",
+      "speechHash": "sd2nsy",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1585,8 +1585,8 @@
     },
     "malo-agence-astronautes:decision-10-question": {
       "file": "mp3/malo-agence-astronautes/decision-10-question.mp3",
-      "textHash": "19r17qe",
-      "speechHash": "19r17qe",
+      "textHash": "i4vnf5",
+      "speechHash": "c25hji",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1685,8 +1685,8 @@
     },
     "malo-agence-astronautes:decision-2-question": {
       "file": "mp3/malo-agence-astronautes/decision-2-question.mp3",
-      "textHash": "zysqx5",
-      "speechHash": "zysqx5",
+      "textHash": "1gw4r5o",
+      "speechHash": "1ux1pfg",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1765,8 +1765,8 @@
     },
     "malo-agence-astronautes:decision-3-question": {
       "file": "mp3/malo-agence-astronautes/decision-3-question.mp3",
-      "textHash": "15o0k5a",
-      "speechHash": "15o0k5a",
+      "textHash": "oq628j",
+      "speechHash": "oq628j",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1826,7 +1826,7 @@
     "malo-agence-astronautes:decision-4": {
       "file": "mp3/malo-agence-astronautes/decision-4.mp3",
       "textHash": "16fndr7",
-      "speechHash": "16fndr7",
+      "speechHash": "1vrcidn",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1845,8 +1845,8 @@
     },
     "malo-agence-astronautes:decision-4-question": {
       "file": "mp3/malo-agence-astronautes/decision-4-question.mp3",
-      "textHash": "l69r60",
-      "speechHash": "l69r60",
+      "textHash": "14yjwvb",
+      "speechHash": "14yjwvb",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1906,7 +1906,7 @@
     "malo-agence-astronautes:decision-5": {
       "file": "mp3/malo-agence-astronautes/decision-5.mp3",
       "textHash": "1ieoc1n",
-      "speechHash": "1ieoc1n",
+      "speechHash": "ksamcu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1925,8 +1925,8 @@
     },
     "malo-agence-astronautes:decision-5-question": {
       "file": "mp3/malo-agence-astronautes/decision-5-question.mp3",
-      "textHash": "1jwtrag",
-      "speechHash": "1jwtrag",
+      "textHash": "1i78y0v",
+      "speechHash": "1i78y0v",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2005,8 +2005,8 @@
     },
     "malo-agence-astronautes:decision-6-question": {
       "file": "mp3/malo-agence-astronautes/decision-6-question.mp3",
-      "textHash": "1rtgq7p",
-      "speechHash": "1rtgq7p",
+      "textHash": "bt0w9y",
+      "speechHash": "bt0w9y",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2085,8 +2085,8 @@
     },
     "malo-agence-astronautes:decision-7-question": {
       "file": "mp3/malo-agence-astronautes/decision-7-question.mp3",
-      "textHash": "uj09hz",
-      "speechHash": "uj09hz",
+      "textHash": "1w4c7ku",
+      "speechHash": "1w4c7ku",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2165,8 +2165,8 @@
     },
     "malo-agence-astronautes:decision-8-question": {
       "file": "mp3/malo-agence-astronautes/decision-8-question.mp3",
-      "textHash": "k0ilsq",
-      "speechHash": "k0ilsq",
+      "textHash": "6vjfrn",
+      "speechHash": "6vjfrn",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2245,8 +2245,8 @@
     },
     "malo-agence-astronautes:decision-9-question": {
       "file": "mp3/malo-agence-astronautes/decision-9-question.mp3",
-      "textHash": "1yo3n5l",
-      "speechHash": "1yo3n5l",
+      "textHash": "1guzyq6",
+      "speechHash": "1guzyq6",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2405,8 +2405,8 @@
     },
     "mila-oeuf-orage:decision-1-question": {
       "file": "mp3/mila-oeuf-orage/decision-1-question.mp3",
-      "textHash": "1il64mf",
-      "speechHash": "1il64mf",
+      "textHash": "1l00xi0",
+      "speechHash": "1l00xi0",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2466,7 +2466,7 @@
     "mila-oeuf-orage:decision-2": {
       "file": "mp3/mila-oeuf-orage/decision-2.mp3",
       "textHash": "16xaxbp",
-      "speechHash": "16xaxbp",
+      "speechHash": "kv7m0t",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2485,8 +2485,8 @@
     },
     "mila-oeuf-orage:decision-2-question": {
       "file": "mp3/mila-oeuf-orage/decision-2-question.mp3",
-      "textHash": "1oz7cu9",
-      "speechHash": "1oz7cu9",
+      "textHash": "1jvulhs",
+      "speechHash": "1jvulhs",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2565,8 +2565,8 @@
     },
     "mila-oeuf-orage:decision-3-question": {
       "file": "mp3/mila-oeuf-orage/decision-3-question.mp3",
-      "textHash": "24adty",
-      "speechHash": "24adty",
+      "textHash": "1u57fbt",
+      "speechHash": "1m8l1nt",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2645,8 +2645,8 @@
     },
     "mila-oeuf-orage:decision-4-question": {
       "file": "mp3/mila-oeuf-orage/decision-4-question.mp3",
-      "textHash": "zxlgkf",
-      "speechHash": "zxlgkf",
+      "textHash": "1rrx4lw",
+      "speechHash": "1rrx4lw",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2725,8 +2725,8 @@
     },
     "mila-oeuf-orage:decision-5-question": {
       "file": "mp3/mila-oeuf-orage/decision-5-question.mp3",
-      "textHash": "1m2lnmo",
-      "speechHash": "1m2lnmo",
+      "textHash": "1jfq28f",
+      "speechHash": "15u051j",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2885,15 +2885,15 @@
     },
     "nino-doudou-voyageur:decision-1": {
       "file": "mp3/nino-doudou-voyageur/decision-1.mp3",
-      "textHash": "12mrkho",
-      "speechHash": "12mrkho",
+      "textHash": "1rj48gt",
+      "speechHash": "1rj48gt",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -2905,15 +2905,15 @@
     },
     "nino-doudou-voyageur:decision-1-question": {
       "file": "mp3/nino-doudou-voyageur/decision-1-question.mp3",
-      "textHash": "12v3oun",
-      "speechHash": "12v3oun",
+      "textHash": "d335kt",
+      "speechHash": "d335kt",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-34%",
+        "rate": "-30%",
         "pitch": "-1Hz",
         "volume": "+0%"
       },
@@ -2925,15 +2925,15 @@
     },
     "nino-doudou-voyageur:decision-1-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-a.mp3",
-      "textHash": "ys5pk6",
-      "speechHash": "ys5pk6",
+      "textHash": "rplmss",
+      "speechHash": "rplmss",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -2945,15 +2945,15 @@
     },
     "nino-doudou-voyageur:decision-1-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-b.mp3",
-      "textHash": "g6naa7",
-      "speechHash": "g6naa7",
+      "textHash": "9xpqqv",
+      "speechHash": "9xpqqv",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -2965,15 +2965,15 @@
     },
     "nino-doudou-voyageur:decision-2": {
       "file": "mp3/nino-doudou-voyageur/decision-2.mp3",
-      "textHash": "inafax",
-      "speechHash": "inafax",
+      "textHash": "13r238o",
+      "speechHash": "13r238o",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -2985,15 +2985,15 @@
     },
     "nino-doudou-voyageur:decision-2-question": {
       "file": "mp3/nino-doudou-voyageur/decision-2-question.mp3",
-      "textHash": "1eahe0u",
-      "speechHash": "1eahe0u",
+      "textHash": "uht5rv",
+      "speechHash": "uht5rv",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-31%",
+        "rate": "-27%",
         "pitch": "+2Hz",
         "volume": "+2%"
       },
@@ -3005,15 +3005,15 @@
     },
     "nino-doudou-voyageur:decision-2-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-a.mp3",
-      "textHash": "qe2nly",
-      "speechHash": "pfqlhm",
+      "textHash": "iolzyu",
+      "speechHash": "17m4he2",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -3025,15 +3025,15 @@
     },
     "nino-doudou-voyageur:decision-2-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-b.mp3",
-      "textHash": "1397rrz",
-      "speechHash": "vzhagj",
+      "textHash": "cpt0y0",
+      "speechHash": "cpt0y0",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -3045,15 +3045,15 @@
     },
     "nino-doudou-voyageur:decision-3": {
       "file": "mp3/nino-doudou-voyageur/decision-3.mp3",
-      "textHash": "x2l7ln",
-      "speechHash": "1w44s4w",
+      "textHash": "1dwshhf",
+      "speechHash": "1dwshhf",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-30%",
+        "rate": "-26%",
         "pitch": "-3Hz",
         "volume": "-2%"
       },
@@ -3065,15 +3065,15 @@
     },
     "nino-doudou-voyageur:decision-3-question": {
       "file": "mp3/nino-doudou-voyageur/decision-3-question.mp3",
-      "textHash": "1xkipui",
-      "speechHash": "1xkipui",
+      "textHash": "19mo2wh",
+      "speechHash": "19mo2wh",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-35%",
+        "rate": "-31%",
         "pitch": "-2Hz",
         "volume": "+0%"
       },
@@ -3085,15 +3085,15 @@
     },
     "nino-doudou-voyageur:decision-3-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-a.mp3",
-      "textHash": "l94lq1",
-      "speechHash": "l94lq1",
+      "textHash": "7qlygw",
+      "speechHash": "7qlygw",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-30%",
+        "rate": "-26%",
         "pitch": "-3Hz",
         "volume": "-2%"
       },
@@ -3105,15 +3105,15 @@
     },
     "nino-doudou-voyageur:decision-3-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-b.mp3",
-      "textHash": "vqm3bw",
-      "speechHash": "vqm3bw",
+      "textHash": "16zrtfz",
+      "speechHash": "16zrtfz",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-30%",
+        "rate": "-26%",
         "pitch": "-3Hz",
         "volume": "-2%"
       },
@@ -3125,15 +3125,15 @@
     },
     "nino-doudou-voyageur:decision-4": {
       "file": "mp3/nino-doudou-voyageur/decision-4.mp3",
-      "textHash": "1c2wrl4",
-      "speechHash": "1xymx88",
+      "textHash": "ssv3hq",
+      "speechHash": "ssv3hq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -3145,15 +3145,15 @@
     },
     "nino-doudou-voyageur:decision-4-question": {
       "file": "mp3/nino-doudou-voyageur/decision-4-question.mp3",
-      "textHash": "p3x3lq",
-      "speechHash": "p3x3lq",
+      "textHash": "1g2pmq",
+      "speechHash": "1g2pmq",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-33%",
+        "rate": "-29%",
         "pitch": "-1Hz",
         "volume": "+1%"
       },
@@ -3165,15 +3165,15 @@
     },
     "nino-doudou-voyageur:decision-4-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-a.mp3",
-      "textHash": "1lu74sz",
-      "speechHash": "1lu74sz",
+      "textHash": "ozaiau",
+      "speechHash": "ozaiau",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -3185,15 +3185,15 @@
     },
     "nino-doudou-voyageur:decision-4-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-b.mp3",
-      "textHash": "1opgpeq",
-      "speechHash": "t799h6",
+      "textHash": "1iiywfy",
+      "speechHash": "1iiywfy",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "-2Hz",
         "volume": "-1%"
       },
@@ -3205,15 +3205,15 @@
     },
     "nino-doudou-voyageur:decision-5": {
       "file": "mp3/nino-doudou-voyageur/decision-5.mp3",
-      "textHash": "11bcgd4",
-      "speechHash": "11bcgd4",
+      "textHash": "102ose4",
+      "speechHash": "102ose4",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -3225,15 +3225,15 @@
     },
     "nino-doudou-voyageur:decision-5-question": {
       "file": "mp3/nino-doudou-voyageur/decision-5-question.mp3",
-      "textHash": "83lruu",
-      "speechHash": "83lruu",
+      "textHash": "18ui1o3",
+      "speechHash": "18ui1o3",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-34%",
+        "rate": "-30%",
         "pitch": "-1Hz",
         "volume": "+0%"
       },
@@ -3245,15 +3245,15 @@
     },
     "nino-doudou-voyageur:decision-5-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-a.mp3",
-      "textHash": "xx7abf",
-      "speechHash": "xx7abf",
+      "textHash": "1bwtusx",
+      "speechHash": "1bwtusx",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -3265,15 +3265,15 @@
     },
     "nino-doudou-voyageur:decision-5-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-b.mp3",
-      "textHash": "odpboj",
-      "speechHash": "odpboj",
+      "textHash": "1h9cecx",
+      "speechHash": "1h9cecx",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-29%",
+        "rate": "-25%",
         "pitch": "-2Hz",
         "volume": "-2%"
       },
@@ -3285,15 +3285,15 @@
     },
     "nino-doudou-voyageur:decision-6": {
       "file": "mp3/nino-doudou-voyageur/decision-6.mp3",
-      "textHash": "1w97gll",
-      "speechHash": "1w97gll",
+      "textHash": "1w0h98f",
+      "speechHash": "1w0h98f",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3305,15 +3305,15 @@
     },
     "nino-doudou-voyageur:decision-6-question": {
       "file": "mp3/nino-doudou-voyageur/decision-6-question.mp3",
-      "textHash": "amngmm",
-      "speechHash": "amngmm",
+      "textHash": "t73fwr",
+      "speechHash": "t73fwr",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "question",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-28%",
+        "rate": "-24%",
         "pitch": "+4Hz",
         "volume": "+5%"
       },
@@ -3325,15 +3325,15 @@
     },
     "nino-doudou-voyageur:decision-6-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-a.mp3",
-      "textHash": "15ccem2",
-      "speechHash": "15ccem2",
+      "textHash": "nvarln",
+      "speechHash": "nvarln",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3345,15 +3345,15 @@
     },
     "nino-doudou-voyageur:decision-6-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-b.mp3",
-      "textHash": "1ox1dzb",
-      "speechHash": "1ox1dzb",
+      "textHash": "1dkebko",
+      "speechHash": "1dkebko",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3365,15 +3365,15 @@
     },
     "nino-doudou-voyageur:decision-6-suite-c": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-c.mp3",
-      "textHash": "1o94dh3",
-      "speechHash": "1o94dh3",
+      "textHash": "5bjmfs",
+      "speechHash": "1gyko7b",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3385,15 +3385,15 @@
     },
     "nino-doudou-voyageur:fin-a": {
       "file": "mp3/nino-doudou-voyageur/fin-a.mp3",
-      "textHash": "1n6l9p9",
-      "speechHash": "1n6l9p9",
+      "textHash": "6z0399",
+      "speechHash": "6z0399",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3405,15 +3405,15 @@
     },
     "nino-doudou-voyageur:fin-b": {
       "file": "mp3/nino-doudou-voyageur/fin-b.mp3",
-      "textHash": "1vi70n0",
-      "speechHash": "1vi70n0",
+      "textHash": "a7xom",
+      "speechHash": "a7xom",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3425,15 +3425,15 @@
     },
     "nino-doudou-voyageur:fin-c": {
       "file": "mp3/nino-doudou-voyageur/fin-c.mp3",
-      "textHash": "1xojkvf",
-      "speechHash": "1xojkvf",
+      "textHash": "1bsg169",
+      "speechHash": "1bsg169",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "scene",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-23%",
+        "rate": "-19%",
         "pitch": "+3Hz",
         "volume": "+3%"
       },
@@ -3445,15 +3445,15 @@
     },
     "nino-doudou-voyageur:intro": {
       "file": "mp3/nino-doudou-voyageur/intro.mp3",
-      "textHash": "ycyu15",
-      "speechHash": "ycyu15",
+      "textHash": "13d90e5",
+      "speechHash": "13d90e5",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
       "kind": "intro",
       "ageBand": "2-5",
       "tuning": {
-        "rate": "-26%",
+        "rate": "-22%",
         "pitch": "+1Hz",
         "volume": "+0%"
       },
@@ -3485,8 +3485,8 @@
     },
     "sacha-poste-oceans:decision-1-question": {
       "file": "mp3/sacha-poste-oceans/decision-1-question.mp3",
-      "textHash": "e44si2",
-      "speechHash": "e44si2",
+      "textHash": "x50z7f",
+      "speechHash": "x50z7f",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3565,8 +3565,8 @@
     },
     "sacha-poste-oceans:decision-2-question": {
       "file": "mp3/sacha-poste-oceans/decision-2-question.mp3",
-      "textHash": "qn3hk2",
-      "speechHash": "qn3hk2",
+      "textHash": "1an6o3",
+      "speechHash": "10iee0r",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3586,7 +3586,7 @@
     "sacha-poste-oceans:decision-2-suite-a": {
       "file": "mp3/sacha-poste-oceans/decision-2-suite-a.mp3",
       "textHash": "jw6sc0",
-      "speechHash": "jw6sc0",
+      "speechHash": "12tc8dp",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3606,7 +3606,7 @@
     "sacha-poste-oceans:decision-2-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-2-suite-b.mp3",
       "textHash": "5ph6fz",
-      "speechHash": "5ph6fz",
+      "speechHash": "2lsihg",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3626,7 +3626,7 @@
     "sacha-poste-oceans:decision-3": {
       "file": "mp3/sacha-poste-oceans/decision-3.mp3",
       "textHash": "4rj3pf",
-      "speechHash": "4rj3pf",
+      "speechHash": "t8uppv",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3645,8 +3645,8 @@
     },
     "sacha-poste-oceans:decision-3-question": {
       "file": "mp3/sacha-poste-oceans/decision-3-question.mp3",
-      "textHash": "urvqlb",
-      "speechHash": "urvqlb",
+      "textHash": "elitba",
+      "speechHash": "elitba",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3725,8 +3725,8 @@
     },
     "sacha-poste-oceans:decision-4-question": {
       "file": "mp3/sacha-poste-oceans/decision-4-question.mp3",
-      "textHash": "1w9feql",
-      "speechHash": "1w9feql",
+      "textHash": "1qrerxg",
+      "speechHash": "1qrerxg",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3766,7 +3766,7 @@
     "sacha-poste-oceans:decision-4-suite-b": {
       "file": "mp3/sacha-poste-oceans/decision-4-suite-b.mp3",
       "textHash": "n228w1",
-      "speechHash": "n228w1",
+      "speechHash": "bzg1mp",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3805,8 +3805,8 @@
     },
     "sacha-poste-oceans:decision-5-question": {
       "file": "mp3/sacha-poste-oceans/decision-5-question.mp3",
-      "textHash": "uya5dj",
-      "speechHash": "uya5dj",
+      "textHash": "1vleiou",
+      "speechHash": "1vleiou",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",

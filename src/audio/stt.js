@@ -1,17 +1,20 @@
+import { prepareMicrophoneAudioSession, restorePlaybackAudioSession } from './audio-session.js';
+
 let activeRecognition = null;
 
-export function stopListening() {
+export function stopListening({ restoreAudio = true } = {}) {
   const recognition = activeRecognition;
   activeRecognition = null;
   if (!recognition) return;
   recognition.cancelledByApp = true;
   try { recognition.abort(); } catch {}
+  if (restoreAudio) void restorePlaybackAudioSession();
 }
 
 export async function listenOnce({ noSpeechMs = 4500, silenceMs = 900, maxMs = 15000 } = {}) {
   const Ctor = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!Ctor) return null;
-  stopListening();
+  stopListening({ restoreAudio: false });
 
   return new Promise(resolve => {
     const recognition = new Ctor();
@@ -40,6 +43,7 @@ export async function listenOnce({ noSpeechMs = 4500, silenceMs = 900, maxMs = 1
       done = true;
       clearTimers();
       if (activeRecognition === recognition) activeRecognition = null;
+      void restorePlaybackAudioSession();
       resolve(transcript.trim() || null);
     };
     const endCapture = (abort = false) => {
@@ -87,6 +91,7 @@ export async function listenOnce({ noSpeechMs = 4500, silenceMs = 900, maxMs = 1
     recognition.onend = finish;
 
     hardTimer = setTimeout(() => endCapture(true), maxMs);
+    prepareMicrophoneAudioSession();
     try { recognition.start(); }
     catch { finish(); }
   });

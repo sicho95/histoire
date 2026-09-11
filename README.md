@@ -5,7 +5,7 @@ PWA mobile de contes interactifs pour enfants. Elle distingue deux circuits :
 - **Bibliothèque éditoriale** : histoires relues dans `stories/`, publiées par GitHub et accompagnées de narrations préparées dans `audio/`.
 - **Atelier enfant** : histoires inventées gratuitement avec Groq, conservées comme brouillons privés sur l'appareil, puis exportables pour révision.
 
-La version 2.3 comprend six histoires signature originales : deux aventures de 8 minutes et deux de 20 minutes pour les 5–9 ans, puis deux histoires de 10 minutes pour les 2–5 ans. Elles proposent de 5 à 10 décisions, trois fins, des couvertures illustrées, 90 illustrations de choix originales et 198 pistes vocales françaises incluses. Leurs enchaînements ont été reparcourus route par route afin qu’un personnage, un objet ou une action ne surgisse jamais sans introduction.
+La version 2.4 comprend six histoires signature originales : deux aventures de 8 minutes et deux de 20 minutes pour les 5–9 ans, puis deux histoires de 10 à 12 minutes pour les 2–5 ans. Les deux récits des petits ont été entièrement réécrits en phrases courtes et concrètes, sans réduire leur durée. L’ensemble propose de 5 à 10 décisions, trois fins, des couvertures illustrées, 90 illustrations de choix originales et 198 pistes vocales françaises incluses.
 
 ## Développement
 
@@ -35,7 +35,7 @@ GitHub Pages doit servir la racine de la branche `WebApp`. L'application compare
 3. Lancer `npm run validate:stories`.
 4. Ajouter les pistes audio facultatives et leurs entrées dans `audio/manifest.json`.
 
-Les histoires signature sont écrites dans `content/signature-stories.mjs`, puis produites avec :
+Les histoires publiées dans `stories/` sont la source éditoriale conservée sur GitHub. `content/signature-stories.mjs` sert de graine pour une première fabrication ; une exécution normale préserve les JSON déjà relus. L’option volontaire `--force-seed` est nécessaire pour les remplacer depuis la graine. La chaîne complète utilise :
 
 ```bash
 npm run generate:stories
@@ -49,7 +49,7 @@ Pour les histoires consolidées, un embranchement est traité comme une nouvelle
 
 Les scènes proposent 2 ou 3 choix préparés. Quand une histoire accumule davantage de possibilités personnalisées, la PWA en montre seulement 2 ou 3, de façon stable pendant la lecture, pour ne pas surcharger l’enfant. Le bouton **Dire une autre idée** permet une branche personnalisée uniquement si un parent a configuré le LLM gratuit, si l’appareil est en ligne et si la reconnaissance vocale est disponible ; il reste caché dans tous les autres cas.
 
-À chaque embranchement, la narration pose la question puis lit distinctement le premier, le deuxième et éventuellement le troisième choix affiché. Pour une autre idée, le micro attend quelques secondes le début de la parole, s’arrête automatiquement après le silence qui suit la phrase et n’appelle jamais le LLM si rien n’a été dit.
+À chaque embranchement, la narration pose la question puis lit distinctement les choix numéro 1, 2 et éventuellement 3. Le même numéro apparaît sur la carte. Pour une autre idée, le micro attend quelques secondes le début de la parole, s’arrête automatiquement après le silence qui suit la phrase et n’appelle jamais le LLM si rien n’a été dit. Sur iPhone, la sortie audio repasse ensuite explicitement en mode haut-parleur de lecture.
 
 Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md).
 
@@ -57,7 +57,7 @@ Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md
 
 La génération utilise l'offre gratuite Groq avec `openai/gpt-oss-120b` et des sorties JSON structurées. La clé est saisie dans l'espace parents et reste en session par défaut. Elle n'est jamais ajoutée au dépôt ou aux exports.
 
-La lecture suit une cascade explicite : MP3 éditorial inclus, piste portable importée, Edge TTS gratuit via le Worker Sicho95, essai Edge direct dans Microsoft Edge, Azure Speech si configuré, OpenAI si configuré, Google AI Studio si configuré, puis meilleure voix française de l’appareil. Le Worker ne sert qu’à fabriquer la piste Edge : l’audio traverse Cloudflare une seule fois, est enregistré dans IndexedDB, puis toutes les réécoutes et l’export utilisent la copie locale. Le lecteur réutilise un unique élément audio afin de préserver l’autorisation de lecture automatique entre deux scènes sur Safari/iOS.
+La lecture suit une cascade explicite : MP3 éditorial inclus, piste portable importée, Edge TTS gratuit via le Worker Sicho95, essai Edge direct dans Microsoft Edge, Azure Speech si configuré, OpenAI si configuré, Google AI Studio si configuré, puis meilleure voix française de l’appareil. Le Worker ne sert qu’à fabriquer la piste Edge : l’audio traverse Cloudflare une seule fois, est enregistré dans IndexedDB, puis toutes les réécoutes et l’export utilisent la copie locale. Le lecteur réutilise un unique élément audio et restaure le mode `playback` après le micro sur Safari/iOS.
 
 Un brouillon peut être exporté en ZIP contenant toujours l’histoire et le dossier de révision, plus toutes les pistes MP3 ou WAV générables. Une panne de voix en ligne ne bloque plus l’archive : le manifeste liste les pistes manquantes pour une repasse ultérieure. Le même ZIP se réimporte dans la PWA et garde ses voix hors connexion ; un parent peut aussi le relire puis l’intégrer au dépôt comme nouvelle histoire consolidée.
 

@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import definitions from '../content/signature-stories.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const forceSeed = process.argv.includes('--force-seed');
 function buildStory(definition, featuredOrder) {
   const nodes = [];
   definition.episodes.forEach((episode, index) => {
@@ -73,7 +74,7 @@ function buildStory(definition, featuredOrder) {
     startNode: 'decision-1',
     storyBible: definition.bible,
     nodes,
-    revision: 5,
+    revision: 6,
     status: 'published',
     createdAt: '2026-09-07T00:00:00.000Z',
     updatedAt: '2026-09-08T00:00:00.000Z'
@@ -82,12 +83,20 @@ function buildStory(definition, featuredOrder) {
 
 await mkdir(join(root, 'stories'), { recursive: true });
 const stories = definitions.map(buildStory);
+if (!forceSeed) {
+  for (let index = 0; index < stories.length; index += 1) {
+    try {
+      const existing = JSON.parse(await readFile(join(root, 'stories', `${stories[index].id}.json`), 'utf8'));
+      stories[index] = existing;
+    } catch {}
+  }
+}
 for (const story of stories) {
   await writeFile(join(root, 'stories', `${story.id}.json`), `${JSON.stringify(story, null, 2)}\n`);
 }
 const catalog = {
   schemaVersion: 1,
-  revision: 6,
+  revision: 7,
   stories: stories.map(story => ({
     id: story.id,
     title: story.title,

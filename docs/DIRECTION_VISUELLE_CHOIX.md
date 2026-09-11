@@ -37,11 +37,13 @@ Les silhouettes, vêtements, couleurs, compagnons et accessoires récurrents res
 
 ## Deux niveaux de production
 
-Une histoire créée gratuitement par l’enfant reste d’abord un brouillon privé. Elle peut utiliser les pictogrammes génériques de `assets/choices/` afin de répondre immédiatement et sans coût.
+Une histoire créée gratuitement par l’enfant reste d’abord un brouillon privé. Elle utilise des cartes génériques très lisibles portant les numéros 1, 2 ou 3 afin de répondre immédiatement et sans coût. Le numéro lu à voix haute correspond exactement au numéro affiché.
 
-Le lecteur peut proposer **Dire une autre idée** pour personnaliser un embranchement. Cette possibilité reste entièrement cachée si aucun LLM n’est configuré par le parent. Elle n’apparaît que lorsque la clé Groq gratuite est disponible, que l’appareil est en ligne et que la reconnaissance vocale fonctionne. La nouvelle branche reste privée sur l’appareil et utilise les pictogrammes génériques jusqu’à sa consolidation.
+Le lecteur peut proposer **Dire une autre idée** pour personnaliser un embranchement. Cette possibilité reste entièrement cachée si aucun LLM n’est configuré par le parent. Elle n’apparaît que lorsque la clé Groq gratuite est disponible, que l’appareil est en ligne et que la reconnaissance vocale fonctionne. La nouvelle branche reste privée sur l’appareil, utilise les cartes numérotées et conserve la couverture comme image de passage jusqu’à sa consolidation.
 
 Une histoire consolidée ou signature ne peut plus utiliser ces pictogrammes. Chaque choix reçoit une illustration originale et unique dans `assets/stories/<story-id>/choices/<choice-id>.jpg`. Le validateur bloque la publication si un fichier manque, si une image est réutilisée ou si le chemin ne correspond pas à l’identifiant du choix.
+
+Après un choix éditorial, son illustration remplace la couverture en haut du lecteur pendant toute la scène qui en découle, comme une nouvelle page de l’album. La couverture reste l’image de repli pour l’ouverture et pour toute branche encore non illustrée.
 
 ## Chaîne de consolidation
 

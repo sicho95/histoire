@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildSpokenChoicePrompt } from '../src/audio/choice-prompt.js';
 import { forceFrenchPronunciation } from '../src/audio/french-speech.js';
+import { prepareMicrophoneAudioSession, restorePlaybackAudioSession } from '../src/audio/audio-session.js';
 
 test('force les onomatopées vers une graphie vocale française sans changer le récit', () => {
   assert.equal(
@@ -14,11 +15,31 @@ test('prononce Tin à la française, y compris répété et en capitales', () =>
   assert.equal(forceFrenchPronunciation('Tin… Tin TIN !'), 'tain… tain tain !');
 });
 
+test('retire le balisage et lie les inversions françaises pour la voix seulement', () => {
+  assert.equal(
+    forceFrenchPronunciation('**Vite !** dit-il. Où va-t-elle ? *Écoute.*'),
+    'Vite ! ditil. Où vatelle ? Écoute.'
+  );
+});
+
 test('lit la question puis chaque choix affiché', () => {
   assert.equal(
     buildSpokenChoicePrompt('Où aller ?', [{ label: 'Vers la forêt' }, { label: 'Dans le bateau' }, { label: 'Sous les étoiles' }]),
-    'À toi de choisir… Où aller ? Premier choix : Vers la forêt. Deuxième choix : Dans le bateau. Troisième choix : Sous les étoiles. Prends ton temps, regarde bien les images, puis touche ton choix.'
+    'À toi de choisir… Où aller ? Choix numéro 1 : Vers la forêt. Choix numéro 2 : Dans le bateau. Choix numéro 3 : Sous les étoiles. Prends ton temps, puis touche l’image 1, 2, 3.'
   );
+});
+
+test('rétablit la sortie de lecture après le micro quand Audio Session existe', async t => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const audioSession = { type: 'auto' };
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { audioSession } });
+  t.after(() => descriptor
+    ? Object.defineProperty(globalThis, 'navigator', descriptor)
+    : delete globalThis.navigator);
+  prepareMicrophoneAudioSession();
+  assert.equal(audioSession.type, 'play-and-record');
+  await restorePlaybackAudioSession({ settleMs: 0 });
+  assert.equal(audioSession.type, 'playback');
 });
 
 test('coupe le micro sans envoyer de texte si personne ne parle', async t => {

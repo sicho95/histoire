@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildReviewPackage, harmonizeCreatedStoryOpening, normalizeStory, reachableNodeIds, storyToPortable, validateStory } from '../src/core/story-model.js';
-import { pickDisplayChoices } from '../src/core/choices.js';
+import { matchSpokenChoice, pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
+import { currentPassageImage, displayChoiceImage } from '../src/core/illustrations.js';
 
 const legacy = {
   id: 'Test ancien', title: 'Une histoire test', start_node: 'start',
@@ -69,6 +70,22 @@ test('affiche un mélange stable de deux ou trois choix accumulés', () => {
   assert.equal(first.length, 3);
   assert.ok(first.some(choice => choice.learned));
   assert.ok(first.some(choice => !choice.learned));
+});
+
+test('comprend un choix prononcé par son numéro affiché', () => {
+  const choices = [{ id: 'a', label: 'La forêt' }, { id: 'b', label: 'Le bateau' }, { id: 'c', label: 'La lune' }];
+  assert.equal(matchSpokenChoice({ choices }, 'je veux le choix numéro deux', choices)?.id, 'b');
+  assert.equal(matchSpokenChoice({ choices }, 'le troisième', choices)?.id, 'c');
+  assert.equal(matchSpokenChoice({ choices }, 'un passage secret', choices), null);
+});
+
+test('illustre le passage éditorial et replie un brouillon sur sa couverture', () => {
+  const story = { coverImage: './cover.jpg' };
+  const editorial = { choice: 'La forêt', illustration: './assets/stories/test/choices/forest.jpg', learned: false };
+  const learned = { choice: 'Une fusée', illustration: './assets/choices/choice-1.svg', learned: true };
+  assert.equal(currentPassageImage(story, [editorial]), editorial.illustration);
+  assert.equal(currentPassageImage(story, [editorial, learned]), story.coverImage);
+  assert.equal(displayChoiceImage(learned, 1), './assets/choices/choice-2.svg');
 });
 
 test('fabrique et relit un ZIP autonome sans dépendance externe', async () => {

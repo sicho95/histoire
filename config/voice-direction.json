@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "styleVersion": "signature-fr-neural-v3",
+  "styleVersion": "signature-fr-neural-v4",
   "engine": "edge-tts",
   "format": "mp3",
   "voices": {
@@ -16,7 +16,7 @@
     "lila-fete-couleurs": "fr-FR-VivienneMultilingualNeural"
   },
   "ageProfiles": {
-    "2-5": { "rate": -18, "pitch": 0, "volume": 0 },
+    "2-5": { "rate": -14, "pitch": 0, "volume": 0 },
     "5-9": { "rate": -10, "pitch": 0, "volume": 0 }
   },
   "paceModifiers": {
