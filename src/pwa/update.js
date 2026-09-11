@@ -1,4 +1,4 @@
-const CURRENT_BUILD = 'f8ac703c60cc3a478231e12d926c63444bf45885-12';
+const CURRENT_BUILD = 'f04d85b552e4d2c03d02b1d49892e207d96e022a-13';
 let registration;
 let reloading = false;
 

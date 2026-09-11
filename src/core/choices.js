@@ -34,6 +34,9 @@ export function matchSpokenChoice(node, transcript, displayedChoices = node?.cho
   ];
   const numberedIndex = numbered.findIndex(pattern => pattern.test(heard));
   if (numberedIndex >= 0 && displayedChoices[numberedIndex]) return displayedChoices[numberedIndex];
+  const colors = ['bleu', 'rouge', 'vert'];
+  const colorIndex = colors.findIndex(color => new RegExp(`^(?:(?:le|la)\\s+)?(?:choix\\s+|couleur\\s+)?${color}e?$`).test(heard));
+  if (colorIndex >= 0 && displayedChoices[colorIndex]) return displayedChoices[colorIndex];
   return displayedChoices.find(choice => {
     const label = choice.label.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     return heard.includes(label) || label.split(/\s+/).filter(word => word.length > 3).some(word => heard.includes(word));
