@@ -144,6 +144,8 @@ Exigences éditoriales :
 - trois émotions ou intensités différentes au fil du récit ;
 - aucune mention de modèle, prompt, génération, nœud ou embranchement.
 
+La propriété storyBible est obligatoire et contient toujours ces six clés, sans exception : premise, theme, values, heroGoal, stakes et recurringObjects. heroGoal décrit en une phrase concrète ce que le personnage principal cherche à accomplir. Même si une information paraît évidente dans le récit, sa clé ne doit jamais être omise.
+
 Structure obligatoire des nœuds :
 1. décision : isEnding=false, nextNode vide, question claire et 2 ou 3 choices ;
 2. conséquence : isEnding=false, question vide, choices vide et nextNode vers la prochaine décision ;

@@ -24,6 +24,21 @@ test('normalise les anciens noms snake_case', () => {
   assert.equal(story.nodes['end-a'].isEnding, true);
 });
 
+test('répare une bible partielle sans perdre l’histoire générée', () => {
+  const raw = structuredClone(legacy);
+  raw.storyBible = {
+    premise: 'Une petite dragonne explore une île.',
+    theme: 'amitié',
+    values: ['entraide'],
+    stakes: 'Retrouver ses amis.',
+    recurringObjects: ['une carte']
+  };
+  const story = normalizeStory(raw);
+  assert.equal(story.storyBible.premise, raw.storyBible.premise);
+  assert.match(story.storyBible.heroGoal, /quête/i);
+  assert.deepEqual(story.storyBible.recurringObjects, ['une carte']);
+});
+
 test('parcourt correctement un ancien graphe à deux fins', () => {
   const story = normalizeStory(legacy);
   assert.deepEqual([...reachableNodeIds(story)].sort(), ['end-a', 'end-b', 'start']);

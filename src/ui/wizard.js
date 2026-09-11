@@ -26,6 +26,8 @@ export function initWizard() {
   const form = document.getElementById('studio-form');
   const gender = document.getElementById('studio-gender');
   const hero = document.getElementById('studio-hero');
+  const status = document.getElementById('studio-status');
+  const button = document.getElementById('generate-story');
   const renderHeroes = () => {
     const selected = hero.value;
     hero.replaceChildren(...HEROES[gender.value].map(label => new Option(label, label)));
@@ -38,19 +40,19 @@ export function initWizard() {
   };
   const showStep = next => {
     step = Math.max(0, Math.min(2, next));
+    if (!button.disabled) status.textContent = '';
     document.querySelectorAll('[data-studio-step]').forEach(panel => panel.classList.toggle('hidden', Number(panel.dataset.studioStep) !== step));
     document.querySelectorAll('.studio-progress span').forEach((dot, index) => dot.classList.toggle('active', index <= step));
   };
   document.querySelectorAll('.studio-next').forEach(button => { button.onclick = () => showStep(step + 1); });
   document.querySelectorAll('.studio-prev').forEach(button => { button.onclick = () => showStep(step - 1); });
+  form.addEventListener('input', () => { if (!button.disabled) status.textContent = ''; });
   gender.onchange = renderHeroes;
   renderHeroes();
   window.addEventListener('app:viewChanged', event => { if (event.detail?.id === 'view-studio') showStep(0); });
   showStep(0);
   form.onsubmit = async event => {
     event.preventDefault();
-    const status = document.getElementById('studio-status');
-    const button = document.getElementById('generate-story');
     if (!getSecrets().groqApiKey) {
       showToast('Un parent doit d’abord ajouter une clé Groq gratuite.');
       document.querySelector('[data-view="view-parents"]').click();
@@ -70,7 +72,15 @@ export function initWizard() {
     status.textContent = 'J’imagine les personnages, les vrais embranchements et plusieurs fins…';
     try {
       const request = buildFullStoryRequest(input);
-      const { data } = await queryStructured({ name: 'complete_child_story', schema: STORY_RESPONSE_SCHEMA, ...request, maxOutputTokens: 12000 });
+      const { data } = await queryStructured({
+        name: 'complete_child_story',
+        schema: STORY_RESPONSE_SCHEMA,
+        ...request,
+        maxOutputTokens: 12000,
+        retryHint: 'Vérifie particulièrement storyBible : premise, theme, values, heroGoal, stakes et recurringObjects doivent toutes être présentes.',
+        repair: candidate => normalizeStory(candidate),
+        onRetry: () => { status.textContent = 'Je vérifie l’histoire et je répare un détail…'; }
+      });
       const requestedAgeBand = input.age <= 4 ? '2-5' : '5-9';
       const story = normalizeStory({
         ...data,

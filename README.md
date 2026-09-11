@@ -55,7 +55,7 @@ Voir [stories/README.md](stories/README.md) et [audio/README.md](audio/README.md
 
 ## Création, voix et export
 
-La génération utilise l'offre gratuite Groq avec `openai/gpt-oss-120b` et des sorties JSON structurées. La clé est saisie dans l'espace parents et reste en session par défaut. Elle n'est jamais ajoutée au dépôt ou aux exports.
+La génération utilise l'offre gratuite Groq avec `openai/gpt-oss-120b` et des sorties JSON structurées. La clé est saisie dans l'espace parents et reste en session par défaut. Elle n'est jamais ajoutée au dépôt ou aux exports. Si Groq oublie exceptionnellement une propriété technique, l'application récupère la réponse quand elle est disponible ou effectue une seule relance de contrôle ; un brouillon partiel ne remplace jamais une histoire valide.
 
 La lecture suit une cascade explicite : MP3 éditorial inclus, piste portable importée, Edge TTS gratuit via le Worker Sicho95, essai Edge direct dans Microsoft Edge, Azure Speech si configuré, OpenAI si configuré, Google AI Studio si configuré, puis meilleure voix française de l’appareil. Le Worker ne sert qu’à fabriquer la piste Edge : l’audio traverse Cloudflare une seule fois, est enregistré dans IndexedDB, puis toutes les réécoutes et l’export utilisent la copie locale. Le lecteur réutilise un unique élément audio et restaure le mode `playback` après le micro sur Safari/iOS.
 

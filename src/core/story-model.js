@@ -45,6 +45,25 @@ function normalizeNode(raw, id) {
   };
 }
 
+function normalizeStoryBible(raw, story) {
+  const bible = raw?.storyBible || raw?.story_bible || {};
+  const rawValues = Array.isArray(bible.values) && bible.values.length ? bible.values : ['entraide'];
+  const values = rawValues.map(value => String(value).trim()).filter(Boolean).slice(0, 4);
+  const rawRecurringObjects = Array.isArray(bible.recurringObjects || bible.recurring_objects)
+    && (bible.recurringObjects || bible.recurring_objects).length
+    ? (bible.recurringObjects || bible.recurring_objects)
+    : ['un objet important de l’aventure'];
+  const recurringObjects = rawRecurringObjects.map(value => String(value).trim()).filter(Boolean).slice(0, 5);
+  return {
+    premise: String(bible.premise || story.intro || 'Une aventure à choix racontée à un enfant.').trim(),
+    theme: String(bible.theme || story.theme || 'aventure et émotions').trim(),
+    values: values.length ? values : ['entraide'],
+    heroGoal: String(bible.heroGoal || bible.hero_goal || 'Mener sa quête jusqu’au bout et protéger ses amis.').trim(),
+    stakes: String(bible.stakes || 'Trouver une solution sûre avant que l’aventure ne se termine.').trim(),
+    recurringObjects: recurringObjects.length ? recurringObjects : ['un objet important de l’aventure']
+  };
+}
+
 export function normalizeStory(raw, meta = {}) {
   if (!raw || typeof raw !== 'object') throw new TypeError('Une histoire doit être un objet JSON.');
   const rawNodes = Array.isArray(raw.nodes)
@@ -65,9 +84,7 @@ export function normalizeStory(raw, meta = {}) {
     featuredOrder: Number(raw.featuredOrder ?? raw.featured_order ?? 999),
     durationMinutes: Math.max(5, Number(raw.durationMinutes || raw.duration_minutes || 15)),
     startNode: raw.startNode || raw.start_node || 'start',
-    storyBible: raw.storyBible || raw.story_bible || {
-      premise: raw.intro || '', theme: '', values: [], heroGoal: '', stakes: '', recurringObjects: []
-    },
+    storyBible: normalizeStoryBible(raw, raw),
     nodes,
     source: meta.source || raw.source || (raw.is_user_created ? 'child-draft' : 'import'),
     revision: Number(meta.revision ?? raw.revision ?? 1),

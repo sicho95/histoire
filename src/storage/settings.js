@@ -22,7 +22,12 @@ const defaults = {
   debugEnabled: false
 };
 
-function storageAvailable() { return typeof localStorage !== 'undefined' && typeof sessionStorage !== 'undefined'; }
+function storageAvailable() {
+  return typeof localStorage !== 'undefined'
+    && typeof sessionStorage !== 'undefined'
+    && typeof localStorage.getItem === 'function'
+    && typeof sessionStorage.getItem === 'function';
+}
 function parse(storage, key) {
   try { return JSON.parse(storage.getItem(key) || '{}'); } catch { return {}; }
 }

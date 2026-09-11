@@ -20,6 +20,7 @@ Ce document résume les règles que les futures évolutions doivent préserver. 
 - L’atelier demande d’abord « héroïne » ou « héros », puis propose dix personnages accordés à ce choix. Après une création réussie, le formulaire repart vide.
 - Une création commence directement par une scène de décision. Si un ancien brouillon contient un prologue linéaire, il est fusionné dans la première décision afin d’éviter un écran « Continuer » isolé.
 - Les nuances vocales inventées par le LLM sont tolérées dans le JSON puis ramenées localement vers les émotions et rythmes autorisés ; une simple variante de mot ne doit pas faire échouer toute l’histoire.
+- Un oubli isolé dans la structure Groq, notamment `storyBible.heroGoal`, ne doit pas faire perdre une longue génération : la PWA complète les métadonnées internes lorsqu’elle peut récupérer le JSON rejeté, sinon elle effectue une seule relance guidée. Après l’échec final, les choix du formulaire restent saisis et le message enfant ne montre pas le détail technique du schéma.
 
 ## Voix et portabilité
 
