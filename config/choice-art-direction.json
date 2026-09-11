@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "styleVersion": "signature-choice-art-v1",
+  "styleVersion": "signature-choice-art-v2",
   "acceptedAt": "2026-09-08",
   "corePrinciple": "Un embranchement équivaut à tourner une page : l’image illustre la suite possible tout en restant un bouton de choix immédiatement compréhensible.",
   "roles": [
@@ -12,6 +12,10 @@
     "childDraft": {
       "specificArtRequired": false,
       "genericPictogramsAllowed": true,
+      "genericCueOrder": ["bleu", "vert", "rouge"],
+      "preschoolCue": "grand carré de couleur unie, sans rond intérieur",
+      "olderChildCue": "grand chiffre 1, 2 ou 3 de même taille sur fond pêche uni",
+      "cornerBadge": false,
       "privacy": "local jusqu’à export et validation parentale"
     },
     "consolidated": {
@@ -23,6 +27,7 @@
       "specificArtRequired": true,
       "genericPictogramsAllowed": false,
       "uniqueImagePerChoice": true,
+      "cornerBadge": false,
       "precacheForOfflineReading": true
     }
   },
@@ -62,7 +67,7 @@
     "format": "JPEG",
     "displayWidthPx": 360,
     "naming": "assets/stories/<story-id>/choices/<choice-id>.jpg",
-    "fallback": "assets/choices/*.svg uniquement pour les brouillons"
+    "fallback": "repères simples rendus par l’interface pour les brouillons ; SVG historiques conservés pour la compatibilité des exports"
   },
   "signatureInventory": [
     { "id": "mila-oeuf-orage", "ageBand": "5-9", "choiceImages": 11, "universe": "jungle d’orage, moulin et dinosaures célestes" },

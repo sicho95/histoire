@@ -32,7 +32,7 @@ test('lit la question puis chaque choix affiché', () => {
 test('annonce les couleurs pour les choix générés des 2-5 ans', () => {
   assert.equal(
     buildSpokenChoicePrompt('Que faire ?', [{ label: 'Suivre la bulle', learned: true }, { label: 'Ouvrir la porte', learned: true }], { ageBand: '2-5' }),
-    'À toi de choisir… Que faire ? Choix bleu : Suivre la bulle. Choix rouge : Ouvrir la porte. Prends ton temps, puis touche la couleur de ton choix.'
+    'À toi de choisir… Que faire ? Choix bleu : Suivre la bulle. Choix vert : Ouvrir la porte. Prends ton temps, puis touche la couleur de ton choix.'
   );
 });
 

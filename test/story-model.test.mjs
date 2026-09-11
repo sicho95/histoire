@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildReviewPackage, harmonizeCreatedStoryOpening, normalizeStory, reachableNodeIds, storyToPortable, validateStory } from '../src/core/story-model.js';
+import { assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening, normalizeNarrationMood, normalizeStory, reachableNodeIds, storyPathMetrics, storyToPortable, validateStory } from '../src/core/story-model.js';
 import { matchSpokenChoice, pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
-import { currentPassageImage, displayChoiceImage } from '../src/core/illustrations.js';
+import { currentPassageImage, displayChoiceImage, generatedChoiceColor } from '../src/core/illustrations.js';
+import { buildFullStoryRequest, buildStoryRefinementRequest } from '../src/api/prompts.js';
 
 const legacy = {
   id: 'Test ancien', title: 'Une histoire test', start_node: 'start',
@@ -37,6 +38,43 @@ test('répare une bible partielle sans perdre l’histoire générée', () => {
   assert.equal(story.storyBible.premise, raw.storyBible.premise);
   assert.match(story.storyBible.heroGoal, /quête/i);
   assert.deepEqual(story.storyBible.recurringObjects, ['une carte']);
+});
+
+test('préserve les nuances vocales usuelles au lieu de tout ramener à wonder', () => {
+  assert.equal(normalizeNarrationMood('emotional'), 'sadness');
+  assert.equal(normalizeNarrationMood('tense'), 'suspense');
+  assert.equal(normalizeNarrationMood('celebration'), 'triumph');
+});
+
+test('mesure la durée sur chaque vraie route de lecture', () => {
+  const shortStory = normalizeStory(legacy);
+  const longRaw = structuredClone(legacy);
+  for (const node of Object.values(longRaw.nodes)) node.text = 'émotion '.repeat(180);
+  const shortMetrics = storyPathMetrics(shortStory, 120);
+  const longMetrics = storyPathMetrics(normalizeStory(longRaw), 120);
+  assert.equal(shortMetrics.pathCount, 2);
+  assert.ok(shortMetrics.maxMinutes < longMetrics.minMinutes);
+  assert.ok(longMetrics.minWords >= 360);
+});
+
+test('le prompt traite la durée et le souhait émotionnel comme des contraintes', () => {
+  const input = { age: 7, duration: 10, hero: 'une dragonne', heroVoice: 'female', name: 'Lila', place: 'une île', theme: 'amitié', wish: 'tragique au début puis très heureux' };
+  const request = buildFullStoryRequest(input);
+  assert.match(request.instructions, /chaque route complète/);
+  assert.match(request.instructions, /contrat éditorial prioritaire/);
+  assert.match(request.instructions, /aucune mort/);
+  const refinement = buildStoryRefinementRequest({ story: normalizeStory(legacy), input, metrics: storyPathMetrics(normalizeStory(legacy)) });
+  assert.match(refinement.instructions, /souvenir concret/);
+  assert.match(refinement.userInput, /tragique au début/);
+});
+
+test('refuse une histoire émotionnelle courte et vocalement plate', () => {
+  const story = normalizeStory(legacy);
+  const quality = assessGeneratedStory(story, { duration: 10, theme: 'amitié et émotions', wish: 'tragique au début' });
+  assert.equal(quality.ok, false);
+  assert.ok(quality.errors.some(error => error.includes('durée')));
+  assert.ok(quality.errors.some(error => error.includes('émotionnel')));
+  assert.ok(quality.errors.some(error => error.includes('début')));
 });
 
 test('parcourt correctement un ancien graphe à deux fins', () => {
@@ -102,7 +140,8 @@ test('illustre le passage éditorial et replie un brouillon sur sa couverture', 
   assert.equal(currentPassageImage(story, [editorial]), editorial.illustration);
   assert.equal(currentPassageImage(story, [editorial, learned]), story.coverImage);
   assert.equal(displayChoiceImage(learned, 1), './assets/choices/choice-2.svg');
-  assert.equal(displayChoiceImage(learned, 1, '2-5'), './assets/choices/choice-rouge.svg');
+  assert.equal(displayChoiceImage(learned, 1, '2-5'), './assets/choices/choice-vert.svg');
+  assert.deepEqual([0, 1, 2].map(generatedChoiceColor), ['bleu', 'vert', 'rouge']);
 });
 
 test('fabrique et relit un ZIP autonome sans dépendance externe', async () => {

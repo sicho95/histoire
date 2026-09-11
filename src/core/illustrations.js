@@ -7,11 +7,16 @@ export function currentPassageImage(story, path = []) {
   return isEditorialChoiceArt(latestChoice) ? latestChoice.illustration : (story?.coverImage || '');
 }
 
-export const PRESCHOOL_CHOICE_COLORS = ['bleu', 'rouge', 'vert'];
+export const GENERATED_CHOICE_COLORS = ['bleu', 'vert', 'rouge'];
+export const PRESCHOOL_CHOICE_COLORS = GENERATED_CHOICE_COLORS;
+
+export function generatedChoiceColor(index) {
+  return GENERATED_CHOICE_COLORS[index] || GENERATED_CHOICE_COLORS.at(-1);
+}
 
 export function preschoolChoiceColor(choice, index, ageBand) {
   if (ageBand !== '2-5' || isEditorialChoiceArt(choice)) return '';
-  return PRESCHOOL_CHOICE_COLORS[index] || PRESCHOOL_CHOICE_COLORS.at(-1);
+  return generatedChoiceColor(index);
 }
 
 export function displayChoiceImage(choice, index, ageBand) {

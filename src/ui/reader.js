@@ -3,7 +3,7 @@ import { currentNode, state } from '../core/state.js';
 import { pickDisplayChoices } from '../core/choices.js';
 import { chooseOption } from '../core/engine.js';
 import { getSettings } from '../storage/settings.js';
-import { currentPassageImage, displayChoiceImage, isEditorialChoiceArt, preschoolChoiceColor } from '../core/illustrations.js';
+import { currentPassageImage, generatedChoiceColor, isEditorialChoiceArt, preschoolChoiceColor } from '../core/illustrations.js';
 
 let paginatedNodeId = '';
 let textPageIndex = 0;
@@ -111,17 +111,26 @@ export function renderReader({ phase = 'narration', preserve = false, resetPage 
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'choice-button';
-    button.innerHTML = '<span class="choice-number" aria-hidden="true"></span><img><strong></strong>';
+    button.innerHTML = '<span class="choice-visual" aria-hidden="true"></span><strong></strong>';
     const color = preschoolChoiceColor(choice, index, state.currentStory.ageBand);
-    const badge = button.querySelector('.choice-number');
-    badge.textContent = index + 1;
-    badge.classList.toggle('hidden', Boolean(color));
-    const image = button.querySelector('img');
-    image.src = displayChoiceImage(choice, index, state.currentStory.ageBand);
-    image.alt = color ? `Choix ${color}` : '';
-    image.className = isEditorialChoiceArt(choice) ? 'choice-art-signature' : 'choice-art-generic';
+    const editorialArt = isEditorialChoiceArt(choice);
+    const visual = button.querySelector('.choice-visual');
+    if (editorialArt) {
+      const image = document.createElement('img');
+      image.src = choice.illustration;
+      image.alt = '';
+      image.className = 'choice-art-signature';
+      visual.replaceWith(image);
+      button.classList.add('choice-button--signature');
+    } else {
+      const visualColor = generatedChoiceColor(index);
+      visual.dataset.color = visualColor;
+      visual.classList.add(color ? 'choice-visual--color' : 'choice-visual--number');
+      if (!color) visual.textContent = index + 1;
+      button.classList.add('choice-button--generated');
+    }
     button.querySelector('strong').textContent = choice.label;
-    if (color) button.setAttribute('aria-label', `Choix ${color} : ${choice.label}`);
+    button.setAttribute('aria-label', color ? `Choix ${color} : ${choice.label}` : `Choix ${index + 1} : ${choice.label}`);
     button.onclick = () => chooseOption(choice);
     choices.append(button);
   }

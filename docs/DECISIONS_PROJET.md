@@ -5,22 +5,26 @@ Ce document résume les règles que les futures évolutions doivent préserver. 
 ## Histoires signature
 
 - Une histoire publiée est cohérente sur chacune de ses routes : personnage, objet et connaissance doivent être introduits avant usage.
-- Un choix entraîne une conséquence racontée avant le prochain embranchement. Une question est toujours dite à voix haute, suivie de « choix numéro 1 », « choix numéro 2 » et éventuellement « choix numéro 3 » avec le libellé exact affiché. Le même numéro est visible sur chaque carte.
+- Un choix entraîne une conséquence racontée avant le prochain embranchement. Une question est toujours dite à voix haute, suivie de « choix numéro 1 », « choix numéro 2 » et éventuellement « choix numéro 3 » avec le libellé exact affiché et dans l’ordre visuel gauche-droite.
 - L’enfant voit 2 ou 3 choix au maximum. Si les personnalisations en ont créé davantage, le sous-ensemble reste stable pendant la séance.
 - Une illustration de choix est une page du livre : cohérente avec le héros et l’univers, mais centrée sur une seule action immédiatement reconnaissable à l’âge visé.
+- Les illustrations signature n’ont aucune pastille numérotée superposée. Les brouillons `5-9 ans` montrent uniquement de grands chiffres `1`, `2`, `3` bleu, vert, rouge sur fond pêche ; les brouillons `2-5 ans` montrent de grands carrés unis bleu, vert, rouge, sans cercle intérieur.
 
 ## Génération personnalisée
 
 - Le prompt transmet l’état causal récent de l’histoire, interdit les éléments non introduits et impose de simuler toutes les routes avant de rendre le JSON.
 - Une branche personnalisée possède sa scène de décision, 2 ou 3 conséquences propres, puis rejoint uniquement un point compatible du récit.
 - Le micro d’une autre idée s’arrête seul après la phrase ou après quelques secondes sans parole. Le LLM n’est appelé que si une transcription non vide existe.
-- Groq produit le texte structuré. Il ne doit pas être présenté comme un générateur d’illustrations : les brouillons `2-5 ans` utilisent des cartes bleu, rouge et vert jusqu’à leur consolidation ; les plus grands gardent les cartes 1, 2 et 3.
+- Groq produit le texte structuré. Il ne doit pas être présenté comme un générateur d’illustrations : les brouillons `2-5 ans` utilisent des cartes bleu, vert et rouge jusqu’à leur consolidation ; les plus grands gardent les cartes 1, 2 et 3 dans ces mêmes couleurs.
 - En lecture, l’image du passage est l’illustration éditoriale du dernier choix. Une branche générée garde la couverture de l’histoire tant qu’une véritable illustration n’a pas été produite et validée.
 - Pour les 2–5 ans, la longueur vient d’une suite de petites actions concrètes et répétées, jamais de longues phrases ou d’idées abstraites. Le vocabulaire vise une compréhension autour de 3 ans.
 - L’atelier demande d’abord « héroïne » ou « héros », puis propose dix personnages accordés à ce choix. Après une création réussie, le formulaire repart vide.
 - Une création commence directement par une scène de décision. Si un ancien brouillon contient un prologue linéaire, il est fusionné dans la première décision afin d’éviter un écran « Continuer » isolé.
 - Les nuances vocales inventées par le LLM sont tolérées dans le JSON puis ramenées localement vers les émotions et rythmes autorisés ; une simple variante de mot ne doit pas faire échouer toute l’histoire.
 - Un oubli isolé dans la structure Groq, notamment `storyBible.heroGoal`, ne doit pas faire perdre une longue génération : la PWA complète les métadonnées internes lorsqu’elle peut récupérer le JSON rejeté, sinon elle effectue une seule relance guidée. Après l’échec final, les choix du formulaire restent saisis et le message enfant ne montre pas le détail technique du schéma.
+- La durée d’une création est mesurée sur chaque route réellement jouable, questions et choix lus compris, avec le débit observé des voix du projet (`120 mots/min` pour les `2-5 ans`, `145 mots/min` pour les `5-9 ans`). Une histoire visant dix minutes doit durer au moins neuf minutes sur sa route la plus courte ; sinon une passe éditoriale l’allonge automatiquement et un résultat encore trop court n’est pas enregistré.
+- Une demande libre remplie déclenche une passe éditoriale dédiée. Le souhait doit agir sur le début, le conflit, plusieurs décisions et la fin. Une forte émotion se construit par le lien, la perte, le souvenir, le sacrifice et une réparation gagnée, jamais par la simple mention de tristesse ou de larmes.
+- Les synonymes d’humeur produits par le LLM sont traduits vers les intentions vocales sûres (`sadness`, `suspense`, `calm`, `triumph`, etc.) au lieu de ramener presque toutes les scènes à `wonder`.
 
 ## Voix et portabilité
 
