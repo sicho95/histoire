@@ -32,7 +32,7 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
       ...choice,
       id: `${sceneId}-choice-${index + 1}`,
       illustration: story.ageBand === '2-5'
-        ? `./assets/choices/choice-${['bleu', 'rouge', 'vert'][index]}.svg`
+        ? `./assets/choices/choice-${['bleu', 'vert', 'rouge'][index]}.svg`
         : `./assets/choices/choice-${index + 1}.svg`,
       nextNode: `${sceneId}-suite-${index + 1}`,
       learned: true

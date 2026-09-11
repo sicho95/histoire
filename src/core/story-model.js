@@ -1,4 +1,14 @@
 const MOODS = new Set(['wonder', 'joy', 'mystery', 'suspense', 'gentle_fear', 'sadness', 'calm', 'triumph']);
+const MOOD_ALIASES = new Map([
+  ['adventure', 'wonder'], ['adventurous', 'wonder'], ['curiosity', 'wonder'], ['amazement', 'wonder'], ['émerveillement', 'wonder'],
+  ['happy', 'joy'], ['happiness', 'joy'], ['excited', 'joy'], ['excitement', 'joy'], ['joie', 'joy'],
+  ['mysterious', 'mystery'], ['intrigue', 'mystery'], ['mystère', 'mystery'],
+  ['tense', 'suspense'], ['tension', 'suspense'], ['stress', 'suspense'],
+  ['fear', 'gentle_fear'], ['scared', 'gentle_fear'], ['soft_fear', 'gentle_fear'], ['peur', 'gentle_fear'],
+  ['sad', 'sadness'], ['emotional', 'sadness'], ['emotion', 'sadness'], ['triste', 'sadness'], ['tristesse', 'sadness'],
+  ['peaceful', 'calm'], ['gentle', 'calm'], ['tender', 'calm'], ['calme', 'calm'], ['tendresse', 'calm'],
+  ['victory', 'triumph'], ['celebration', 'triumph'], ['hope', 'triumph'], ['triomphe', 'triumph'], ['espoir', 'triumph']
+]);
 
 export function slugify(value) {
   return String(value || '')
@@ -23,6 +33,12 @@ function normalizeChoice(raw, index) {
   };
 }
 
+export function normalizeNarrationMood(value) {
+  const mood = String(value || '').trim().toLowerCase().replace(/[\s-]+/g, '_');
+  if (MOODS.has(mood)) return mood;
+  return MOOD_ALIASES.get(mood) || 'wonder';
+}
+
 function normalizeNode(raw, id) {
   const choices = (raw.choices || []).map(normalizeChoice);
   const nextNode = raw.nextNode || raw.next_node || '';
@@ -37,7 +53,7 @@ function normalizeNode(raw, id) {
     isEnding: Boolean(terminal),
     nextNode,
     narration: {
-      mood: MOODS.has(narration.mood) ? narration.mood : 'wonder',
+      mood: normalizeNarrationMood(narration.mood),
       pace: ['slow', 'normal', 'lively'].includes(narration.pace) ? narration.pace : 'normal',
       intensity: Math.max(1, Math.min(3, Number(narration.intensity || 2)))
     },
@@ -212,11 +228,96 @@ export function validateStory(input, { editorial = false } = {}) {
   return { ok: errors.length === 0, errors: [...new Set(errors)], warnings: [...new Set(warnings)], story };
 }
 
-export function estimateDurationMinutes(story, wordsPerMinute = 135) {
-  const reachable = Object.values(story.nodes);
-  const averagePathNodes = Math.max(4, Math.ceil(reachable.length * 0.58));
-  const averageWords = reachable.reduce((sum, node) => sum + wordCount(node.text), 0) / Math.max(1, reachable.length);
-  return Math.max(5, Math.round((averageWords * averagePathNodes) / wordsPerMinute));
+function spokenChoiceWordCount(node) {
+  if (!node?.question || !node.choices?.length) return 0;
+  const labels = node.choices.reduce((sum, choice) => sum + wordCount(choice.label), 0);
+  return wordCount(node.question) + labels + 13 + node.choices.length * 3;
+}
+
+export function storyPathMetrics(input, wordsPerMinute) {
+  const story = normalizeStory(input, { source: input.source, revision: input.revision });
+  const wpm = Number(wordsPerMinute) || (story.ageBand === '2-5' ? 120 : 145);
+  const openingWords = wordCount(`${story.title}. ${story.intro}`);
+  const memo = new Map();
+
+  function measure(nodeId, trail = new Set()) {
+    if (!nodeId || trail.has(nodeId) || trail.size > 80) return null;
+    if (memo.has(nodeId)) return memo.get(nodeId);
+    const node = story.nodes[nodeId];
+    if (!node) return null;
+    const ownWords = wordCount(node.text) + spokenChoiceWordCount(node);
+    if (node.isEnding || (!node.nextNode && !node.choices.length)) {
+      const result = { minWords: ownWords, maxWords: ownWords, averageWords: ownWords, pathCount: 1 };
+      memo.set(nodeId, result);
+      return result;
+    }
+    const nextTrail = new Set(trail).add(nodeId);
+    const childIds = node.nextNode ? [node.nextNode] : node.choices.map(choice => choice.nextNode);
+    const children = childIds.map(id => measure(id, nextTrail)).filter(Boolean);
+    if (!children.length) return null;
+    const result = {
+      minWords: ownWords + Math.min(...children.map(child => child.minWords)),
+      maxWords: ownWords + Math.max(...children.map(child => child.maxWords)),
+      averageWords: ownWords + children.reduce((sum, child) => sum + child.averageWords, 0) / children.length,
+      pathCount: Math.min(Number.MAX_SAFE_INTEGER, children.reduce((sum, child) => sum + child.pathCount, 0))
+    };
+    memo.set(nodeId, result);
+    return result;
+  }
+
+  const measured = measure(story.startNode) || {
+    minWords: Object.values(story.nodes).reduce((sum, node) => sum + wordCount(node.text), 0),
+    maxWords: Object.values(story.nodes).reduce((sum, node) => sum + wordCount(node.text), 0),
+    averageWords: Object.values(story.nodes).reduce((sum, node) => sum + wordCount(node.text), 0),
+    pathCount: 1
+  };
+  const minWords = openingWords + measured.minWords;
+  const maxWords = openingWords + measured.maxWords;
+  const averageWords = openingWords + measured.averageWords;
+  return {
+    wordsPerMinute: wpm,
+    pathCount: measured.pathCount,
+    minWords,
+    maxWords,
+    averageWords,
+    minMinutes: minWords / wpm,
+    maxMinutes: maxWords / wpm,
+    averageMinutes: averageWords / wpm
+  };
+}
+
+export function estimateDurationMinutes(story, wordsPerMinute) {
+  return Math.max(1, Math.round(storyPathMetrics(story, wordsPerMinute).averageMinutes));
+}
+
+export function assessGeneratedStory(story, input) {
+  const metrics = storyPathMetrics(story);
+  const targetMinutes = Math.max(1, Number(input?.duration || story.durationMinutes || 10));
+  const errors = [];
+  if (metrics.minMinutes < targetMinutes * .9) {
+    errors.push(`durée minimale ${Math.max(1, Math.round(metrics.minMinutes))} min au lieu de ${targetMinutes}`);
+  }
+  if (metrics.maxMinutes > targetMinutes * 1.15) {
+    errors.push(`durée maximale ${Math.round(metrics.maxMinutes)} min au lieu de ${targetMinutes}`);
+  }
+
+  const intention = `${input?.theme || ''} ${input?.wish || ''}`.toLocaleLowerCase('fr');
+  const wantsStrongEmotion = /émotion|trag|pleur|trist|boulevers|touchant|touchée|touché/.test(intention);
+  if (wantsStrongEmotion) {
+    const nodes = Object.values(story.nodes);
+    const moods = new Set(nodes.map(node => node.narration.mood));
+    if (moods.size < 4 || !moods.has('sadness') || ![...moods].some(mood => mood === 'joy' || mood === 'triumph')) {
+      errors.push('arc émotionnel et intentions vocales insuffisamment variés');
+    }
+    if (/trag/.test(intention) && !['sadness', 'suspense', 'gentle_fear'].includes(story.nodes[story.startNode]?.narration?.mood)) {
+      errors.push('rupture émotionnelle absente du début');
+    }
+    const endings = nodes.filter(node => node.isEnding);
+    if (endings.some(node => !['joy', 'triumph', 'calm'].includes(node.narration.mood))) {
+      errors.push('toutes les fins ne portent pas la résolution heureuse demandée');
+    }
+  }
+  return { ok: errors.length === 0, errors, metrics };
 }
 
 export function buildReviewPackage(story, context = {}) {
