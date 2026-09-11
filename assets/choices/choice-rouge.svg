@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Choix rouge">
+  <rect width="320" height="220" rx="34" fill="#df3347"/>
+  <circle cx="160" cy="110" r="73" fill="#ff8b91" opacity=".72"/>
+  <circle cx="160" cy="110" r="55" fill="#df3347" stroke="#fff" stroke-width="10"/>
+</svg>

@@ -27,7 +27,7 @@ for (const entry of catalog.stories) {
   expected.set(`${story.id}:intro`, `${story.title}. ${story.intro}`);
   for (const node of story.nodes) {
     expected.set(`${story.id}:${node.id}`, node.text);
-    if (node.question) expected.set(`${story.id}:${node.id}-question`, buildSpokenChoicePrompt(node.question, node.choices));
+    if (node.question) expected.set(`${story.id}:${node.id}-question`, buildSpokenChoicePrompt(node.question, node.choices, { ageBand: story.ageBand }));
   }
 }
 

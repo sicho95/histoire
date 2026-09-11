@@ -3,7 +3,7 @@ import { currentNode, state } from '../core/state.js';
 import { pickDisplayChoices } from '../core/choices.js';
 import { chooseOption } from '../core/engine.js';
 import { getSettings } from '../storage/settings.js';
-import { currentPassageImage, displayChoiceImage, isEditorialChoiceArt } from '../core/illustrations.js';
+import { currentPassageImage, displayChoiceImage, isEditorialChoiceArt, preschoolChoiceColor } from '../core/illustrations.js';
 
 let paginatedNodeId = '';
 let textPageIndex = 0;
@@ -112,12 +112,16 @@ export function renderReader({ phase = 'narration', preserve = false, resetPage 
     button.type = 'button';
     button.className = 'choice-button';
     button.innerHTML = '<span class="choice-number" aria-hidden="true"></span><img><strong></strong>';
-    button.querySelector('.choice-number').textContent = index + 1;
+    const color = preschoolChoiceColor(choice, index, state.currentStory.ageBand);
+    const badge = button.querySelector('.choice-number');
+    badge.textContent = index + 1;
+    badge.classList.toggle('hidden', Boolean(color));
     const image = button.querySelector('img');
-    image.src = displayChoiceImage(choice, index);
-    image.alt = '';
+    image.src = displayChoiceImage(choice, index, state.currentStory.ageBand);
+    image.alt = color ? `Choix ${color}` : '';
     image.className = isEditorialChoiceArt(choice) ? 'choice-art-signature' : 'choice-art-generic';
     button.querySelector('strong').textContent = choice.label;
+    if (color) button.setAttribute('aria-label', `Choix ${color} : ${choice.label}`);
     button.onclick = () => chooseOption(choice);
     choices.append(button);
   }

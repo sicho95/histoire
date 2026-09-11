@@ -37,9 +37,9 @@ Les silhouettes, vêtements, couleurs, compagnons et accessoires récurrents res
 
 ## Deux niveaux de production
 
-Une histoire créée gratuitement par l’enfant reste d’abord un brouillon privé. Elle utilise des cartes génériques très lisibles portant les numéros 1, 2 ou 3 afin de répondre immédiatement et sans coût. Le numéro lu à voix haute correspond exactement au numéro affiché.
+Une histoire créée gratuitement par l’enfant reste d’abord un brouillon privé. Pour les `2-5 ans`, elle utilise trois cartes génériques très contrastées : bleu, rouge et vert. La voix annonce « choix bleu », « choix rouge » ou « choix vert ». Pour les `5-9 ans`, les cartes génériques restent numérotées 1, 2 et 3. L’indice lu à voix haute correspond toujours à la carte affichée.
 
-Le lecteur peut proposer **Dire une autre idée** pour personnaliser un embranchement. Cette possibilité reste entièrement cachée si aucun LLM n’est configuré par le parent. Elle n’apparaît que lorsque la clé Groq gratuite est disponible, que l’appareil est en ligne et que la reconnaissance vocale fonctionne. La nouvelle branche reste privée sur l’appareil, utilise les cartes numérotées et conserve la couverture comme image de passage jusqu’à sa consolidation.
+Le lecteur peut proposer **Dire une autre idée** pour personnaliser un embranchement. Cette possibilité reste entièrement cachée si aucun LLM n’est configuré par le parent. Elle n’apparaît que lorsque la clé Groq gratuite est disponible, que l’appareil est en ligne et que la reconnaissance vocale fonctionne. La nouvelle branche reste privée sur l’appareil, utilise les cartes colorées pour les petits ou numérotées pour les plus grands, et conserve la couverture comme image de passage jusqu’à sa consolidation.
 
 Une histoire consolidée ou signature ne peut plus utiliser ces pictogrammes. Chaque choix reçoit une illustration originale et unique dans `assets/stories/<story-id>/choices/<choice-id>.jpg`. Le validateur bloque la publication si un fichier manque, si une image est réutilisée ou si le chemin ne correspond pas à l’identifiant du choix.
 

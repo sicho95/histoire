@@ -83,7 +83,7 @@ for (const entry of catalog.stories) {
   jobs.push({ story, nodeId: 'intro', text: `${story.title}. ${story.intro}`, narration: introNarration, kind: 'intro' });
   for (const node of story.nodes) {
     jobs.push({ story, nodeId: node.id, text: node.text, narration: node.narration, kind: 'scene' });
-    if (node.question) jobs.push({ story, nodeId: `${node.id}-question`, text: buildSpokenChoicePrompt(node.question, node.choices), narration: { ...node.narration, pace: 'slow' }, kind: 'question' });
+    if (node.question) jobs.push({ story, nodeId: `${node.id}-question`, text: buildSpokenChoicePrompt(node.question, node.choices, { ageBand: story.ageBand }), narration: { ...node.narration, pace: 'slow' }, kind: 'question' });
   }
 }
 

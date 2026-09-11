@@ -14,7 +14,7 @@ Ce document résume les règles que les futures évolutions doivent préserver. 
 - Le prompt transmet l’état causal récent de l’histoire, interdit les éléments non introduits et impose de simuler toutes les routes avant de rendre le JSON.
 - Une branche personnalisée possède sa scène de décision, 2 ou 3 conséquences propres, puis rejoint uniquement un point compatible du récit.
 - Le micro d’une autre idée s’arrête seul après la phrase ou après quelques secondes sans parole. Le LLM n’est appelé que si une transcription non vide existe.
-- Groq produit le texte structuré. Il ne doit pas être présenté comme un générateur d’illustrations : les brouillons utilisent des cartes génériques 1, 2 et 3 jusqu’à leur consolidation.
+- Groq produit le texte structuré. Il ne doit pas être présenté comme un générateur d’illustrations : les brouillons `2-5 ans` utilisent des cartes bleu, rouge et vert jusqu’à leur consolidation ; les plus grands gardent les cartes 1, 2 et 3.
 - En lecture, l’image du passage est l’illustration éditoriale du dernier choix. Une branche générée garde la couverture de l’histoire tant qu’une véritable illustration n’a pas été produite et validée.
 - Pour les 2–5 ans, la longueur vient d’une suite de petites actions concrètes et répétées, jamais de longues phrases ou d’idées abstraites. Le vocabulaire vise une compréhension autour de 3 ans.
 - L’atelier demande d’abord « héroïne » ou « héros », puis propose dix personnages accordés à ce choix. Après une création réussie, le formulaire repart vide.

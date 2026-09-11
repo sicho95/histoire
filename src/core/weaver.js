@@ -31,7 +31,9 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
     choices: choices.map((choice, index) => ({
       ...choice,
       id: `${sceneId}-choice-${index + 1}`,
-      illustration: `./assets/choices/choice-${index + 1}.svg`,
+      illustration: story.ageBand === '2-5'
+        ? `./assets/choices/choice-${['bleu', 'rouge', 'vert'][index]}.svg`
+        : `./assets/choices/choice-${index + 1}.svg`,
       nextNode: `${sceneId}-suite-${index + 1}`,
       learned: true
     }))
@@ -53,7 +55,7 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
     id: `${sceneId}-entry`,
     label: transcript.slice(0, 48),
     emoji: scene.coverEmoji || '✨',
-    illustration: './assets/choices/choice-1.svg',
+    illustration: story.ageBand === '2-5' ? './assets/choices/choice-bleu.svg' : './assets/choices/choice-1.svg',
     nextNode: sceneId,
     consequenceHint: scene.text.slice(0, 120),
     learned: true

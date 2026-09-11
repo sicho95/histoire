@@ -76,6 +76,7 @@ test('comprend un choix prononcé par son numéro affiché', () => {
   const choices = [{ id: 'a', label: 'La forêt' }, { id: 'b', label: 'Le bateau' }, { id: 'c', label: 'La lune' }];
   assert.equal(matchSpokenChoice({ choices }, 'je veux le choix numéro deux', choices)?.id, 'b');
   assert.equal(matchSpokenChoice({ choices }, 'le troisième', choices)?.id, 'c');
+  assert.equal(matchSpokenChoice({ choices }, 'choix rouge', choices)?.id, 'b');
   assert.equal(matchSpokenChoice({ choices }, 'un passage secret', choices), null);
 });
 
@@ -86,6 +87,7 @@ test('illustre le passage éditorial et replie un brouillon sur sa couverture', 
   assert.equal(currentPassageImage(story, [editorial]), editorial.illustration);
   assert.equal(currentPassageImage(story, [editorial, learned]), story.coverImage);
   assert.equal(displayChoiceImage(learned, 1), './assets/choices/choice-2.svg');
+  assert.equal(displayChoiceImage(learned, 1, '2-5'), './assets/choices/choice-rouge.svg');
 });
 
 test('fabrique et relit un ZIP autonome sans dépendance externe', async () => {

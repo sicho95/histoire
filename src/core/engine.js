@@ -46,7 +46,7 @@ async function askCurrentQuestion(token = playbackToken) {
   const node = currentNode();
   if (!node?.question) return;
   const displayedChoices = pickDisplayChoices(node);
-  const spokenPrompt = buildSpokenChoicePrompt(node.question, displayedChoices);
+  const spokenPrompt = buildSpokenChoicePrompt(node.question, displayedChoices, { ageBand: state.currentStory.ageBand });
   state.isNarrating = true;
   renderReader({ phase: 'choice', preserve: true });
   await speak(spokenPrompt, { ...narrationContext(node), nodeId: `${node.id}-question`, narration: { ...node.narration, pace: 'slow' } });
