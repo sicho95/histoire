@@ -3,6 +3,7 @@ import { currentNode, state } from '../core/state.js';
 import { pickDisplayChoices } from '../core/choices.js';
 import { chooseOption } from '../core/engine.js';
 import { getSettings } from '../storage/settings.js';
+import { currentPassageImage, displayChoiceImage, isEditorialChoiceArt } from '../core/illustrations.js';
 
 let paginatedNodeId = '';
 let textPageIndex = 0;
@@ -84,9 +85,10 @@ export function renderReader({ phase = 'narration', preserve = false, resetPage 
   document.getElementById('reader-headline').textContent = node.headline;
   document.getElementById('reader-emoji').textContent = node.coverEmoji;
   const art = document.getElementById('reader-cover-art');
-  art.src = state.currentStory.coverImage || '';
-  art.classList.toggle('hidden', !state.currentStory.coverImage);
-  document.getElementById('reader-emoji').classList.toggle('hidden', Boolean(state.currentStory.coverImage));
+  const passageImage = currentPassageImage(state.currentStory, state.path);
+  art.src = passageImage;
+  art.classList.toggle('hidden', !passageImage);
+  document.getElementById('reader-emoji').classList.toggle('hidden', Boolean(passageImage));
   renderTextPage(node, phase, resetPage);
   const total = Math.max(5, Object.keys(state.currentStory.nodes).length * .55);
   document.getElementById('reader-progress-bar').style.width = `${Math.min(100, (state.path.length / total) * 100)}%`;
@@ -105,18 +107,16 @@ export function renderReader({ phase = 'narration', preserve = false, resetPage 
   document.getElementById('question-text').textContent = node.question;
   const choices = document.getElementById('choices-grid');
   choices.replaceChildren();
-  for (const choice of pickDisplayChoices(node)) {
+  for (const [index, choice] of pickDisplayChoices(node).entries()) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'choice-button';
-    button.innerHTML = choice.illustration ? '<img><strong></strong>' : '<span></span><strong></strong>';
-    if (choice.illustration) {
-      const image = button.querySelector('img');
-      image.src = choice.illustration;
-      image.alt = '';
-      image.className = choice.illustration.includes('/stories/') ? 'choice-art-signature' : 'choice-art-generic';
-    }
-    else button.querySelector('span').textContent = choice.emoji;
+    button.innerHTML = '<span class="choice-number" aria-hidden="true"></span><img><strong></strong>';
+    button.querySelector('.choice-number').textContent = index + 1;
+    const image = button.querySelector('img');
+    image.src = displayChoiceImage(choice, index);
+    image.alt = '';
+    image.className = isEditorialChoiceArt(choice) ? 'choice-art-signature' : 'choice-art-generic';
     button.querySelector('strong').textContent = choice.label;
     button.onclick = () => chooseOption(choice);
     choices.append(button);

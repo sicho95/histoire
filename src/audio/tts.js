@@ -3,6 +3,7 @@ import { logDebug } from '../core/debug.js';
 import { getAudioCacheEntry, getStaticAudio, putAudioCacheEntry } from '../storage/audio_cache.js';
 import { forceFrenchPronunciation, FRENCH_SPEECH_VERSION } from './french-speech.js';
 import { pcm16ToWav } from './wav.js';
+import { restorePlaybackAudioSession, setAudioSessionType } from './audio-session.js';
 
 let audioPlayer = null;
 let currentAudioUrl = null;
@@ -66,7 +67,7 @@ function signed(value, suffix) {
 }
 
 function azureProsody(context = {}) {
-  const ageRate = context.ageBand === '2-5' ? -18 : -10;
+  const ageRate = context.ageBand === '2-5' ? -14 : -10;
   const mood = AZURE_PROFILES.mood[context.narration?.mood] || AZURE_PROFILES.mood.wonder;
   const intensity = Number(context.narration?.intensity || 2);
   const question = String(context.nodeId || '').endsWith('-question');
@@ -264,6 +265,7 @@ async function cachedProviderSpeech({ id, producer, metadata }) {
 
 function playBlob(blob, meta = {}) {
   return new Promise(resolve => {
+    setAudioSessionType('playback');
     stopSpeak();
     const { onProgress, ...debugMeta } = meta;
     const url = URL.createObjectURL(blob);
@@ -309,11 +311,12 @@ function preferredFrenchVoice(heroVoice = 'female') {
 function speakBrowser(text, context = {}) {
   return new Promise(resolve => {
     if (!text || !('speechSynthesis' in window)) return resolve();
+    setAudioSessionType('playback');
     stopSpeak();
     const mood = context.narration?.mood;
     const utterance = new SpeechSynthesisUtterance(String(text));
     utterance.lang = 'fr-FR';
-    const ageRate = context.ageBand === '2-5' ? 0.84 : 0.92;
+    const ageRate = context.ageBand === '2-5' ? 0.89 : 0.92;
     utterance.rate = context.narration?.pace === 'slow' ? ageRate - 0.06 : context.narration?.pace === 'lively' ? ageRate + 0.08 : ageRate;
     utterance.pitch = ['joy', 'wonder', 'triumph'].includes(mood) ? 1.08 : ['suspense', 'gentle_fear'].includes(mood) ? 0.94 : 1;
     const voice = preferredFrenchVoice(context.heroVoice);
@@ -349,6 +352,7 @@ export function stopSpeak() {
 }
 
 export function primeTts() {
+  void restorePlaybackAudioSession({ settleMs: 0 });
   try { window.speechSynthesis?.getVoices(); } catch {}
 }
 
@@ -419,7 +423,9 @@ export async function prepareSpeech(text, context = {}) {
 
 export async function speak(text, context = {}) {
   if (!text) return;
+  await restorePlaybackAudioSession({ settleMs: 0 });
   const prepared = await prepareSpeech(text, context);
+  await restorePlaybackAudioSession({ settleMs: 0 });
   if (prepared?.blob) return playBlob(prepared.blob, { source: prepared.source, id: prepared.id, ...context });
   return speakBrowser(forceFrenchPronunciation(text), context);
 }

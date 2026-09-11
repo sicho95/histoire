@@ -25,9 +25,16 @@ export function pickDisplayChoices(node, random = Math.random) {
   return selected;
 }
 
-export function matchSpokenChoice(node, transcript) {
+export function matchSpokenChoice(node, transcript, displayedChoices = node?.choices || []) {
   const heard = String(transcript || '').toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  return (node?.choices || []).find(choice => {
+  const numbered = [
+    /(?:\b(?:choix|numero)\s*(?:numero\s*)?(?:1|un|une)\b|\b(?:premier|premiere)\b|^(?:le\s*)?(?:1|un|une)$)/,
+    /(?:\b(?:choix|numero)\s*(?:numero\s*)?(?:2|deux)\b|\b(?:deuxieme|second|seconde)\b|^(?:le\s*)?(?:2|deux)$)/,
+    /(?:\b(?:choix|numero)\s*(?:numero\s*)?(?:3|trois)\b|\btroisieme\b|^(?:le\s*)?(?:3|trois)$)/
+  ];
+  const numberedIndex = numbered.findIndex(pattern => pattern.test(heard));
+  if (numberedIndex >= 0 && displayedChoices[numberedIndex]) return displayedChoices[numberedIndex];
+  return displayedChoices.find(choice => {
     const label = choice.label.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     return heard.includes(label) || label.split(/\s+/).filter(word => word.length > 3).some(word => heard.includes(word));
   }) || null;

@@ -31,7 +31,9 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
     choices: choices.map((choice, index) => ({
       ...choice,
       id: `${sceneId}-choice-${index + 1}`,
-      nextNode: `${sceneId}-suite-${index + 1}`
+      illustration: `./assets/choices/choice-${index + 1}.svg`,
+      nextNode: `${sceneId}-suite-${index + 1}`,
+      learned: true
     }))
   };
   story.nodes[sceneId] = scene;
@@ -51,7 +53,7 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
     id: `${sceneId}-entry`,
     label: transcript.slice(0, 48),
     emoji: scene.coverEmoji || '✨',
-    illustration: scene.choices[0]?.illustration || './assets/choices/inventer.svg',
+    illustration: './assets/choices/choice-1.svg',
     nextNode: sceneId,
     consequenceHint: scene.text.slice(0, 120),
     learned: true
@@ -60,8 +62,8 @@ export function attachGeneratedBranch({ story, node, transcript, data }) {
   return learnedChoice;
 }
 
-export async function weaveChoice({ story, node, transcript, path }) {
-  const localMatch = matchSpokenChoice(node, transcript);
+export async function weaveChoice({ story, node, transcript, path, displayedChoices }) {
+  const localMatch = matchSpokenChoice(node, transcript, displayedChoices);
   if (localMatch) return { matchedChoice: localMatch, created: false };
 
   const request = buildBranchRequest({ story, node, transcript, path });

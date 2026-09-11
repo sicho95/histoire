@@ -8,6 +8,7 @@ import { renderReader, syncReaderToNarration } from '../ui/reader.js';
 import { renderEndScreen } from '../ui/end_screen.js';
 import { showToast } from '../ui/toast.js';
 import { pickDisplayChoices } from './choices.js';
+import { restorePlaybackAudioSession } from '../audio/audio-session.js';
 
 let playbackToken = 0;
 
@@ -77,7 +78,7 @@ export async function chooseOption(choice) {
   state.currentNodeId = choice.nextNode;
   const node = currentNode();
   if (!node) return showToast('Cette piste est incomplète. Le brouillon pourra être corrigé lors de la révision.');
-  state.path.push({ nodeId: node.id, headline: node.headline, choice: choice.label });
+  state.path.push({ nodeId: node.id, headline: node.headline, choice: choice.label, illustration: choice.illustration || '', learned: Boolean(choice.learned) });
   await playCurrentNode(token);
 }
 
@@ -92,6 +93,7 @@ export async function handleVoiceChoice() {
   help.textContent = 'L’écoute s’arrête toute seule après ta phrase.';
   help.classList.remove('hidden');
   const transcript = await listenOnce();
+  await restorePlaybackAudioSession();
   if (!transcript) {
     button.disabled = false;
     button.innerHTML = '<span>🎤</span> Dire une autre idée';
@@ -101,7 +103,7 @@ export async function handleVoiceChoice() {
   button.textContent = '✨ J’imagine la suite…';
   help.textContent = `J’ai entendu : « ${transcript} »`;
   try {
-    const result = await weaveChoice({ story: state.currentStory, node, transcript, path: state.path });
+    const result = await weaveChoice({ story: state.currentStory, node, transcript, path: state.path, displayedChoices: pickDisplayChoices(node) });
     if (result.story) state.currentStory = result.story;
     await chooseOption(result.matchedChoice);
   } catch (error) {
