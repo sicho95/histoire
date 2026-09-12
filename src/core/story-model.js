@@ -292,12 +292,65 @@ export function estimateDurationMinutes(story, wordsPerMinute) {
   return Math.max(1, Math.round(storyPathMetrics(story, wordsPerMinute).averageMinutes));
 }
 
-export function applyStoryReview(input, review) {
+function minimumDecisionCount(story) {
+  const memo = new Map();
+  function walk(nodeId, trail = new Set()) {
+    if (!nodeId || trail.has(nodeId)) return 0;
+    if (memo.has(nodeId)) return memo.get(nodeId);
+    const node = story.nodes[nodeId];
+    if (!node || node.isEnding) return 0;
+    const nextTrail = new Set(trail).add(nodeId);
+    const childIds = node.nextNode ? [node.nextNode] : node.choices.map(choice => choice.nextNode);
+    const childCounts = childIds.map(id => walk(id, nextTrail));
+    const count = (node.choices.length ? 1 : 0) + (childCounts.length ? Math.min(...childCounts) : 0);
+    memo.set(nodeId, count);
+    return count;
+  }
+  return walk(story.startNode);
+}
+
+export function storyExpansionTargets(input, creationInput = {}) {
+  const story = normalizeStory(input, { source: input.source, revision: input.revision });
+  const duration = Number(creationInput.duration || story.durationMinutes || 10);
+  const preschool = story.ageBand === '2-5';
+  const expectedDecisions = duration >= 18 ? 10 : duration >= 10 ? 5 : 4;
+  const decisionScale = Math.min(2, expectedDecisions / Math.max(1, minimumDecisionCount(story)));
+  const base = preschool
+    ? duration >= 18 ? { decision: 120, consequence: 70, ending: 110 } : duration >= 10 ? { decision: 115, consequence: 70, ending: 105 } : { decision: 100, consequence: 60, ending: 95 }
+    : duration >= 18 ? { decision: 165, consequence: 70, ending: 155 } : duration >= 10 ? { decision: 165, consequence: 75, ending: 155 } : { decision: 145, consequence: 65, ending: 145 };
+  return Object.values(story.nodes).map(node => {
+    const role = node.isEnding ? 'ending' : node.choices.length ? 'decision' : 'consequence';
+    const minWords = Math.round(base[role] * decisionScale);
+    return { nodeId: node.id, role, currentWords: wordCount(node.text), minWords, maxWords: Math.round(minWords * 1.18) };
+  }).filter(target => target.currentWords < target.minWords);
+}
+
+export function storyExpansionBatches(targets, maxTargetWords = 2000) {
+  const batches = [];
+  let batch = [];
+  let words = 0;
+  for (const target of targets) {
+    if (batch.length && (words + target.minWords > maxTargetWords || batch.length >= 20)) {
+      batches.push(batch);
+      batch = [];
+      words = 0;
+    }
+    batch.push(target);
+    words += target.minWords;
+  }
+  if (batch.length) batches.push(batch);
+  return batches;
+}
+
+export function applyStoryReview(input, review, { minimumWords = {}, neverShorten = false } = {}) {
   const story = structuredClone(input);
   for (const patch of review?.patches || []) {
     const node = story.nodes?.[patch.nodeId];
     if (!node || typeof patch.text !== 'string' || !patch.text.trim()) continue;
-    node.text = patch.text.trim();
+    const nextText = patch.text.trim();
+    const requiredWords = Math.max(Number(minimumWords[patch.nodeId] || 0), neverShorten ? wordCount(node.text) : 0);
+    if (wordCount(nextText) < requiredWords) continue;
+    node.text = nextText;
     if (patch.narration) node.narration = patch.narration;
   }
   return normalizeStory(story, { source: story.source, revision: story.revision });

@@ -1,8 +1,9 @@
-import { STORY_RESPONSE_SCHEMA, STORY_REVIEW_SCHEMA, buildFullStoryRequest, buildStoryReviewRequest, storyReviewChunks } from '../api/prompts.js';
+import { STORY_RESPONSE_SCHEMA, STORY_REVIEW_SCHEMA, buildFullStoryRequest, buildStoryExpansionRequest, buildStoryReviewRequest } from '../api/prompts.js';
 import { queryStructured } from '../api/router.js';
 import { getSecrets } from '../storage/settings.js';
 import { saveDraft } from '../storage/database.js';
-import { applyStoryReview, assessGeneratedStory, normalizeStory, validateStory } from '../core/story-model.js';
+import { applyStoryReview, assessGeneratedStory, normalizeStory, storyExpansionBatches, storyExpansionTargets, validateStory } from '../core/story-model.js';
+import { detectStoryIntent } from '../core/story-intent.js';
 import { startStory } from '../core/engine.js';
 import { showToast } from './toast.js';
 
@@ -39,10 +40,16 @@ function reviewInputTokens(request) {
   return Math.ceil((request.instructions.length + request.userInput.length + JSON.stringify(STORY_REVIEW_SCHEMA).length) / 4);
 }
 
-function reviewOutputBudget(request, duration) {
+function outputBudget(request, preferred) {
   const inputTokens = reviewInputTokens(request);
-  const preferred = duration >= 18 ? 2400 : 3000;
   return Math.max(900, Math.min(preferred, 7600 - inputTokens));
+}
+
+function reviewSchema({ minimum = 1, maximum = 40 } = {}) {
+  const schema = structuredClone(STORY_REVIEW_SCHEMA);
+  schema.properties.patches.minItems = minimum;
+  schema.properties.patches.maxItems = maximum;
+  return schema;
 }
 
 export function initWizard() {
@@ -100,7 +107,7 @@ export function initWizard() {
         name: 'complete_child_story',
         schema: STORY_RESPONSE_SCHEMA,
         ...request,
-        maxOutputTokens: input.duration >= 18 ? 5200 : input.duration >= 10 ? 4800 : 4300,
+        maxOutputTokens: input.duration >= 10 ? 5200 : 4500,
         reasoningEffort: 'low',
         maxAttempts: 1,
         retryHint: 'Vérifie particulièrement storyBible : premise, theme, values, heroGoal, stakes et recurringObjects doivent toutes être présentes.',
@@ -117,47 +124,58 @@ export function initWizard() {
       }, { source: 'child-draft' });
       let quality = assessGeneratedStory(story, input);
       let rateLimit = generated.rateLimit;
-      const chunks = storyReviewChunks(story);
-      for (let index = 0; index < chunks.length; index += 1) {
-        const nodeIds = chunks[index];
-        let reviewRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: index + 1, nodeIds });
+      for (let round = 1; round <= 2; round += 1) {
+        const targets = storyExpansionTargets(story, input);
+        if (!targets.length) break;
+        const batches = storyExpansionBatches(targets);
+        for (const [index, batch] of batches.entries()) {
+          const label = `d’allongement ${index + 1}/${batches.length}`;
+          await waitForEditorialQuota(rateLimit, status, label);
+          status.textContent = `J’allonge précisément ${batch.length} scènes trop courtes…`;
+          const expansionRequest = buildStoryExpansionRequest({ story, input, targets: batch });
+          const expanded = await queryStructured({
+            name: 'child_story_length_patches',
+            schema: reviewSchema({ minimum: batch.length, maximum: batch.length }),
+            ...expansionRequest,
+            maxOutputTokens: outputBudget(expansionRequest, 4800),
+            reasoningEffort: 'low',
+            maxAttempts: 1,
+            repair: candidate => candidate
+          });
+          story = applyStoryReview(story, expanded.data, {
+            minimumWords: Object.fromEntries(batch.map(target => [target.nodeId, target.minWords]))
+          });
+          quality = assessGeneratedStory(story, input);
+          rateLimit = expanded.rateLimit;
+        }
+      }
+      const keyNodeIds = Object.values(story.nodes).filter(node => node.choices.length || node.isEnding).map(node => node.id);
+      const reviewChunks = [keyNodeIds];
+      for (let index = 0; index < reviewChunks.length; index += 1) {
+        const nodeIds = reviewChunks[index];
+        let reviewRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: 'finale', nodeIds });
         if (reviewInputTokens(reviewRequest) > 6500 && nodeIds.length > 1) {
           const middle = Math.ceil(nodeIds.length / 2);
-          chunks.splice(index, 1, nodeIds.slice(0, middle), nodeIds.slice(middle));
+          reviewChunks.splice(index, 1, nodeIds.slice(0, middle), nodeIds.slice(middle));
           index -= 1;
           continue;
         }
-        const label = chunks.length > 1 ? `${index + 1}/${chunks.length}` : 'finale';
+        const label = reviewChunks.length > 1 ? `finale ${index + 1}/${reviewChunks.length}` : 'finale';
         await waitForEditorialQuota(rateLimit, status, label);
-        status.textContent = `Je relis la durée, la cohérence et les émotions… ${chunks.length > 1 ? `Partie ${label}` : ''}`;
+        status.textContent = 'Je renforce la cohérence et les émotions sans raccourcir…';
         reviewRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: label, nodeIds });
         const reviewed = await queryStructured({
           name: 'child_story_editorial_patches',
-          schema: STORY_REVIEW_SCHEMA,
+          schema: reviewSchema({ minimum: detectStoryIntent(input).strongEmotion ? Math.min(5, nodeIds.length) : 1 }),
           ...reviewRequest,
-          maxOutputTokens: reviewOutputBudget(reviewRequest, input.duration),
+          maxOutputTokens: outputBudget(reviewRequest, input.duration >= 18 ? 2400 : 3200),
           reasoningEffort: 'medium',
-          maxAttempts: 1
+          maxAttempts: 1,
+          repair: candidate => candidate
         });
-        story = applyStoryReview(story, reviewed.data);
+        story = applyStoryReview(story, reviewed.data, { neverShorten: true });
         quality = assessGeneratedStory(story, input);
         rateLimit = reviewed.rateLimit;
-      }
-      if (!quality.ok) {
-        const keyNodeIds = Object.values(story.nodes).filter(node => node.choices.length || node.isEnding).map(node => node.id);
-        await waitForEditorialQuota(rateLimit, status, 'de correction');
-        status.textContent = 'J’améliore les dernières scènes encore trop faibles…';
-        const repairRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: 'de correction', nodeIds: keyNodeIds });
-        const repaired = await queryStructured({
-          name: 'child_story_editorial_patches',
-          schema: STORY_REVIEW_SCHEMA,
-          ...repairRequest,
-          maxOutputTokens: reviewOutputBudget(repairRequest, input.duration),
-          reasoningEffort: 'medium',
-          maxAttempts: 1
-        });
-        story = applyStoryReview(story, repaired.data);
-        quality = assessGeneratedStory(story, input);
       }
       if (!quality.ok) throw new Error(`Cette version n’atteint pas encore la qualité demandée : ${quality.errors[0]}. Elle n’a pas été enregistrée. Attends environ une minute, puis touche de nouveau Créer : tes choix sont conservés.`);
       story.durationMinutes = input.duration;
