@@ -1,4 +1,4 @@
-export const FRENCH_SPEECH_VERSION = 'fr-pronunciation-v3';
+export const FRENCH_SPEECH_VERSION = 'fr-pronunciation-v4';
 
 const FRENCH_ONOMATOPOEIA = new Map([
   ['plouf', 'plouffe'], ['pouf', 'pouffe'], ['boum', 'boume'], ['ploc', 'ploque'],
@@ -15,6 +15,8 @@ const ONOMATOPOEIA_PATTERN = new RegExp(`\\b(${[...FRENCH_ONOMATOPOEIA.keys()].j
 export function forceFrenchPronunciation(text) {
   return String(text || '')
     .replace(/[*_`#]+/g, '')
+    .replace(/\bOh\b/giu, 'Ô')
+    .replace(/\bNino\b/giu, 'Ninô')
     .replace(/\b([a-zà-ÿœæ]+)-t-(il|elle|ils|elles|on)\b/giu, (_, verb, pronoun) => `${verb}t${pronoun}`)
     .replace(/\b([a-zà-ÿœæ]+)-(il|elle|ils|elles|on)\b/giu, (_, verb, pronoun) => `${verb}${pronoun}`)
     .replace(ONOMATOPOEIA_PATTERN, match => FRENCH_ONOMATOPOEIA.get(match.toLocaleLowerCase('fr')) || match)

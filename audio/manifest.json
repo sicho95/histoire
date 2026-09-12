@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "styleVersion": "signature-fr-neural-v4",
-  "generatedAt": "2026-09-11T19:26:52.137Z",
+  "generatedAt": "2026-09-12T07:29:28.223Z",
   "tracks": {
     "aya-phare-reves:decision-1": {
       "file": "mp3/aya-phare-reves/decision-1.mp3",
@@ -906,7 +906,7 @@
     "lila-fete-couleurs:decision-1": {
       "file": "mp3/lila-fete-couleurs/decision-1.mp3",
       "textHash": "m6ubiw",
-      "speechHash": "15iu86a",
+      "speechHash": "1jmfd8h",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1186,7 +1186,7 @@
     "lila-fete-couleurs:decision-4-suite-a": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-a.mp3",
       "textHash": "iknx75",
-      "speechHash": "1hel52q",
+      "speechHash": "14ws7uv",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -1206,7 +1206,7 @@
     "lila-fete-couleurs:decision-4-suite-b": {
       "file": "mp3/lila-fete-couleurs/decision-4-suite-b.mp3",
       "textHash": "1v32cc3",
-      "speechHash": "4aqugp",
+      "speechHash": "1mnc1co",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2886,7 +2886,7 @@
     "nino-doudou-voyageur:decision-1": {
       "file": "mp3/nino-doudou-voyageur/decision-1.mp3",
       "textHash": "1rj48gt",
-      "speechHash": "1rj48gt",
+      "speechHash": "at7hl9",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2906,7 +2906,7 @@
     "nino-doudou-voyageur:decision-1-question": {
       "file": "mp3/nino-doudou-voyageur/decision-1-question.mp3",
       "textHash": "d335kt",
-      "speechHash": "d335kt",
+      "speechHash": "1qpj7fu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2926,7 +2926,7 @@
     "nino-doudou-voyageur:decision-1-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-a.mp3",
       "textHash": "rplmss",
-      "speechHash": "rplmss",
+      "speechHash": "14nfz0p",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2946,7 +2946,7 @@
     "nino-doudou-voyageur:decision-1-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-1-suite-b.mp3",
       "textHash": "9xpqqv",
-      "speechHash": "9xpqqv",
+      "speechHash": "tt4m8m",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -2966,7 +2966,7 @@
     "nino-doudou-voyageur:decision-2": {
       "file": "mp3/nino-doudou-voyageur/decision-2.mp3",
       "textHash": "13r238o",
-      "speechHash": "13r238o",
+      "speechHash": "w3qhuu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3006,7 +3006,7 @@
     "nino-doudou-voyageur:decision-2-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-a.mp3",
       "textHash": "iolzyu",
-      "speechHash": "17m4he2",
+      "speechHash": "wlrx0z",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3026,7 +3026,7 @@
     "nino-doudou-voyageur:decision-2-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-2-suite-b.mp3",
       "textHash": "cpt0y0",
-      "speechHash": "cpt0y0",
+      "speechHash": "141ytz7",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3046,7 +3046,7 @@
     "nino-doudou-voyageur:decision-3": {
       "file": "mp3/nino-doudou-voyageur/decision-3.mp3",
       "textHash": "1dwshhf",
-      "speechHash": "1dwshhf",
+      "speechHash": "8z1egj",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3086,7 +3086,7 @@
     "nino-doudou-voyageur:decision-3-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-a.mp3",
       "textHash": "7qlygw",
-      "speechHash": "7qlygw",
+      "speechHash": "pr8cud",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3106,7 +3106,7 @@
     "nino-doudou-voyageur:decision-3-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-3-suite-b.mp3",
       "textHash": "16zrtfz",
-      "speechHash": "16zrtfz",
+      "speechHash": "1ta63zf",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3126,7 +3126,7 @@
     "nino-doudou-voyageur:decision-4": {
       "file": "mp3/nino-doudou-voyageur/decision-4.mp3",
       "textHash": "ssv3hq",
-      "speechHash": "ssv3hq",
+      "speechHash": "t2buic",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3146,7 +3146,7 @@
     "nino-doudou-voyageur:decision-4-question": {
       "file": "mp3/nino-doudou-voyageur/decision-4-question.mp3",
       "textHash": "1g2pmq",
-      "speechHash": "1g2pmq",
+      "speechHash": "w994nd",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3166,7 +3166,7 @@
     "nino-doudou-voyageur:decision-4-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-a.mp3",
       "textHash": "ozaiau",
-      "speechHash": "ozaiau",
+      "speechHash": "l3b1el",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3186,7 +3186,7 @@
     "nino-doudou-voyageur:decision-4-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-4-suite-b.mp3",
       "textHash": "1iiywfy",
-      "speechHash": "1iiywfy",
+      "speechHash": "ywu0eo",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3206,7 +3206,7 @@
     "nino-doudou-voyageur:decision-5": {
       "file": "mp3/nino-doudou-voyageur/decision-5.mp3",
       "textHash": "102ose4",
-      "speechHash": "102ose4",
+      "speechHash": "195ctmz",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3246,7 +3246,7 @@
     "nino-doudou-voyageur:decision-5-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-a.mp3",
       "textHash": "1bwtusx",
-      "speechHash": "1bwtusx",
+      "speechHash": "1b8quy1",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3266,7 +3266,7 @@
     "nino-doudou-voyageur:decision-5-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-5-suite-b.mp3",
       "textHash": "1h9cecx",
-      "speechHash": "1h9cecx",
+      "speechHash": "1v0dfzn",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3286,7 +3286,7 @@
     "nino-doudou-voyageur:decision-6": {
       "file": "mp3/nino-doudou-voyageur/decision-6.mp3",
       "textHash": "1w0h98f",
-      "speechHash": "1w0h98f",
+      "speechHash": "27ix7c",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3326,7 +3326,7 @@
     "nino-doudou-voyageur:decision-6-suite-a": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-a.mp3",
       "textHash": "nvarln",
-      "speechHash": "nvarln",
+      "speechHash": "12d1yet",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3346,7 +3346,7 @@
     "nino-doudou-voyageur:decision-6-suite-b": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-b.mp3",
       "textHash": "1dkebko",
-      "speechHash": "1dkebko",
+      "speechHash": "xxggon",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3366,7 +3366,7 @@
     "nino-doudou-voyageur:decision-6-suite-c": {
       "file": "mp3/nino-doudou-voyageur/decision-6-suite-c.mp3",
       "textHash": "5bjmfs",
-      "speechHash": "1gyko7b",
+      "speechHash": "tcgrdt",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3386,7 +3386,7 @@
     "nino-doudou-voyageur:fin-a": {
       "file": "mp3/nino-doudou-voyageur/fin-a.mp3",
       "textHash": "6z0399",
-      "speechHash": "6z0399",
+      "speechHash": "1891ttn",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3406,7 +3406,7 @@
     "nino-doudou-voyageur:fin-b": {
       "file": "mp3/nino-doudou-voyageur/fin-b.mp3",
       "textHash": "a7xom",
-      "speechHash": "a7xom",
+      "speechHash": "e5ayb8",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3426,7 +3426,7 @@
     "nino-doudou-voyageur:fin-c": {
       "file": "mp3/nino-doudou-voyageur/fin-c.mp3",
       "textHash": "1bsg169",
-      "speechHash": "1bsg169",
+      "speechHash": "psh781",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",
@@ -3446,7 +3446,7 @@
     "nino-doudou-voyageur:intro": {
       "file": "mp3/nino-doudou-voyageur/intro.mp3",
       "textHash": "13d90e5",
-      "speechHash": "13d90e5",
+      "speechHash": "157m0nu",
       "voice": "fr-FR-RemyMultilingualNeural",
       "model": "edge-tts",
       "format": "mp3",

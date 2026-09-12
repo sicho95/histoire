@@ -118,6 +118,20 @@ export async function handleVoiceChoice() {
 
 export function pauseAudio() { playbackToken += 1; stopSpeak(); stopListening(); state.isNarrating = false; renderReader({ phase: state.readerPhase, preserve: true }); }
 export async function replayCurrentNode() { stopSpeak(); await playCurrentNode(++playbackToken); }
+export async function replayCurrentPassage() {
+  const token = ++playbackToken;
+  stopSpeak();
+  stopListening();
+  const node = currentNode();
+  if (!node) return;
+  state.isNarrating = true;
+  renderReader({ phase: 'choice', preserve: true, resetPage: true });
+  await speak(node.text, { ...narrationContext(node), onProgress: progress => syncReaderToNarration(node.id, progress) });
+  if (token !== playbackToken) return;
+  state.isNarrating = false;
+  if (node.question) return askCurrentQuestion(token);
+  renderReader({ phase: 'choice', preserve: true });
+}
 export function refreshFreeChoiceAvailability() { renderReader({ phase: state.readerPhase, preserve: true }); }
 export function startStoryFromCarousel(story) { return startStory(story); }
 export async function replayQuestion() { const token = ++playbackToken; stopSpeak(); return askCurrentQuestion(token); }

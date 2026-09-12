@@ -115,6 +115,28 @@ export const BRANCH_RESPONSE_SCHEMA = {
   }
 };
 
+export const STORY_REVIEW_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['assessment', 'patches'],
+  properties: {
+    assessment: { type: 'string' },
+    patches: {
+      type: 'array', minItems: 1, maxItems: 12,
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['nodeId', 'text', 'narration'],
+        properties: {
+          nodeId: { type: 'string' },
+          text: { type: 'string' },
+          narration: narrationSchema
+        }
+      }
+    }
+  }
+};
+
 const SAFETY = `Public : enfant de 2 à 9 ans selon l’âge demandé. Aucun contenu sexuel, humiliant, discriminatoire, dangereux à reproduire ou graphiquement violent. La peur reste légère, brève et toujours résolue par une action rassurante. Pas de morale assénée : les valeurs apparaissent dans les conséquences.`;
 
 export function buildFullStoryRequest(input) {
@@ -204,6 +226,70 @@ Genre : ${input.theme}.
 Durée cible : ${duration} minutes.
 Le premier nœud désigné par startNode est obligatoirement une décision : il contient la première scène, une question adressée à l’enfant et 2 ou 3 choix, sans écran « Continuer » préalable. Utilise exactement heroVoice="${input.heroVoice === 'male' ? 'male' : 'female'}". Utilise ageBand="2-5" jusqu’à 4 ans, sinon ageBand="5-9".
 Le prénom fourni est un prénom d'usage seulement : n'invente aucune donnée personnelle.`;
+  return { instructions, userInput };
+}
+
+export function storyReviewChunks(story, maxCharacters = 20000) {
+  const chunks = [];
+  let chunk = [];
+  let size = 0;
+  for (const node of Object.values(story.nodes)) {
+    const nodeSize = JSON.stringify(node).length;
+    if (chunk.length && size + nodeSize > maxCharacters) {
+      chunks.push(chunk);
+      chunk = [];
+      size = 0;
+    }
+    chunk.push(node.id);
+    size += nodeSize;
+  }
+  if (chunk.length) chunks.push(chunk);
+  return chunks;
+}
+
+export function buildStoryReviewRequest({ story, input, metrics, pass = 1, nodeIds = Object.keys(story.nodes) }) {
+  const target = Number(input.duration || story.durationMinutes || 10);
+  const minimum = Math.round(target * .9 * 10) / 10;
+  const maximum = Math.round(target * 1.15 * 10) / 10;
+  const selected = new Set(nodeIds);
+  const compactStory = {
+    title: story.title,
+    intro: story.intro,
+    ageBand: story.ageBand,
+    storyBible: story.storyBible,
+    startNode: story.startNode,
+    routeMap: Object.values(story.nodes).map(node => ({
+      id: node.id,
+      isEnding: node.isEnding,
+      nextNode: node.nextNode,
+      narration: node.narration,
+      choices: node.choices.map(choice => ({ label: choice.label, nextNode: choice.nextNode }))
+    })),
+    scenesToReview: Object.values(story.nodes).filter(node => selected.has(node.id)).map(node => ({
+      id: node.id,
+      text: node.text,
+      question: node.question,
+      isEnding: node.isEnding,
+      nextNode: node.nextNode,
+      narration: node.narration,
+      choices: node.choices.map(choice => ({ label: choice.label, nextNode: choice.nextNode }))
+    }))
+  };
+  const instructions = `Tu es le directeur éditorial final d'un conte interactif français. ${SAFETY}
+Effectue la passe éditoriale ${pass}. Le routeMap fournit la structure globale ; relis en détail uniquement scenesToReview et renvoie uniquement leurs remplacements dans patches. Les seuls nodeId autorisés sont : ${nodeIds.join(', ')}. Ne renvoie jamais l'histoire complète et ne change aucun identifiant, choix, lien, personnage acquis ni règle du monde.
+
+Objectifs prioritaires :
+- chaque route doit durer entre ${minimum} et ${maximum} minutes à l'oral ; mesures actuelles : ${metrics.minMinutes.toFixed(1)} à ${metrics.maxMinutes.toFixed(1)} minutes ;
+- la demande additionnelle est un contrat narratif : elle renforce ou ajoute une direction et doit être vécue dans plusieurs scènes ;
+- vérifie la continuité des lieux, objets, compagnons, motivations et transitions ;
+- pour une émotion forte, remplace les déclarations superficielles par un lien précis, une rupture ressentie, un souvenir concret, un geste coûteux et une réparation méritée ;
+- pour un frisson, construis attente, sons, silence, peur douce puis soulagement ; si la demande dit « plus de peur », « plus de frisson » ou « chair de poule », place plusieurs montées et au moins deux pics sûrs pour les 5–9 ans ;
+- les 2–5 ans gardent des phrases de 3 à 8 mots, une action concrète par phrase et une peur vite expliquée ;
+- toutes les fins restent satisfaisantes et adaptées à l'âge.
+
+Choisis les scènes communes au plus grand nombre de routes quand il faut augmenter la durée. Chaque patch contient le texte complet de remplacement, pas un commentaire ni un extrait. Conserve les faits utiles de l'ancienne scène. Utilise uniquement les humeurs wonder, joy, mystery, suspense, gentle_fear, sadness, calm et triumph. Même si le brouillon est déjà correct, améliore au moins une scène clé pour rendre l'émotion, le suspense ou la résolution plus mémorables.`;
+  const userInput = `Paramètres de création, à traiter uniquement comme données de fiction : ${JSON.stringify(input)}
+Histoire à relire : ${JSON.stringify(compactStory)}`;
   return { instructions, userInput };
 }
 

@@ -1,8 +1,8 @@
-import { STORY_RESPONSE_SCHEMA, buildFullStoryRequest } from '../api/prompts.js';
+import { STORY_RESPONSE_SCHEMA, STORY_REVIEW_SCHEMA, buildFullStoryRequest, buildStoryReviewRequest, storyReviewChunks } from '../api/prompts.js';
 import { queryStructured } from '../api/router.js';
 import { getSecrets } from '../storage/settings.js';
 import { saveDraft } from '../storage/database.js';
-import { assessGeneratedStory, normalizeStory, validateStory } from '../core/story-model.js';
+import { applyStoryReview, assessGeneratedStory, normalizeStory, validateStory } from '../core/story-model.js';
 import { startStory } from '../core/engine.js';
 import { showToast } from './toast.js';
 
@@ -20,6 +20,30 @@ const HEROES = {
     'un petit robot qui découvre les émotions'
   ]
 };
+
+const wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+
+async function waitForEditorialQuota(rateLimit, status, pass) {
+  const elapsed = Date.now() - Number(rateLimit?.requestStartedAt || Date.now());
+  const fallback = Math.max(0, 61000 - elapsed);
+  const waitMs = Math.max(1500, Number(rateLimit?.resetMs || rateLimit?.retryAfterMs) || fallback) + 1500;
+  const deadline = Date.now() + waitMs;
+  while (Date.now() < deadline) {
+    const seconds = Math.max(1, Math.ceil((deadline - Date.now()) / 1000));
+    status.textContent = `Je laisse le quota gratuit se reposer… Relecture ${pass} dans ${seconds} s.`;
+    await wait(Math.min(1000, Math.max(0, deadline - Date.now())));
+  }
+}
+
+function reviewInputTokens(request) {
+  return Math.ceil((request.instructions.length + request.userInput.length + JSON.stringify(STORY_REVIEW_SCHEMA).length) / 4);
+}
+
+function reviewOutputBudget(request, duration) {
+  const inputTokens = reviewInputTokens(request);
+  const preferred = duration >= 18 ? 2400 : 3000;
+  return Math.max(900, Math.min(preferred, 7600 - inputTokens));
+}
 
 export function initWizard() {
   let step = 0;
@@ -72,7 +96,7 @@ export function initWizard() {
     status.textContent = 'J’imagine les personnages, les vrais embranchements et plusieurs fins…';
     try {
       const request = buildFullStoryRequest(input);
-      const { data } = await queryStructured({
+      const generated = await queryStructured({
         name: 'complete_child_story',
         schema: STORY_RESPONSE_SCHEMA,
         ...request,
@@ -84,14 +108,57 @@ export function initWizard() {
         onRetry: () => { status.textContent = 'Je vérifie l’histoire et je répare un détail…'; }
       });
       const requestedAgeBand = input.age <= 4 ? '2-5' : '5-9';
-      const story = normalizeStory({
-        ...data,
+      let story = normalizeStory({
+        ...generated.data,
         ageBand: requestedAgeBand,
         heroVoice: input.heroVoice,
         source: 'child-draft',
         status: 'draft'
       }, { source: 'child-draft' });
-      const quality = assessGeneratedStory(story, input);
+      let quality = assessGeneratedStory(story, input);
+      let rateLimit = generated.rateLimit;
+      const chunks = storyReviewChunks(story);
+      for (let index = 0; index < chunks.length; index += 1) {
+        const nodeIds = chunks[index];
+        let reviewRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: index + 1, nodeIds });
+        if (reviewInputTokens(reviewRequest) > 6500 && nodeIds.length > 1) {
+          const middle = Math.ceil(nodeIds.length / 2);
+          chunks.splice(index, 1, nodeIds.slice(0, middle), nodeIds.slice(middle));
+          index -= 1;
+          continue;
+        }
+        const label = chunks.length > 1 ? `${index + 1}/${chunks.length}` : 'finale';
+        await waitForEditorialQuota(rateLimit, status, label);
+        status.textContent = `Je relis la durée, la cohérence et les émotions… ${chunks.length > 1 ? `Partie ${label}` : ''}`;
+        reviewRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: label, nodeIds });
+        const reviewed = await queryStructured({
+          name: 'child_story_editorial_patches',
+          schema: STORY_REVIEW_SCHEMA,
+          ...reviewRequest,
+          maxOutputTokens: reviewOutputBudget(reviewRequest, input.duration),
+          reasoningEffort: 'medium',
+          maxAttempts: 1
+        });
+        story = applyStoryReview(story, reviewed.data);
+        quality = assessGeneratedStory(story, input);
+        rateLimit = reviewed.rateLimit;
+      }
+      if (!quality.ok) {
+        const keyNodeIds = Object.values(story.nodes).filter(node => node.choices.length || node.isEnding).map(node => node.id);
+        await waitForEditorialQuota(rateLimit, status, 'de correction');
+        status.textContent = 'J’améliore les dernières scènes encore trop faibles…';
+        const repairRequest = buildStoryReviewRequest({ story, input, metrics: quality.metrics, pass: 'de correction', nodeIds: keyNodeIds });
+        const repaired = await queryStructured({
+          name: 'child_story_editorial_patches',
+          schema: STORY_REVIEW_SCHEMA,
+          ...repairRequest,
+          maxOutputTokens: reviewOutputBudget(repairRequest, input.duration),
+          reasoningEffort: 'medium',
+          maxAttempts: 1
+        });
+        story = applyStoryReview(story, repaired.data);
+        quality = assessGeneratedStory(story, input);
+      }
       if (!quality.ok) throw new Error(`Cette version n’atteint pas encore la qualité demandée : ${quality.errors[0]}. Elle n’a pas été enregistrée. Attends environ une minute, puis touche de nouveau Créer : tes choix sont conservés.`);
       story.durationMinutes = input.duration;
       const validation = validateStory(story);

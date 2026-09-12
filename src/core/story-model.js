@@ -292,6 +292,17 @@ export function estimateDurationMinutes(story, wordsPerMinute) {
   return Math.max(1, Math.round(storyPathMetrics(story, wordsPerMinute).averageMinutes));
 }
 
+export function applyStoryReview(input, review) {
+  const story = structuredClone(input);
+  for (const patch of review?.patches || []) {
+    const node = story.nodes?.[patch.nodeId];
+    if (!node || typeof patch.text !== 'string' || !patch.text.trim()) continue;
+    node.text = patch.text.trim();
+    if (patch.narration) node.narration = patch.narration;
+  }
+  return normalizeStory(story, { source: story.source, revision: story.revision });
+}
+
 export function assessGeneratedStory(story, input) {
   const metrics = storyPathMetrics(story);
   const targetMinutes = Math.max(1, Number(input?.duration || story.durationMinutes || 10));
