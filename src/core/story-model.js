@@ -1,3 +1,5 @@
+import { detectStoryIntent } from './story-intent.js';
+
 const MOODS = new Set(['wonder', 'joy', 'mystery', 'suspense', 'gentle_fear', 'sadness', 'calm', 'triumph']);
 const MOOD_ALIASES = new Map([
   ['adventure', 'wonder'], ['adventurous', 'wonder'], ['curiosity', 'wonder'], ['amazement', 'wonder'], ['émerveillement', 'wonder'],
@@ -301,20 +303,38 @@ export function assessGeneratedStory(story, input) {
     errors.push(`durée maximale ${Math.round(metrics.maxMinutes)} min au lieu de ${targetMinutes}`);
   }
 
-  const intention = `${input?.theme || ''} ${input?.wish || ''}`.toLocaleLowerCase('fr');
-  const wantsStrongEmotion = /émotion|trag|pleur|trist|boulevers|touchant|touchée|touché/.test(intention);
-  if (wantsStrongEmotion) {
+  const intent = detectStoryIntent(input);
+  if (intent.strongEmotion) {
     const nodes = Object.values(story.nodes);
     const moods = new Set(nodes.map(node => node.narration.mood));
     if (moods.size < 4 || !moods.has('sadness') || ![...moods].some(mood => mood === 'joy' || mood === 'triumph')) {
       errors.push('arc émotionnel et intentions vocales insuffisamment variés');
     }
-    if (/trag/.test(intention) && !['sadness', 'suspense', 'gentle_fear'].includes(story.nodes[story.startNode]?.narration?.mood)) {
+    if (intent.tragicOpening && !['sadness', 'suspense', 'gentle_fear'].includes(story.nodes[story.startNode]?.narration?.mood)) {
       errors.push('rupture émotionnelle absente du début');
     }
     const endings = nodes.filter(node => node.isEnding);
     if (endings.some(node => !['joy', 'triumph', 'calm'].includes(node.narration.mood))) {
       errors.push('toutes les fins ne portent pas la résolution heureuse demandée');
+    }
+  }
+  if (intent.gentleFright) {
+    const nodes = Object.values(story.nodes);
+    const moods = new Set(nodes.map(node => node.narration.mood));
+    if (!moods.has('mystery') || !moods.has('suspense') || !moods.has('gentle_fear')) {
+      errors.push('montée de mystère, suspense et peur douce insuffisante');
+    }
+    if (!nodes.some(node => ['suspense', 'gentle_fear'].includes(node.narration.mood) && node.narration.intensity === 3)) {
+      errors.push('pic de frisson vocal absent');
+    }
+    if (intent.frightIntensity === 'strong') {
+      const tenseNodes = nodes.filter(node => ['mystery', 'suspense', 'gentle_fear'].includes(node.narration.mood));
+      const peaks = nodes.filter(node => ['suspense', 'gentle_fear'].includes(node.narration.mood) && node.narration.intensity === 3);
+      if (tenseNodes.length < 4 || peaks.length < 2) errors.push('frisson renforcé insuffisant pour donner la chair de poule');
+    }
+    const endings = nodes.filter(node => node.isEnding);
+    if (endings.some(node => !['calm', 'joy', 'triumph'].includes(node.narration.mood))) {
+      errors.push('toutes les fins du doux frisson ne sont pas rassurantes');
     }
   }
   return { ok: errors.length === 0, errors, metrics };

@@ -4,7 +4,8 @@ import { assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening,
 import { matchSpokenChoice, pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
 import { currentPassageImage, displayChoiceImage, generatedChoiceColor } from '../src/core/illustrations.js';
-import { buildFullStoryRequest, buildStoryRefinementRequest } from '../src/api/prompts.js';
+import { buildFullStoryRequest } from '../src/api/prompts.js';
+import { detectStoryIntent } from '../src/core/story-intent.js';
 
 const legacy = {
   id: 'Test ancien', title: 'Une histoire test', start_node: 'start',
@@ -63,9 +64,8 @@ test('le prompt traite la durée et le souhait émotionnel comme des contraintes
   assert.match(request.instructions, /chaque route complète/);
   assert.match(request.instructions, /contrat éditorial prioritaire/);
   assert.match(request.instructions, /aucune mort/);
-  const refinement = buildStoryRefinementRequest({ story: normalizeStory(legacy), input, metrics: storyPathMetrics(normalizeStory(legacy)) });
-  assert.match(refinement.instructions, /souvenir concret/);
-  assert.match(refinement.userInput, /tragique au début/);
+  assert.match(request.instructions, /souvenir partagé/);
+  assert.match(request.userInput, /tragique au début/);
 });
 
 test('refuse une histoire émotionnelle courte et vocalement plate', () => {
@@ -75,6 +75,40 @@ test('refuse une histoire émotionnelle courte et vocalement plate', () => {
   assert.ok(quality.errors.some(error => error.includes('durée')));
   assert.ok(quality.errors.some(error => error.includes('émotionnel')));
   assert.ok(quality.errors.some(error => error.includes('début')));
+});
+
+test('sépare le doux frisson de la tristesse destinée à émouvoir', () => {
+  const intent = detectStoryIntent({ theme: 'un doux frisson vite rassuré', wish: '' });
+  assert.equal(intent.gentleFright, true);
+  assert.equal(intent.strongEmotion, false);
+
+  const frightRaw = structuredClone(legacy);
+  frightRaw.nodes.start.narration = { mood: 'mystery', pace: 'slow', intensity: 2 };
+  frightRaw.nodes.start.choices[0].next_node = 'suspense';
+  frightRaw.nodes.start.choices[1].next_node = 'peur-douce';
+  frightRaw.nodes.suspense = { text: 'bruit '.repeat(90), nextNode: 'end-a', choices: [], narration: { mood: 'suspense', pace: 'slow', intensity: 3 } };
+  frightRaw.nodes['peur-douce'] = { text: 'ombre '.repeat(90), nextNode: 'end-b', choices: [], narration: { mood: 'gentle_fear', pace: 'slow', intensity: 3 } };
+  frightRaw.nodes['end-a'].narration = { mood: 'calm', pace: 'slow', intensity: 1 };
+  frightRaw.nodes['end-b'].narration = { mood: 'joy', pace: 'normal', intensity: 2 };
+  const frightStory = normalizeStory(frightRaw);
+  const target = storyPathMetrics(frightStory).averageMinutes;
+  const quality = assessGeneratedStory(frightStory, { duration: target, theme: 'un doux frisson vite rassuré', wish: '' });
+  assert.equal(quality.ok, true);
+
+  const request = buildFullStoryRequest({ age: 7, duration: target, hero: 'une dragonne', heroVoice: 'female', place: 'une forêt', theme: 'un doux frisson vite rassuré', wish: '' });
+  assert.match(request.instructions, /ne cherche ni tristesse ni larmes/i);
+  assert.match(request.instructions, /pic bref de suspense et de peur douce/i);
+  assert.doesNotMatch(request.instructions, /larmes coulent/i);
+});
+
+test('une demande additionnelle peut renforcer le frisson sans dépasser la sécurité enfant', () => {
+  const input = { age: 7, duration: 10, hero: 'une exploratrice', heroVoice: 'female', place: 'un château', theme: 'un doux frisson vite rassuré', wish: 'plus de peur et de frisson, à donner la chair de poule' };
+  const intent = detectStoryIntent(input);
+  assert.equal(intent.frightIntensity, 'strong');
+  const request = buildFullStoryRequest(input);
+  assert.match(request.instructions, /vrai frisson donnant la chair de poule/i);
+  assert.match(request.instructions, /au moins deux pics intensity=3/i);
+  assert.match(request.instructions, /aucun décès/i);
 });
 
 test('parcourt correctement un ancien graphe à deux fins', () => {

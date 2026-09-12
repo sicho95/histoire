@@ -66,3 +66,29 @@ test('relance une fois une génération refusée pour une propriété manquante'
     restore();
   }
 });
+
+test('ne relance pas une grande histoire et masque le détail technique du quota', async () => {
+  const restore = installBrowserState();
+  let calls = 0;
+  globalThis.fetch = async () => {
+    calls += 1;
+    return {
+      ok: false,
+      status: 413,
+      json: async () => ({ error: { message: 'Request too large for organization secret-id on tokens per minute (TPM): Limit 8000, Requested 9821' } })
+    };
+  };
+  try {
+    await assert.rejects(queryStructured({
+      name: 'complete_child_story', schema: { type: 'object' }, instructions: 'Histoire.', userInput: 'Lila.',
+      maxAttempts: 1, reasoningEffort: 'low'
+    }), error => {
+      assert.match(error.message, /limite gratuite de Groq/i);
+      assert.doesNotMatch(error.message, /secret-id|9821/);
+      return true;
+    });
+    assert.equal(calls, 1);
+  } finally {
+    restore();
+  }
+});
