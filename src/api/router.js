@@ -50,7 +50,9 @@ export function isSchemaFailure(detail) {
 
 function friendlyApiError(status, detail) {
   if (status === 401) return 'La clé Groq n’a pas été acceptée. Vérifie-la dans l’espace Parents.';
-  if (status === 429) return 'La limite gratuite est atteinte pour le moment. Réessaie dans quelques instants.';
+  if (status === 429 || /request too large|tokens per minute|\bTPM\b/i.test(detail?.message || '')) {
+    return 'La limite gratuite de Groq est atteinte pour le moment. Tes choix sont conservés : attends environ une minute, puis réessaie.';
+  }
   if (isSchemaFailure(detail)) return 'Groq n’a pas réussi à terminer correctement l’histoire. Tes choix sont conservés : réessaie dans un instant.';
   return `La génération a échoué : ${detail?.message || `HTTP ${status}`}`;
 }
@@ -63,14 +65,16 @@ export async function queryStructured({
   maxOutputTokens = 7000,
   repair,
   retryHint = '',
-  onRetry
+  onRetry,
+  reasoningEffort = 'medium',
+  maxAttempts = 2
 }) {
   const settings = getSettings();
   const apiKey = getSecrets().groqApiKey;
   if (!apiKey) throw new Error('Ajoute une clé Groq gratuite dans l’espace parents.');
   const baseBody = {
     model: settings.generationModel || 'openai/gpt-oss-120b',
-    reasoning_effort: 'medium',
+    reasoning_effort: reasoningEffort,
     max_completion_tokens: maxOutputTokens,
     response_format: {
       type: 'json_schema',
@@ -78,7 +82,8 @@ export async function queryStructured({
     }
   };
 
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  const attempts = Math.max(1, Math.min(2, Number(maxAttempts) || 1));
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const messages = [
       { role: 'system', content: instructions },
       { role: 'user', content: userInput }
@@ -110,7 +115,7 @@ export async function queryStructured({
             logDebug('ai.repair.error', { name, message: error.message, attempt });
           }
         }
-        if (attempt < 2) {
+        if (attempt < attempts) {
           onRetry?.(attempt + 1);
           continue;
         }
@@ -124,7 +129,7 @@ export async function queryStructured({
       return { data, usage: payload.usage || null };
     } catch (error) {
       logDebug('ai.parse.error', { name, message: error.message, attempt });
-      if (attempt < 2) {
+      if (attempt < attempts) {
         onRetry?.(attempt + 1);
         continue;
       }

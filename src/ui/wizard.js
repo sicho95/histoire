@@ -1,8 +1,8 @@
-import { STORY_RESPONSE_SCHEMA, buildFullStoryRequest, buildStoryRefinementRequest } from '../api/prompts.js';
+import { STORY_RESPONSE_SCHEMA, buildFullStoryRequest } from '../api/prompts.js';
 import { queryStructured } from '../api/router.js';
 import { getSecrets } from '../storage/settings.js';
 import { saveDraft } from '../storage/database.js';
-import { assessGeneratedStory, normalizeStory, storyPathMetrics, validateStory } from '../core/story-model.js';
+import { assessGeneratedStory, normalizeStory, validateStory } from '../core/story-model.js';
 import { startStory } from '../core/engine.js';
 import { showToast } from './toast.js';
 
@@ -76,46 +76,23 @@ export function initWizard() {
         name: 'complete_child_story',
         schema: STORY_RESPONSE_SCHEMA,
         ...request,
-        maxOutputTokens: 12000,
+        maxOutputTokens: input.duration >= 18 ? 5200 : input.duration >= 10 ? 4800 : 4300,
+        reasoningEffort: 'low',
+        maxAttempts: 1,
         retryHint: 'Vérifie particulièrement storyBible : premise, theme, values, heroGoal, stakes et recurringObjects doivent toutes être présentes.',
         repair: candidate => normalizeStory(candidate),
         onRetry: () => { status.textContent = 'Je vérifie l’histoire et je répare un détail…'; }
       });
       const requestedAgeBand = input.age <= 4 ? '2-5' : '5-9';
-      let story = normalizeStory({
+      const story = normalizeStory({
         ...data,
         ageBand: requestedAgeBand,
         heroVoice: input.heroVoice,
         source: 'child-draft',
         status: 'draft'
       }, { source: 'child-draft' });
-      let metrics = storyPathMetrics(story);
-      const emotionalIntent = /émotion|trag|pleur|trist|boulevers|touchant|touchée|touché/.test(`${input.theme} ${input.wish}`.toLocaleLowerCase('fr'));
-      if (input.wish || emotionalIntent || metrics.minMinutes < input.duration * .92 || metrics.maxMinutes > input.duration * 1.08) {
-        status.textContent = input.wish || emotionalIntent
-          ? 'Je fais une vraie passe d’émotion et je vérifie les dix minutes…'
-          : 'J’allonge chaque chemin pour respecter la durée choisie…';
-        const refinement = buildStoryRefinementRequest({ story, input, metrics });
-        const refined = await queryStructured({
-          name: 'refined_child_story',
-          schema: STORY_RESPONSE_SCHEMA,
-          ...refinement,
-          maxOutputTokens: 16000,
-          retryHint: 'Conserve toutes les clés de storyBible et tous les champs de chaque scène.',
-          repair: candidate => normalizeStory(candidate),
-          onRetry: () => { status.textContent = 'Je relis une dernière fois la durée et les émotions…'; }
-        });
-        story = normalizeStory({
-          ...refined.data,
-          ageBand: requestedAgeBand,
-          heroVoice: input.heroVoice,
-          source: 'child-draft',
-          status: 'draft'
-        }, { source: 'child-draft' });
-        metrics = storyPathMetrics(story);
-      }
       const quality = assessGeneratedStory(story, input);
-      if (!quality.ok) throw new Error(`La relecture automatique demande encore une amélioration : ${quality.errors[0]}. L’histoire n’a pas été enregistrée ; relance la création pour obtenir une version complète.`);
+      if (!quality.ok) throw new Error(`Cette version n’atteint pas encore la qualité demandée : ${quality.errors[0]}. Elle n’a pas été enregistrée. Attends environ une minute, puis touche de nouveau Créer : tes choix sont conservés.`);
       story.durationMinutes = input.duration;
       const validation = validateStory(story);
       if (!validation.ok) throw new Error(`L’histoire générée doit être retouchée : ${validation.errors[0]}`);
