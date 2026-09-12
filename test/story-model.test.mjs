@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyStoryReview, assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening, normalizeNarrationMood, normalizeStory, reachableNodeIds, storyPathMetrics, storyToPortable, validateStory } from '../src/core/story-model.js';
+import { readFile } from 'node:fs/promises';
+import { applyStoryReview, assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening, normalizeNarrationMood, normalizeStory, reachableNodeIds, storyExpansionBatches, storyExpansionTargets, storyPathMetrics, storyToPortable, validateStory } from '../src/core/story-model.js';
 import { matchSpokenChoice, pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
 import { currentPassageImage, displayChoiceImage, generatedChoiceColor } from '../src/core/illustrations.js';
-import { buildFullStoryRequest, buildStoryReviewRequest, storyReviewChunks } from '../src/api/prompts.js';
+import { buildFullStoryRequest, buildStoryExpansionRequest, buildStoryReviewRequest, storyReviewChunks } from '../src/api/prompts.js';
 import { detectStoryIntent } from '../src/core/story-intent.js';
 
 const legacy = {
@@ -124,6 +125,44 @@ test('découpe une longue relecture et fusionne seulement les scènes corrigées
   assert.match(reviewed.nodes.start.text, /^nouveau/);
   assert.equal(reviewed.nodes.start.narration.mood, 'sadness');
   assert.equal(reviewed.nodes['end-a'].text, story.nodes['end-a'].text);
+});
+
+test('calcule des minima par scène et refuse un allongement encore trop court', () => {
+  const story = normalizeStory(legacy);
+  const targets = storyExpansionTargets(story, { duration: 10 });
+  const startTarget = targets.find(target => target.nodeId === 'start');
+  assert.ok(startTarget.minWords >= 165);
+  assert.ok(storyExpansionBatches(targets, 400).length >= 2);
+  const request = buildStoryExpansionRequest({ story, input: { duration: 10, wish: 'très émouvant' }, targets: [startTarget] });
+  assert.match(request.instructions, /entre target\.minWords et target\.maxWords/);
+  assert.match(request.instructions, /rupture ou perte ressentie/);
+
+  const refused = applyStoryReview(story, { patches: [{ nodeId: 'start', text: 'trop court', narration: { mood: 'sadness', pace: 'slow', intensity: 3 } }] }, { minimumWords: { start: startTarget.minWords } });
+  assert.equal(refused.nodes.start.text, story.nodes.start.text);
+  const acceptedText = 'émotion '.repeat(startTarget.minWords);
+  const accepted = applyStoryReview(story, { patches: [{ nodeId: 'start', text: acceptedText, narration: { mood: 'sadness', pace: 'slow', intensity: 3 } }] }, { minimumWords: { start: startTarget.minWords } });
+  assert.equal(accepted.nodes.start.narration.mood, 'sadness');
+  assert.ok(accepted.nodes.start.text.split(/\s+/).length >= startTarget.minWords);
+});
+
+test('la passe émotionnelle ne peut plus raccourcir une scène', () => {
+  const story = normalizeStory(legacy);
+  const reviewed = applyStoryReview(story, { patches: [{ nodeId: 'start', text: 'court', narration: { mood: 'joy', pace: 'normal', intensity: 2 } }] }, { neverShorten: true });
+  assert.equal(reviewed.nodes.start.text, story.nodes.start.text);
+});
+
+test('les minima exécutables remontent une vraie structure cinq choix au-dessus de neuf minutes', async () => {
+  const raw = JSON.parse(await readFile(new URL('../stories/sacha-poste-oceans.json', import.meta.url), 'utf8'));
+  for (const node of raw.nodes) node.text = node.text.split(/\s+/).slice(0, 30).join(' ');
+  const shortStory = normalizeStory(raw);
+  const targets = storyExpansionTargets(shortStory, { duration: 10 });
+  const patches = targets.map(target => ({
+    nodeId: target.nodeId,
+    text: 'aventure '.repeat(target.minWords),
+    narration: shortStory.nodes[target.nodeId].narration
+  }));
+  const expanded = applyStoryReview(shortStory, { patches }, { minimumWords: Object.fromEntries(targets.map(target => [target.nodeId, target.minWords])) });
+  assert.ok(storyPathMetrics(expanded).minMinutes >= 9);
 });
 
 test('parcourt correctement un ancien graphe à deux fins', () => {

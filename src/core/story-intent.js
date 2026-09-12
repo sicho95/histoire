@@ -6,7 +6,7 @@ export function detectStoryIntent(input = {}) {
   const strongerFright = gentleFright && /chair de poule|plus de (?:peur|frisson)|très peur|vraiment peur|beaucoup de peur|davantage de (?:peur|frisson)|angoiss|stress intense/.test(wish);
   return {
     friendship: /amiti|ami\b|amie\b/.test(text),
-    strongEmotion: /émotion|trag|pleur|trist|boulevers|touchant|touchée|touché/.test(text),
+    strongEmotion: /émotion|émouv|trag|pleur|trist|boulevers|touchant|touchée|touché/.test(text),
     tragicOpening: /trag/.test(wish),
     gentleFright,
     frightIntensity: strongerFright ? 'strong' : gentleFright ? 'gentle' : 'none',

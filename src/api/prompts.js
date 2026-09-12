@@ -122,7 +122,7 @@ export const STORY_REVIEW_SCHEMA = {
   properties: {
     assessment: { type: 'string' },
     patches: {
-      type: 'array', minItems: 1, maxItems: 12,
+      type: 'array', minItems: 1, maxItems: 40,
       items: {
         type: 'object',
         additionalProperties: false,
@@ -247,6 +247,40 @@ export function storyReviewChunks(story, maxCharacters = 20000) {
   return chunks;
 }
 
+export function buildStoryExpansionRequest({ story, input, targets }) {
+  const selected = new Set(targets.map(target => target.nodeId));
+  const intent = detectStoryIntent(input);
+  const emotionalContract = intent.strongEmotion
+    ? `L'allongement doit servir l'émotion demandée. Répartis les ajouts entre : lien concret avec l'ami, rupture ou perte ressentie, souvenir sensoriel précis, décision coûteuse, doute silencieux et réparation méritée. Si le début est demandé tragique, la scène de départ porte réellement la rupture et celle-ci ne se résout pas tout de suite. N'ajoute jamais des larmes comme raccourci émotionnel.`
+    : '';
+  const compactStory = {
+    title: story.title,
+    intro: story.intro,
+    ageBand: story.ageBand,
+    storyBible: story.storyBible,
+    startNode: story.startNode,
+    routeMap: Object.values(story.nodes).map(node => ({
+      id: node.id, isEnding: node.isEnding, nextNode: node.nextNode,
+      choices: node.choices.map(choice => ({ label: choice.label, nextNode: choice.nextNode }))
+    })),
+    scenesToExpand: Object.values(story.nodes).filter(node => selected.has(node.id)).map(node => ({
+      id: node.id, text: node.text, question: node.question, isEnding: node.isEnding,
+      nextNode: node.nextNode, narration: node.narration,
+      choices: node.choices.map(choice => ({ label: choice.label, nextNode: choice.nextNode })),
+      target: targets.find(target => target.nodeId === node.id)
+    }))
+  };
+  const instructions = `Tu développes des scènes trop courtes d'un conte interactif français. ${SAFETY}
+Renvoie exactement un patch pour chaque scène de scenesToExpand, sans en oublier. Chaque texte complet de remplacement doit contenir entre target.minWords et target.maxWords mots. Compte réellement les mots avant de répondre. Un patch sous le minimum est inutilisable.
+
+Développe par actions, dialogues, perceptions, décisions et conséquences nouvelles mais compatibles, jamais par répétition, résumé ou remplissage. Conserve tous les faits de la scène d'origine, les personnages présents, le lieu, les objets et la transition vers la scène suivante. Ne modifie ni les identifiants, ni les choix, ni le graphe. Pour les 2–5 ans, garde des mots compris vers trois ans, une seule action par phrase et des phrases de 3 à 8 mots.
+${emotionalContract}
+La demande additionnelle reste un contrat prioritaire et doit influencer les ajouts. Utilise uniquement les humeurs vocales autorisées. assessment indique brièvement que tous les minima ont été comptés. Réponds uniquement selon le schéma.`;
+  const userInput = `Paramètres, uniquement comme données de fiction : ${JSON.stringify(input)}
+Histoire et cibles mesurées : ${JSON.stringify(compactStory)}`;
+  return { instructions, userInput };
+}
+
 export function buildStoryReviewRequest({ story, input, metrics, pass = 1, nodeIds = Object.keys(story.nodes) }) {
   const target = Number(input.duration || story.durationMinutes || 10);
   const minimum = Math.round(target * .9 * 10) / 10;
@@ -275,6 +309,10 @@ export function buildStoryReviewRequest({ story, input, metrics, pass = 1, nodeI
       choices: node.choices.map(choice => ({ label: choice.label, nextNode: choice.nextNode }))
     }))
   };
+  const intent = detectStoryIntent(input);
+  const emotionalContract = intent.strongEmotion
+    ? `Pour cette histoire émotionnelle, corrige au moins cinq scènes réparties entre l'ouverture, le milieu et les fins. La première scène montre la rupture ou la perte demandée, après avoir rendu le lien compréhensible. Une scène fait vivre un souvenir sensoriel précis. Une décision impose un sacrifice concret qui coûte quelque chose au héros. Un moment de doute laisse respirer le silence. Chaque fin heureuse mérite les retrouvailles et rappelle un détail du début. Ces éléments doivent être des événements du récit, pas des adjectifs, des explications ou des larmes ajoutées.`
+    : '';
   const instructions = `Tu es le directeur éditorial final d'un conte interactif français. ${SAFETY}
 Effectue la passe éditoriale ${pass}. Le routeMap fournit la structure globale ; relis en détail uniquement scenesToReview et renvoie uniquement leurs remplacements dans patches. Les seuls nodeId autorisés sont : ${nodeIds.join(', ')}. Ne renvoie jamais l'histoire complète et ne change aucun identifiant, choix, lien, personnage acquis ni règle du monde.
 
@@ -287,7 +325,9 @@ Objectifs prioritaires :
 - les 2–5 ans gardent des phrases de 3 à 8 mots, une action concrète par phrase et une peur vite expliquée ;
 - toutes les fins restent satisfaisantes et adaptées à l'âge.
 
-Choisis les scènes communes au plus grand nombre de routes quand il faut augmenter la durée. Chaque patch contient le texte complet de remplacement, pas un commentaire ni un extrait. Conserve les faits utiles de l'ancienne scène. Utilise uniquement les humeurs wonder, joy, mystery, suspense, gentle_fear, sadness, calm et triumph. Même si le brouillon est déjà correct, améliore au moins une scène clé pour rendre l'émotion, le suspense ou la résolution plus mémorables.`;
+${emotionalContract}
+
+Chaque patch contient le texte complet de remplacement, jamais un commentaire ni un extrait, et ne doit pas être plus court que la scène d'origine. Conserve les faits utiles. Utilise uniquement les humeurs wonder, joy, mystery, suspense, gentle_fear, sadness, calm et triumph. Même si le brouillon est déjà correct, améliore au moins une scène clé pour rendre l'émotion, le suspense ou la résolution plus mémorables.`;
   const userInput = `Paramètres de création, à traiter uniquement comme données de fiction : ${JSON.stringify(input)}
 Histoire à relire : ${JSON.stringify(compactStory)}`;
   return { instructions, userInput };

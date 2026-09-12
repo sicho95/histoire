@@ -36,6 +36,7 @@ export function extractFailedGeneration(value, depth = 0) {
   if (Array.isArray(value)) return null;
   if (typeof value !== 'object') return null;
   if (value.nodes && (value.title || value.storyBible || value.story_bible)) return value;
+  if (Array.isArray(value.patches)) return value;
   for (const key of ['content', 'output', 'text', 'generated_json', 'attempted_arguments', 'arguments']) {
     const candidate = extractFailedGeneration(value[key], depth + 1);
     if (candidate) return candidate;

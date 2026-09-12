@@ -36,6 +36,8 @@ test('reconnaît et extrait un JSON généré rejeté par Groq', () => {
   assert.equal(isSchemaFailure(schemaFailure.error), true);
   const story = { title: 'Lila', storyBible: { premise: 'Une aventure' }, nodes: [] };
   assert.deepEqual(extractFailedGeneration({ output: `\`\`\`json\n${JSON.stringify(story)}\n\`\`\`` }), story);
+  const review = { assessment: 'à reprendre', patches: [{ nodeId: 'start', text: 'nouveau' }] };
+  assert.deepEqual(extractFailedGeneration({ generated_json: review }), review);
 });
 
 test('comprend le délai de remise à zéro annoncé par Groq', () => {
