@@ -48,6 +48,26 @@ export function isSchemaFailure(detail) {
     || /does not match the expected schema|jsonschema:/i.test(detail?.message || '');
 }
 
+export function parseRateLimitReset(value) {
+  const source = String(value || '').trim().toLowerCase();
+  if (!source) return 0;
+  const minutes = Number(/([\d.]+)m(?!s)/.exec(source)?.[1] || 0);
+  const seconds = Number(/([\d.]+)s/.exec(source)?.[1] || 0);
+  const milliseconds = Number(/([\d.]+)ms/.exec(source)?.[1] || 0);
+  return Math.max(0, Math.ceil(minutes * 60000 + seconds * 1000 + milliseconds));
+}
+
+function rateLimitInfo(response, requestStartedAt) {
+  const get = name => response.headers?.get?.(name) || '';
+  return {
+    requestStartedAt,
+    completedAt: Date.now(),
+    remainingTokens: Number(get('x-ratelimit-remaining-tokens')) || null,
+    resetMs: parseRateLimitReset(get('x-ratelimit-reset-tokens')),
+    retryAfterMs: Math.ceil((Number(get('retry-after')) || 0) * 1000)
+  };
+}
+
 function friendlyApiError(status, detail) {
   if (status === 401) return 'La clé Groq n’a pas été acceptée. Vérifie-la dans l’espace Parents.';
   if (status === 429 || /request too large|tokens per minute|\bTPM\b/i.test(detail?.message || '')) {
@@ -84,6 +104,7 @@ export async function queryStructured({
 
   const attempts = Math.max(1, Math.min(2, Number(maxAttempts) || 1));
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const requestStartedAt = Date.now();
     const messages = [
       { role: 'system', content: instructions },
       { role: 'user', content: userInput }
@@ -126,7 +147,7 @@ export async function queryStructured({
       const payload = await response.json();
       const data = parseContent(payload);
       logDebug('ai.success', { name, model: body.model, attempt });
-      return { data, usage: payload.usage || null };
+      return { data, usage: payload.usage || null, rateLimit: rateLimitInfo(response, requestStartedAt) };
     } catch (error) {
       logDebug('ai.parse.error', { name, message: error.message, attempt });
       if (attempt < attempts) {

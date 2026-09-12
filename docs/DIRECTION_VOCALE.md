@@ -32,6 +32,8 @@ L’intensité `1`, `2` ou `3` module finement l’énergie à l’intérieur d�
 
 Le contrôle de durée des créations utilise les vitesses observées avec ces voix et profils : environ `120 mots/min` pour les `2-5 ans` et `145 mots/min` pour les `5-9 ans`. Le calcul parcourt toutes les routes jouables et inclut l’introduction, les scènes, les questions et l’annonce des choix. Il ne doit jamais déduire la durée du simple nombre total de scènes, car les branches non choisies ne sont pas lues.
 
+La graphie envoyée au moteur vocal peut différer du texte affiché pour verrouiller le français d'une voix multilingue. En particulier, `Oh` devient `Ô` et le prénom `Nino` devient `Ninô` uniquement dans la piste audio. Cette transformation évite un basculement ponctuel vers une prosodie anglaise sans déformer le livre visible.
+
 Une onomatopée n’est jamais laissée comme un mot isolé ou en capitales. Elle reste dans une phrase française complète — par exemple « la bulle éclate avec un petit plouf » — afin qu’une voix multilingue ne bascule pas vers une prononciation anglaise. En complément, `src/audio/french-speech.js` applique uniquement au texte envoyé à la voix un lexique phonétique central (`plouf → plouffe`, `ding → dingue`, `boum → boume`, `tin → tain`, etc.). Il retire aussi le balisage Markdown audible et lie les inversions françaises (`dit-il → ditil`, `a-t-elle → atelle`). Le texte correctement écrit reste inchangé à l’écran. Toute modification de cette préparation change `speechHash` et oblige le générateur à refaire la piste concernée.
 
 ## Régénération

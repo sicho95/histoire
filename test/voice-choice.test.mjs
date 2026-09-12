@@ -15,6 +15,10 @@ test('prononce Tin à la française, y compris répété et en capitales', () =>
   assert.equal(forceFrenchPronunciation('Tin… Tin TIN !'), 'tain… tain tain !');
 });
 
+test('force les interjections et le prénom Nino à rester en français', () => {
+  assert.equal(forceFrenchPronunciation('Oh ! Nino souffle doucement.'), 'Ô ! Ninô souffle doucement.');
+});
+
 test('retire le balisage et lie les inversions françaises pour la voix seulement', () => {
   assert.equal(
     forceFrenchPronunciation('**Vite !** dit-il. Où va-t-elle ? *Écoute.*'),

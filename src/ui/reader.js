@@ -71,6 +71,10 @@ export function toggleReaderPassage() {
   renderReader({ phase: state.readerPhase, preserve: true });
 }
 
+export function readerPassageIsOpen() {
+  return document.querySelector('#view-reader .reader-card')?.classList.contains('passage-open') || false;
+}
+
 export function renderReader({ phase = 'narration', preserve = false, resetPage = false } = {}) {
   const node = currentNode();
   if (!node) return;

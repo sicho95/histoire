@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening, normalizeNarrationMood, normalizeStory, reachableNodeIds, storyPathMetrics, storyToPortable, validateStory } from '../src/core/story-model.js';
+import { applyStoryReview, assessGeneratedStory, buildReviewPackage, harmonizeCreatedStoryOpening, normalizeNarrationMood, normalizeStory, reachableNodeIds, storyPathMetrics, storyToPortable, validateStory } from '../src/core/story-model.js';
 import { matchSpokenChoice, pickDisplayChoices } from '../src/core/choices.js';
 import { createZip, decodeZipText, readZip } from '../src/export/zip.js';
 import { currentPassageImage, displayChoiceImage, generatedChoiceColor } from '../src/core/illustrations.js';
-import { buildFullStoryRequest } from '../src/api/prompts.js';
+import { buildFullStoryRequest, buildStoryReviewRequest, storyReviewChunks } from '../src/api/prompts.js';
 import { detectStoryIntent } from '../src/core/story-intent.js';
 
 const legacy = {
@@ -109,6 +109,21 @@ test('une demande additionnelle peut renforcer le frisson sans dépasser la séc
   assert.match(request.instructions, /vrai frisson donnant la chair de poule/i);
   assert.match(request.instructions, /au moins deux pics intensity=3/i);
   assert.match(request.instructions, /aucun décès/i);
+});
+
+test('découpe une longue relecture et fusionne seulement les scènes corrigées', () => {
+  const story = normalizeStory(legacy);
+  const chunks = storyReviewChunks(story, 500);
+  assert.ok(chunks.length >= 2);
+  assert.deepEqual(new Set(chunks.flat()), new Set(Object.keys(story.nodes)));
+  const metrics = storyPathMetrics(story);
+  const request = buildStoryReviewRequest({ story, input: { duration: 10, wish: 'plus d’émotion' }, metrics, nodeIds: ['start'] });
+  assert.match(request.instructions, /Les seuls nodeId autorisés sont : start/);
+  assert.match(request.userInput, /scenesToReview/);
+  const reviewed = applyStoryReview(story, { patches: [{ nodeId: 'start', text: 'nouveau '.repeat(90), narration: { mood: 'sadness', pace: 'slow', intensity: 3 } }, { nodeId: 'absent', text: 'ignoré', narration: { mood: 'joy', pace: 'normal', intensity: 1 } }] });
+  assert.match(reviewed.nodes.start.text, /^nouveau/);
+  assert.equal(reviewed.nodes.start.narration.mood, 'sadness');
+  assert.equal(reviewed.nodes['end-a'].text, story.nodes['end-a'].text);
 });
 
 test('parcourt correctement un ancien graphe à deux fins', () => {

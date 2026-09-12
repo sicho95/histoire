@@ -1,6 +1,6 @@
 import { bootstrapStories, syncPublishedStories } from './storage/database.js';
 import { state, setView } from './core/state.js';
-import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayQuestion, startStory } from './core/engine.js';
+import { continueQuietReading, handleVoiceChoice, pauseAudio, refreshNarrationMode, replayCurrentNode, replayCurrentPassage, replayQuestion, startStory } from './core/engine.js';
 import { renderHome } from './ui/carousel.js';
 import { refreshCreationAvailability, renderLibrary } from './ui/library.js';
 import { initParental, openParental, renderParental } from './ui/parental.js';
@@ -9,7 +9,7 @@ import { showToast } from './ui/toast.js';
 import { initPwaUpdates } from './pwa/update.js';
 import { onNetworkStateChange, startNetworkWatcher } from './core/network.js';
 import { getSecrets, getSettings, saveSettings } from './storage/settings.js';
-import { toggleReaderPassage } from './ui/reader.js';
+import { readerPassageIsOpen, toggleReaderPassage } from './ui/reader.js';
 
 function goHome() { pauseAudio(); setView('view-home'); renderHome(); }
 
@@ -56,7 +56,11 @@ function initNavigation() {
   };
   document.getElementById('reader-continue').onclick = continueQuietReading;
   document.getElementById('replay-question').onclick = replayQuestion;
-  document.getElementById('toggle-passage').onclick = toggleReaderPassage;
+  document.getElementById('toggle-passage').onclick = async () => {
+    const wasOpen = readerPassageIsOpen();
+    toggleReaderPassage();
+    if (!wasOpen && !getSettings().quietMode) await replayCurrentPassage();
+  };
   document.getElementById('speak-choice').onclick = handleVoiceChoice;
   document.getElementById('restart-story').onclick = () => startStory(state.currentStory);
   document.getElementById('end-home').onclick = goHome;

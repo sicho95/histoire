@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { extractFailedGeneration, isSchemaFailure, queryStructured } from '../src/api/router.js';
+import { extractFailedGeneration, isSchemaFailure, parseRateLimitReset, queryStructured } from '../src/api/router.js';
 
 class MemoryStorage {
   constructor() { this.values = new Map(); }
@@ -36,6 +36,12 @@ test('reconnaît et extrait un JSON généré rejeté par Groq', () => {
   assert.equal(isSchemaFailure(schemaFailure.error), true);
   const story = { title: 'Lila', storyBible: { premise: 'Une aventure' }, nodes: [] };
   assert.deepEqual(extractFailedGeneration({ output: `\`\`\`json\n${JSON.stringify(story)}\n\`\`\`` }), story);
+});
+
+test('comprend le délai de remise à zéro annoncé par Groq', () => {
+  assert.equal(parseRateLimitReset('7.66s'), 7660);
+  assert.equal(parseRateLimitReset('1m2.5s'), 62500);
+  assert.equal(parseRateLimitReset('500ms'), 500);
 });
 
 test('relance une fois une génération refusée pour une propriété manquante', async () => {
